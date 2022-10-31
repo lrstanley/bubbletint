@@ -5,6 +5,7 @@
 package bubbletint
 
 import (
+	"sort"
 	"sync"
 )
 
@@ -42,6 +43,11 @@ func Tints() []Tint {
 		v = append(v, tint)
 	}
 	registryLock.RUnlock()
+
+	sort.Slice(v, func(i, j int) bool {
+		return v[i].ID() < v[j].ID()
+	})
+
 	return v
 }
 
@@ -51,6 +57,8 @@ func TintIDs() (ids []string) {
 		ids = append(ids, tint.ID())
 	}
 	registryLock.RUnlock()
+
+	sort.Strings(ids)
 	return ids
 }
 
