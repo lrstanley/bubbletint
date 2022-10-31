@@ -9,4 +9,5 @@ Still a work-in-progress, please don't use.
 - [ ] example with dynamic theme switcher
 - [ ] performance tests
 - [ ] any approach to dark vs light?
-- [ ] How to handle empty colors? function that wraps `lipgloss.Color()`?
+- [ ] how to handle empty colors? function that wraps `lipgloss.Color()`?
+- [ ] some tints are missing (day vs night, maybe those are keys and not in the name?)
