@@ -1,0 +1,13 @@
+{{ header }}
+
+package bubbletint
+
+import (
+	"github.com/lrstanley/bubbletint/tints"
+)
+
+var defaultRegistry = map[string]Tint{
+{{- range $index, $tint := . }}
+    "{{ .NameNormalized }}": &tints.{{ .StructName }}{},
+{{- end }}
+}
