@@ -11,284 +11,567 @@ import (
 )
 
 var defaultRegistry = map[string]Tint{
-	"3024_day":                          &tints.Tint3024Day{},
-	"3024_night":                        &tints.Tint3024Night{},
-	"adventure":                         &tints.TintAdventure{},
-	"adventure_time":                    &tints.TintAdventureTime{},
-	"afterglow":                         &tints.TintAfterglow{},
-	"alien_blood":                       &tints.TintAlienBlood{},
-	"andromeda":                         &tints.TintAndromeda{},
-	"argonaut":                          &tints.TintArgonaut{},
-	"arthur":                            &tints.TintArthur{},
-	"atelier_sulphurpool":               &tints.TintAtelierSulphurpool{},
-	"atom":                              &tints.TintAtom{},
-	"atom_one_light":                    &tints.TintAtomOneLight{},
-	"aurora":                            &tints.TintAurora{},
-	"banana_blueberry":                  &tints.TintBananaBlueberry{},
-	"batman":                            &tints.TintBatman{},
-	"belafonte_day":                     &tints.TintBelafonteDay{},
-	"belafonte_night":                   &tints.TintBelafonteNight{},
-	"birds_of_paradise":                 &tints.TintBirdsOfParadise{},
-	"blazer":                            &tints.TintBlazer{},
-	"blue_matrix":                       &tints.TintBlueMatrix{},
-	"blue_berry_pie":                    &tints.TintBlueBerryPie{},
-	"bluloco_dark":                      &tints.TintBlulocoDark{},
-	"bluloco_light":                     &tints.TintBlulocoLight{},
-	"borland":                           &tints.TintBorland{},
-	"breeze":                            &tints.TintBreeze{},
-	"bright_lights":                     &tints.TintBrightLights{},
-	"broadcast":                         &tints.TintBroadcast{},
-	"brogrammer":                        &tints.TintBrogrammer{},
-	"bubbles":                           &tints.TintBubbles{},
-	"builtin_dark":                      &tints.TintBuiltinDark{},
-	"builtin_light":                     &tints.TintBuiltinLight{},
-	"builtin_pastel_dark":               &tints.TintBuiltinPastelDark{},
-	"builtin_solarized_dark":            &tints.TintBuiltinSolarizedDark{},
-	"builtin_solarized_light":           &tints.TintBuiltinSolarizedLight{},
-	"builtin_tango_dark":                &tints.TintBuiltinTangoDark{},
-	"builtin_tango_light":               &tints.TintBuiltinTangoLight{},
-	"c_64":                              &tints.TintC64{},
-	"clrs":                              &tints.TintCLRS{},
-	"calamity":                          &tints.TintCalamity{},
-	"catppuccin_frappe":                 &tints.TintCatppuccinFrappe{},
-	"catppuccin_latte":                  &tints.TintCatppuccinLatte{},
-	"catppuccin_macchiato":              &tints.TintCatppuccinMacchiato{},
-	"catppuccin_mocha":                  &tints.TintCatppuccinMocha{},
-	"chalk":                             &tints.TintChalk{},
-	"chalkboard":                        &tints.TintChalkboard{},
-	"challenger_deep":                   &tints.TintChallengerDeep{},
-	"chester":                           &tints.TintChester{},
-	"ciapre":                            &tints.TintCiapre{},
-	"cobalt_neon":                       &tints.TintCobaltNeon{},
-	"cobalt_2":                          &tints.TintCobalt2{},
-	"contrast_light":                    &tints.TintContrastLight{},
-	"crayon_pony_fish":                  &tints.TintCrayonPonyFish{},
-	"crystal_violet":                    &tints.TintCrystalViolet{},
-	"cyber_cube":                        &tints.TintCyberCube{},
-	"cyber_punk_2077":                   &tints.TintCyberPunk2077{},
-	"cyberdyne":                         &tints.TintCyberdyne{},
-	"dark_pastel":                       &tints.TintDarkPastel{},
-	"dark_plus":                         &tints.TintDarkPlus{},
-	"darkside":                          &tints.TintDarkside{},
-	"desert":                            &tints.TintDesert{},
-	"dimmed_monokai":                    &tints.TintDimmedMonokai{},
-	"django":                            &tints.TintDjango{},
-	"django_reborn_again":               &tints.TintDjangoRebornAgain{},
-	"django_smooth":                     &tints.TintDjangoSmooth{},
-	"doom_peacock":                      &tints.TintDoomPeacock{},
-	"doom_one":                          &tints.TintDoomOne{},
-	"dot_gov":                           &tints.TintDotGov{},
-	"dracula":                           &tints.TintDracula{},
-	"dracula_plus":                      &tints.TintDraculaPlus{},
-	"duotone_dark":                      &tints.TintDuotoneDark{},
-	"encom":                             &tints.TintENCOM{},
-	"earthsong":                         &tints.TintEarthsong{},
-	"elemental":                         &tints.TintElemental{},
-	"elementary":                        &tints.TintElementary{},
-	"espresso":                          &tints.TintEspresso{},
-	"espresso_libre":                    &tints.TintEspressoLibre{},
-	"fahrenheit":                        &tints.TintFahrenheit{},
-	"fideloper":                         &tints.TintFideloper{},
-	"firefox_dev":                       &tints.TintFirefoxDev{},
-	"firewatch":                         &tints.TintFirewatch{},
-	"fish_tank":                         &tints.TintFishTank{},
-	"flat":                              &tints.TintFlat{},
-	"flatland":                          &tints.TintFlatland{},
-	"floraverse":                        &tints.TintFloraverse{},
-	"forest_blue":                       &tints.TintForestBlue{},
-	"framer":                            &tints.TintFramer{},
-	"front_end_delight":                 &tints.TintFrontEndDelight{},
-	"fun_forrest":                       &tints.TintFunForrest{},
-	"galaxy":                            &tints.TintGalaxy{},
-	"galizur":                           &tints.TintGalizur{},
-	"ganyu":                             &tints.TintGanyu{},
-	"github":                            &tints.TintGithub{},
-	"glacier":                           &tints.TintGlacier{},
-	"glorious":                          &tints.TintGlorious{},
-	"grape":                             &tints.TintGrape{},
-	"grass":                             &tints.TintGrass{},
-	"gruvbox_dark":                      &tints.TintGruvboxDark{},
-	"gruvbox_light":                     &tints.TintGruvboxLight{},
-	"guezwhoz":                          &tints.TintGuezwhoz{},
-	"hacktober":                         &tints.TintHacktober{},
-	"hardcore":                          &tints.TintHardcore{},
-	"harper":                            &tints.TintHarper{},
-	"highway":                           &tints.TintHighway{},
-	"hipster_green":                     &tints.TintHipsterGreen{},
-	"hivacruz":                          &tints.TintHivacruz{},
-	"homebrew":                          &tints.TintHomebrew{},
-	"hopscotch":                         &tints.TintHopscotch{},
-	"hopscotch_256":                     &tints.TintHopscotch256{},
-	"horizon":                           &tints.TintHorizon{},
-	"hurtado":                           &tints.TintHurtado{},
-	"hybrid":                            &tints.TintHybrid{},
-	"hyper":                             &tints.TintHyper{},
-	"ic_green_ppl":                      &tints.TintICGreenPPL{},
-	"ic_orange_ppl":                     &tints.TintICOrangePPL{},
-	"ir_black":                          &tints.TintIRBlack{},
-	"jackie_brown":                      &tints.TintJackieBrown{},
-	"japanesque":                        &tints.TintJapanesque{},
-	"jellybeans":                        &tints.TintJellybeans{},
-	"jet_brains_darcula":                &tints.TintJetBrainsDarcula{},
-	"juicy_colors":                      &tints.TintJuicyColors{},
-	"kibble":                            &tints.TintKibble{},
-	"kolorit":                           &tints.TintKolorit{},
-	"konsolas":                          &tints.TintKonsolas{},
-	"lab_fox":                           &tints.TintLabFox{},
-	"laser":                             &tints.TintLaser{},
-	"later_this_evening":                &tints.TintLaterThisEvening{},
-	"lavandula":                         &tints.TintLavandula{},
-	"liquid_carbon":                     &tints.TintLiquidCarbon{},
-	"liquid_carbon_transparent":         &tints.TintLiquidCarbonTransparent{},
-	"liquid_carbon_transparent_inverse": &tints.TintLiquidCarbonTransparentInverse{},
-	"man_page":                          &tints.TintManPage{},
-	"material":                          &tints.TintMaterial{},
-	"material_dark":                     &tints.TintMaterialDark{},
-	"material_darker":                   &tints.TintMaterialDarker{},
-	"material_ocean":                    &tints.TintMaterialOcean{},
-	"mathias":                           &tints.TintMathias{},
-	"medallion":                         &tints.TintMedallion{},
-	"mirage":                            &tints.TintMirage{},
-	"misterioso":                        &tints.TintMisterioso{},
-	"molokai":                           &tints.TintMolokai{},
-	"mona_lisa":                         &tints.TintMonaLisa{},
-	"monokai_cmder":                     &tints.TintMonokaiCmder{},
-	"monokai_octagon":                   &tints.TintMonokaiOctagon{},
-	"monokai_pro":                       &tints.TintMonokaiPro{},
-	"monokai_pro_filter_octagon":        &tints.TintMonokaiProFilterOctagon{},
-	"monokai_pro_filter_ristretto":      &tints.TintMonokaiProFilterRistretto{},
-	"monokai_remastered":                &tints.TintMonokaiRemastered{},
-	"monokai_soda":                      &tints.TintMonokaiSoda{},
-	"monokai_vivid":                     &tints.TintMonokaiVivid{},
-	"moonlight_ii":                      &tints.TintMoonlightII{},
-	"n_0_tch_2_k":                       &tints.TintN0Tch2K{},
-	"neopolitan":                        &tints.TintNeopolitan{},
-	"neutron":                           &tints.TintNeutron{},
-	"night_owlish_light":                &tints.TintNightOwlishLight{},
-	"night_lion_v_1":                    &tints.TintNightLionV1{},
-	"night_lion_v_2":                    &tints.TintNightLionV2{},
-	"nocturnal_winter":                  &tints.TintNocturnalWinter{},
-	"novel":                             &tints.TintNovel{},
-	"obsidian":                          &tints.TintObsidian{},
-	"ocean":                             &tints.TintOcean{},
-	"oceanic_material":                  &tints.TintOceanicMaterial{},
-	"ollie":                             &tints.TintOllie{},
-	"one_dark":                          &tints.TintOneDark{},
-	"one_half_dark":                     &tints.TintOneHalfDark{},
-	"one_half_light":                    &tints.TintOneHalfLight{},
-	"one_star":                          &tints.TintOneStar{},
-	"operator_mono_dark":                &tints.TintOperatorMonoDark{},
-	"overnight_slumber":                 &tints.TintOvernightSlumber{},
-	"pale_night_hc":                     &tints.TintPaleNightHC{},
-	"pandora":                           &tints.TintPandora{},
-	"paraiso_dark":                      &tints.TintParaisoDark{},
-	"parasio_dark":                      &tints.TintParasioDark{},
-	"paul_millr":                        &tints.TintPaulMillr{},
-	"pencil_dark":                       &tints.TintPencilDark{},
-	"pencil_light":                      &tints.TintPencilLight{},
-	"piatto_light":                      &tints.TintPiattoLight{},
-	"pnevma":                            &tints.TintPnevma{},
-	"popping_and_locking":               &tints.TintPoppingAndLocking{},
-	"primer":                            &tints.TintPrimer{},
-	"pro":                               &tints.TintPro{},
-	"pro_light":                         &tints.TintProLight{},
-	"purple_rain":                       &tints.TintPurpleRain{},
-	"qb_64_super_dark_blue":             &tints.TintQB64SuperDarkBlue{},
-	"rapture":                           &tints.TintRapture{},
-	"red_alert":                         &tints.TintRedAlert{},
-	"red_planet":                        &tints.TintRedPlanet{},
-	"red_sands":                         &tints.TintRedSands{},
-	"relaxed":                           &tints.TintRelaxed{},
-	"retrowave":                         &tints.TintRetrowave{},
-	"rippedcasts":                       &tints.TintRippedcasts{},
-	"rose_pine":                         &tints.TintRosePine{},
-	"rouge_2":                           &tints.TintRouge2{},
-	"royal":                             &tints.TintRoyal{},
-	"ryuuko":                            &tints.TintRyuuko{},
-	"sakura":                            &tints.TintSakura{},
-	"scarlet_protocol":                  &tints.TintScarletProtocol{},
-	"sea_shells":                        &tints.TintSeaShells{},
-	"seafoam_pastel":                    &tints.TintSeafoamPastel{},
-	"serendipity_midnight":              &tints.TintSerendipityMidnight{},
-	"serendipity_morning":               &tints.TintSerendipityMorning{},
-	"serendipity_sunset":                &tints.TintSerendipitySunset{},
-	"seti":                              &tints.TintSeti{},
-	"shaman":                            &tints.TintShaman{},
-	"slate":                             &tints.TintSlate{},
-	"sleepy_hollow":                     &tints.TintSleepyHollow{},
-	"smyck":                             &tints.TintSmyck{},
-	"snazzy":                            &tints.TintSnazzy{},
-	"soft_server":                       &tints.TintSoftServer{},
-	"solarized_darcula":                 &tints.TintSolarizedDarcula{},
-	"solarized_dark___patched":          &tints.TintSolarizedDarkPatched{},
-	"solarized_dark_higher_contrast":    &tints.TintSolarizedDarkHigherContrast{},
-	"sonoran_gothic":                    &tints.TintSonoranGothic{},
-	"sonoran_sunrise":                   &tints.TintSonoranSunrise{},
-	"space_gray":                        &tints.TintSpaceGray{},
-	"space_gray_eighties":               &tints.TintSpaceGrayEighties{},
-	"space_gray_eighties_dull":          &tints.TintSpaceGrayEightiesDull{},
-	"spacedust":                         &tints.TintSpacedust{},
-	"spiderman":                         &tints.TintSpiderman{},
-	"spring":                            &tints.TintSpring{},
-	"square":                            &tints.TintSquare{},
-	"sublette":                          &tints.TintSublette{},
-	"subliminal":                        &tints.TintSubliminal{},
-	"sundried":                          &tints.TintSundried{},
-	"symfonic":                          &tints.TintSymfonic{},
-	"tango_adapted":                     &tints.TintTangoAdapted{},
-	"tango_half_adapted":                &tints.TintTangoHalfAdapted{},
-	"teerb":                             &tints.TintTeerb{},
-	"terminal_basic":                    &tints.TintTerminalBasic{},
-	"thayer_bright":                     &tints.TintThayerBright{},
-	"the_hulk":                          &tints.TintTheHulk{},
-	"tinacious_design_dark":             &tints.TintTinaciousDesignDark{},
-	"tinacious_design_light":            &tints.TintTinaciousDesignLight{},
-	"tokyo_night":                       &tints.TintTokyoNight{},
-	"tokyo_night_light":                 &tints.TintTokyoNightLight{},
-	"tokyo_night_storm":                 &tints.TintTokyoNightStorm{},
-	"tomorrow":                          &tints.TintTomorrow{},
-	"tomorrow_night":                    &tints.TintTomorrowNight{},
-	"tomorrow_night_blue":               &tints.TintTomorrowNightBlue{},
-	"tomorrow_night_bright":             &tints.TintTomorrowNightBright{},
-	"tomorrow_night_burns":              &tints.TintTomorrowNightBurns{},
-	"tomorrow_night_eighties":           &tints.TintTomorrowNightEighties{},
-	"toy_chest":                         &tints.TintToyChest{},
-	"treehouse":                         &tints.TintTreehouse{},
-	"twilight":                          &tints.TintTwilight{},
-	"ubuntu":                            &tints.TintUbuntu{},
-	"ultra_violent":                     &tints.TintUltraViolent{},
-	"under_the_sea":                     &tints.TintUnderTheSea{},
-	"unholy":                            &tints.TintUnholy{},
-	"unikitty":                          &tints.TintUnikitty{},
-	"urple":                             &tints.TintUrple{},
-	"vaughn":                            &tints.TintVaughn{},
-	"vibrant_ink":                       &tints.TintVibrantInk{},
-	"violet_dark":                       &tints.TintVioletDark{},
-	"violet_light":                      &tints.TintVioletLight{},
-	"warm_neon":                         &tints.TintWarmNeon{},
-	"wez":                               &tints.TintWez{},
-	"whimsy":                            &tints.TintWhimsy{},
-	"wild_cherry":                       &tints.TintWildCherry{},
-	"wombat":                            &tints.TintWombat{},
-	"wryan":                             &tints.TintWryan{},
-	"zenburn":                           &tints.TintZenburn{},
-	"ayu":                               &tints.TintAyu{},
-	"ayu_light":                         &tints.TintAyuLight{},
-	"coffee_theme":                      &tints.TintCoffeeTheme{},
-	"cyberpunk":                         &tints.TintCyberpunk{},
-	"deep":                              &tints.TintDeep{},
-	"h_4_rithd":                         &tints.TintH4Rithd{},
-	"h_4_rithd_com":                     &tints.TintH4RithdCom{},
-	"idea":                              &tints.TintIdea{},
-	"idle_toes":                         &tints.TintIdleToes{},
-	"jubi":                              &tints.TintJubi{},
-	"lovelace":                          &tints.TintLovelace{},
-	"midnight_in_mojave":                &tints.TintMidnightInMojave{},
-	"nord":                              &tints.TintNord{},
-	"primary":                           &tints.TintPrimary{},
-	"purplepeter":                       &tints.TintPurplepeter{},
-	"rebecca":                           &tints.TintRebecca{},
-	"shades_of_purple":                  &tints.TintShadesOfPurple{},
-	"synthwave":                         &tints.TintSynthwave{},
-	"synthwave_everything":              &tints.TintSynthwaveEverything{},
+	"3024_day":                          Tint3024Day,
+	"3024_night":                        Tint3024Night,
+	"adventure":                         TintAdventure,
+	"adventure_time":                    TintAdventureTime,
+	"afterglow":                         TintAfterglow,
+	"alien_blood":                       TintAlienBlood,
+	"andromeda":                         TintAndromeda,
+	"argonaut":                          TintArgonaut,
+	"arthur":                            TintArthur,
+	"atelier_sulphurpool":               TintAtelierSulphurpool,
+	"atom":                              TintAtom,
+	"atom_one_light":                    TintAtomOneLight,
+	"aurora":                            TintAurora,
+	"banana_blueberry":                  TintBananaBlueberry,
+	"batman":                            TintBatman,
+	"belafonte_day":                     TintBelafonteDay,
+	"belafonte_night":                   TintBelafonteNight,
+	"birds_of_paradise":                 TintBirdsOfParadise,
+	"blazer":                            TintBlazer,
+	"blue_matrix":                       TintBlueMatrix,
+	"blue_berry_pie":                    TintBlueBerryPie,
+	"bluloco_dark":                      TintBlulocoDark,
+	"bluloco_light":                     TintBlulocoLight,
+	"borland":                           TintBorland,
+	"breeze":                            TintBreeze,
+	"bright_lights":                     TintBrightLights,
+	"broadcast":                         TintBroadcast,
+	"brogrammer":                        TintBrogrammer,
+	"bubbles":                           TintBubbles,
+	"builtin_dark":                      TintBuiltinDark,
+	"builtin_light":                     TintBuiltinLight,
+	"builtin_pastel_dark":               TintBuiltinPastelDark,
+	"builtin_solarized_dark":            TintBuiltinSolarizedDark,
+	"builtin_solarized_light":           TintBuiltinSolarizedLight,
+	"builtin_tango_dark":                TintBuiltinTangoDark,
+	"builtin_tango_light":               TintBuiltinTangoLight,
+	"c_64":                              TintC64,
+	"clrs":                              TintCLRS,
+	"calamity":                          TintCalamity,
+	"catppuccin_frappe":                 TintCatppuccinFrappe,
+	"catppuccin_latte":                  TintCatppuccinLatte,
+	"catppuccin_macchiato":              TintCatppuccinMacchiato,
+	"catppuccin_mocha":                  TintCatppuccinMocha,
+	"chalk":                             TintChalk,
+	"chalkboard":                        TintChalkboard,
+	"challenger_deep":                   TintChallengerDeep,
+	"chester":                           TintChester,
+	"ciapre":                            TintCiapre,
+	"cobalt_neon":                       TintCobaltNeon,
+	"cobalt_2":                          TintCobalt2,
+	"contrast_light":                    TintContrastLight,
+	"crayon_pony_fish":                  TintCrayonPonyFish,
+	"crystal_violet":                    TintCrystalViolet,
+	"cyber_cube":                        TintCyberCube,
+	"cyber_punk_2077":                   TintCyberPunk2077,
+	"cyberdyne":                         TintCyberdyne,
+	"dark_pastel":                       TintDarkPastel,
+	"dark_plus":                         TintDarkPlus,
+	"darkside":                          TintDarkside,
+	"desert":                            TintDesert,
+	"dimmed_monokai":                    TintDimmedMonokai,
+	"django":                            TintDjango,
+	"django_reborn_again":               TintDjangoRebornAgain,
+	"django_smooth":                     TintDjangoSmooth,
+	"doom_peacock":                      TintDoomPeacock,
+	"doom_one":                          TintDoomOne,
+	"dot_gov":                           TintDotGov,
+	"dracula":                           TintDracula,
+	"dracula_plus":                      TintDraculaPlus,
+	"duotone_dark":                      TintDuotoneDark,
+	"encom":                             TintENCOM,
+	"earthsong":                         TintEarthsong,
+	"elemental":                         TintElemental,
+	"elementary":                        TintElementary,
+	"espresso":                          TintEspresso,
+	"espresso_libre":                    TintEspressoLibre,
+	"fahrenheit":                        TintFahrenheit,
+	"fideloper":                         TintFideloper,
+	"firefox_dev":                       TintFirefoxDev,
+	"firewatch":                         TintFirewatch,
+	"fish_tank":                         TintFishTank,
+	"flat":                              TintFlat,
+	"flatland":                          TintFlatland,
+	"floraverse":                        TintFloraverse,
+	"forest_blue":                       TintForestBlue,
+	"framer":                            TintFramer,
+	"front_end_delight":                 TintFrontEndDelight,
+	"fun_forrest":                       TintFunForrest,
+	"galaxy":                            TintGalaxy,
+	"galizur":                           TintGalizur,
+	"ganyu":                             TintGanyu,
+	"github":                            TintGithub,
+	"glacier":                           TintGlacier,
+	"glorious":                          TintGlorious,
+	"grape":                             TintGrape,
+	"grass":                             TintGrass,
+	"gruvbox_dark":                      TintGruvboxDark,
+	"gruvbox_light":                     TintGruvboxLight,
+	"guezwhoz":                          TintGuezwhoz,
+	"hacktober":                         TintHacktober,
+	"hardcore":                          TintHardcore,
+	"harper":                            TintHarper,
+	"highway":                           TintHighway,
+	"hipster_green":                     TintHipsterGreen,
+	"hivacruz":                          TintHivacruz,
+	"homebrew":                          TintHomebrew,
+	"hopscotch":                         TintHopscotch,
+	"hopscotch_256":                     TintHopscotch256,
+	"horizon":                           TintHorizon,
+	"hurtado":                           TintHurtado,
+	"hybrid":                            TintHybrid,
+	"hyper":                             TintHyper,
+	"ic_green_ppl":                      TintICGreenPPL,
+	"ic_orange_ppl":                     TintICOrangePPL,
+	"ir_black":                          TintIRBlack,
+	"jackie_brown":                      TintJackieBrown,
+	"japanesque":                        TintJapanesque,
+	"jellybeans":                        TintJellybeans,
+	"jet_brains_darcula":                TintJetBrainsDarcula,
+	"juicy_colors":                      TintJuicyColors,
+	"kibble":                            TintKibble,
+	"kolorit":                           TintKolorit,
+	"konsolas":                          TintKonsolas,
+	"lab_fox":                           TintLabFox,
+	"laser":                             TintLaser,
+	"later_this_evening":                TintLaterThisEvening,
+	"lavandula":                         TintLavandula,
+	"liquid_carbon":                     TintLiquidCarbon,
+	"liquid_carbon_transparent":         TintLiquidCarbonTransparent,
+	"liquid_carbon_transparent_inverse": TintLiquidCarbonTransparentInverse,
+	"man_page":                          TintManPage,
+	"material":                          TintMaterial,
+	"material_dark":                     TintMaterialDark,
+	"material_darker":                   TintMaterialDarker,
+	"material_ocean":                    TintMaterialOcean,
+	"mathias":                           TintMathias,
+	"medallion":                         TintMedallion,
+	"mirage":                            TintMirage,
+	"misterioso":                        TintMisterioso,
+	"molokai":                           TintMolokai,
+	"mona_lisa":                         TintMonaLisa,
+	"monokai_cmder":                     TintMonokaiCmder,
+	"monokai_octagon":                   TintMonokaiOctagon,
+	"monokai_pro":                       TintMonokaiPro,
+	"monokai_pro_filter_octagon":        TintMonokaiProFilterOctagon,
+	"monokai_pro_filter_ristretto":      TintMonokaiProFilterRistretto,
+	"monokai_remastered":                TintMonokaiRemastered,
+	"monokai_soda":                      TintMonokaiSoda,
+	"monokai_vivid":                     TintMonokaiVivid,
+	"moonlight_ii":                      TintMoonlightII,
+	"n_0_tch_2_k":                       TintN0Tch2K,
+	"neopolitan":                        TintNeopolitan,
+	"neutron":                           TintNeutron,
+	"night_owlish_light":                TintNightOwlishLight,
+	"night_lion_v_1":                    TintNightLionV1,
+	"night_lion_v_2":                    TintNightLionV2,
+	"nocturnal_winter":                  TintNocturnalWinter,
+	"novel":                             TintNovel,
+	"obsidian":                          TintObsidian,
+	"ocean":                             TintOcean,
+	"oceanic_material":                  TintOceanicMaterial,
+	"ollie":                             TintOllie,
+	"one_dark":                          TintOneDark,
+	"one_half_dark":                     TintOneHalfDark,
+	"one_half_light":                    TintOneHalfLight,
+	"one_star":                          TintOneStar,
+	"operator_mono_dark":                TintOperatorMonoDark,
+	"overnight_slumber":                 TintOvernightSlumber,
+	"pale_night_hc":                     TintPaleNightHC,
+	"pandora":                           TintPandora,
+	"paraiso_dark":                      TintParaisoDark,
+	"parasio_dark":                      TintParasioDark,
+	"paul_millr":                        TintPaulMillr,
+	"pencil_dark":                       TintPencilDark,
+	"pencil_light":                      TintPencilLight,
+	"piatto_light":                      TintPiattoLight,
+	"pnevma":                            TintPnevma,
+	"popping_and_locking":               TintPoppingAndLocking,
+	"primer":                            TintPrimer,
+	"pro":                               TintPro,
+	"pro_light":                         TintProLight,
+	"purple_rain":                       TintPurpleRain,
+	"qb_64_super_dark_blue":             TintQB64SuperDarkBlue,
+	"rapture":                           TintRapture,
+	"red_alert":                         TintRedAlert,
+	"red_planet":                        TintRedPlanet,
+	"red_sands":                         TintRedSands,
+	"relaxed":                           TintRelaxed,
+	"retrowave":                         TintRetrowave,
+	"rippedcasts":                       TintRippedcasts,
+	"rose_pine":                         TintRosePine,
+	"rouge_2":                           TintRouge2,
+	"royal":                             TintRoyal,
+	"ryuuko":                            TintRyuuko,
+	"sakura":                            TintSakura,
+	"scarlet_protocol":                  TintScarletProtocol,
+	"sea_shells":                        TintSeaShells,
+	"seafoam_pastel":                    TintSeafoamPastel,
+	"serendipity_midnight":              TintSerendipityMidnight,
+	"serendipity_morning":               TintSerendipityMorning,
+	"serendipity_sunset":                TintSerendipitySunset,
+	"seti":                              TintSeti,
+	"shaman":                            TintShaman,
+	"slate":                             TintSlate,
+	"sleepy_hollow":                     TintSleepyHollow,
+	"smyck":                             TintSmyck,
+	"snazzy":                            TintSnazzy,
+	"soft_server":                       TintSoftServer,
+	"solarized_darcula":                 TintSolarizedDarcula,
+	"solarized_dark___patched":          TintSolarizedDarkPatched,
+	"solarized_dark_higher_contrast":    TintSolarizedDarkHigherContrast,
+	"sonoran_gothic":                    TintSonoranGothic,
+	"sonoran_sunrise":                   TintSonoranSunrise,
+	"space_gray":                        TintSpaceGray,
+	"space_gray_eighties":               TintSpaceGrayEighties,
+	"space_gray_eighties_dull":          TintSpaceGrayEightiesDull,
+	"spacedust":                         TintSpacedust,
+	"spiderman":                         TintSpiderman,
+	"spring":                            TintSpring,
+	"square":                            TintSquare,
+	"sublette":                          TintSublette,
+	"subliminal":                        TintSubliminal,
+	"sundried":                          TintSundried,
+	"symfonic":                          TintSymfonic,
+	"tango_adapted":                     TintTangoAdapted,
+	"tango_half_adapted":                TintTangoHalfAdapted,
+	"teerb":                             TintTeerb,
+	"terminal_basic":                    TintTerminalBasic,
+	"thayer_bright":                     TintThayerBright,
+	"the_hulk":                          TintTheHulk,
+	"tinacious_design_dark":             TintTinaciousDesignDark,
+	"tinacious_design_light":            TintTinaciousDesignLight,
+	"tokyo_night":                       TintTokyoNight,
+	"tokyo_night_light":                 TintTokyoNightLight,
+	"tokyo_night_storm":                 TintTokyoNightStorm,
+	"tomorrow":                          TintTomorrow,
+	"tomorrow_night":                    TintTomorrowNight,
+	"tomorrow_night_blue":               TintTomorrowNightBlue,
+	"tomorrow_night_bright":             TintTomorrowNightBright,
+	"tomorrow_night_burns":              TintTomorrowNightBurns,
+	"tomorrow_night_eighties":           TintTomorrowNightEighties,
+	"toy_chest":                         TintToyChest,
+	"treehouse":                         TintTreehouse,
+	"twilight":                          TintTwilight,
+	"ubuntu":                            TintUbuntu,
+	"ultra_violent":                     TintUltraViolent,
+	"under_the_sea":                     TintUnderTheSea,
+	"unholy":                            TintUnholy,
+	"unikitty":                          TintUnikitty,
+	"urple":                             TintUrple,
+	"vaughn":                            TintVaughn,
+	"vibrant_ink":                       TintVibrantInk,
+	"violet_dark":                       TintVioletDark,
+	"violet_light":                      TintVioletLight,
+	"warm_neon":                         TintWarmNeon,
+	"wez":                               TintWez,
+	"whimsy":                            TintWhimsy,
+	"wild_cherry":                       TintWildCherry,
+	"wombat":                            TintWombat,
+	"wryan":                             TintWryan,
+	"zenburn":                           TintZenburn,
+	"ayu":                               TintAyu,
+	"ayu_light":                         TintAyuLight,
+	"coffee_theme":                      TintCoffeeTheme,
+	"cyberpunk":                         TintCyberpunk,
+	"deep":                              TintDeep,
+	"h_4_rithd":                         TintH4Rithd,
+	"h_4_rithd_com":                     TintH4RithdCom,
+	"idea":                              TintIdea,
+	"idle_toes":                         TintIdleToes,
+	"jubi":                              TintJubi,
+	"lovelace":                          TintLovelace,
+	"midnight_in_mojave":                TintMidnightInMojave,
+	"nord":                              TintNord,
+	"primary":                           TintPrimary,
+	"purplepeter":                       TintPurplepeter,
+	"rebecca":                           TintRebecca,
+	"shades_of_purple":                  TintShadesOfPurple,
+	"synthwave":                         TintSynthwave,
+	"synthwave_everything":              TintSynthwaveEverything,
 }
+
+var (
+	Tint3024Day                        Tint = &tints.Tint3024Day{}
+	Tint3024Night                      Tint = &tints.Tint3024Night{}
+	TintAdventure                      Tint = &tints.TintAdventure{}
+	TintAdventureTime                  Tint = &tints.TintAdventureTime{}
+	TintAfterglow                      Tint = &tints.TintAfterglow{}
+	TintAlienBlood                     Tint = &tints.TintAlienBlood{}
+	TintAndromeda                      Tint = &tints.TintAndromeda{}
+	TintArgonaut                       Tint = &tints.TintArgonaut{}
+	TintArthur                         Tint = &tints.TintArthur{}
+	TintAtelierSulphurpool             Tint = &tints.TintAtelierSulphurpool{}
+	TintAtom                           Tint = &tints.TintAtom{}
+	TintAtomOneLight                   Tint = &tints.TintAtomOneLight{}
+	TintAurora                         Tint = &tints.TintAurora{}
+	TintBananaBlueberry                Tint = &tints.TintBananaBlueberry{}
+	TintBatman                         Tint = &tints.TintBatman{}
+	TintBelafonteDay                   Tint = &tints.TintBelafonteDay{}
+	TintBelafonteNight                 Tint = &tints.TintBelafonteNight{}
+	TintBirdsOfParadise                Tint = &tints.TintBirdsOfParadise{}
+	TintBlazer                         Tint = &tints.TintBlazer{}
+	TintBlueMatrix                     Tint = &tints.TintBlueMatrix{}
+	TintBlueBerryPie                   Tint = &tints.TintBlueBerryPie{}
+	TintBlulocoDark                    Tint = &tints.TintBlulocoDark{}
+	TintBlulocoLight                   Tint = &tints.TintBlulocoLight{}
+	TintBorland                        Tint = &tints.TintBorland{}
+	TintBreeze                         Tint = &tints.TintBreeze{}
+	TintBrightLights                   Tint = &tints.TintBrightLights{}
+	TintBroadcast                      Tint = &tints.TintBroadcast{}
+	TintBrogrammer                     Tint = &tints.TintBrogrammer{}
+	TintBubbles                        Tint = &tints.TintBubbles{}
+	TintBuiltinDark                    Tint = &tints.TintBuiltinDark{}
+	TintBuiltinLight                   Tint = &tints.TintBuiltinLight{}
+	TintBuiltinPastelDark              Tint = &tints.TintBuiltinPastelDark{}
+	TintBuiltinSolarizedDark           Tint = &tints.TintBuiltinSolarizedDark{}
+	TintBuiltinSolarizedLight          Tint = &tints.TintBuiltinSolarizedLight{}
+	TintBuiltinTangoDark               Tint = &tints.TintBuiltinTangoDark{}
+	TintBuiltinTangoLight              Tint = &tints.TintBuiltinTangoLight{}
+	TintC64                            Tint = &tints.TintC64{}
+	TintCLRS                           Tint = &tints.TintCLRS{}
+	TintCalamity                       Tint = &tints.TintCalamity{}
+	TintCatppuccinFrappe               Tint = &tints.TintCatppuccinFrappe{}
+	TintCatppuccinLatte                Tint = &tints.TintCatppuccinLatte{}
+	TintCatppuccinMacchiato            Tint = &tints.TintCatppuccinMacchiato{}
+	TintCatppuccinMocha                Tint = &tints.TintCatppuccinMocha{}
+	TintChalk                          Tint = &tints.TintChalk{}
+	TintChalkboard                     Tint = &tints.TintChalkboard{}
+	TintChallengerDeep                 Tint = &tints.TintChallengerDeep{}
+	TintChester                        Tint = &tints.TintChester{}
+	TintCiapre                         Tint = &tints.TintCiapre{}
+	TintCobaltNeon                     Tint = &tints.TintCobaltNeon{}
+	TintCobalt2                        Tint = &tints.TintCobalt2{}
+	TintContrastLight                  Tint = &tints.TintContrastLight{}
+	TintCrayonPonyFish                 Tint = &tints.TintCrayonPonyFish{}
+	TintCrystalViolet                  Tint = &tints.TintCrystalViolet{}
+	TintCyberCube                      Tint = &tints.TintCyberCube{}
+	TintCyberPunk2077                  Tint = &tints.TintCyberPunk2077{}
+	TintCyberdyne                      Tint = &tints.TintCyberdyne{}
+	TintDarkPastel                     Tint = &tints.TintDarkPastel{}
+	TintDarkPlus                       Tint = &tints.TintDarkPlus{}
+	TintDarkside                       Tint = &tints.TintDarkside{}
+	TintDesert                         Tint = &tints.TintDesert{}
+	TintDimmedMonokai                  Tint = &tints.TintDimmedMonokai{}
+	TintDjango                         Tint = &tints.TintDjango{}
+	TintDjangoRebornAgain              Tint = &tints.TintDjangoRebornAgain{}
+	TintDjangoSmooth                   Tint = &tints.TintDjangoSmooth{}
+	TintDoomPeacock                    Tint = &tints.TintDoomPeacock{}
+	TintDoomOne                        Tint = &tints.TintDoomOne{}
+	TintDotGov                         Tint = &tints.TintDotGov{}
+	TintDracula                        Tint = &tints.TintDracula{}
+	TintDraculaPlus                    Tint = &tints.TintDraculaPlus{}
+	TintDuotoneDark                    Tint = &tints.TintDuotoneDark{}
+	TintENCOM                          Tint = &tints.TintENCOM{}
+	TintEarthsong                      Tint = &tints.TintEarthsong{}
+	TintElemental                      Tint = &tints.TintElemental{}
+	TintElementary                     Tint = &tints.TintElementary{}
+	TintEspresso                       Tint = &tints.TintEspresso{}
+	TintEspressoLibre                  Tint = &tints.TintEspressoLibre{}
+	TintFahrenheit                     Tint = &tints.TintFahrenheit{}
+	TintFideloper                      Tint = &tints.TintFideloper{}
+	TintFirefoxDev                     Tint = &tints.TintFirefoxDev{}
+	TintFirewatch                      Tint = &tints.TintFirewatch{}
+	TintFishTank                       Tint = &tints.TintFishTank{}
+	TintFlat                           Tint = &tints.TintFlat{}
+	TintFlatland                       Tint = &tints.TintFlatland{}
+	TintFloraverse                     Tint = &tints.TintFloraverse{}
+	TintForestBlue                     Tint = &tints.TintForestBlue{}
+	TintFramer                         Tint = &tints.TintFramer{}
+	TintFrontEndDelight                Tint = &tints.TintFrontEndDelight{}
+	TintFunForrest                     Tint = &tints.TintFunForrest{}
+	TintGalaxy                         Tint = &tints.TintGalaxy{}
+	TintGalizur                        Tint = &tints.TintGalizur{}
+	TintGanyu                          Tint = &tints.TintGanyu{}
+	TintGithub                         Tint = &tints.TintGithub{}
+	TintGlacier                        Tint = &tints.TintGlacier{}
+	TintGlorious                       Tint = &tints.TintGlorious{}
+	TintGrape                          Tint = &tints.TintGrape{}
+	TintGrass                          Tint = &tints.TintGrass{}
+	TintGruvboxDark                    Tint = &tints.TintGruvboxDark{}
+	TintGruvboxLight                   Tint = &tints.TintGruvboxLight{}
+	TintGuezwhoz                       Tint = &tints.TintGuezwhoz{}
+	TintHacktober                      Tint = &tints.TintHacktober{}
+	TintHardcore                       Tint = &tints.TintHardcore{}
+	TintHarper                         Tint = &tints.TintHarper{}
+	TintHighway                        Tint = &tints.TintHighway{}
+	TintHipsterGreen                   Tint = &tints.TintHipsterGreen{}
+	TintHivacruz                       Tint = &tints.TintHivacruz{}
+	TintHomebrew                       Tint = &tints.TintHomebrew{}
+	TintHopscotch                      Tint = &tints.TintHopscotch{}
+	TintHopscotch256                   Tint = &tints.TintHopscotch256{}
+	TintHorizon                        Tint = &tints.TintHorizon{}
+	TintHurtado                        Tint = &tints.TintHurtado{}
+	TintHybrid                         Tint = &tints.TintHybrid{}
+	TintHyper                          Tint = &tints.TintHyper{}
+	TintICGreenPPL                     Tint = &tints.TintICGreenPPL{}
+	TintICOrangePPL                    Tint = &tints.TintICOrangePPL{}
+	TintIRBlack                        Tint = &tints.TintIRBlack{}
+	TintJackieBrown                    Tint = &tints.TintJackieBrown{}
+	TintJapanesque                     Tint = &tints.TintJapanesque{}
+	TintJellybeans                     Tint = &tints.TintJellybeans{}
+	TintJetBrainsDarcula               Tint = &tints.TintJetBrainsDarcula{}
+	TintJuicyColors                    Tint = &tints.TintJuicyColors{}
+	TintKibble                         Tint = &tints.TintKibble{}
+	TintKolorit                        Tint = &tints.TintKolorit{}
+	TintKonsolas                       Tint = &tints.TintKonsolas{}
+	TintLabFox                         Tint = &tints.TintLabFox{}
+	TintLaser                          Tint = &tints.TintLaser{}
+	TintLaterThisEvening               Tint = &tints.TintLaterThisEvening{}
+	TintLavandula                      Tint = &tints.TintLavandula{}
+	TintLiquidCarbon                   Tint = &tints.TintLiquidCarbon{}
+	TintLiquidCarbonTransparent        Tint = &tints.TintLiquidCarbonTransparent{}
+	TintLiquidCarbonTransparentInverse Tint = &tints.TintLiquidCarbonTransparentInverse{}
+	TintManPage                        Tint = &tints.TintManPage{}
+	TintMaterial                       Tint = &tints.TintMaterial{}
+	TintMaterialDark                   Tint = &tints.TintMaterialDark{}
+	TintMaterialDarker                 Tint = &tints.TintMaterialDarker{}
+	TintMaterialOcean                  Tint = &tints.TintMaterialOcean{}
+	TintMathias                        Tint = &tints.TintMathias{}
+	TintMedallion                      Tint = &tints.TintMedallion{}
+	TintMirage                         Tint = &tints.TintMirage{}
+	TintMisterioso                     Tint = &tints.TintMisterioso{}
+	TintMolokai                        Tint = &tints.TintMolokai{}
+	TintMonaLisa                       Tint = &tints.TintMonaLisa{}
+	TintMonokaiCmder                   Tint = &tints.TintMonokaiCmder{}
+	TintMonokaiOctagon                 Tint = &tints.TintMonokaiOctagon{}
+	TintMonokaiPro                     Tint = &tints.TintMonokaiPro{}
+	TintMonokaiProFilterOctagon        Tint = &tints.TintMonokaiProFilterOctagon{}
+	TintMonokaiProFilterRistretto      Tint = &tints.TintMonokaiProFilterRistretto{}
+	TintMonokaiRemastered              Tint = &tints.TintMonokaiRemastered{}
+	TintMonokaiSoda                    Tint = &tints.TintMonokaiSoda{}
+	TintMonokaiVivid                   Tint = &tints.TintMonokaiVivid{}
+	TintMoonlightII                    Tint = &tints.TintMoonlightII{}
+	TintN0Tch2K                        Tint = &tints.TintN0Tch2K{}
+	TintNeopolitan                     Tint = &tints.TintNeopolitan{}
+	TintNeutron                        Tint = &tints.TintNeutron{}
+	TintNightOwlishLight               Tint = &tints.TintNightOwlishLight{}
+	TintNightLionV1                    Tint = &tints.TintNightLionV1{}
+	TintNightLionV2                    Tint = &tints.TintNightLionV2{}
+	TintNocturnalWinter                Tint = &tints.TintNocturnalWinter{}
+	TintNovel                          Tint = &tints.TintNovel{}
+	TintObsidian                       Tint = &tints.TintObsidian{}
+	TintOcean                          Tint = &tints.TintOcean{}
+	TintOceanicMaterial                Tint = &tints.TintOceanicMaterial{}
+	TintOllie                          Tint = &tints.TintOllie{}
+	TintOneDark                        Tint = &tints.TintOneDark{}
+	TintOneHalfDark                    Tint = &tints.TintOneHalfDark{}
+	TintOneHalfLight                   Tint = &tints.TintOneHalfLight{}
+	TintOneStar                        Tint = &tints.TintOneStar{}
+	TintOperatorMonoDark               Tint = &tints.TintOperatorMonoDark{}
+	TintOvernightSlumber               Tint = &tints.TintOvernightSlumber{}
+	TintPaleNightHC                    Tint = &tints.TintPaleNightHC{}
+	TintPandora                        Tint = &tints.TintPandora{}
+	TintParaisoDark                    Tint = &tints.TintParaisoDark{}
+	TintParasioDark                    Tint = &tints.TintParasioDark{}
+	TintPaulMillr                      Tint = &tints.TintPaulMillr{}
+	TintPencilDark                     Tint = &tints.TintPencilDark{}
+	TintPencilLight                    Tint = &tints.TintPencilLight{}
+	TintPiattoLight                    Tint = &tints.TintPiattoLight{}
+	TintPnevma                         Tint = &tints.TintPnevma{}
+	TintPoppingAndLocking              Tint = &tints.TintPoppingAndLocking{}
+	TintPrimer                         Tint = &tints.TintPrimer{}
+	TintPro                            Tint = &tints.TintPro{}
+	TintProLight                       Tint = &tints.TintProLight{}
+	TintPurpleRain                     Tint = &tints.TintPurpleRain{}
+	TintQB64SuperDarkBlue              Tint = &tints.TintQB64SuperDarkBlue{}
+	TintRapture                        Tint = &tints.TintRapture{}
+	TintRedAlert                       Tint = &tints.TintRedAlert{}
+	TintRedPlanet                      Tint = &tints.TintRedPlanet{}
+	TintRedSands                       Tint = &tints.TintRedSands{}
+	TintRelaxed                        Tint = &tints.TintRelaxed{}
+	TintRetrowave                      Tint = &tints.TintRetrowave{}
+	TintRippedcasts                    Tint = &tints.TintRippedcasts{}
+	TintRosePine                       Tint = &tints.TintRosePine{}
+	TintRouge2                         Tint = &tints.TintRouge2{}
+	TintRoyal                          Tint = &tints.TintRoyal{}
+	TintRyuuko                         Tint = &tints.TintRyuuko{}
+	TintSakura                         Tint = &tints.TintSakura{}
+	TintScarletProtocol                Tint = &tints.TintScarletProtocol{}
+	TintSeaShells                      Tint = &tints.TintSeaShells{}
+	TintSeafoamPastel                  Tint = &tints.TintSeafoamPastel{}
+	TintSerendipityMidnight            Tint = &tints.TintSerendipityMidnight{}
+	TintSerendipityMorning             Tint = &tints.TintSerendipityMorning{}
+	TintSerendipitySunset              Tint = &tints.TintSerendipitySunset{}
+	TintSeti                           Tint = &tints.TintSeti{}
+	TintShaman                         Tint = &tints.TintShaman{}
+	TintSlate                          Tint = &tints.TintSlate{}
+	TintSleepyHollow                   Tint = &tints.TintSleepyHollow{}
+	TintSmyck                          Tint = &tints.TintSmyck{}
+	TintSnazzy                         Tint = &tints.TintSnazzy{}
+	TintSoftServer                     Tint = &tints.TintSoftServer{}
+	TintSolarizedDarcula               Tint = &tints.TintSolarizedDarcula{}
+	TintSolarizedDarkPatched           Tint = &tints.TintSolarizedDarkPatched{}
+	TintSolarizedDarkHigherContrast    Tint = &tints.TintSolarizedDarkHigherContrast{}
+	TintSonoranGothic                  Tint = &tints.TintSonoranGothic{}
+	TintSonoranSunrise                 Tint = &tints.TintSonoranSunrise{}
+	TintSpaceGray                      Tint = &tints.TintSpaceGray{}
+	TintSpaceGrayEighties              Tint = &tints.TintSpaceGrayEighties{}
+	TintSpaceGrayEightiesDull          Tint = &tints.TintSpaceGrayEightiesDull{}
+	TintSpacedust                      Tint = &tints.TintSpacedust{}
+	TintSpiderman                      Tint = &tints.TintSpiderman{}
+	TintSpring                         Tint = &tints.TintSpring{}
+	TintSquare                         Tint = &tints.TintSquare{}
+	TintSublette                       Tint = &tints.TintSublette{}
+	TintSubliminal                     Tint = &tints.TintSubliminal{}
+	TintSundried                       Tint = &tints.TintSundried{}
+	TintSymfonic                       Tint = &tints.TintSymfonic{}
+	TintTangoAdapted                   Tint = &tints.TintTangoAdapted{}
+	TintTangoHalfAdapted               Tint = &tints.TintTangoHalfAdapted{}
+	TintTeerb                          Tint = &tints.TintTeerb{}
+	TintTerminalBasic                  Tint = &tints.TintTerminalBasic{}
+	TintThayerBright                   Tint = &tints.TintThayerBright{}
+	TintTheHulk                        Tint = &tints.TintTheHulk{}
+	TintTinaciousDesignDark            Tint = &tints.TintTinaciousDesignDark{}
+	TintTinaciousDesignLight           Tint = &tints.TintTinaciousDesignLight{}
+	TintTokyoNight                     Tint = &tints.TintTokyoNight{}
+	TintTokyoNightLight                Tint = &tints.TintTokyoNightLight{}
+	TintTokyoNightStorm                Tint = &tints.TintTokyoNightStorm{}
+	TintTomorrow                       Tint = &tints.TintTomorrow{}
+	TintTomorrowNight                  Tint = &tints.TintTomorrowNight{}
+	TintTomorrowNightBlue              Tint = &tints.TintTomorrowNightBlue{}
+	TintTomorrowNightBright            Tint = &tints.TintTomorrowNightBright{}
+	TintTomorrowNightBurns             Tint = &tints.TintTomorrowNightBurns{}
+	TintTomorrowNightEighties          Tint = &tints.TintTomorrowNightEighties{}
+	TintToyChest                       Tint = &tints.TintToyChest{}
+	TintTreehouse                      Tint = &tints.TintTreehouse{}
+	TintTwilight                       Tint = &tints.TintTwilight{}
+	TintUbuntu                         Tint = &tints.TintUbuntu{}
+	TintUltraViolent                   Tint = &tints.TintUltraViolent{}
+	TintUnderTheSea                    Tint = &tints.TintUnderTheSea{}
+	TintUnholy                         Tint = &tints.TintUnholy{}
+	TintUnikitty                       Tint = &tints.TintUnikitty{}
+	TintUrple                          Tint = &tints.TintUrple{}
+	TintVaughn                         Tint = &tints.TintVaughn{}
+	TintVibrantInk                     Tint = &tints.TintVibrantInk{}
+	TintVioletDark                     Tint = &tints.TintVioletDark{}
+	TintVioletLight                    Tint = &tints.TintVioletLight{}
+	TintWarmNeon                       Tint = &tints.TintWarmNeon{}
+	TintWez                            Tint = &tints.TintWez{}
+	TintWhimsy                         Tint = &tints.TintWhimsy{}
+	TintWildCherry                     Tint = &tints.TintWildCherry{}
+	TintWombat                         Tint = &tints.TintWombat{}
+	TintWryan                          Tint = &tints.TintWryan{}
+	TintZenburn                        Tint = &tints.TintZenburn{}
+	TintAyu                            Tint = &tints.TintAyu{}
+	TintAyuLight                       Tint = &tints.TintAyuLight{}
+	TintCoffeeTheme                    Tint = &tints.TintCoffeeTheme{}
+	TintCyberpunk                      Tint = &tints.TintCyberpunk{}
+	TintDeep                           Tint = &tints.TintDeep{}
+	TintH4Rithd                        Tint = &tints.TintH4Rithd{}
+	TintH4RithdCom                     Tint = &tints.TintH4RithdCom{}
+	TintIdea                           Tint = &tints.TintIdea{}
+	TintIdleToes                       Tint = &tints.TintIdleToes{}
+	TintJubi                           Tint = &tints.TintJubi{}
+	TintLovelace                       Tint = &tints.TintLovelace{}
+	TintMidnightInMojave               Tint = &tints.TintMidnightInMojave{}
+	TintNord                           Tint = &tints.TintNord{}
+	TintPrimary                        Tint = &tints.TintPrimary{}
+	TintPurplepeter                    Tint = &tints.TintPurplepeter{}
+	TintRebecca                        Tint = &tints.TintRebecca{}
+	TintShadesOfPurple                 Tint = &tints.TintShadesOfPurple{}
+	TintSynthwave                      Tint = &tints.TintSynthwave{}
+	TintSynthwaveEverything            Tint = &tints.TintSynthwaveEverything{}
+)

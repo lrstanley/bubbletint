@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/charmbracelet/bubbletea v0.22.1
 	github.com/charmbracelet/lipgloss v0.6.0
+	github.com/lrstanley/bubbletint v0.0.0-00010101000000-000000000000
 	github.com/lrstanley/bubblezone v0.0.0-20221029233222-b3469cc5a659
 )
 

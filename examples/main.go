@@ -65,11 +65,11 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				}
 			}
 
-			prevI := currentI + 1
+			prevI := currentI - 1
 			if prevI < 1 {
 				prevI = 0
 			}
-			bubbletint.SetTintName(tints[prevI])
+			bubbletint.SetTintID(tints[prevI])
 
 			return m, nil
 		}
@@ -91,7 +91,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			if nextI >= len(tints) {
 				nextI = 0
 			}
-			bubbletint.SetTintName(tints[nextI])
+			bubbletint.SetTintID(tints[nextI])
 
 			return m, nil
 		}
@@ -155,7 +155,8 @@ func main() {
 	zone.NewGlobal()
 
 	// Initialize the default tint we want.
-	bubbletint.SetTintName("3024_day")
+	bubbletint.SetTintID("3024_day")
+	bubbletint.SetTint(bubbletint.TintNord)
 
 	m := &model{
 		tabs: &tabs{

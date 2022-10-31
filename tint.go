@@ -56,11 +56,12 @@ type Tint interface {
 var currentTint = atomic.Pointer[string]{}
 
 func SetTint(tint Tint) {
+	Register(tint) // Register if not already done.
 	id := tint.ID()
 	currentTint.Store(&id)
 }
 
-func SetTintName(id string) (ok bool) {
+func SetTintID(id string) (ok bool) {
 	_, ok = GetTint(id)
 	if !ok {
 		return ok

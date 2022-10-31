@@ -75,7 +75,7 @@ func main() {
 		name := tintReplacer.Replace(tint.Name)
 
 		t := TintTemplate{
-			StructName:     "Tint" + strcase.ToCamel(name),
+			StructName:     strcase.ToCamel(name),
 			NameNormalized: strcase.ToSnake(name),
 			Tint:           tint,
 		}

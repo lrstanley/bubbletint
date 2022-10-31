@@ -16,7 +16,7 @@ import (
     "github.com/charmbracelet/lipgloss"
 )
 
-// {{ .StructName }} ({{ .Tint.Name }}) is a collection of lipgloss styles.
+// Tint{{ .StructName }} ({{ .Tint.Name }}) is a collection of lipgloss styles.
 {{- if gt (len .CreditSources) 0 }}
 //
 // Credit to:
@@ -24,21 +24,21 @@ import (
 //  * {{ .Name }} ({{ .Link }})
 {{- end }}
 {{- end }}
-type {{ .StructName }} struct {}
+type Tint{{ .StructName }} struct {}
 
 // DisplayName returns the display name of the tint.
-func (t *{{ .StructName }}) DisplayName() string {
+func (t *Tint{{ .StructName }}) DisplayName() string {
     return "{{ .Tint.Name }}"
 }
 
 // ID returns the name of the tint (normalized, snakecase style).
-func (t *{{ .StructName }}) ID() string {
+func (t *Tint{{ .StructName }}) ID() string {
     return "{{ .NameNormalized }}"
 }
 
 // About returns information about the tint (and if we have credit for who
 // assisted with/created it).
-func (t *{{ .StructName }}) About() string {
+func (t *Tint{{ .StructName }}) About() string {
     return `Tint: {{ .Tint.Name }}
 {{- if gt (len .CreditSources) 0 }}
 Tint credits:
@@ -50,85 +50,85 @@ Tint credits:
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func (t *{{ .StructName }}) Fg() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Fg() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Fg }}")
 }
 
 // Bg returns the recommended default background color for this tint.
-func (t *{{ .StructName }}) Bg() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Bg() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Bg }}")
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func (t *{{ .StructName }}) SelectionBg() lipgloss.Color {
+func (t *Tint{{ .StructName }}) SelectionBg() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.SelectionBg }}")
 }
 
 // Cursor returns the recommended color for the cursor.
-func (t *{{ .StructName }}) Cursor() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Cursor() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Cursor }}")
 }
 
-func (t *{{ .StructName }}) BrightBlack() lipgloss.Color {
+func (t *Tint{{ .StructName }}) BrightBlack() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.BrightBlack }}")
 }
 
-func (t *{{ .StructName }}) BrightBlue() lipgloss.Color {
+func (t *Tint{{ .StructName }}) BrightBlue() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.BrightBlue }}")
 }
 
-func (t *{{ .StructName }}) BrightCyan() lipgloss.Color {
+func (t *Tint{{ .StructName }}) BrightCyan() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.BrightCyan }}")
 }
 
-func (t *{{ .StructName }}) BrightGreen() lipgloss.Color {
+func (t *Tint{{ .StructName }}) BrightGreen() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.BrightGreen }}")
 }
 
-func (t *{{ .StructName }}) BrightPurple() lipgloss.Color {
+func (t *Tint{{ .StructName }}) BrightPurple() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.BrightPurple }}")
 }
 
-func (t *{{ .StructName }}) BrightRed() lipgloss.Color {
+func (t *Tint{{ .StructName }}) BrightRed() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.BrightRed }}")
 }
 
-func (t *{{ .StructName }}) BrightWhite() lipgloss.Color {
+func (t *Tint{{ .StructName }}) BrightWhite() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.BrightWhite }}")
 }
 
-func (t *{{ .StructName }}) BrightYellow() lipgloss.Color {
+func (t *Tint{{ .StructName }}) BrightYellow() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.BrightYellow }}")
 }
 
-func (t *{{ .StructName }}) Black() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Black() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Black }}")
 }
 
-func (t *{{ .StructName }}) Blue() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Blue() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Blue }}")
 }
 
-func (t *{{ .StructName }}) Cyan() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Cyan() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Cyan }}")
 }
 
-func (t *{{ .StructName }}) Green() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Green() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Green }}")
 }
 
-func (t *{{ .StructName }}) Purple() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Purple() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Purple }}")
 }
 
-func (t *{{ .StructName }}) Red() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Red() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Red }}")
 }
 
-func (t *{{ .StructName }}) White() lipgloss.Color {
+func (t *Tint{{ .StructName }}) White() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.White }}")
 }
 
-func (t *{{ .StructName }}) Yellow() lipgloss.Color {
+func (t *Tint{{ .StructName }}) Yellow() lipgloss.Color {
     return lipgloss.Color("{{ .Tint.Yellow }}")
 }

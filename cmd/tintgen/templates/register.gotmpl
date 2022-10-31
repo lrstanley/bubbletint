@@ -8,6 +8,12 @@ import (
 
 var defaultRegistry = map[string]Tint{
 {{- range $index, $tint := . }}
-    "{{ .NameNormalized }}": &tints.{{ .StructName }}{},
+    "{{ .NameNormalized }}": Tint{{ .StructName }},
 {{- end }}
 }
+
+var (
+{{- range $index, $tint := . }}
+    Tint{{ .StructName }} Tint = &tints.Tint{{ .StructName }}{}
+{{- end }}
+)
