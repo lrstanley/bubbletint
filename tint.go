@@ -71,6 +71,74 @@ func SetTintID(id string) (ok bool) {
 	return true
 }
 
+// PreviousTint sets the current tint to the previous tint in the list of
+// registered tints. If the current tint is the first tint in the list, it will
+// pin to the first tint in the list.
+//
+// PreviousTint uses a sorted list of tint IDs.
+func PreviousTint() {
+	id := ID()
+	tints := TintIDs()
+
+	if len(tints) == 0 {
+		return
+	}
+
+	if id == "" {
+		SetTintID(tints[0])
+		return
+	}
+
+	currentI := 0
+	for i, t := range tints {
+		if t == id {
+			currentI = i
+			break
+		}
+	}
+
+	prevI := currentI - 1
+	if prevI < 1 {
+		prevI = 0
+	}
+
+	SetTintID(tints[prevI])
+}
+
+// NextTint sets the current tint to the next tint in the list of registered
+// tints. If the current tint is the last tint in the list, it will pin to the
+// last tint in the list.
+//
+// NextTint uses a sorted list of tint IDs.
+func NextTint() {
+	id := ID()
+	tints := TintIDs()
+
+	if len(tints) == 0 {
+		return
+	}
+
+	if id == "" {
+		SetTintID(tints[0])
+		return
+	}
+
+	currentI := 0
+	for i, t := range tints {
+		if t == id {
+			currentI = i
+			break
+		}
+	}
+
+	nextI := currentI + 1
+	if nextI >= len(tints) {
+		nextI = len(tints) - 1
+	}
+
+	SetTintID(tints[nextI])
+}
+
 func GetCurrentTint() (tint Tint) {
 	id := ID()
 	if id == "" {
