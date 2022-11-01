@@ -18,6 +18,10 @@ go-upgrade-deps-patch:
 	go get -u=patch ./...
 	go mod tidy
 
+commit:
+	git add --all tints/* *.gen.go
+	git commit -m "chore(tints): generate updated tints"
+
 generate:
 	mkdir -p tints
 	rm -rf tints/* *.gen.go
