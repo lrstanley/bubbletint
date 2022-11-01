@@ -35,85 +35,85 @@ func (t *TintHighway) About() string {
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func (t *TintHighway) Fg() lipgloss.Color {
+func (t *TintHighway) Fg() lipgloss.TerminalColor {
 	return lipgloss.Color("#ededed")
 }
 
 // Bg returns the recommended default background color for this tint.
-func (t *TintHighway) Bg() lipgloss.Color {
+func (t *TintHighway) Bg() lipgloss.TerminalColor {
 	return lipgloss.Color("#222225")
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func (t *TintHighway) SelectionBg() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintHighway) SelectionBg() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
 // Cursor returns the recommended color for the cursor.
-func (t *TintHighway) Cursor() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintHighway) Cursor() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
-func (t *TintHighway) BrightBlack() lipgloss.Color {
+func (t *TintHighway) BrightBlack() lipgloss.TerminalColor {
 	return lipgloss.Color("#5d504a")
 }
 
-func (t *TintHighway) BrightBlue() lipgloss.Color {
+func (t *TintHighway) BrightBlue() lipgloss.TerminalColor {
 	return lipgloss.Color("#4fc2fd")
 }
 
-func (t *TintHighway) BrightCyan() lipgloss.Color {
+func (t *TintHighway) BrightCyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#5d504a")
 }
 
-func (t *TintHighway) BrightGreen() lipgloss.Color {
+func (t *TintHighway) BrightGreen() lipgloss.TerminalColor {
 	return lipgloss.Color("#b1d130")
 }
 
-func (t *TintHighway) BrightPurple() lipgloss.Color {
+func (t *TintHighway) BrightPurple() lipgloss.TerminalColor {
 	return lipgloss.Color("#de0071")
 }
 
-func (t *TintHighway) BrightRed() lipgloss.Color {
+func (t *TintHighway) BrightRed() lipgloss.TerminalColor {
 	return lipgloss.Color("#f07e18")
 }
 
-func (t *TintHighway) BrightWhite() lipgloss.Color {
+func (t *TintHighway) BrightWhite() lipgloss.TerminalColor {
 	return lipgloss.Color("#ffffff")
 }
 
-func (t *TintHighway) BrightYellow() lipgloss.Color {
+func (t *TintHighway) BrightYellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#fff120")
 }
 
-func (t *TintHighway) Black() lipgloss.Color {
+func (t *TintHighway) Black() lipgloss.TerminalColor {
 	return lipgloss.Color("#000000")
 }
 
-func (t *TintHighway) Blue() lipgloss.Color {
+func (t *TintHighway) Blue() lipgloss.TerminalColor {
 	return lipgloss.Color("#006bb3")
 }
 
-func (t *TintHighway) Cyan() lipgloss.Color {
+func (t *TintHighway) Cyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#384564")
 }
 
-func (t *TintHighway) Green() lipgloss.Color {
+func (t *TintHighway) Green() lipgloss.TerminalColor {
 	return lipgloss.Color("#138034")
 }
 
-func (t *TintHighway) Purple() lipgloss.Color {
+func (t *TintHighway) Purple() lipgloss.TerminalColor {
 	return lipgloss.Color("#6b2775")
 }
 
-func (t *TintHighway) Red() lipgloss.Color {
+func (t *TintHighway) Red() lipgloss.TerminalColor {
 	return lipgloss.Color("#d00e18")
 }
 
-func (t *TintHighway) White() lipgloss.Color {
+func (t *TintHighway) White() lipgloss.TerminalColor {
 	return lipgloss.Color("#ededed")
 }
 
-func (t *TintHighway) Yellow() lipgloss.Color {
+func (t *TintHighway) Yellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#ffcb3e")
 }

@@ -35,85 +35,85 @@ func (t *TintBirdsOfParadise) About() string {
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func (t *TintBirdsOfParadise) Fg() lipgloss.Color {
+func (t *TintBirdsOfParadise) Fg() lipgloss.TerminalColor {
 	return lipgloss.Color("#e0dbb7")
 }
 
 // Bg returns the recommended default background color for this tint.
-func (t *TintBirdsOfParadise) Bg() lipgloss.Color {
+func (t *TintBirdsOfParadise) Bg() lipgloss.TerminalColor {
 	return lipgloss.Color("#2a1f1d")
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func (t *TintBirdsOfParadise) SelectionBg() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintBirdsOfParadise) SelectionBg() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
 // Cursor returns the recommended color for the cursor.
-func (t *TintBirdsOfParadise) Cursor() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintBirdsOfParadise) Cursor() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
-func (t *TintBirdsOfParadise) BrightBlack() lipgloss.Color {
+func (t *TintBirdsOfParadise) BrightBlack() lipgloss.TerminalColor {
 	return lipgloss.Color("#9b6c4a")
 }
 
-func (t *TintBirdsOfParadise) BrightBlue() lipgloss.Color {
+func (t *TintBirdsOfParadise) BrightBlue() lipgloss.TerminalColor {
 	return lipgloss.Color("#b8d3ed")
 }
 
-func (t *TintBirdsOfParadise) BrightCyan() lipgloss.Color {
+func (t *TintBirdsOfParadise) BrightCyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#93cfd7")
 }
 
-func (t *TintBirdsOfParadise) BrightGreen() lipgloss.Color {
+func (t *TintBirdsOfParadise) BrightGreen() lipgloss.TerminalColor {
 	return lipgloss.Color("#95d8ba")
 }
 
-func (t *TintBirdsOfParadise) BrightPurple() lipgloss.Color {
+func (t *TintBirdsOfParadise) BrightPurple() lipgloss.TerminalColor {
 	return lipgloss.Color("#d19ecb")
 }
 
-func (t *TintBirdsOfParadise) BrightRed() lipgloss.Color {
+func (t *TintBirdsOfParadise) BrightRed() lipgloss.TerminalColor {
 	return lipgloss.Color("#e84627")
 }
 
-func (t *TintBirdsOfParadise) BrightWhite() lipgloss.Color {
+func (t *TintBirdsOfParadise) BrightWhite() lipgloss.TerminalColor {
 	return lipgloss.Color("#fff9d5")
 }
 
-func (t *TintBirdsOfParadise) BrightYellow() lipgloss.Color {
+func (t *TintBirdsOfParadise) BrightYellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#d0d150")
 }
 
-func (t *TintBirdsOfParadise) Black() lipgloss.Color {
+func (t *TintBirdsOfParadise) Black() lipgloss.TerminalColor {
 	return lipgloss.Color("#573d26")
 }
 
-func (t *TintBirdsOfParadise) Blue() lipgloss.Color {
+func (t *TintBirdsOfParadise) Blue() lipgloss.TerminalColor {
 	return lipgloss.Color("#5a86ad")
 }
 
-func (t *TintBirdsOfParadise) Cyan() lipgloss.Color {
+func (t *TintBirdsOfParadise) Cyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#74a6ad")
 }
 
-func (t *TintBirdsOfParadise) Green() lipgloss.Color {
+func (t *TintBirdsOfParadise) Green() lipgloss.TerminalColor {
 	return lipgloss.Color("#6ba18a")
 }
 
-func (t *TintBirdsOfParadise) Purple() lipgloss.Color {
+func (t *TintBirdsOfParadise) Purple() lipgloss.TerminalColor {
 	return lipgloss.Color("#ac80a6")
 }
 
-func (t *TintBirdsOfParadise) Red() lipgloss.Color {
+func (t *TintBirdsOfParadise) Red() lipgloss.TerminalColor {
 	return lipgloss.Color("#be2d26")
 }
 
-func (t *TintBirdsOfParadise) White() lipgloss.Color {
+func (t *TintBirdsOfParadise) White() lipgloss.TerminalColor {
 	return lipgloss.Color("#e0dbb7")
 }
 
-func (t *TintBirdsOfParadise) Yellow() lipgloss.Color {
+func (t *TintBirdsOfParadise) Yellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#e99d2a")
 }

@@ -35,85 +35,85 @@ func (t *TintHarper) About() string {
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func (t *TintHarper) Fg() lipgloss.Color {
+func (t *TintHarper) Fg() lipgloss.TerminalColor {
 	return lipgloss.Color("#a8a49d")
 }
 
 // Bg returns the recommended default background color for this tint.
-func (t *TintHarper) Bg() lipgloss.Color {
+func (t *TintHarper) Bg() lipgloss.TerminalColor {
 	return lipgloss.Color("#010101")
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func (t *TintHarper) SelectionBg() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintHarper) SelectionBg() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
 // Cursor returns the recommended color for the cursor.
-func (t *TintHarper) Cursor() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintHarper) Cursor() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
-func (t *TintHarper) BrightBlack() lipgloss.Color {
+func (t *TintHarper) BrightBlack() lipgloss.TerminalColor {
 	return lipgloss.Color("#726e6a")
 }
 
-func (t *TintHarper) BrightBlue() lipgloss.Color {
+func (t *TintHarper) BrightBlue() lipgloss.TerminalColor {
 	return lipgloss.Color("#489e48")
 }
 
-func (t *TintHarper) BrightCyan() lipgloss.Color {
+func (t *TintHarper) BrightCyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#f5bfd7")
 }
 
-func (t *TintHarper) BrightGreen() lipgloss.Color {
+func (t *TintHarper) BrightGreen() lipgloss.TerminalColor {
 	return lipgloss.Color("#7fb5e1")
 }
 
-func (t *TintHarper) BrightPurple() lipgloss.Color {
+func (t *TintHarper) BrightPurple() lipgloss.TerminalColor {
 	return lipgloss.Color("#b296c6")
 }
 
-func (t *TintHarper) BrightRed() lipgloss.Color {
+func (t *TintHarper) BrightRed() lipgloss.TerminalColor {
 	return lipgloss.Color("#f8b63f")
 }
 
-func (t *TintHarper) BrightWhite() lipgloss.Color {
+func (t *TintHarper) BrightWhite() lipgloss.TerminalColor {
 	return lipgloss.Color("#fefbea")
 }
 
-func (t *TintHarper) BrightYellow() lipgloss.Color {
+func (t *TintHarper) BrightYellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#d6da25")
 }
 
-func (t *TintHarper) Black() lipgloss.Color {
+func (t *TintHarper) Black() lipgloss.TerminalColor {
 	return lipgloss.Color("#010101")
 }
 
-func (t *TintHarper) Blue() lipgloss.Color {
+func (t *TintHarper) Blue() lipgloss.TerminalColor {
 	return lipgloss.Color("#489e48")
 }
 
-func (t *TintHarper) Cyan() lipgloss.Color {
+func (t *TintHarper) Cyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#f5bfd7")
 }
 
-func (t *TintHarper) Green() lipgloss.Color {
+func (t *TintHarper) Green() lipgloss.TerminalColor {
 	return lipgloss.Color("#7fb5e1")
 }
 
-func (t *TintHarper) Purple() lipgloss.Color {
+func (t *TintHarper) Purple() lipgloss.TerminalColor {
 	return lipgloss.Color("#b296c6")
 }
 
-func (t *TintHarper) Red() lipgloss.Color {
+func (t *TintHarper) Red() lipgloss.TerminalColor {
 	return lipgloss.Color("#f8b63f")
 }
 
-func (t *TintHarper) White() lipgloss.Color {
+func (t *TintHarper) White() lipgloss.TerminalColor {
 	return lipgloss.Color("#a8a49d")
 }
 
-func (t *TintHarper) Yellow() lipgloss.Color {
+func (t *TintHarper) Yellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#d6da25")
 }

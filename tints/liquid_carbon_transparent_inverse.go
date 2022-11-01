@@ -35,85 +35,85 @@ func (t *TintLiquidCarbonTransparentInverse) About() string {
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func (t *TintLiquidCarbonTransparentInverse) Fg() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Fg() lipgloss.TerminalColor {
 	return lipgloss.Color("#afc2c2")
 }
 
 // Bg returns the recommended default background color for this tint.
-func (t *TintLiquidCarbonTransparentInverse) Bg() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Bg() lipgloss.TerminalColor {
 	return lipgloss.Color("#000000")
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func (t *TintLiquidCarbonTransparentInverse) SelectionBg() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintLiquidCarbonTransparentInverse) SelectionBg() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
 // Cursor returns the recommended color for the cursor.
-func (t *TintLiquidCarbonTransparentInverse) Cursor() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintLiquidCarbonTransparentInverse) Cursor() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
-func (t *TintLiquidCarbonTransparentInverse) BrightBlack() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) BrightBlack() lipgloss.TerminalColor {
 	return lipgloss.Color("#ffffff")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) BrightBlue() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) BrightBlue() lipgloss.TerminalColor {
 	return lipgloss.Color("#0099cc")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) BrightCyan() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) BrightCyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#7ac4cc")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) BrightGreen() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) BrightGreen() lipgloss.TerminalColor {
 	return lipgloss.Color("#559a70")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) BrightPurple() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) BrightPurple() lipgloss.TerminalColor {
 	return lipgloss.Color("#cc69c8")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) BrightRed() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) BrightRed() lipgloss.TerminalColor {
 	return lipgloss.Color("#ff3030")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) BrightWhite() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) BrightWhite() lipgloss.TerminalColor {
 	return lipgloss.Color("#000000")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) BrightYellow() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) BrightYellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#ccac00")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) Black() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Black() lipgloss.TerminalColor {
 	return lipgloss.Color("#bccccd")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) Blue() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Blue() lipgloss.TerminalColor {
 	return lipgloss.Color("#0099cc")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) Cyan() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Cyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#7ac4cc")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) Green() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Green() lipgloss.TerminalColor {
 	return lipgloss.Color("#559a70")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) Purple() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Purple() lipgloss.TerminalColor {
 	return lipgloss.Color("#cc69c8")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) Red() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Red() lipgloss.TerminalColor {
 	return lipgloss.Color("#ff3030")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) White() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) White() lipgloss.TerminalColor {
 	return lipgloss.Color("#000000")
 }
 
-func (t *TintLiquidCarbonTransparentInverse) Yellow() lipgloss.Color {
+func (t *TintLiquidCarbonTransparentInverse) Yellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#ccac00")
 }

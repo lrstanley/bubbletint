@@ -35,85 +35,85 @@ func (t *TintAndromeda) About() string {
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func (t *TintAndromeda) Fg() lipgloss.Color {
+func (t *TintAndromeda) Fg() lipgloss.TerminalColor {
 	return lipgloss.Color("#e5e5e5")
 }
 
 // Bg returns the recommended default background color for this tint.
-func (t *TintAndromeda) Bg() lipgloss.Color {
+func (t *TintAndromeda) Bg() lipgloss.TerminalColor {
 	return lipgloss.Color("#262a33")
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func (t *TintAndromeda) SelectionBg() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintAndromeda) SelectionBg() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
 // Cursor returns the recommended color for the cursor.
-func (t *TintAndromeda) Cursor() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintAndromeda) Cursor() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
-func (t *TintAndromeda) BrightBlack() lipgloss.Color {
+func (t *TintAndromeda) BrightBlack() lipgloss.TerminalColor {
 	return lipgloss.Color("#666666")
 }
 
-func (t *TintAndromeda) BrightBlue() lipgloss.Color {
+func (t *TintAndromeda) BrightBlue() lipgloss.TerminalColor {
 	return lipgloss.Color("#2472c8")
 }
 
-func (t *TintAndromeda) BrightCyan() lipgloss.Color {
+func (t *TintAndromeda) BrightCyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#0fa8cd")
 }
 
-func (t *TintAndromeda) BrightGreen() lipgloss.Color {
+func (t *TintAndromeda) BrightGreen() lipgloss.TerminalColor {
 	return lipgloss.Color("#05bc79")
 }
 
-func (t *TintAndromeda) BrightPurple() lipgloss.Color {
+func (t *TintAndromeda) BrightPurple() lipgloss.TerminalColor {
 	return lipgloss.Color("#bc3fbc")
 }
 
-func (t *TintAndromeda) BrightRed() lipgloss.Color {
+func (t *TintAndromeda) BrightRed() lipgloss.TerminalColor {
 	return lipgloss.Color("#cd3131")
 }
 
-func (t *TintAndromeda) BrightWhite() lipgloss.Color {
+func (t *TintAndromeda) BrightWhite() lipgloss.TerminalColor {
 	return lipgloss.Color("#e5e5e5")
 }
 
-func (t *TintAndromeda) BrightYellow() lipgloss.Color {
+func (t *TintAndromeda) BrightYellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#e5e512")
 }
 
-func (t *TintAndromeda) Black() lipgloss.Color {
+func (t *TintAndromeda) Black() lipgloss.TerminalColor {
 	return lipgloss.Color("#000000")
 }
 
-func (t *TintAndromeda) Blue() lipgloss.Color {
+func (t *TintAndromeda) Blue() lipgloss.TerminalColor {
 	return lipgloss.Color("#2472c8")
 }
 
-func (t *TintAndromeda) Cyan() lipgloss.Color {
+func (t *TintAndromeda) Cyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#0fa8cd")
 }
 
-func (t *TintAndromeda) Green() lipgloss.Color {
+func (t *TintAndromeda) Green() lipgloss.TerminalColor {
 	return lipgloss.Color("#05bc79")
 }
 
-func (t *TintAndromeda) Purple() lipgloss.Color {
+func (t *TintAndromeda) Purple() lipgloss.TerminalColor {
 	return lipgloss.Color("#bc3fbc")
 }
 
-func (t *TintAndromeda) Red() lipgloss.Color {
+func (t *TintAndromeda) Red() lipgloss.TerminalColor {
 	return lipgloss.Color("#cd3131")
 }
 
-func (t *TintAndromeda) White() lipgloss.Color {
+func (t *TintAndromeda) White() lipgloss.TerminalColor {
 	return lipgloss.Color("#e5e5e5")
 }
 
-func (t *TintAndromeda) Yellow() lipgloss.Color {
+func (t *TintAndromeda) Yellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#e5e512")
 }

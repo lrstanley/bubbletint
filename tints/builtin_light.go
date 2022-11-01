@@ -35,85 +35,85 @@ func (t *TintBuiltinLight) About() string {
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func (t *TintBuiltinLight) Fg() lipgloss.Color {
+func (t *TintBuiltinLight) Fg() lipgloss.TerminalColor {
 	return lipgloss.Color("#000000")
 }
 
 // Bg returns the recommended default background color for this tint.
-func (t *TintBuiltinLight) Bg() lipgloss.Color {
+func (t *TintBuiltinLight) Bg() lipgloss.TerminalColor {
 	return lipgloss.Color("#ffffff")
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func (t *TintBuiltinLight) SelectionBg() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintBuiltinLight) SelectionBg() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
 // Cursor returns the recommended color for the cursor.
-func (t *TintBuiltinLight) Cursor() lipgloss.Color {
-	return lipgloss.Color("")
+func (t *TintBuiltinLight) Cursor() lipgloss.TerminalColor {
+	return lipgloss.NoColor{}
 }
 
-func (t *TintBuiltinLight) BrightBlack() lipgloss.Color {
+func (t *TintBuiltinLight) BrightBlack() lipgloss.TerminalColor {
 	return lipgloss.Color("#555555")
 }
 
-func (t *TintBuiltinLight) BrightBlue() lipgloss.Color {
+func (t *TintBuiltinLight) BrightBlue() lipgloss.TerminalColor {
 	return lipgloss.Color("#5555ff")
 }
 
-func (t *TintBuiltinLight) BrightCyan() lipgloss.Color {
+func (t *TintBuiltinLight) BrightCyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#55ffff")
 }
 
-func (t *TintBuiltinLight) BrightGreen() lipgloss.Color {
+func (t *TintBuiltinLight) BrightGreen() lipgloss.TerminalColor {
 	return lipgloss.Color("#55ff55")
 }
 
-func (t *TintBuiltinLight) BrightPurple() lipgloss.Color {
+func (t *TintBuiltinLight) BrightPurple() lipgloss.TerminalColor {
 	return lipgloss.Color("#ff55ff")
 }
 
-func (t *TintBuiltinLight) BrightRed() lipgloss.Color {
+func (t *TintBuiltinLight) BrightRed() lipgloss.TerminalColor {
 	return lipgloss.Color("#ff5555")
 }
 
-func (t *TintBuiltinLight) BrightWhite() lipgloss.Color {
+func (t *TintBuiltinLight) BrightWhite() lipgloss.TerminalColor {
 	return lipgloss.Color("#ffffff")
 }
 
-func (t *TintBuiltinLight) BrightYellow() lipgloss.Color {
+func (t *TintBuiltinLight) BrightYellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#ffff55")
 }
 
-func (t *TintBuiltinLight) Black() lipgloss.Color {
+func (t *TintBuiltinLight) Black() lipgloss.TerminalColor {
 	return lipgloss.Color("#000000")
 }
 
-func (t *TintBuiltinLight) Blue() lipgloss.Color {
+func (t *TintBuiltinLight) Blue() lipgloss.TerminalColor {
 	return lipgloss.Color("#0000bb")
 }
 
-func (t *TintBuiltinLight) Cyan() lipgloss.Color {
+func (t *TintBuiltinLight) Cyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#00bbbb")
 }
 
-func (t *TintBuiltinLight) Green() lipgloss.Color {
+func (t *TintBuiltinLight) Green() lipgloss.TerminalColor {
 	return lipgloss.Color("#00bb00")
 }
 
-func (t *TintBuiltinLight) Purple() lipgloss.Color {
+func (t *TintBuiltinLight) Purple() lipgloss.TerminalColor {
 	return lipgloss.Color("#bb00bb")
 }
 
-func (t *TintBuiltinLight) Red() lipgloss.Color {
+func (t *TintBuiltinLight) Red() lipgloss.TerminalColor {
 	return lipgloss.Color("#bb0000")
 }
 
-func (t *TintBuiltinLight) White() lipgloss.Color {
+func (t *TintBuiltinLight) White() lipgloss.TerminalColor {
 	return lipgloss.Color("#bbbbbb")
 }
 
-func (t *TintBuiltinLight) Yellow() lipgloss.Color {
+func (t *TintBuiltinLight) Yellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#bbbb00")
 }
