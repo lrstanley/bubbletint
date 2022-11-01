@@ -14,6 +14,8 @@ import (
 )
 
 // TintArthur (Arthur) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Arthur
 type TintArthur struct{}
 
 // DisplayName returns the display name of the tint.

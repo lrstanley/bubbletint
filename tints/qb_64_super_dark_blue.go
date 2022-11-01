@@ -18,6 +18,8 @@ import (
 
 // TintQB64SuperDarkBlue (QB64 Super Dark Blue) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=QB64+Super+Dark+Blue
+//
 // Credit to:
 //   - jmmv (https://github.com/jmmv)
 type TintQB64SuperDarkBlue struct{}

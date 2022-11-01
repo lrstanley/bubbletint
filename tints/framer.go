@@ -14,6 +14,8 @@ import (
 )
 
 // TintFramer (Framer) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Framer
 type TintFramer struct{}
 
 // DisplayName returns the display name of the tint.

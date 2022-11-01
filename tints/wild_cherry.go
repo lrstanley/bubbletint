@@ -14,6 +14,8 @@ import (
 )
 
 // TintWildCherry (WildCherry) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=WildCherry
 type TintWildCherry struct{}
 
 // DisplayName returns the display name of the tint.

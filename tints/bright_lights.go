@@ -14,6 +14,8 @@ import (
 )
 
 // TintBrightLights (Bright Lights) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Bright+Lights
 type TintBrightLights struct{}
 
 // DisplayName returns the display name of the tint.

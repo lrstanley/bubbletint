@@ -14,6 +14,8 @@ import (
 )
 
 // TintPencilDark (PencilDark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=PencilDark
 type TintPencilDark struct{}
 
 // DisplayName returns the display name of the tint.

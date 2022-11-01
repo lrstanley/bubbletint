@@ -14,6 +14,8 @@ import (
 )
 
 // TintManPage (Man Page) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Man+Page
 type TintManPage struct{}
 
 // DisplayName returns the display name of the tint.

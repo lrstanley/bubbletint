@@ -14,6 +14,8 @@ import (
 )
 
 // TintSymfonic (Symfonic) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Symfonic
 type TintSymfonic struct{}
 
 // DisplayName returns the display name of the tint.

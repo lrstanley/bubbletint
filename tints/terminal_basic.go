@@ -14,6 +14,8 @@ import (
 )
 
 // TintTerminalBasic (Terminal Basic) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Terminal+Basic
 type TintTerminalBasic struct{}
 
 // DisplayName returns the display name of the tint.

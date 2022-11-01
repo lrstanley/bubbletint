@@ -14,6 +14,8 @@ import (
 )
 
 // TintKonsolas (Konsolas) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Konsolas
 type TintKonsolas struct{}
 
 // DisplayName returns the display name of the tint.

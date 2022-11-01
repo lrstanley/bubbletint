@@ -18,6 +18,8 @@ import (
 
 // TintMonokaiPro (Monokai Pro) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Monokai+Pro
+//
 // Credit to:
 //   - monokai (https://monokai.pro)
 type TintMonokaiPro struct{}

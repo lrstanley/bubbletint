@@ -14,6 +14,8 @@ import (
 )
 
 // TintUbuntu (Ubuntu) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Ubuntu
 type TintUbuntu struct{}
 
 // DisplayName returns the display name of the tint.

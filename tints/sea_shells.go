@@ -14,6 +14,8 @@ import (
 )
 
 // TintSeaShells (SeaShells) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=SeaShells
 type TintSeaShells struct{}
 
 // DisplayName returns the display name of the tint.

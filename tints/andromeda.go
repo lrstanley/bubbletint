@@ -14,6 +14,8 @@ import (
 )
 
 // TintAndromeda (Andromeda) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Andromeda
 type TintAndromeda struct{}
 
 // DisplayName returns the display name of the tint.

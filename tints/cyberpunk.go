@@ -14,6 +14,8 @@ import (
 )
 
 // TintCyberpunk (cyberpunk) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=cyberpunk
 type TintCyberpunk struct{}
 
 // DisplayName returns the display name of the tint.

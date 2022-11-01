@@ -14,6 +14,8 @@ import (
 )
 
 // TintShadesOfPurple (shades-of-purple) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=shades-of-purple
 type TintShadesOfPurple struct{}
 
 // DisplayName returns the display name of the tint.

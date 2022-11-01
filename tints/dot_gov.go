@@ -14,6 +14,8 @@ import (
 )
 
 // TintDotGov (DotGov) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=DotGov
 type TintDotGov struct{}
 
 // DisplayName returns the display name of the tint.

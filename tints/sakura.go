@@ -14,6 +14,8 @@ import (
 )
 
 // TintSakura (Sakura) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Sakura
 type TintSakura struct{}
 
 // DisplayName returns the display name of the tint.

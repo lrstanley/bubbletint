@@ -14,6 +14,8 @@ import (
 )
 
 // TintRedSands (Red Sands) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Red+Sands
 type TintRedSands struct{}
 
 // DisplayName returns the display name of the tint.

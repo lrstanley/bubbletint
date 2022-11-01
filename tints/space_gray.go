@@ -14,6 +14,8 @@ import (
 )
 
 // TintSpaceGray (SpaceGray) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=SpaceGray
 type TintSpaceGray struct{}
 
 // DisplayName returns the display name of the tint.

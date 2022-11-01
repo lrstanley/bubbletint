@@ -14,6 +14,8 @@ import (
 )
 
 // TintProLight (Pro Light) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Pro+Light
 type TintProLight struct{}
 
 // DisplayName returns the display name of the tint.

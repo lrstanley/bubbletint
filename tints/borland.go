@@ -14,6 +14,8 @@ import (
 )
 
 // TintBorland (Borland) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Borland
 type TintBorland struct{}
 
 // DisplayName returns the display name of the tint.

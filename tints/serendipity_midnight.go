@@ -19,6 +19,8 @@ import (
 
 // TintSerendipityMidnight (Serendipity Midnight) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Serendipity+Midnight
+//
 // Credit to:
 //   - Michael Andreuzza (https://github.com/michael-andreuzza)
 //   - Chaphasilor (https://github.com/Chaphasilor)

@@ -14,6 +14,8 @@ import (
 )
 
 // TintDarkPlus (Dark+) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Dark%2B
 type TintDarkPlus struct{}
 
 // DisplayName returns the display name of the tint.

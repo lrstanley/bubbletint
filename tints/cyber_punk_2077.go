@@ -14,6 +14,8 @@ import (
 )
 
 // TintCyberPunk2077 (CyberPunk2077) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=CyberPunk2077
 type TintCyberPunk2077 struct{}
 
 // DisplayName returns the display name of the tint.

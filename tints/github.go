@@ -14,6 +14,8 @@ import (
 )
 
 // TintGithub (Github) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Github
 type TintGithub struct{}
 
 // DisplayName returns the display name of the tint.

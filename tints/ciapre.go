@@ -14,6 +14,8 @@ import (
 )
 
 // TintCiapre (Ciapre) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Ciapre
 type TintCiapre struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintTomorrowNightBurns (Tomorrow Night Burns) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Burns
 type TintTomorrowNightBurns struct{}
 
 // DisplayName returns the display name of the tint.

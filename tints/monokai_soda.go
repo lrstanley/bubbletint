@@ -14,6 +14,8 @@ import (
 )
 
 // TintMonokaiSoda (Monokai Soda) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Monokai+Soda
 type TintMonokaiSoda struct{}
 
 // DisplayName returns the display name of the tint.

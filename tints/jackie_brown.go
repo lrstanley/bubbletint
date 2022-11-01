@@ -14,6 +14,8 @@ import (
 )
 
 // TintJackieBrown (Jackie Brown) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Jackie+Brown
 type TintJackieBrown struct{}
 
 // DisplayName returns the display name of the tint.

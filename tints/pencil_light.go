@@ -14,6 +14,8 @@ import (
 )
 
 // TintPencilLight (PencilLight) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=PencilLight
 type TintPencilLight struct{}
 
 // DisplayName returns the display name of the tint.

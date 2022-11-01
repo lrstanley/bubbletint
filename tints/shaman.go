@@ -14,6 +14,8 @@ import (
 )
 
 // TintShaman (Shaman) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Shaman
 type TintShaman struct{}
 
 // DisplayName returns the display name of the tint.

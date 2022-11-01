@@ -14,6 +14,8 @@ import (
 )
 
 // TintLaterThisEvening (Later This Evening) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Later+This+Evening
 type TintLaterThisEvening struct{}
 
 // DisplayName returns the display name of the tint.

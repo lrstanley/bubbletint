@@ -14,6 +14,8 @@ import (
 )
 
 // TintDimmedMonokai (DimmedMonokai) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=DimmedMonokai
 type TintDimmedMonokai struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintSnazzy (Snazzy) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Snazzy
 type TintSnazzy struct{}
 
 // DisplayName returns the display name of the tint.

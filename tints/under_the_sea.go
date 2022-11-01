@@ -14,6 +14,8 @@ import (
 )
 
 // TintUnderTheSea (UnderTheSea) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=UnderTheSea
 type TintUnderTheSea struct{}
 
 // DisplayName returns the display name of the tint.

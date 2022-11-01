@@ -14,6 +14,8 @@ import (
 )
 
 // TintSynthwaveEverything (synthwave-everything) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=synthwave-everything
 type TintSynthwaveEverything struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintParasioDark (Parasio Dark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Parasio+Dark
 type TintParasioDark struct{}
 
 // DisplayName returns the display name of the tint.

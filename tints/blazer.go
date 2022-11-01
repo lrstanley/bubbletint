@@ -14,6 +14,8 @@ import (
 )
 
 // TintBlazer (Blazer) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Blazer
 type TintBlazer struct{}
 
 // DisplayName returns the display name of the tint.

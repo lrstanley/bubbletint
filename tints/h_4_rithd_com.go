@@ -14,6 +14,8 @@ import (
 )
 
 // TintH4RithdCom (h4rithd.com) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=h4rithd.com
 type TintH4RithdCom struct{}
 
 // DisplayName returns the display name of the tint.

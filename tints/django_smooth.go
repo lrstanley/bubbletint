@@ -14,6 +14,8 @@ import (
 )
 
 // TintDjangoSmooth (DjangoSmooth) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=DjangoSmooth
 type TintDjangoSmooth struct{}
 
 // DisplayName returns the display name of the tint.

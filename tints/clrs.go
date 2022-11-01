@@ -14,6 +14,8 @@ import (
 )
 
 // TintCLRS (CLRS) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=CLRS
 type TintCLRS struct{}
 
 // DisplayName returns the display name of the tint.

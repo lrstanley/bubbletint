@@ -14,6 +14,8 @@ import (
 )
 
 // TintBuiltinTangoDark (Builtin Tango Dark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Builtin+Tango+Dark
 type TintBuiltinTangoDark struct{}
 
 // DisplayName returns the display name of the tint.

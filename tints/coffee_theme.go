@@ -14,6 +14,8 @@ import (
 )
 
 // TintCoffeeTheme (coffee_theme) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=coffee_theme
 type TintCoffeeTheme struct{}
 
 // DisplayName returns the display name of the tint.

@@ -18,6 +18,8 @@ import (
 
 // TintSonoranGothic (Sonoran Gothic) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Sonoran+Gothic
+//
 // Credit to:
 //   - d-mckee (https://github.com/d-mckee)
 type TintSonoranGothic struct{}

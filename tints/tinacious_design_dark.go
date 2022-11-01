@@ -14,6 +14,8 @@ import (
 )
 
 // TintTinaciousDesignDark (Tinacious Design (Dark)) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Tinacious+Design+%28Dark%29
 type TintTinaciousDesignDark struct{}
 
 // DisplayName returns the display name of the tint.

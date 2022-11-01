@@ -14,6 +14,8 @@ import (
 )
 
 // TintJubi (jubi) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=jubi
 type TintJubi struct{}
 
 // DisplayName returns the display name of the tint.

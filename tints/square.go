@@ -14,6 +14,8 @@ import (
 )
 
 // TintSquare (Square) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Square
 type TintSquare struct{}
 
 // DisplayName returns the display name of the tint.

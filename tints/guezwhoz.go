@@ -14,6 +14,8 @@ import (
 )
 
 // TintGuezwhoz (Guezwhoz) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Guezwhoz
 type TintGuezwhoz struct{}
 
 // DisplayName returns the display name of the tint.

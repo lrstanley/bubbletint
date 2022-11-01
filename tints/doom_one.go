@@ -14,6 +14,8 @@ import (
 )
 
 // TintDoomOne (DoomOne) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=DoomOne
 type TintDoomOne struct{}
 
 // DisplayName returns the display name of the tint.

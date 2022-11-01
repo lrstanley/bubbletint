@@ -14,6 +14,8 @@ import (
 )
 
 // TintBuiltinLight (Builtin Light) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Builtin+Light
 type TintBuiltinLight struct{}
 
 // DisplayName returns the display name of the tint.

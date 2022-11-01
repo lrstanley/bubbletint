@@ -14,6 +14,8 @@ import (
 )
 
 // TintBuiltinSolarizedLight (Builtin Solarized Light) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Builtin+Solarized+Light
 type TintBuiltinSolarizedLight struct{}
 
 // DisplayName returns the display name of the tint.

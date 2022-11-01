@@ -19,6 +19,8 @@ import (
 
 // TintSerendipitySunset (Serendipity Sunset) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Serendipity+Sunset
+//
 // Credit to:
 //   - Michael Andreuzza (https://github.com/michael-andreuzza)
 //   - Chaphasilor (https://github.com/Chaphasilor)

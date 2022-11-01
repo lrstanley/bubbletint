@@ -14,6 +14,8 @@ import (
 )
 
 // TintRosePine (Rose Pine) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Rose+Pine
 type TintRosePine struct{}
 
 // DisplayName returns the display name of the tint.

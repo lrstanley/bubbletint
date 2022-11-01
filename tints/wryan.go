@@ -14,6 +14,8 @@ import (
 )
 
 // TintWryan (Wryan) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Wryan
 type TintWryan struct{}
 
 // DisplayName returns the display name of the tint.

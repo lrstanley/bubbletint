@@ -14,6 +14,8 @@ import (
 )
 
 // TintDarkside (Darkside) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Darkside
 type TintDarkside struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintMaterialOcean (MaterialOcean) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=MaterialOcean
 type TintMaterialOcean struct{}
 
 // DisplayName returns the display name of the tint.

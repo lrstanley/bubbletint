@@ -14,6 +14,8 @@ import (
 )
 
 // TintSpaceGrayEightiesDull (SpaceGray Eighties Dull) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=SpaceGray+Eighties+Dull
 type TintSpaceGrayEightiesDull struct{}
 
 // DisplayName returns the display name of the tint.

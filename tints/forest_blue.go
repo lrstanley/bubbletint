@@ -14,6 +14,8 @@ import (
 )
 
 // TintForestBlue (ForestBlue) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=ForestBlue
 type TintForestBlue struct{}
 
 // DisplayName returns the display name of the tint.

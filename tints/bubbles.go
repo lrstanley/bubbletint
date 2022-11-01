@@ -18,6 +18,8 @@ import (
 
 // TintBubbles (Bubbles) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Bubbles
+//
 // Credit to:
 //   - jos3s (https://github.com/jos3s)
 type TintBubbles struct{}

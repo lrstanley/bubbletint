@@ -14,6 +14,8 @@ import (
 )
 
 // TintTangoHalfAdapted (Tango Half Adapted) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Tango+Half+Adapted
 type TintTangoHalfAdapted struct{}
 
 // DisplayName returns the display name of the tint.

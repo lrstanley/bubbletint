@@ -14,6 +14,8 @@ import (
 )
 
 // TintCatppuccinMocha (Catppuccin Mocha) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Catppuccin+Mocha
 type TintCatppuccinMocha struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintHopscotch256 (Hopscotch.256) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Hopscotch.256
 type TintHopscotch256 struct{}
 
 // DisplayName returns the display name of the tint.

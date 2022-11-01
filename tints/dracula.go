@@ -14,6 +14,8 @@ import (
 )
 
 // TintDracula (Dracula) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Dracula
 type TintDracula struct{}
 
 // DisplayName returns the display name of the tint.

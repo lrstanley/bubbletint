@@ -14,6 +14,8 @@ import (
 )
 
 // TintPandora (Pandora) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Pandora
 type TintPandora struct{}
 
 // DisplayName returns the display name of the tint.

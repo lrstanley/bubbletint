@@ -14,6 +14,8 @@ import (
 )
 
 // TintTangoAdapted (Tango Adapted) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Tango+Adapted
 type TintTangoAdapted struct{}
 
 // DisplayName returns the display name of the tint.

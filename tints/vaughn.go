@@ -14,6 +14,8 @@ import (
 )
 
 // TintVaughn (Vaughn) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Vaughn
 type TintVaughn struct{}
 
 // DisplayName returns the display name of the tint.

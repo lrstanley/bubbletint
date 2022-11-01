@@ -14,6 +14,8 @@ import (
 )
 
 // TintVioletLight (Violet Light) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Violet+Light
 type TintVioletLight struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintSolarizedDarkHigherContrast (Solarized Dark Higher Contrast) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Solarized+Dark+Higher+Contrast
 type TintSolarizedDarkHigherContrast struct{}
 
 // DisplayName returns the display name of the tint.

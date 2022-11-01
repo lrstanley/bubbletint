@@ -14,6 +14,8 @@ import (
 )
 
 // TintBuiltinPastelDark (Builtin Pastel Dark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Builtin+Pastel+Dark
 type TintBuiltinPastelDark struct{}
 
 // DisplayName returns the display name of the tint.

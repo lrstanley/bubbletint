@@ -14,6 +14,8 @@ import (
 )
 
 // TintFloraverse (Floraverse) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Floraverse
 type TintFloraverse struct{}
 
 // DisplayName returns the display name of the tint.

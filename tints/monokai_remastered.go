@@ -14,6 +14,8 @@ import (
 )
 
 // TintMonokaiRemastered (Monokai Remastered) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Monokai+Remastered
 type TintMonokaiRemastered struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintCatppuccinMacchiato (Catppuccin Macchiato) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Catppuccin+Macchiato
 type TintCatppuccinMacchiato struct{}
 
 // DisplayName returns the display name of the tint.

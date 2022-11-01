@@ -14,6 +14,8 @@ import (
 )
 
 // TintBreeze (Breeze) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Breeze
 type TintBreeze struct{}
 
 // DisplayName returns the display name of the tint.

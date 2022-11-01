@@ -14,6 +14,8 @@ import (
 )
 
 // TintTomorrowNightBlue (Tomorrow Night Blue) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Blue
 type TintTomorrowNightBlue struct{}
 
 // DisplayName returns the display name of the tint.

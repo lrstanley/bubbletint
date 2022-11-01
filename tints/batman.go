@@ -14,6 +14,8 @@ import (
 )
 
 // TintBatman (Batman) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Batman
 type TintBatman struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintTomorrowNightEighties (Tomorrow Night Eighties) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Eighties
 type TintTomorrowNightEighties struct{}
 
 // DisplayName returns the display name of the tint.

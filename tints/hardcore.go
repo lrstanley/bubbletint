@@ -14,6 +14,8 @@ import (
 )
 
 // TintHardcore (Hardcore) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Hardcore
 type TintHardcore struct{}
 
 // DisplayName returns the display name of the tint.

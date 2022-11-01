@@ -14,6 +14,8 @@ import (
 )
 
 // TintAlienBlood (AlienBlood) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=AlienBlood
 type TintAlienBlood struct{}
 
 // DisplayName returns the display name of the tint.

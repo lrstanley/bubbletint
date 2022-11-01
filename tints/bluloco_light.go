@@ -14,6 +14,8 @@ import (
 )
 
 // TintBlulocoLight (BlulocoLight) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=BlulocoLight
 type TintBlulocoLight struct{}
 
 // DisplayName returns the display name of the tint.

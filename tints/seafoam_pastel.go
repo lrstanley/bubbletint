@@ -14,6 +14,8 @@ import (
 )
 
 // TintSeafoamPastel (Seafoam Pastel) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Seafoam+Pastel
 type TintSeafoamPastel struct{}
 
 // DisplayName returns the display name of the tint.

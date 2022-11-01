@@ -14,6 +14,8 @@ import (
 )
 
 // TintLavandula (Lavandula) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Lavandula
 type TintLavandula struct{}
 
 // DisplayName returns the display name of the tint.

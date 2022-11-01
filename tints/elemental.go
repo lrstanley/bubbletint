@@ -14,6 +14,8 @@ import (
 )
 
 // TintElemental (Elemental) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Elemental
 type TintElemental struct{}
 
 // DisplayName returns the display name of the tint.

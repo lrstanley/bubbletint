@@ -14,6 +14,8 @@ import (
 )
 
 // TintThayerBright (Thayer Bright) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Thayer+Bright
 type TintThayerBright struct{}
 
 // DisplayName returns the display name of the tint.

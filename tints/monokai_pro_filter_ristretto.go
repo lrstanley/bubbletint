@@ -14,6 +14,8 @@ import (
 )
 
 // TintMonokaiProFilterRistretto (Monokai Pro (Filter Ristretto)) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Monokai+Pro+%28Filter+Ristretto%29
 type TintMonokaiProFilterRistretto struct{}
 
 // DisplayName returns the display name of the tint.

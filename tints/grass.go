@@ -14,6 +14,8 @@ import (
 )
 
 // TintGrass (Grass) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Grass
 type TintGrass struct{}
 
 // DisplayName returns the display name of the tint.

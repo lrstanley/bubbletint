@@ -14,6 +14,8 @@ import (
 )
 
 // TintAurora (Aurora) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Aurora
 type TintAurora struct{}
 
 // DisplayName returns the display name of the tint.

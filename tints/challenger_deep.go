@@ -14,6 +14,8 @@ import (
 )
 
 // TintChallengerDeep (ChallengerDeep) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=ChallengerDeep
 type TintChallengerDeep struct{}
 
 // DisplayName returns the display name of the tint.

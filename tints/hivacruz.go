@@ -14,6 +14,8 @@ import (
 )
 
 // TintHivacruz (Hivacruz) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Hivacruz
 type TintHivacruz struct{}
 
 // DisplayName returns the display name of the tint.

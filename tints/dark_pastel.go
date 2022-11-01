@@ -14,6 +14,8 @@ import (
 )
 
 // TintDarkPastel (Dark Pastel) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Dark+Pastel
 type TintDarkPastel struct{}
 
 // DisplayName returns the display name of the tint.

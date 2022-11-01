@@ -19,6 +19,8 @@ import (
 
 // TintSerendipityMorning (Serendipity Morning) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Serendipity+Morning
+//
 // Credit to:
 //   - Michael Andreuzza (https://github.com/michael-andreuzza)
 //   - Chaphasilor (https://github.com/Chaphasilor)

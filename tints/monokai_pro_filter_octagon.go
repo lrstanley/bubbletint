@@ -18,6 +18,8 @@ import (
 
 // TintMonokaiProFilterOctagon (Monokai Pro (Filter Octagon)) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Monokai+Pro+%28Filter+Octagon%29
+//
 // Credit to:
 //   - monokai (https://monokai.pro)
 type TintMonokaiProFilterOctagon struct{}

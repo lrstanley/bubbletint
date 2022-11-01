@@ -14,6 +14,8 @@ import (
 )
 
 // TintJapanesque (Japanesque) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Japanesque
 type TintJapanesque struct{}
 
 // DisplayName returns the display name of the tint.

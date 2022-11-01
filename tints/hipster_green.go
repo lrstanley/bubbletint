@@ -14,6 +14,8 @@ import (
 )
 
 // TintHipsterGreen (Hipster Green) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Hipster+Green
 type TintHipsterGreen struct{}
 
 // DisplayName returns the display name of the tint.

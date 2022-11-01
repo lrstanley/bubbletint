@@ -14,6 +14,8 @@ import (
 )
 
 // TintJetBrainsDarcula (JetBrains Darcula) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=JetBrains+Darcula
 type TintJetBrainsDarcula struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintBirdsOfParadise (BirdsOfParadise) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=BirdsOfParadise
 type TintBirdsOfParadise struct{}
 
 // DisplayName returns the display name of the tint.

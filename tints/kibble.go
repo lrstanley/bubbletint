@@ -14,6 +14,8 @@ import (
 )
 
 // TintKibble (Kibble) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Kibble
 type TintKibble struct{}
 
 // DisplayName returns the display name of the tint.

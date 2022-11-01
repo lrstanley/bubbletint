@@ -14,6 +14,8 @@ import (
 )
 
 // TintOceanicMaterial (OceanicMaterial) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=OceanicMaterial
 type TintOceanicMaterial struct{}
 
 // DisplayName returns the display name of the tint.

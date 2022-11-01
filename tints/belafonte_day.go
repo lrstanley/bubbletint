@@ -14,6 +14,8 @@ import (
 )
 
 // TintBelafonteDay (Belafonte Day) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Belafonte+Day
 type TintBelafonteDay struct{}
 
 // DisplayName returns the display name of the tint.

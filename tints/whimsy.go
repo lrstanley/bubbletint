@@ -14,6 +14,8 @@ import (
 )
 
 // TintWhimsy (Whimsy) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Whimsy
 type TintWhimsy struct{}
 
 // DisplayName returns the display name of the tint.

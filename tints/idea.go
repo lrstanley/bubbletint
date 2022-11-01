@@ -14,6 +14,8 @@ import (
 )
 
 // TintIdea (idea) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=idea
 type TintIdea struct{}
 
 // DisplayName returns the display name of the tint.

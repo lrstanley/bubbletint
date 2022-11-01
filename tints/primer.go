@@ -14,6 +14,8 @@ import (
 )
 
 // TintPrimer (Primer) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Primer
 type TintPrimer struct{}
 
 // DisplayName returns the display name of the tint.

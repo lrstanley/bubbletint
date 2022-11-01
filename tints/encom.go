@@ -14,6 +14,8 @@ import (
 )
 
 // TintENCOM (ENCOM) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=ENCOM
 type TintENCOM struct{}
 
 // DisplayName returns the display name of the tint.

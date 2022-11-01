@@ -14,6 +14,8 @@ import (
 )
 
 // TintHarper (Harper) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Harper
 type TintHarper struct{}
 
 // DisplayName returns the display name of the tint.

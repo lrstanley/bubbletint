@@ -18,6 +18,8 @@ import (
 
 // TintMonokaiCmder (Monokai Cmder) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Monokai+Cmder
+//
 // Credit to:
 //   - vdurante (https://github.com/vdurante/windows-terminal-monokai-cmder)
 type TintMonokaiCmder struct{}

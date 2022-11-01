@@ -14,6 +14,8 @@ import (
 )
 
 // TintTeerb (Teerb) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Teerb
 type TintTeerb struct{}
 
 // DisplayName returns the display name of the tint.

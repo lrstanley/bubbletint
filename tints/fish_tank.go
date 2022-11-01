@@ -14,6 +14,8 @@ import (
 )
 
 // TintFishTank (FishTank) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=FishTank
 type TintFishTank struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintMonokaiVivid (Monokai Vivid) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Monokai+Vivid
 type TintMonokaiVivid struct{}
 
 // DisplayName returns the display name of the tint.

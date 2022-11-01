@@ -14,6 +14,8 @@ import (
 )
 
 // TintDesert (Desert) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Desert
 type TintDesert struct{}
 
 // DisplayName returns the display name of the tint.

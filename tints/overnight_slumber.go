@@ -14,6 +14,8 @@ import (
 )
 
 // TintOvernightSlumber (Overnight Slumber) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Overnight+Slumber
 type TintOvernightSlumber struct{}
 
 // DisplayName returns the display name of the tint.

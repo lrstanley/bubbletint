@@ -18,6 +18,8 @@ import (
 
 // TintRetrowave (Retrowave) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Retrowave
+//
 // Credit to:
 //   - Chrissy LeMaire (https://github.com/potatoqualitee)
 type TintRetrowave struct{}

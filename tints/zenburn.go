@@ -14,6 +14,8 @@ import (
 )
 
 // TintZenburn (Zenburn) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Zenburn
 type TintZenburn struct{}
 
 // DisplayName returns the display name of the tint.

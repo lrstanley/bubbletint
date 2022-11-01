@@ -14,6 +14,8 @@ import (
 )
 
 // TintSynthwave (synthwave) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=synthwave
 type TintSynthwave struct{}
 
 // DisplayName returns the display name of the tint.

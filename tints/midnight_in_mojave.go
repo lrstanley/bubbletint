@@ -14,6 +14,8 @@ import (
 )
 
 // TintMidnightInMojave (midnight-in-mojave) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=midnight-in-mojave
 type TintMidnightInMojave struct{}
 
 // DisplayName returns the display name of the tint.

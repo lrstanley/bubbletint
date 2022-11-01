@@ -14,6 +14,8 @@ import (
 )
 
 // TintPiattoLight (Piatto Light) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Piatto+Light
 type TintPiattoLight struct{}
 
 // DisplayName returns the display name of the tint.

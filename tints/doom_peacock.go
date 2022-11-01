@@ -14,6 +14,8 @@ import (
 )
 
 // TintDoomPeacock (Doom Peacock) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Doom+Peacock
 type TintDoomPeacock struct{}
 
 // DisplayName returns the display name of the tint.

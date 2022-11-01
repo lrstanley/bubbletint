@@ -14,6 +14,8 @@ import (
 )
 
 // TintHacktober (Hacktober) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Hacktober
 type TintHacktober struct{}
 
 // DisplayName returns the display name of the tint.

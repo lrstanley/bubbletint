@@ -18,6 +18,8 @@ import (
 
 // TintGanyu (Ganyu) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Ganyu
+//
 // Credit to:
 //   - resyfer (https://github.com/resyfer)
 type TintGanyu struct{}

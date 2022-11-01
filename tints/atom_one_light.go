@@ -14,6 +14,8 @@ import (
 )
 
 // TintAtomOneLight (AtomOneLight) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=AtomOneLight
 type TintAtomOneLight struct{}
 
 // DisplayName returns the display name of the tint.

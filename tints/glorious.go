@@ -18,6 +18,8 @@ import (
 
 // TintGlorious (Glorious) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Glorious
+//
 // Credit to:
 //   - alex (https://github.com/AlexMailo)
 type TintGlorious struct{}

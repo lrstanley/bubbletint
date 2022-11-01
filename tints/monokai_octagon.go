@@ -14,6 +14,8 @@ import (
 )
 
 // TintMonokaiOctagon (Monokai Octagon) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Monokai+Octagon
 type TintMonokaiOctagon struct{}
 
 // DisplayName returns the display name of the tint.

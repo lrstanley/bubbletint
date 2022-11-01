@@ -14,6 +14,8 @@ import (
 )
 
 // TintMonaLisa (MonaLisa) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=MonaLisa
 type TintMonaLisa struct{}
 
 // DisplayName returns the display name of the tint.

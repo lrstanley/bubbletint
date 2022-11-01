@@ -18,6 +18,8 @@ import (
 
 // TintOneDark (OneDark) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=OneDark
+//
 // Credit to:
 //   - azrikahar (https://github.com/azrikahar)
 type TintOneDark struct{}

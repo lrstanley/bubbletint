@@ -14,6 +14,8 @@ import (
 )
 
 // TintPrimary (primary) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=primary
 type TintPrimary struct{}
 
 // DisplayName returns the display name of the tint.

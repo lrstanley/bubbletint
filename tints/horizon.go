@@ -18,6 +18,8 @@ import (
 
 // TintHorizon (Horizon) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Horizon
+//
 // Credit to:
 //   - wafelack (https://github.com/wafelack)
 type TintHorizon struct{}

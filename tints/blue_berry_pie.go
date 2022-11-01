@@ -14,6 +14,8 @@ import (
 )
 
 // TintBlueBerryPie (BlueBerryPie) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=BlueBerryPie
 type TintBlueBerryPie struct{}
 
 // DisplayName returns the display name of the tint.

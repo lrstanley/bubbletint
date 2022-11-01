@@ -14,6 +14,8 @@ import (
 )
 
 // TintGrape (Grape) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Grape
 type TintGrape struct{}
 
 // DisplayName returns the display name of the tint.

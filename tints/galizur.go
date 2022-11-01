@@ -14,6 +14,8 @@ import (
 )
 
 // TintGalizur (Galizur) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Galizur
 type TintGalizur struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintJuicyColors (Juicy Colors) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Juicy+Colors
 type TintJuicyColors struct{}
 
 // DisplayName returns the display name of the tint.

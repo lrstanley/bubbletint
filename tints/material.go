@@ -14,6 +14,8 @@ import (
 )
 
 // TintMaterial (Material) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Material
 type TintMaterial struct{}
 
 // DisplayName returns the display name of the tint.

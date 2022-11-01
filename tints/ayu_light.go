@@ -14,6 +14,8 @@ import (
 )
 
 // TintAyuLight (ayu_light) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=ayu_light
 type TintAyuLight struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintWombat (Wombat) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Wombat
 type TintWombat struct{}
 
 // DisplayName returns the display name of the tint.

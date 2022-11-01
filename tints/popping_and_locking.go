@@ -14,6 +14,8 @@ import (
 )
 
 // TintPoppingAndLocking (Popping and Locking) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Popping+and+Locking
 type TintPoppingAndLocking struct{}
 
 // DisplayName returns the display name of the tint.

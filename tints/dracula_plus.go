@@ -14,6 +14,8 @@ import (
 )
 
 // TintDraculaPlus (Dracula+) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Dracula%2B
 type TintDraculaPlus struct{}
 
 // DisplayName returns the display name of the tint.

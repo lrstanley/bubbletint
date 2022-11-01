@@ -18,6 +18,8 @@ import (
 
 // TintSublette (Sublette) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Sublette
+//
 // Credit to:
 //   - sublee (https://github.com/sublee)
 type TintSublette struct{}

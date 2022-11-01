@@ -14,6 +14,8 @@ import (
 )
 
 // TintUnikitty (Unikitty) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Unikitty
 type TintUnikitty struct{}
 
 // DisplayName returns the display name of the tint.

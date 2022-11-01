@@ -14,6 +14,8 @@ import (
 )
 
 // TintSolarizedDarkPatched (Solarized Dark - Patched) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Solarized+Dark+-+Patched
 type TintSolarizedDarkPatched struct{}
 
 // DisplayName returns the display name of the tint.

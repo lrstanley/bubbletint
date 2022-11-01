@@ -14,6 +14,8 @@ import (
 )
 
 // TintTheHulk (The Hulk) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=The+Hulk
 type TintTheHulk struct{}
 
 // DisplayName returns the display name of the tint.

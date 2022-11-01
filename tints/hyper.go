@@ -18,6 +18,8 @@ import (
 
 // TintHyper (Hyper) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Hyper
+//
 // Credit to:
 //   - shivang (https://github.com/ShivangMathur1)
 type TintHyper struct{}

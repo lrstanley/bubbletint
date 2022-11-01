@@ -14,6 +14,8 @@ import (
 )
 
 // TintCobaltNeon (Cobalt Neon) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Cobalt+Neon
 type TintCobaltNeon struct{}
 
 // DisplayName returns the display name of the tint.

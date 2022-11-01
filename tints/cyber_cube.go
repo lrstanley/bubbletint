@@ -14,6 +14,8 @@ import (
 )
 
 // TintCyberCube (Cyber Cube) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Cyber+Cube
 type TintCyberCube struct{}
 
 // DisplayName returns the display name of the tint.

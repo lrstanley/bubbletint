@@ -14,6 +14,8 @@ import (
 )
 
 // Tint3024Night (3024 Night) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=3024+Night
 type Tint3024Night struct{}
 
 // DisplayName returns the display name of the tint.

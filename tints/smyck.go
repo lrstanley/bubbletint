@@ -14,6 +14,8 @@ import (
 )
 
 // TintSmyck (Smyck) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Smyck
 type TintSmyck struct{}
 
 // DisplayName returns the display name of the tint.

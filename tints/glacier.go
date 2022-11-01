@@ -14,6 +14,8 @@ import (
 )
 
 // TintGlacier (Glacier) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Glacier
 type TintGlacier struct{}
 
 // DisplayName returns the display name of the tint.

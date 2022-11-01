@@ -14,6 +14,8 @@ import (
 )
 
 // TintUnholy (Unholy) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Unholy
 type TintUnholy struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintCrystalViolet (Crystal Violet) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Crystal+Violet
 type TintCrystalViolet struct{}
 
 // DisplayName returns the display name of the tint.

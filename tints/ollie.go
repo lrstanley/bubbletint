@@ -14,6 +14,8 @@ import (
 )
 
 // TintOllie (Ollie) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Ollie
 type TintOllie struct{}
 
 // DisplayName returns the display name of the tint.

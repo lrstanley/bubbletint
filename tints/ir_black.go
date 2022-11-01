@@ -14,6 +14,8 @@ import (
 )
 
 // TintIRBlack (IR_Black) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=IR_Black
 type TintIRBlack struct{}
 
 // DisplayName returns the display name of the tint.

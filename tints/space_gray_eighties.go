@@ -14,6 +14,8 @@ import (
 )
 
 // TintSpaceGrayEighties (SpaceGray Eighties) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=SpaceGray+Eighties
 type TintSpaceGrayEighties struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintChester (Chester) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Chester
 type TintChester struct{}
 
 // DisplayName returns the display name of the tint.

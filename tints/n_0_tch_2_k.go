@@ -14,6 +14,8 @@ import (
 )
 
 // TintN0Tch2K (N0tch2k) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=N0tch2k
 type TintN0Tch2K struct{}
 
 // DisplayName returns the display name of the tint.

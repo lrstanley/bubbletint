@@ -14,6 +14,8 @@ import (
 )
 
 // TintNightOwlishLight (Night Owlish Light) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Night+Owlish+Light
 type TintNightOwlishLight struct{}
 
 // DisplayName returns the display name of the tint.

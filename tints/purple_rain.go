@@ -14,6 +14,8 @@ import (
 )
 
 // TintPurpleRain (Purple Rain) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Purple+Rain
 type TintPurpleRain struct{}
 
 // DisplayName returns the display name of the tint.

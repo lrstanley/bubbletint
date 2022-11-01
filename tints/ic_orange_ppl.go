@@ -14,6 +14,8 @@ import (
 )
 
 // TintICOrangePPL (IC_Orange_PPL) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=IC_Orange_PPL
 type TintICOrangePPL struct{}
 
 // DisplayName returns the display name of the tint.

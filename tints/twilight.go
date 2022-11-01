@@ -14,6 +14,8 @@ import (
 )
 
 // TintTwilight (Twilight) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Twilight
 type TintTwilight struct{}
 
 // DisplayName returns the display name of the tint.

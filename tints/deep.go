@@ -14,6 +14,8 @@ import (
 )
 
 // TintDeep (deep) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=deep
 type TintDeep struct{}
 
 // DisplayName returns the display name of the tint.

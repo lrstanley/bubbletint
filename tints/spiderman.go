@@ -14,6 +14,8 @@ import (
 )
 
 // TintSpiderman (Spiderman) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Spiderman
 type TintSpiderman struct{}
 
 // DisplayName returns the display name of the tint.

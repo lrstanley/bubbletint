@@ -14,6 +14,8 @@ import (
 )
 
 // TintEspresso (Espresso) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Espresso
 type TintEspresso struct{}
 
 // DisplayName returns the display name of the tint.

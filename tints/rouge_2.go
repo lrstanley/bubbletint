@@ -14,6 +14,8 @@ import (
 )
 
 // TintRouge2 (Rouge 2) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Rouge+2
 type TintRouge2 struct{}
 
 // DisplayName returns the display name of the tint.

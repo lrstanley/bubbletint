@@ -14,6 +14,8 @@ import (
 )
 
 // TintPaulMillr (PaulMillr) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=PaulMillr
 type TintPaulMillr struct{}
 
 // DisplayName returns the display name of the tint.

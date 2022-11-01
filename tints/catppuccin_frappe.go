@@ -14,6 +14,8 @@ import (
 )
 
 // TintCatppuccinFrappe (Catppuccin Frappe) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Catppuccin+Frappe
 type TintCatppuccinFrappe struct{}
 
 // DisplayName returns the display name of the tint.

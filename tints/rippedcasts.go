@@ -14,6 +14,8 @@ import (
 )
 
 // TintRippedcasts (Rippedcasts) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Rippedcasts
 type TintRippedcasts struct{}
 
 // DisplayName returns the display name of the tint.

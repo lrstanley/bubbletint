@@ -14,6 +14,8 @@ import (
 )
 
 // TintCyberdyne (Cyberdyne) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Cyberdyne
 type TintCyberdyne struct{}
 
 // DisplayName returns the display name of the tint.

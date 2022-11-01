@@ -14,6 +14,8 @@ import (
 )
 
 // TintOperatorMonoDark (Operator Mono Dark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Operator+Mono+Dark
 type TintOperatorMonoDark struct{}
 
 // DisplayName returns the display name of the tint.

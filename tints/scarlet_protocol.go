@@ -14,6 +14,8 @@ import (
 )
 
 // TintScarletProtocol (Scarlet Protocol) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Scarlet+Protocol
 type TintScarletProtocol struct{}
 
 // DisplayName returns the display name of the tint.

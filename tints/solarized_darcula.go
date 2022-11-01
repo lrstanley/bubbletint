@@ -14,6 +14,8 @@ import (
 )
 
 // TintSolarizedDarcula (Solarized Darcula) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Solarized+Darcula
 type TintSolarizedDarcula struct{}
 
 // DisplayName returns the display name of the tint.

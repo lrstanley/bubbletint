@@ -14,6 +14,8 @@ import (
 )
 
 // TintMaterialDarker (MaterialDarker) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=MaterialDarker
 type TintMaterialDarker struct{}
 
 // DisplayName returns the display name of the tint.

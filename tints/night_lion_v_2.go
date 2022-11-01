@@ -14,6 +14,8 @@ import (
 )
 
 // TintNightLionV2 (NightLion v2) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=NightLion+v2
 type TintNightLionV2 struct{}
 
 // DisplayName returns the display name of the tint.

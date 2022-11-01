@@ -14,6 +14,8 @@ import (
 )
 
 // TintNeutron (Neutron) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Neutron
 type TintNeutron struct{}
 
 // DisplayName returns the display name of the tint.

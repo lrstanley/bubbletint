@@ -14,6 +14,8 @@ import (
 )
 
 // TintBlulocoDark (BlulocoDark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=BlulocoDark
 type TintBlulocoDark struct{}
 
 // DisplayName returns the display name of the tint.

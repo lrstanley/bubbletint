@@ -14,6 +14,8 @@ import (
 )
 
 // TintGruvboxDark (Gruvbox Dark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Gruvbox+Dark
 type TintGruvboxDark struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintNovel (Novel) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Novel
 type TintNovel struct{}
 
 // DisplayName returns the display name of the tint.

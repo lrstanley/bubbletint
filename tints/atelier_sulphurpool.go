@@ -14,6 +14,8 @@ import (
 )
 
 // TintAtelierSulphurpool (AtelierSulphurpool) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=AtelierSulphurpool
 type TintAtelierSulphurpool struct{}
 
 // DisplayName returns the display name of the tint.

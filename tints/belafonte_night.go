@@ -14,6 +14,8 @@ import (
 )
 
 // TintBelafonteNight (Belafonte Night) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Belafonte+Night
 type TintBelafonteNight struct{}
 
 // DisplayName returns the display name of the tint.

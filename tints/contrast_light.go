@@ -14,6 +14,8 @@ import (
 )
 
 // TintContrastLight (Contrast Light) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Contrast+Light
 type TintContrastLight struct{}
 
 // DisplayName returns the display name of the tint.

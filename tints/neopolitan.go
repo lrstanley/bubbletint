@@ -14,6 +14,8 @@ import (
 )
 
 // TintNeopolitan (Neopolitan) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Neopolitan
 type TintNeopolitan struct{}
 
 // DisplayName returns the display name of the tint.

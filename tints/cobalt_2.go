@@ -14,6 +14,8 @@ import (
 )
 
 // TintCobalt2 (Cobalt2) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Cobalt2
 type TintCobalt2 struct{}
 
 // DisplayName returns the display name of the tint.

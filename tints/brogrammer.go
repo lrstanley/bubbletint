@@ -14,6 +14,8 @@ import (
 )
 
 // TintBrogrammer (Brogrammer) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Brogrammer
 type TintBrogrammer struct{}
 
 // DisplayName returns the display name of the tint.

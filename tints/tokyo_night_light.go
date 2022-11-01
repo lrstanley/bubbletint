@@ -14,6 +14,8 @@ import (
 )
 
 // TintTokyoNightLight (TokyoNightLight) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=TokyoNightLight
 type TintTokyoNightLight struct{}
 
 // DisplayName returns the display name of the tint.

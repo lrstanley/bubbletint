@@ -14,6 +14,8 @@ import (
 )
 
 // Tint3024Day (3024 Day) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=3024+Day
 type Tint3024Day struct{}
 
 // DisplayName returns the display name of the tint.

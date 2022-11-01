@@ -14,6 +14,8 @@ import (
 )
 
 // TintArgonaut (Argonaut) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Argonaut
 type TintArgonaut struct{}
 
 // DisplayName returns the display name of the tint.

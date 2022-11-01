@@ -14,6 +14,8 @@ import (
 )
 
 // TintPnevma (Pnevma) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Pnevma
 type TintPnevma struct{}
 
 // DisplayName returns the display name of the tint.

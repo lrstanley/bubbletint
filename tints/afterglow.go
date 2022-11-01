@@ -14,6 +14,8 @@ import (
 )
 
 // TintAfterglow (Afterglow) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Afterglow
 type TintAfterglow struct{}
 
 // DisplayName returns the display name of the tint.

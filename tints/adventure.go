@@ -14,6 +14,8 @@ import (
 )
 
 // TintAdventure (Adventure) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Adventure
 type TintAdventure struct{}
 
 // DisplayName returns the display name of the tint.

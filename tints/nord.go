@@ -14,6 +14,8 @@ import (
 )
 
 // TintNord (nord) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=nord
 type TintNord struct{}
 
 // DisplayName returns the display name of the tint.

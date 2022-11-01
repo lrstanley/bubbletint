@@ -14,6 +14,8 @@ import (
 )
 
 // TintFlat (Flat) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Flat
 type TintFlat struct{}
 
 // DisplayName returns the display name of the tint.

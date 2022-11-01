@@ -14,6 +14,8 @@ import (
 )
 
 // TintC64 (C64) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=C64
 type TintC64 struct{}
 
 // DisplayName returns the display name of the tint.

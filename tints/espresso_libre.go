@@ -14,6 +14,8 @@ import (
 )
 
 // TintEspressoLibre (Espresso Libre) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Espresso+Libre
 type TintEspressoLibre struct{}
 
 // DisplayName returns the display name of the tint.

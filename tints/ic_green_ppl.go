@@ -14,6 +14,8 @@ import (
 )
 
 // TintICGreenPPL (IC_Green_PPL) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=IC_Green_PPL
 type TintICGreenPPL struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintBuiltinSolarizedDark (Builtin Solarized Dark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Builtin+Solarized+Dark
 type TintBuiltinSolarizedDark struct{}
 
 // DisplayName returns the display name of the tint.

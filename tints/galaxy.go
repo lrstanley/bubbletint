@@ -14,6 +14,8 @@ import (
 )
 
 // TintGalaxy (Galaxy) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Galaxy
 type TintGalaxy struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintSpacedust (Spacedust) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Spacedust
 type TintSpacedust struct{}
 
 // DisplayName returns the display name of the tint.

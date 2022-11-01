@@ -18,6 +18,8 @@ import (
 
 // TintSonoranSunrise (Sonoran Sunrise) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Sonoran+Sunrise
+//
 // Credit to:
 //   - d-mckee (https://github.com/d-mckee)
 type TintSonoranSunrise struct{}

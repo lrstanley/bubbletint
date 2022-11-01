@@ -14,6 +14,8 @@ import (
 )
 
 // TintVioletDark (Violet Dark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Violet+Dark
 type TintVioletDark struct{}
 
 // DisplayName returns the display name of the tint.

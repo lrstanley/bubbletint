@@ -18,6 +18,8 @@ import (
 
 // TintOneStar (OneStar) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=OneStar
+//
 // Credit to:
 //   - jos3s (https://github.com/jos3s)
 type TintOneStar struct{}

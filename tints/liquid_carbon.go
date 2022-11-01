@@ -14,6 +14,8 @@ import (
 )
 
 // TintLiquidCarbon (LiquidCarbon) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=LiquidCarbon
 type TintLiquidCarbon struct{}
 
 // DisplayName returns the display name of the tint.

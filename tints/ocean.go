@@ -14,6 +14,8 @@ import (
 )
 
 // TintOcean (Ocean) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Ocean
 type TintOcean struct{}
 
 // DisplayName returns the display name of the tint.

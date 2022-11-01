@@ -14,6 +14,8 @@ import (
 )
 
 // TintFunForrest (FunForrest) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=FunForrest
 type TintFunForrest struct{}
 
 // DisplayName returns the display name of the tint.

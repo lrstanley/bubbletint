@@ -14,6 +14,8 @@ import (
 )
 
 // TintMirage (Mirage) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Mirage
 type TintMirage struct{}
 
 // DisplayName returns the display name of the tint.

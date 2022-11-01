@@ -14,6 +14,8 @@ import (
 )
 
 // TintNocturnalWinter (Nocturnal Winter) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Nocturnal+Winter
 type TintNocturnalWinter struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintFirefoxDev (FirefoxDev) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=FirefoxDev
 type TintFirefoxDev struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintPro (Pro) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=Pro
 type TintPro struct{}
 
 // DisplayName returns the display name of the tint.

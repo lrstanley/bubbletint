@@ -14,6 +14,8 @@ import (
 )
 
 // TintWarmNeon (WarmNeon) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=WarmNeon
 type TintWarmNeon struct{}
 
 // DisplayName returns the display name of the tint.

@@ -14,6 +14,8 @@ import (
 )
 
 // TintOneHalfDark (OneHalfDark) is a collection of lipgloss styles.
+//
+// Reference: https://windowsterminalthemes.dev/?theme=OneHalfDark
 type TintOneHalfDark struct{}
 
 // DisplayName returns the display name of the tint.

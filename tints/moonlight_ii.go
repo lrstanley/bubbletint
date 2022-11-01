@@ -18,6 +18,8 @@ import (
 
 // TintMoonlightII (Moonlight II) is a collection of lipgloss styles.
 //
+// Reference: https://windowsterminalthemes.dev/?theme=Moonlight+II
+//
 // Credit to:
 //   - atomiks (https://github.com/atomiks)
 type TintMoonlightII struct{}
