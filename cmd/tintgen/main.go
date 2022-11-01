@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"os"
 	"sort"
 	"strings"
@@ -34,6 +35,7 @@ var (
 var (
 	funcMap = template.FuncMap{
 		"header": func() string { return header },
+		"urlenc": url.QueryEscape,
 	}
 	tintTmpl = template.Must(
 		template.New("tint.gotmpl").
