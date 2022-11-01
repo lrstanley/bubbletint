@@ -55,12 +55,15 @@ type Tint interface {
 
 var currentTint = atomic.Pointer[string]{}
 
+// SetTint sets the current tint to the provided tint, and adds it to the list of
+// registered tints if it isn't already.
 func SetTint(tint Tint) {
 	Register(tint) // Register if not already done.
 	id := tint.ID()
 	currentTint.Store(&id)
 }
 
+// SetTintID sets the current tint to the provided tint ID.
 func SetTintID(id string) (ok bool) {
 	_, ok = GetTint(id)
 	if !ok {
