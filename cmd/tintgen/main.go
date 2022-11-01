@@ -36,6 +36,13 @@ var (
 	funcMap = template.FuncMap{
 		"header": func() string { return header },
 		"urlenc": url.QueryEscape,
+		"color": func(c string) string {
+			if c == "" {
+				return "lipgloss.NoColor{}"
+			}
+
+			return fmt.Sprintf(`lipgloss.Color("%s")`, c) //nolint:all
+		},
 	}
 	tintTmpl = template.Must(
 		template.New("tint.gotmpl").
@@ -73,7 +80,7 @@ func main() {
 
 	tintNames := []string{}
 	tints := []TintTemplate{}
-	for _, tint := range rawTints {
+	for _, tint := range rawTints { //nolint:all
 		name := tintReplacer.Replace(tint.Name)
 
 		t := TintTemplate{
@@ -104,7 +111,7 @@ func main() {
 		tints = append(tints, t)
 	}
 
-	for _, tint := range tints {
+	for _, tint := range tints { //nolint:all
 		generateTint(tint)
 	}
 

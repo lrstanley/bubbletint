@@ -23,34 +23,34 @@ type Tint interface {
 	About() string
 
 	// Fg returns the recommended default foreground color for this tint.
-	Fg() lipgloss.Color
+	Fg() lipgloss.TerminalColor
 
 	// Bg returns the recommended default background color for this tint.
-	Bg() lipgloss.Color
+	Bg() lipgloss.TerminalColor
 
 	// SelectionBg returns the recommended background color for selected text.
-	SelectionBg() lipgloss.Color
+	SelectionBg() lipgloss.TerminalColor
 
 	// Cursor returns the recommended color for the cursor.
-	Cursor() lipgloss.Color
+	Cursor() lipgloss.TerminalColor
 
-	BrightBlack() lipgloss.Color
-	BrightBlue() lipgloss.Color
-	BrightCyan() lipgloss.Color
-	BrightGreen() lipgloss.Color
-	BrightPurple() lipgloss.Color
-	BrightRed() lipgloss.Color
-	BrightWhite() lipgloss.Color
-	BrightYellow() lipgloss.Color
+	BrightBlack() lipgloss.TerminalColor
+	BrightBlue() lipgloss.TerminalColor
+	BrightCyan() lipgloss.TerminalColor
+	BrightGreen() lipgloss.TerminalColor
+	BrightPurple() lipgloss.TerminalColor
+	BrightRed() lipgloss.TerminalColor
+	BrightWhite() lipgloss.TerminalColor
+	BrightYellow() lipgloss.TerminalColor
 
-	Black() lipgloss.Color
-	Blue() lipgloss.Color
-	Cyan() lipgloss.Color
-	Green() lipgloss.Color
-	Purple() lipgloss.Color
-	Red() lipgloss.Color
-	White() lipgloss.Color
-	Yellow() lipgloss.Color
+	Black() lipgloss.TerminalColor
+	Blue() lipgloss.TerminalColor
+	Cyan() lipgloss.TerminalColor
+	Green() lipgloss.TerminalColor
+	Purple() lipgloss.TerminalColor
+	Red() lipgloss.TerminalColor
+	White() lipgloss.TerminalColor
+	Yellow() lipgloss.TerminalColor
 }
 
 var currentTint = atomic.Pointer[string]{}
@@ -169,85 +169,85 @@ func About() string {
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func Fg() lipgloss.Color {
+func Fg() lipgloss.TerminalColor {
 	return GetCurrentTint().Fg()
 }
 
 // Bg returns the recommended default background color for this tint.
-func Bg() lipgloss.Color {
+func Bg() lipgloss.TerminalColor {
 	return GetCurrentTint().Bg()
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func SelectionBg() lipgloss.Color {
+func SelectionBg() lipgloss.TerminalColor {
 	return GetCurrentTint().SelectionBg()
 }
 
 // Cursor returns the recommended color for the cursor.
-func Cursor() lipgloss.Color {
+func Cursor() lipgloss.TerminalColor {
 	return GetCurrentTint().Cursor()
 }
 
-func BrightBlack() lipgloss.Color {
+func BrightBlack() lipgloss.TerminalColor {
 	return GetCurrentTint().BrightBlack()
 }
 
-func BrightBlue() lipgloss.Color {
+func BrightBlue() lipgloss.TerminalColor {
 	return GetCurrentTint().BrightBlue()
 }
 
-func BrightCyan() lipgloss.Color {
+func BrightCyan() lipgloss.TerminalColor {
 	return GetCurrentTint().BrightCyan()
 }
 
-func BrightGreen() lipgloss.Color {
+func BrightGreen() lipgloss.TerminalColor {
 	return GetCurrentTint().BrightGreen()
 }
 
-func BrightPurple() lipgloss.Color {
+func BrightPurple() lipgloss.TerminalColor {
 	return GetCurrentTint().BrightPurple()
 }
 
-func BrightRed() lipgloss.Color {
+func BrightRed() lipgloss.TerminalColor {
 	return GetCurrentTint().BrightRed()
 }
 
-func BrightWhite() lipgloss.Color {
+func BrightWhite() lipgloss.TerminalColor {
 	return GetCurrentTint().BrightWhite()
 }
 
-func BrightYellow() lipgloss.Color {
+func BrightYellow() lipgloss.TerminalColor {
 	return GetCurrentTint().BrightYellow()
 }
 
-func Black() lipgloss.Color {
+func Black() lipgloss.TerminalColor {
 	return GetCurrentTint().Black()
 }
 
-func Blue() lipgloss.Color {
+func Blue() lipgloss.TerminalColor {
 	return GetCurrentTint().Blue()
 }
 
-func Cyan() lipgloss.Color {
+func Cyan() lipgloss.TerminalColor {
 	return GetCurrentTint().Cyan()
 }
 
-func Green() lipgloss.Color {
+func Green() lipgloss.TerminalColor {
 	return GetCurrentTint().Green()
 }
 
-func Purple() lipgloss.Color {
+func Purple() lipgloss.TerminalColor {
 	return GetCurrentTint().Purple()
 }
 
-func Red() lipgloss.Color {
+func Red() lipgloss.TerminalColor {
 	return GetCurrentTint().Red()
 }
 
-func White() lipgloss.Color {
+func White() lipgloss.TerminalColor {
 	return GetCurrentTint().White()
 }
 
-func Yellow() lipgloss.Color {
+func Yellow() lipgloss.TerminalColor {
 	return GetCurrentTint().Yellow()
 }
