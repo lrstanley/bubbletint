@@ -53,45 +53,13 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 
 		if msg.String() == "ctrl+left" {
-			id := bubbletint.ID()
-
-			tints := bubbletint.TintIDs()
-
-			currentI := 0
-			for i, t := range tints {
-				if t == id {
-					currentI = i
-					break
-				}
-			}
-
-			prevI := currentI - 1
-			if prevI < 1 {
-				prevI = 0
-			}
-			bubbletint.SetTintID(tints[prevI])
+			bubbletint.PreviousTint()
 
 			return m, nil
 		}
 
 		if msg.String() == "ctrl+right" {
-			id := bubbletint.ID()
-
-			tints := bubbletint.TintIDs()
-
-			currentI := 0
-			for i, t := range tints {
-				if t == id {
-					currentI = i
-					break
-				}
-			}
-
-			nextI := currentI + 1
-			if nextI >= len(tints) {
-				nextI = 0
-			}
-			bubbletint.SetTintID(tints[nextI])
+			bubbletint.NextTint()
 
 			return m, nil
 		}
