@@ -100,10 +100,26 @@ func (m model) View() string {
 		return ""
 	}
 
+	themeTitle := lipgloss.NewStyle().
+		Background(bubbletint.Bg()).
+		Foreground(bubbletint.Fg()).
+		Padding(0, 1)
+
 	s := lipgloss.NewStyle().MaxHeight(m.height).MaxWidth(m.width).Padding(1, 2, 1, 2)
 
 	return zone.Scan(s.Render(lipgloss.JoinVertical(lipgloss.Top,
-		bubbletint.ID(),
+		lipgloss.JoinHorizontal(
+			lipgloss.Left,
+			themeTitle.Render("theme"),
+			" ",
+			bubbletint.ID(),
+			lipgloss.PlaceHorizontal(
+				m.width-len(bubbletint.ID())-5-5, // 5 = theme, 5 = padding
+				lipgloss.Right,
+				themeTitle.Render("[ctrl+left / ctrl+right] to change theme"),
+				lipgloss.WithWhitespaceChars(" "),
+			),
+		),
 		m.tabs.View(), "",
 		lipgloss.PlaceHorizontal(
 			m.width, lipgloss.Center,
