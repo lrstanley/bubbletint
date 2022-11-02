@@ -54,7 +54,7 @@ func (m history) View() string {
 		Padding(1, 2).
 		Width((m.width / len(m.items)) - 2).
 		Height(m.height - 3).
-		MaxHeight(m.height)
+		MaxHeight(m.height - 1)
 
 	out := []string{}
 
