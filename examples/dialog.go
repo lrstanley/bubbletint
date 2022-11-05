@@ -7,7 +7,7 @@ package main
 import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint"
 	zone "github.com/lrstanley/bubblezone"
 )
 
@@ -47,19 +47,19 @@ func (m dialog) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m dialog) View() string {
 	dialogBoxStyle := lipgloss.NewStyle().
 		Border(lipgloss.RoundedBorder(), true).
-		BorderForeground(bubbletint.BrightPurple()).
+		BorderForeground(tint.BrightPurple()).
 		Padding(1, 0)
 
 	buttonStyle := lipgloss.NewStyle().
-		Foreground(bubbletint.Fg()).
-		Background(bubbletint.BrightBlack()).
+		Foreground(tint.Fg()).
+		Background(tint.BrightBlack()).
 		Padding(0, 3).
 		MarginTop(1).
 		MarginRight(2)
 
 	activeButtonStyle := buttonStyle.Copy().
-		Foreground(bubbletint.Black()).
-		Background(bubbletint.BrightPurple()).
+		Foreground(tint.Black()).
+		Background(tint.BrightPurple()).
 		MarginRight(2).
 		Underline(true)
 

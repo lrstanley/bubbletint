@@ -7,7 +7,7 @@ package main
 import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint"
 	zone "github.com/lrstanley/bubblezone"
 )
 
@@ -54,27 +54,27 @@ func (m list) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m list) View() string {
 	listStyle := lipgloss.NewStyle().
 		Border(lipgloss.NormalBorder(), false, true, false, false).
-		BorderForeground(bubbletint.Fg()).
+		BorderForeground(tint.Fg()).
 		MarginRight(2)
 
 	listHeader := lipgloss.NewStyle().
 		BorderStyle(lipgloss.NormalBorder()).
 		BorderBottom(true).
-		BorderForeground(bubbletint.Fg()).
+		BorderForeground(tint.Fg()).
 		MarginRight(2).
 		Render
 
 	listItemStyle := lipgloss.NewStyle().PaddingLeft(2).Render
 
 	checkMark := lipgloss.NewStyle().SetString("✓").
-		Foreground(bubbletint.BrightGreen()).
+		Foreground(tint.BrightGreen()).
 		PaddingRight(1).
 		String()
 
 	listDoneStyle := func(s string) string {
 		return checkMark + lipgloss.NewStyle().
 			Strikethrough(true).
-			Foreground(bubbletint.BrightBlack()).
+			Foreground(tint.BrightBlack()).
 			Render(s)
 	}
 

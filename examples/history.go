@@ -7,7 +7,7 @@ package main
 import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint"
 	zone "github.com/lrstanley/bubblezone"
 )
 
@@ -48,8 +48,8 @@ func (m history) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m history) View() string {
 	historyStyle := lipgloss.NewStyle().
 		Align(lipgloss.Left).
-		Foreground(bubbletint.Fg()).
-		Background(bubbletint.Bg()).
+		Foreground(tint.Fg()).
+		Background(tint.Bg()).
 		Margin(1).
 		Padding(1, 2).
 		Width((m.width / len(m.items)) - 2).
@@ -61,7 +61,7 @@ func (m history) View() string {
 	for _, item := range m.items {
 		if item == m.active {
 			// Customize the active item.
-			out = append(out, zone.Mark(m.id+item, historyStyle.Copy().Background(bubbletint.BrightPurple()).Foreground(bubbletint.Bg()).Render(item)))
+			out = append(out, zone.Mark(m.id+item, historyStyle.Copy().Background(tint.BrightPurple()).Foreground(tint.Bg()).Render(item)))
 		} else {
 			// Make sure to mark all zones.
 			out = append(out, zone.Mark(m.id+item, historyStyle.Render(item)))

@@ -10,7 +10,7 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint"
 	zone "github.com/lrstanley/bubblezone"
 )
 
@@ -53,13 +53,13 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 
 		if msg.String() == "ctrl+left" {
-			bubbletint.PreviousTint()
+			tint.PreviousTint()
 
 			return m, nil
 		}
 
 		if msg.String() == "ctrl+right" {
-			bubbletint.NextTint()
+			tint.NextTint()
 
 			return m, nil
 		}
@@ -101,8 +101,8 @@ func (m model) View() string {
 	}
 
 	themeTitle := lipgloss.NewStyle().
-		Background(bubbletint.Bg()).
-		Foreground(bubbletint.Fg()).
+		Background(tint.Bg()).
+		Foreground(tint.Fg()).
 		Padding(0, 1)
 
 	s := lipgloss.NewStyle().MaxHeight(m.height).MaxWidth(m.width).Padding(1, 2, 1, 2)
@@ -112,9 +112,9 @@ func (m model) View() string {
 			lipgloss.Left,
 			themeTitle.Render("theme"),
 			" ",
-			bubbletint.ID(),
+			tint.ID(),
 			lipgloss.PlaceHorizontal(
-				m.width-len(bubbletint.ID())-5-5, // 5 = theme, 5 = padding
+				m.width-len(tint.ID())-5-5, // 5 = theme, 5 = padding
 				lipgloss.Right,
 				themeTitle.Render("[ctrl+left / ctrl+right] to change theme"),
 				lipgloss.WithWhitespaceChars(" "),
@@ -139,8 +139,8 @@ func main() {
 	zone.NewGlobal()
 
 	// Initialize the default tint we want.
-	bubbletint.SetTintID("3024_day")
-	bubbletint.SetTint(bubbletint.TintNord)
+	tint.NewDefaultRegistry()
+	tint.SetTint(tint.TintNord)
 
 	m := &model{
 		tabs: &tabs{

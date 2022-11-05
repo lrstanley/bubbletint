@@ -9,7 +9,7 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint"
 	zone "github.com/lrstanley/bubblezone"
 )
 
@@ -75,7 +75,7 @@ func (m tabs) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m tabs) View() string {
 	tab := lipgloss.NewStyle().
 		Border(tabBorder, true).
-		BorderForeground(bubbletint.BrightPurple()).
+		BorderForeground(tint.BrightPurple()).
 		Padding(0, 1)
 
 	activeTab := tab.Copy().Border(activeTabBorder, true)
