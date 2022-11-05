@@ -44,3 +44,12 @@ func FromToHex(from, to lipgloss.TerminalColor, steps int) (gradient []string) {
 
 	return gradient
 }
+
+func Hex(c lipgloss.TerminalColor) string {
+	col, ok := colorful.MakeColor(c)
+	if !ok {
+		panic("invalid color specified")
+	}
+
+	return col.Hex()
+}
