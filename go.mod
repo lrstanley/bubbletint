@@ -2,10 +2,12 @@ module github.com/lrstanley/bubbletint
 
 go 1.19
 
-require github.com/charmbracelet/lipgloss v0.6.0
+require (
+	github.com/charmbracelet/lipgloss v0.6.0
+	github.com/lucasb-eyer/go-colorful v1.2.0
+)
 
 require (
-	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/muesli/reflow v0.2.1-0.20210115123740-9e1d0d53df68 // indirect

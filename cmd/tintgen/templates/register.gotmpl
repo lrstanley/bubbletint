@@ -3,17 +3,31 @@
 package bubbletint
 
 import (
-	"github.com/lrstanley/bubbletint/tints"
+	"github.com/lrstanley/bubbletint/defaulttints"
 )
-
-var defaultRegistry = map[string]Tint{
-{{- range $index, $tint := . }}
-    "{{ .NameNormalized }}": Tint{{ .StructName }},
-{{- end }}
-}
 
 var (
 {{- range $index, $tint := . }}
-    Tint{{ .StructName }} Tint = &tints.Tint{{ .StructName }}{}
+    Tint{{ .StructName }} Tint = &defaulttints.Tint{{ .StructName }}{}
 {{- end }}
 )
+
+func NewDefaultRegistry() {
+    DefaultRegistry = NewRegistry(
+        TintDraculaPlus,
+        DefaultTints()...,
+    )
+}
+
+// DefaultRegistry is an app-wide default registry, which can be initialized with
+// all default tints using bubbletint.NewDefaultRegistry(). This can be overridden,
+// though make sure to do it before your app initializes and uses the registry.
+var DefaultRegistry *Registry
+
+func DefaultTints() []Tint {
+    return []Tint{
+    {{- range $index, $tint := . }}
+        Tint{{ .StructName }},
+    {{- end }}
+    }
+}

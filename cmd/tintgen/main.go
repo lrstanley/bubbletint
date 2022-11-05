@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	tintPath = "tints/%s.go"
+	tintPath = "defaulttints/%s.go"
 )
 
 var (
