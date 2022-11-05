@@ -2,7 +2,7 @@
 // of this source code is governed by the MIT license that can be found in
 // the LICENSE file.
 
-package bubbletint
+package tint
 
 import (
 	"reflect"
@@ -184,59 +184,63 @@ func TestRegistry_PreviousNextTint(t *testing.T) {
 }
 
 func TestRegistry_AllColors(t *testing.T) {
+	NewDefaultRegistry()
+
 	ids := DefaultRegistry.TintIDs()
 
 	for _, id := range ids {
-		DefaultRegistry.SetTintID(id)
+		t.Run(id, func(t *testing.T) {
+			DefaultRegistry.SetTintID(id)
 
-		colors := []lipgloss.TerminalColor{
-			Fg(),
-			Bg(),
-			SelectionBg(),
-			Cursor(),
-			BrightBlack(),
-			BrightBlue(),
-			BrightCyan(),
-			BrightGreen(),
-			BrightPurple(),
-			BrightRed(),
-			BrightWhite(),
-			BrightYellow(),
-			Black(),
-			Blue(),
-			Cyan(),
-			Green(),
-			Purple(),
-			Red(),
-			White(),
-			Yellow(),
+			colors := []lipgloss.TerminalColor{
+				Fg(),
+				Bg(),
+				SelectionBg(),
+				Cursor(),
+				BrightBlack(),
+				BrightBlue(),
+				BrightCyan(),
+				BrightGreen(),
+				BrightPurple(),
+				BrightRed(),
+				BrightWhite(),
+				BrightYellow(),
+				Black(),
+				Blue(),
+				Cyan(),
+				Green(),
+				Purple(),
+				Red(),
+				White(),
+				Yellow(),
 
-			DefaultRegistry.Fg(),
-			DefaultRegistry.Bg(),
-			DefaultRegistry.SelectionBg(),
-			DefaultRegistry.Cursor(),
-			DefaultRegistry.BrightBlack(),
-			DefaultRegistry.BrightBlue(),
-			DefaultRegistry.BrightCyan(),
-			DefaultRegistry.BrightGreen(),
-			DefaultRegistry.BrightPurple(),
-			DefaultRegistry.BrightRed(),
-			DefaultRegistry.BrightWhite(),
-			DefaultRegistry.BrightYellow(),
-			DefaultRegistry.Black(),
-			DefaultRegistry.Blue(),
-			DefaultRegistry.Cyan(),
-			DefaultRegistry.Green(),
-			DefaultRegistry.Purple(),
-			DefaultRegistry.Red(),
-			DefaultRegistry.White(),
-			DefaultRegistry.Yellow(),
-		}
-
-		for _, c := range colors {
-			if c == nil {
-				t.Errorf("expected color, got nil")
+				DefaultRegistry.Fg(),
+				DefaultRegistry.Bg(),
+				DefaultRegistry.SelectionBg(),
+				DefaultRegistry.Cursor(),
+				DefaultRegistry.BrightBlack(),
+				DefaultRegistry.BrightBlue(),
+				DefaultRegistry.BrightCyan(),
+				DefaultRegistry.BrightGreen(),
+				DefaultRegistry.BrightPurple(),
+				DefaultRegistry.BrightRed(),
+				DefaultRegistry.BrightWhite(),
+				DefaultRegistry.BrightYellow(),
+				DefaultRegistry.Black(),
+				DefaultRegistry.Blue(),
+				DefaultRegistry.Cyan(),
+				DefaultRegistry.Green(),
+				DefaultRegistry.Purple(),
+				DefaultRegistry.Red(),
+				DefaultRegistry.White(),
+				DefaultRegistry.Yellow(),
 			}
-		}
+
+			for _, c := range colors {
+				if c == nil {
+					t.Errorf("expected color, got nil")
+				}
+			}
+		})
 	}
 }
