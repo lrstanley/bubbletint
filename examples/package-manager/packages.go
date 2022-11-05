@@ -1,3 +1,10 @@
+// Copyright (c) Liam Stanley <me@liamstanley.io>. All rights reserved. Use
+// of this source code is governed by the MIT license that can be found in
+// the LICENSE file.
+//
+// Example modified from the following:
+//  * https://github.com/charmbracelet/bubbletea/blob/test/examples/package-manager/main.go
+
 package main
 
 import (

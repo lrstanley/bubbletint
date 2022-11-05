@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/charmbracelet/lipgloss v0.6.0
+	github.com/iancoleman/strcase v0.2.0
 	github.com/lucasb-eyer/go-colorful v1.2.0
 )
 

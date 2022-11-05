@@ -14,7 +14,6 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/Masterminds/sprig/v3"
 	"github.com/iancoleman/strcase"
 )
 
@@ -46,13 +45,11 @@ var (
 	}
 	tintTmpl = template.Must(
 		template.New("tint.gotmpl").
-			Funcs(sprig.FuncMap()).
 			Funcs(funcMap).
 			ParseFiles("cmd/tintgen/templates/tint.gotmpl"),
 	)
 	registerTmpl = template.Must(
 		template.New("register.gotmpl").
-			Funcs(sprig.FuncMap()).
 			Funcs(funcMap).
 			ParseFiles("cmd/tintgen/templates/register.gotmpl"),
 	)
