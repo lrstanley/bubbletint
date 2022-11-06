@@ -31,3 +31,4 @@ generate: license go-fetch
 	gofmt -e -s -w *.go
 	go vet defaulttints/*.go
 	go vet *.go
+	go test -v ./...
