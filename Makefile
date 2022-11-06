@@ -19,12 +19,12 @@ go-upgrade-deps-patch:
 	go mod tidy
 
 commit: generate
-	git add --all defaulttints/* *.gen.go
+	git add --all defaulttints/* *.gen.go DEFAULT_TINTS.md
 	git commit -m "chore(tints): generate updated tints"
 
 generate: license go-fetch
 	mkdir -p defaulttints
-	rm -rf defaulttints/* *.gen.go
+	rm -rf defaulttints/* *.gen.go DEFAULT_TINTS.md
 	# go run cmd/tintgen/*.go
 	go run github.com/lrstanley/bubbletint/cmd/tintgen
 	gofmt -e -s -w defaulttints/*.go

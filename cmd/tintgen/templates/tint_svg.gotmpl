@@ -1,0 +1,69 @@
+{{- $tint := .TintTemplate -}}
+{{- $colorMap := .ColorMap -}}
+<?xml version="1.0" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+    <foreignObject x="10" y="10" width="961" height="504">
+        <style>
+            :root {
+                --rounded: 8px;
+                {{- range $i, $c := $colorMap }}
+                --color-{{ $c }}: {{ rgba (dynamiccolor $tint.Tint $c) }};
+                {{- end }}
+            }
+
+            html, body, table {
+                margin: 0;
+                padding: 0;
+                background: var(--color-Bg);
+                color: var(--color-Fg);
+                border-radius: var(--rounded);
+            }
+
+            table {
+                font-family: "Courier New", Courier, monospace;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                text-align: left;
+                padding: 4px;
+                font-size: 18px;
+            }
+
+            th, tr, td {
+                font-weight: bold;
+                text-align: center;
+            }
+
+            table tr:last-child td:first-child {
+                border-bottom-left-radius: var(--rounded);
+            }
+
+            table tr:last-child td:last-child {
+                border-bottom-right-radius: var(--rounded);
+            }
+        </style>
+        <body xmlns="http://www.w3.org/1999/xhtml">
+            <table>
+                <tr>
+                    <th>text: &#x2193; bg: &#x2192;</th>
+                    {{- range $i, $bg := $colorMap }}
+                    {{- if or (eq $bg "Fg") (isbright $bg) }}{{continue}}{{- end }}
+                        <th title="bg: {{ $bg }}">{{ $bg }}</th>
+                    {{- end }}
+                </tr>
+                {{ range $i, $fg := $colorMap }}
+                {{- if eq $fg "Bg" }}{{continue}}{{- end }}
+                <tr title="fg: {{ $fg }}">
+                    <td style="text-align: right" title="fg: {{ $fg }}">{{ $fg }}</td>
+                    {{- range $i, $bg := $colorMap }}
+                        {{- if or (eq $bg "Fg") (isbright $bg) }}{{continue}}{{- end }}
+                        <td style="color: var(--color-{{ $fg }}); background: var(--color-{{ $bg }});" title="bg: {{ $bg }}, fg: {{ $fg }}">FooBar</td>
+                    {{- end }}
+                </tr>
+                {{ end }}
+            </table>
+        </body>
+    </foreignObject>
+</svg>

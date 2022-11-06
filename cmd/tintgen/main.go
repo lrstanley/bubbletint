@@ -10,15 +10,22 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"reflect"
 	"sort"
 	"strings"
 	"text/template"
 
 	"github.com/iancoleman/strcase"
+	"github.com/lucasb-eyer/go-colorful"
 )
 
+type M map[string]any
+
 const (
-	tintPath = "defaulttints/%s.go"
+	tintPath       = "defaulttints/%s.go"
+	tintSVGPath    = "defaulttints/%s.svg"
+	tintReadmePath = "DEFAULT_TINTS.md"
+	registryPath   = "default_registry.gen.go"
 )
 
 var (
@@ -28,6 +35,20 @@ var (
 	}
 	CredUrls = []string{
 		"https://github.com/atomcorp/themes/raw/master/app/src/credits.json",
+	}
+	ColorMapSpecial = []string{
+		"SelectionBg", "Cursor",
+	}
+	ColorMap = []string{
+		"Fg", "Bg",
+		"Black", "BrightBlack",
+		"Blue", "BrightBlue",
+		"Cyan", "BrightCyan",
+		"Green", "BrightGreen",
+		"Purple", "BrightPurple",
+		"Red", "BrightRed",
+		"White", "BrightWhite",
+		"Yellow", "BrightYellow",
 	}
 )
 
@@ -42,16 +63,45 @@ var (
 
 			return fmt.Sprintf(`lipgloss.Color("%s")`, c) //nolint:all
 		},
+		"dynamiccolor": func(t Tint, field string) string {
+			r := reflect.ValueOf(&t)
+			f := reflect.Indirect(r).FieldByName(field)
+			return f.String()
+		},
+		"rgba": func(hex string) string {
+			c, err := colorful.Hex(hex)
+			if err != nil {
+				return "rgba(0, 0, 0, 0.0)"
+			}
+
+			return fmt.Sprintf("rgba(%d, %d, %d, 1)", int(c.R*255), int(c.G*255), int(c.B*255))
+		},
+		"isbright": func(c string) bool {
+			return strings.Contains(c, "Bright")
+		},
+		"shortbright": func(c string) string {
+			return strings.Replace(c, "Bright", "Bright\n", 1)
+		},
 	}
 	tintTmpl = template.Must(
 		template.New("tint.gotmpl").
 			Funcs(funcMap).
 			ParseFiles("cmd/tintgen/templates/tint.gotmpl"),
 	)
-	registerTmpl = template.Must(
-		template.New("register.gotmpl").
+	tintSVGTmpl = template.Must(
+		template.New("tint_svg.gotmpl").
 			Funcs(funcMap).
-			ParseFiles("cmd/tintgen/templates/register.gotmpl"),
+			ParseFiles("cmd/tintgen/templates/tint_svg.gotmpl"),
+	)
+	tintReadmeTmpl = template.Must(
+		template.New("tint_readme.gotmpl").
+			Funcs(funcMap).
+			ParseFiles("cmd/tintgen/templates/tint_readme.gotmpl"),
+	)
+	registryTmpl = template.Must(
+		template.New("default_registry.gotmpl").
+			Funcs(funcMap).
+			ParseFiles("cmd/tintgen/templates/default_registry.gotmpl"),
 	)
 
 	header = `// Copyright (c) Liam Stanley <me@liamstanley.io>. All rights reserved. Use
@@ -110,8 +160,10 @@ func main() {
 
 	for _, tint := range tints { //nolint:all
 		generateTint(tint)
+		generateTintSVG(tint)
 	}
 
+	generateTintReadme(tints)
 	generateRegistry(tints)
 }
 
@@ -191,16 +243,50 @@ func generateTint(tint TintTemplate) {
 	fmt.Println("generated", fn)
 }
 
-func generateRegistry(tints []TintTemplate) {
-	f, err := os.Create("default_registry.gen.go")
+func generateTintSVG(tint TintTemplate) {
+	fn := fmt.Sprintf(tintSVGPath, tint.NameNormalized)
+
+	f, err := os.Create(fn)
 	if err != nil {
 		panic(err)
 	}
 	defer f.Close()
 
-	if err := registerTmpl.Execute(f, tints); err != nil {
+	if err := tintSVGTmpl.Execute(f, M{
+		"TintTemplate":    tint,
+		"ColorMap":        ColorMap,
+		"ColorMapSpecial": ColorMapSpecial,
+	}); err != nil {
 		panic(err)
 	}
 
-	fmt.Println("generated default_registry.gen.go")
+	fmt.Println("generated", fn)
+}
+
+func generateTintReadme(tints []TintTemplate) {
+	f, err := os.Create(tintReadmePath)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	if err := tintReadmeTmpl.Execute(f, tints); err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("generated %s\n", tintReadmePath)
+}
+
+func generateRegistry(tints []TintTemplate) {
+	f, err := os.Create(registryPath)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	if err := registryTmpl.Execute(f, tints); err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("generated %s\n", registryPath)
 }
