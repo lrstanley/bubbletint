@@ -1,0 +1,299 @@
+<?xml version="1.0" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+    <foreignObject x="10" y="10" width="961" height="504">
+        <style>
+            :root {
+                --rounded: 8px;
+                --color-Fg: rgba(171, 178, 191, 1);
+                --color-Bg: rgba(30, 32, 39, 1);
+                --color-Black: rgba(30, 32, 39, 1);
+                --color-BrightBlack: rgba(92, 99, 112, 1);
+                --color-Blue: rgba(97, 175, 239, 1);
+                --color-BrightBlue: rgba(97, 175, 239, 1);
+                --color-Cyan: rgba(86, 182, 194, 1);
+                --color-BrightCyan: rgba(86, 182, 194, 1);
+                --color-Green: rgba(152, 195, 121, 1);
+                --color-BrightGreen: rgba(152, 195, 121, 1);
+                --color-Purple: rgba(198, 120, 221, 1);
+                --color-BrightPurple: rgba(198, 120, 221, 1);
+                --color-Red: rgba(224, 108, 117, 1);
+                --color-BrightRed: rgba(224, 108, 117, 1);
+                --color-White: rgba(171, 178, 191, 1);
+                --color-BrightWhite: rgba(255, 255, 255, 1);
+                --color-Yellow: rgba(209, 154, 102, 1);
+                --color-BrightYellow: rgba(209, 154, 102, 1);
+            }
+
+            html, body, table {
+                margin: 0;
+                padding: 0;
+                background: var(--color-Bg);
+                color: var(--color-Fg);
+                border-radius: var(--rounded);
+            }
+
+            table {
+                font-family: "Courier New", Courier, monospace;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                text-align: left;
+                padding: 4px;
+                font-size: 18px;
+            }
+
+            th, tr, td {
+                font-weight: bold;
+                text-align: center;
+            }
+
+            table tr:last-child td:first-child {
+                border-bottom-left-radius: var(--rounded);
+            }
+
+            table tr:last-child td:last-child {
+                border-bottom-right-radius: var(--rounded);
+            }
+        </style>
+        <body xmlns="http://www.w3.org/1999/xhtml">
+            <table>
+                <tr>
+                    <th>text: &#x2193; bg: &#x2192;</th>
+                        <th title="bg: Bg">Bg</th>
+                        <th title="bg: Black">Black</th>
+                        <th title="bg: Blue">Blue</th>
+                        <th title="bg: Cyan">Cyan</th>
+                        <th title="bg: Green">Green</th>
+                        <th title="bg: Purple">Purple</th>
+                        <th title="bg: Red">Red</th>
+                        <th title="bg: White">White</th>
+                        <th title="bg: Yellow">Yellow</th>
+                </tr>
+                
+                <tr title="fg: Fg">
+                    <td style="text-align: right" title="fg: Fg">Fg</td>
+                        <td style="color: var(--color-Fg); background: var(--color-Bg);" title="bg: Bg, fg: Fg">FooBar</td>
+                        <td style="color: var(--color-Fg); background: var(--color-Black);" title="bg: Black, fg: Fg">FooBar</td>
+                        <td style="color: var(--color-Fg); background: var(--color-Blue);" title="bg: Blue, fg: Fg">FooBar</td>
+                        <td style="color: var(--color-Fg); background: var(--color-Cyan);" title="bg: Cyan, fg: Fg">FooBar</td>
+                        <td style="color: var(--color-Fg); background: var(--color-Green);" title="bg: Green, fg: Fg">FooBar</td>
+                        <td style="color: var(--color-Fg); background: var(--color-Purple);" title="bg: Purple, fg: Fg">FooBar</td>
+                        <td style="color: var(--color-Fg); background: var(--color-Red);" title="bg: Red, fg: Fg">FooBar</td>
+                        <td style="color: var(--color-Fg); background: var(--color-White);" title="bg: White, fg: Fg">FooBar</td>
+                        <td style="color: var(--color-Fg); background: var(--color-Yellow);" title="bg: Yellow, fg: Fg">FooBar</td>
+                </tr>
+                
+                <tr title="fg: Black">
+                    <td style="text-align: right" title="fg: Black">Black</td>
+                        <td style="color: var(--color-Black); background: var(--color-Bg);" title="bg: Bg, fg: Black">FooBar</td>
+                        <td style="color: var(--color-Black); background: var(--color-Black);" title="bg: Black, fg: Black">FooBar</td>
+                        <td style="color: var(--color-Black); background: var(--color-Blue);" title="bg: Blue, fg: Black">FooBar</td>
+                        <td style="color: var(--color-Black); background: var(--color-Cyan);" title="bg: Cyan, fg: Black">FooBar</td>
+                        <td style="color: var(--color-Black); background: var(--color-Green);" title="bg: Green, fg: Black">FooBar</td>
+                        <td style="color: var(--color-Black); background: var(--color-Purple);" title="bg: Purple, fg: Black">FooBar</td>
+                        <td style="color: var(--color-Black); background: var(--color-Red);" title="bg: Red, fg: Black">FooBar</td>
+                        <td style="color: var(--color-Black); background: var(--color-White);" title="bg: White, fg: Black">FooBar</td>
+                        <td style="color: var(--color-Black); background: var(--color-Yellow);" title="bg: Yellow, fg: Black">FooBar</td>
+                </tr>
+                
+                <tr title="fg: BrightBlack">
+                    <td style="text-align: right" title="fg: BrightBlack">BrightBlack</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-Bg);" title="bg: Bg, fg: BrightBlack">FooBar</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-Black);" title="bg: Black, fg: BrightBlack">FooBar</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-Blue);" title="bg: Blue, fg: BrightBlack">FooBar</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-Cyan);" title="bg: Cyan, fg: BrightBlack">FooBar</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-Green);" title="bg: Green, fg: BrightBlack">FooBar</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-Purple);" title="bg: Purple, fg: BrightBlack">FooBar</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-Red);" title="bg: Red, fg: BrightBlack">FooBar</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-White);" title="bg: White, fg: BrightBlack">FooBar</td>
+                        <td style="color: var(--color-BrightBlack); background: var(--color-Yellow);" title="bg: Yellow, fg: BrightBlack">FooBar</td>
+                </tr>
+                
+                <tr title="fg: Blue">
+                    <td style="text-align: right" title="fg: Blue">Blue</td>
+                        <td style="color: var(--color-Blue); background: var(--color-Bg);" title="bg: Bg, fg: Blue">FooBar</td>
+                        <td style="color: var(--color-Blue); background: var(--color-Black);" title="bg: Black, fg: Blue">FooBar</td>
+                        <td style="color: var(--color-Blue); background: var(--color-Blue);" title="bg: Blue, fg: Blue">FooBar</td>
+                        <td style="color: var(--color-Blue); background: var(--color-Cyan);" title="bg: Cyan, fg: Blue">FooBar</td>
+                        <td style="color: var(--color-Blue); background: var(--color-Green);" title="bg: Green, fg: Blue">FooBar</td>
+                        <td style="color: var(--color-Blue); background: var(--color-Purple);" title="bg: Purple, fg: Blue">FooBar</td>
+                        <td style="color: var(--color-Blue); background: var(--color-Red);" title="bg: Red, fg: Blue">FooBar</td>
+                        <td style="color: var(--color-Blue); background: var(--color-White);" title="bg: White, fg: Blue">FooBar</td>
+                        <td style="color: var(--color-Blue); background: var(--color-Yellow);" title="bg: Yellow, fg: Blue">FooBar</td>
+                </tr>
+                
+                <tr title="fg: BrightBlue">
+                    <td style="text-align: right" title="fg: BrightBlue">BrightBlue</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-Bg);" title="bg: Bg, fg: BrightBlue">FooBar</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-Black);" title="bg: Black, fg: BrightBlue">FooBar</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-Blue);" title="bg: Blue, fg: BrightBlue">FooBar</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-Cyan);" title="bg: Cyan, fg: BrightBlue">FooBar</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-Green);" title="bg: Green, fg: BrightBlue">FooBar</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-Purple);" title="bg: Purple, fg: BrightBlue">FooBar</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-Red);" title="bg: Red, fg: BrightBlue">FooBar</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-White);" title="bg: White, fg: BrightBlue">FooBar</td>
+                        <td style="color: var(--color-BrightBlue); background: var(--color-Yellow);" title="bg: Yellow, fg: BrightBlue">FooBar</td>
+                </tr>
+                
+                <tr title="fg: Cyan">
+                    <td style="text-align: right" title="fg: Cyan">Cyan</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-Bg);" title="bg: Bg, fg: Cyan">FooBar</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-Black);" title="bg: Black, fg: Cyan">FooBar</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-Blue);" title="bg: Blue, fg: Cyan">FooBar</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-Cyan);" title="bg: Cyan, fg: Cyan">FooBar</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-Green);" title="bg: Green, fg: Cyan">FooBar</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-Purple);" title="bg: Purple, fg: Cyan">FooBar</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-Red);" title="bg: Red, fg: Cyan">FooBar</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-White);" title="bg: White, fg: Cyan">FooBar</td>
+                        <td style="color: var(--color-Cyan); background: var(--color-Yellow);" title="bg: Yellow, fg: Cyan">FooBar</td>
+                </tr>
+                
+                <tr title="fg: BrightCyan">
+                    <td style="text-align: right" title="fg: BrightCyan">BrightCyan</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-Bg);" title="bg: Bg, fg: BrightCyan">FooBar</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-Black);" title="bg: Black, fg: BrightCyan">FooBar</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-Blue);" title="bg: Blue, fg: BrightCyan">FooBar</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-Cyan);" title="bg: Cyan, fg: BrightCyan">FooBar</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-Green);" title="bg: Green, fg: BrightCyan">FooBar</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-Purple);" title="bg: Purple, fg: BrightCyan">FooBar</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-Red);" title="bg: Red, fg: BrightCyan">FooBar</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-White);" title="bg: White, fg: BrightCyan">FooBar</td>
+                        <td style="color: var(--color-BrightCyan); background: var(--color-Yellow);" title="bg: Yellow, fg: BrightCyan">FooBar</td>
+                </tr>
+                
+                <tr title="fg: Green">
+                    <td style="text-align: right" title="fg: Green">Green</td>
+                        <td style="color: var(--color-Green); background: var(--color-Bg);" title="bg: Bg, fg: Green">FooBar</td>
+                        <td style="color: var(--color-Green); background: var(--color-Black);" title="bg: Black, fg: Green">FooBar</td>
+                        <td style="color: var(--color-Green); background: var(--color-Blue);" title="bg: Blue, fg: Green">FooBar</td>
+                        <td style="color: var(--color-Green); background: var(--color-Cyan);" title="bg: Cyan, fg: Green">FooBar</td>
+                        <td style="color: var(--color-Green); background: var(--color-Green);" title="bg: Green, fg: Green">FooBar</td>
+                        <td style="color: var(--color-Green); background: var(--color-Purple);" title="bg: Purple, fg: Green">FooBar</td>
+                        <td style="color: var(--color-Green); background: var(--color-Red);" title="bg: Red, fg: Green">FooBar</td>
+                        <td style="color: var(--color-Green); background: var(--color-White);" title="bg: White, fg: Green">FooBar</td>
+                        <td style="color: var(--color-Green); background: var(--color-Yellow);" title="bg: Yellow, fg: Green">FooBar</td>
+                </tr>
+                
+                <tr title="fg: BrightGreen">
+                    <td style="text-align: right" title="fg: BrightGreen">BrightGreen</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-Bg);" title="bg: Bg, fg: BrightGreen">FooBar</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-Black);" title="bg: Black, fg: BrightGreen">FooBar</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-Blue);" title="bg: Blue, fg: BrightGreen">FooBar</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-Cyan);" title="bg: Cyan, fg: BrightGreen">FooBar</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-Green);" title="bg: Green, fg: BrightGreen">FooBar</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-Purple);" title="bg: Purple, fg: BrightGreen">FooBar</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-Red);" title="bg: Red, fg: BrightGreen">FooBar</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-White);" title="bg: White, fg: BrightGreen">FooBar</td>
+                        <td style="color: var(--color-BrightGreen); background: var(--color-Yellow);" title="bg: Yellow, fg: BrightGreen">FooBar</td>
+                </tr>
+                
+                <tr title="fg: Purple">
+                    <td style="text-align: right" title="fg: Purple">Purple</td>
+                        <td style="color: var(--color-Purple); background: var(--color-Bg);" title="bg: Bg, fg: Purple">FooBar</td>
+                        <td style="color: var(--color-Purple); background: var(--color-Black);" title="bg: Black, fg: Purple">FooBar</td>
+                        <td style="color: var(--color-Purple); background: var(--color-Blue);" title="bg: Blue, fg: Purple">FooBar</td>
+                        <td style="color: var(--color-Purple); background: var(--color-Cyan);" title="bg: Cyan, fg: Purple">FooBar</td>
+                        <td style="color: var(--color-Purple); background: var(--color-Green);" title="bg: Green, fg: Purple">FooBar</td>
+                        <td style="color: var(--color-Purple); background: var(--color-Purple);" title="bg: Purple, fg: Purple">FooBar</td>
+                        <td style="color: var(--color-Purple); background: var(--color-Red);" title="bg: Red, fg: Purple">FooBar</td>
+                        <td style="color: var(--color-Purple); background: var(--color-White);" title="bg: White, fg: Purple">FooBar</td>
+                        <td style="color: var(--color-Purple); background: var(--color-Yellow);" title="bg: Yellow, fg: Purple">FooBar</td>
+                </tr>
+                
+                <tr title="fg: BrightPurple">
+                    <td style="text-align: right" title="fg: BrightPurple">BrightPurple</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-Bg);" title="bg: Bg, fg: BrightPurple">FooBar</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-Black);" title="bg: Black, fg: BrightPurple">FooBar</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-Blue);" title="bg: Blue, fg: BrightPurple">FooBar</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-Cyan);" title="bg: Cyan, fg: BrightPurple">FooBar</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-Green);" title="bg: Green, fg: BrightPurple">FooBar</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-Purple);" title="bg: Purple, fg: BrightPurple">FooBar</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-Red);" title="bg: Red, fg: BrightPurple">FooBar</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-White);" title="bg: White, fg: BrightPurple">FooBar</td>
+                        <td style="color: var(--color-BrightPurple); background: var(--color-Yellow);" title="bg: Yellow, fg: BrightPurple">FooBar</td>
+                </tr>
+                
+                <tr title="fg: Red">
+                    <td style="text-align: right" title="fg: Red">Red</td>
+                        <td style="color: var(--color-Red); background: var(--color-Bg);" title="bg: Bg, fg: Red">FooBar</td>
+                        <td style="color: var(--color-Red); background: var(--color-Black);" title="bg: Black, fg: Red">FooBar</td>
+                        <td style="color: var(--color-Red); background: var(--color-Blue);" title="bg: Blue, fg: Red">FooBar</td>
+                        <td style="color: var(--color-Red); background: var(--color-Cyan);" title="bg: Cyan, fg: Red">FooBar</td>
+                        <td style="color: var(--color-Red); background: var(--color-Green);" title="bg: Green, fg: Red">FooBar</td>
+                        <td style="color: var(--color-Red); background: var(--color-Purple);" title="bg: Purple, fg: Red">FooBar</td>
+                        <td style="color: var(--color-Red); background: var(--color-Red);" title="bg: Red, fg: Red">FooBar</td>
+                        <td style="color: var(--color-Red); background: var(--color-White);" title="bg: White, fg: Red">FooBar</td>
+                        <td style="color: var(--color-Red); background: var(--color-Yellow);" title="bg: Yellow, fg: Red">FooBar</td>
+                </tr>
+                
+                <tr title="fg: BrightRed">
+                    <td style="text-align: right" title="fg: BrightRed">BrightRed</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-Bg);" title="bg: Bg, fg: BrightRed">FooBar</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-Black);" title="bg: Black, fg: BrightRed">FooBar</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-Blue);" title="bg: Blue, fg: BrightRed">FooBar</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-Cyan);" title="bg: Cyan, fg: BrightRed">FooBar</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-Green);" title="bg: Green, fg: BrightRed">FooBar</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-Purple);" title="bg: Purple, fg: BrightRed">FooBar</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-Red);" title="bg: Red, fg: BrightRed">FooBar</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-White);" title="bg: White, fg: BrightRed">FooBar</td>
+                        <td style="color: var(--color-BrightRed); background: var(--color-Yellow);" title="bg: Yellow, fg: BrightRed">FooBar</td>
+                </tr>
+                
+                <tr title="fg: White">
+                    <td style="text-align: right" title="fg: White">White</td>
+                        <td style="color: var(--color-White); background: var(--color-Bg);" title="bg: Bg, fg: White">FooBar</td>
+                        <td style="color: var(--color-White); background: var(--color-Black);" title="bg: Black, fg: White">FooBar</td>
+                        <td style="color: var(--color-White); background: var(--color-Blue);" title="bg: Blue, fg: White">FooBar</td>
+                        <td style="color: var(--color-White); background: var(--color-Cyan);" title="bg: Cyan, fg: White">FooBar</td>
+                        <td style="color: var(--color-White); background: var(--color-Green);" title="bg: Green, fg: White">FooBar</td>
+                        <td style="color: var(--color-White); background: var(--color-Purple);" title="bg: Purple, fg: White">FooBar</td>
+                        <td style="color: var(--color-White); background: var(--color-Red);" title="bg: Red, fg: White">FooBar</td>
+                        <td style="color: var(--color-White); background: var(--color-White);" title="bg: White, fg: White">FooBar</td>
+                        <td style="color: var(--color-White); background: var(--color-Yellow);" title="bg: Yellow, fg: White">FooBar</td>
+                </tr>
+                
+                <tr title="fg: BrightWhite">
+                    <td style="text-align: right" title="fg: BrightWhite">BrightWhite</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-Bg);" title="bg: Bg, fg: BrightWhite">FooBar</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-Black);" title="bg: Black, fg: BrightWhite">FooBar</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-Blue);" title="bg: Blue, fg: BrightWhite">FooBar</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-Cyan);" title="bg: Cyan, fg: BrightWhite">FooBar</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-Green);" title="bg: Green, fg: BrightWhite">FooBar</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-Purple);" title="bg: Purple, fg: BrightWhite">FooBar</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-Red);" title="bg: Red, fg: BrightWhite">FooBar</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-White);" title="bg: White, fg: BrightWhite">FooBar</td>
+                        <td style="color: var(--color-BrightWhite); background: var(--color-Yellow);" title="bg: Yellow, fg: BrightWhite">FooBar</td>
+                </tr>
+                
+                <tr title="fg: Yellow">
+                    <td style="text-align: right" title="fg: Yellow">Yellow</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-Bg);" title="bg: Bg, fg: Yellow">FooBar</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-Black);" title="bg: Black, fg: Yellow">FooBar</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-Blue);" title="bg: Blue, fg: Yellow">FooBar</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-Cyan);" title="bg: Cyan, fg: Yellow">FooBar</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-Green);" title="bg: Green, fg: Yellow">FooBar</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-Purple);" title="bg: Purple, fg: Yellow">FooBar</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-Red);" title="bg: Red, fg: Yellow">FooBar</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-White);" title="bg: White, fg: Yellow">FooBar</td>
+                        <td style="color: var(--color-Yellow); background: var(--color-Yellow);" title="bg: Yellow, fg: Yellow">FooBar</td>
+                </tr>
+                
+                <tr title="fg: BrightYellow">
+                    <td style="text-align: right" title="fg: BrightYellow">BrightYellow</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-Bg);" title="bg: Bg, fg: BrightYellow">FooBar</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-Black);" title="bg: Black, fg: BrightYellow">FooBar</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-Blue);" title="bg: Blue, fg: BrightYellow">FooBar</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-Cyan);" title="bg: Cyan, fg: BrightYellow">FooBar</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-Green);" title="bg: Green, fg: BrightYellow">FooBar</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-Purple);" title="bg: Purple, fg: BrightYellow">FooBar</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-Red);" title="bg: Red, fg: BrightYellow">FooBar</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-White);" title="bg: White, fg: BrightYellow">FooBar</td>
+                        <td style="color: var(--color-BrightYellow); background: var(--color-Yellow);" title="bg: Yellow, fg: BrightYellow">FooBar</td>
+                </tr>
+                
+            </table>
+        </body>
+    </foreignObject>
+</svg>
