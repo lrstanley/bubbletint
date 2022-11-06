@@ -22,6 +22,8 @@ import (
 	"github.com/muesli/termenv"
 )
 
+var theme = tint.TintICOrangePPL
+
 type model struct {
 	packages []string
 	index    int
@@ -35,12 +37,12 @@ type model struct {
 func newModel() model {
 	p := progress.New(
 		progress.WithColorProfile(termenv.TrueColor),
-		progress.WithScaledGradient(tint.Hex(tint.BrightPurple()), tint.Hex(tint.BrightBlue())),
+		progress.WithScaledGradient(tint.Hex(theme.BrightPurple()), tint.Hex(theme.BrightBlue())),
 		progress.WithWidth(40),
 		progress.WithoutPercentage(),
 	)
 	s := spinner.New()
-	s.Style = lipgloss.NewStyle().Foreground(tint.Fg())
+	s.Style = lipgloss.NewStyle().Foreground(theme.Fg())
 	return model{
 		packages: getPackages(),
 		spinner:  s,
@@ -73,7 +75,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		m.index++
 
-		checkMark := lipgloss.NewStyle().Foreground(tint.Green()).SetString("✓")
+		checkMark := lipgloss.NewStyle().Foreground(theme.Green()).SetString("✓")
 
 		return m, tea.Batch(
 			progressCmd,
@@ -95,7 +97,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() string {
-	currentPkgNameStyle := lipgloss.NewStyle().Foreground(tint.BrightPurple())
+	currentPkgNameStyle := lipgloss.NewStyle().Foreground(theme.BrightPurple())
 	doneStyle := lipgloss.NewStyle().Margin(1, 2)
 
 	n := len(m.packages)
@@ -139,9 +141,6 @@ func max(a, b int) int {
 }
 
 func main() {
-	tint.NewDefaultRegistry()
-	tint.SetTint(tint.TintICOrangePPL)
-
 	rand.Seed(time.Now().Unix())
 
 	if err := tea.NewProgram(newModel()).Start(); err != nil {
