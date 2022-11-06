@@ -59,7 +59,7 @@
                     <td style="text-align: right" title="fg: {{ $fg }}">{{ $fg }}</td>
                     {{- range $i, $bg := $colorMap }}
                         {{- if or (eq $bg "Fg") (isbright $bg) }}{{continue}}{{- end }}
-                        <td style="color: var(--color-{{ $fg }}); background: var(--color-{{ $bg }});" title="bg: {{ $bg }}, fg: {{ $fg }}">FooBar</td>
+                        <td style="color: var(--color-{{ $fg }}); background: var(--color-{{ $bg }});" title="bg: {{ $bg }}, fg: {{ $fg }}">Foo<span style="text-decoration: underline">Bar</span></td>
                     {{- end }}
                 </tr>
                 {{ end }}
