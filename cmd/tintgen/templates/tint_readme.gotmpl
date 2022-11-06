@@ -4,17 +4,18 @@
 
 {{- range $i, $tint := . }}
 {{- if ne .StructName .Tint.Name }}
-- [{{ .StructName }}](#{{ .StructName }})
-{{- else }}
 - [{{ .StructName }} ({{ .Tint.Name }})](#{{ .StructName }})
+{{- else }}
+- [{{ .StructName }}](#{{ .StructName }})
 {{- end }}
 {{- end }}
 
 ## :rainbow: Tints
 
 {{- range $i, $tint := . }}
-## {{ .StructName }} {{ if ne .StructName .Tint.Name }} ({{ .Tint.Name }}) {{ end }}
+## {{ .StructName }}
 
+   * Name: {{ .Tint.Name }}
    * ID: `{{ .NameNormalized }}`
    * Usage: `tint.{{ .StructName }}`
    * Reference: [https://windowsterminalthemes.dev/?theme={{ urlenc .Tint.Name }}](https://windowsterminalthemes.dev/?theme={{ urlenc .Tint.Name }})
