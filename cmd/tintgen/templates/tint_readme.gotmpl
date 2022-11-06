@@ -1,16 +1,4 @@
-# Default Tints
-
-## :link: Table of Contents
-
-{{- range $i, $tint := . }}
-{{- if ne .StructName .Tint.Name }}
-- [{{ .StructName }} ({{ .Tint.Name }})](#{{ .StructName }})
-{{- else }}
-- [{{ .StructName }}](#{{ .StructName }})
-{{- end }}
-{{- end }}
-
-## :rainbow: Tints
+# :rainbow: Default Tints
 
 {{- range $i, $tint := . }}
 ## {{ .StructName }}
