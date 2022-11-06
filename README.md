@@ -69,8 +69,9 @@
 
 - :heavy_check_mark: Utilize 280+ built-in tints.
   We're taking advantage of the great work others have done
-  with [Windows Terminal Themes](https://windowsterminalthemes.dev/) and making
-  them more accessible in a programmatic fashion.
+  with [Windows Terminal Themes](https://windowsterminalthemes.dev/)
+  and [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes),
+  and making them more accessible in a programmatic fashion.
 - :heavy_check_mark: Support for dynamically changing tints at runtime, to give
   immediate feedback on which tints might look the best for your application and
   terminal setup.
