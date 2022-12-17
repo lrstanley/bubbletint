@@ -2416,6 +2416,15 @@
 
 <a href="#CoffeeTheme"><img title="Palette preview for CoffeeTheme" src="./defaulttints/coffee_theme.svg" width="100%" height="530"></a>
 
+## Coolnight
+
+   * Name: coolnight
+   * ID: `coolnight`
+   * Usage: `tint.TintCoolnight`
+   * Reference: [https://windowsterminalthemes.dev/?theme=coolnight](https://windowsterminalthemes.dev/?theme=coolnight)
+
+<a href="#Coolnight"><img title="Palette preview for Coolnight" src="./defaulttints/coolnight.svg" width="100%" height="530"></a>
+
 ## Cyberpunk
 
    * Name: cyberpunk

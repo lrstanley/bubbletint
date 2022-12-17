@@ -275,6 +275,7 @@ var (
 	TintAyu                            Tint = &defaulttints.TintAyu{}
 	TintAyuLight                       Tint = &defaulttints.TintAyuLight{}
 	TintCoffeeTheme                    Tint = &defaulttints.TintCoffeeTheme{}
+	TintCoolnight                      Tint = &defaulttints.TintCoolnight{}
 	TintCyberpunk                      Tint = &defaulttints.TintCyberpunk{}
 	TintDeep                           Tint = &defaulttints.TintDeep{}
 	TintH4Rithd                        Tint = &defaulttints.TintH4Rithd{}
@@ -571,6 +572,7 @@ func DefaultTints() []Tint {
 		TintAyu,
 		TintAyuLight,
 		TintCoffeeTheme,
+		TintCoolnight,
 		TintCyberpunk,
 		TintDeep,
 		TintH4Rithd,
