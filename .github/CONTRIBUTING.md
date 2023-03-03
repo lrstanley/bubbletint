@@ -104,6 +104,6 @@ Below are a few guidelines if you would like to contribute:
 [discussions]: https://github.com/lrstanley/bubbletint/discussions
 [issues]: https://github.com/lrstanley/bubbletint/issues/new/choose
 [license]: https://github.com/lrstanley/bubbletint/blob/master/LICENSE
-[pull-requests]: https://github.com/lrstanley/bubbletint/issues/new/choose
+[pull-requests]: https://github.com/lrstanley/bubbletint/pulls?q=is%3Aopen+is%3Apr
 [security]: https://github.com/lrstanley/bubbletint/security/policy
 [support]: https://github.com/lrstanley/bubbletint/blob/master/.github/SUPPORT.md
