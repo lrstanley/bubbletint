@@ -272,6 +272,7 @@ var (
 	TintWombat                         Tint = &defaulttints.TintWombat{}
 	TintWryan                          Tint = &defaulttints.TintWryan{}
 	TintZenburn                        Tint = &defaulttints.TintZenburn{}
+	TintZeonica                        Tint = &defaulttints.TintZeonica{}
 	TintAyu                            Tint = &defaulttints.TintAyu{}
 	TintAyuLight                       Tint = &defaulttints.TintAyuLight{}
 	TintCoffeeTheme                    Tint = &defaulttints.TintCoffeeTheme{}
@@ -569,6 +570,7 @@ func DefaultTints() []Tint {
 		TintWombat,
 		TintWryan,
 		TintZenburn,
+		TintZeonica,
 		TintAyu,
 		TintAyuLight,
 		TintCoffeeTheme,

@@ -2389,6 +2389,15 @@
 
 <a href="#Zenburn"><img title="Palette preview for Zenburn" src="./defaulttints/zenburn.svg" width="100%" height="530"></a>
 
+## Zeonica
+
+   * Name: Zeonica
+   * ID: `zeonica`
+   * Usage: `tint.TintZeonica`
+   * Reference: [https://windowsterminalthemes.dev/?theme=Zeonica](https://windowsterminalthemes.dev/?theme=Zeonica)
+
+<a href="#Zeonica"><img title="Palette preview for Zeonica" src="./defaulttints/zeonica.svg" width="100%" height="530"></a>
+
 ## Ayu
 
    * Name: ayu
