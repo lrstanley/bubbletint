@@ -53,12 +53,12 @@
 <!-- do not edit anything in this "template" block, its auto-generated -->
 ## :link: Table of Contents
 
-  - [✨ Features](#sparkles-features)
-  - [⚙️ Usage](#gear-usage)
+  - [Features](#sparkles-features)
+  - [Usage](#gear-usage)
     - [Global registry](#global-registry)
     - [Custom Registry](#custom-registry)
     - [Use specific tints](#use-specific-tints)
-  - [👏 Examples](#clap-examples)
+  - [Examples](#clap-examples)
     - [Package manager example](#package-manager-example)
     - [Complex example](#complex-example)
   - [Support &amp; Assistance](#raising_hand_man-support--assistance)
