@@ -53,7 +53,7 @@
 <!-- do not edit anything in this "template" block, its auto-generated -->
 ## :link: Table of Contents
 
-  - [Features](#sparkles-features)
+  - [✨ Features](#sparkles-features)
   - [Usage](#gear-usage)
     - [Global registry](#global-registry)
     - [Custom Registry](#custom-registry)
@@ -61,7 +61,7 @@
   - [Examples](#clap-examples)
     - [Package manager example](#package-manager-example)
     - [Complex example](#complex-example)
-  - [Support &amp; Assistance](#raising_hand_man-support--assistance)
+  - [🙋‍♂️ Support &amp; Assistance](#raising_hand_man-support--assistance)
   - [Contributing](#handshake-contributing)
   - [License](#balance_scale-license)
 <!-- template:end:toc -->
