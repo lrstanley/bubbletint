@@ -54,7 +54,7 @@
 ## :link: Table of Contents
 
   - [Features](#sparkles-features)
-  - [Usage](#gear-usage)
+  - [⚙️ Usage](#gear-usage)
     - [Global registry](#global-registry)
     - [Custom Registry](#custom-registry)
     - [Use specific tints](#use-specific-tints)
