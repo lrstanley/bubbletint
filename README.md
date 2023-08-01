@@ -53,7 +53,7 @@
 <!-- do not edit anything in this "template" block, its auto-generated -->
 ## :link: Table of Contents
 
-  - [✨ Features](#sparkles-features)
+  - [Features](#sparkles-features)
   - [Usage](#gear-usage)
     - [Global registry](#global-registry)
     - [Custom Registry](#custom-registry)
