@@ -22,7 +22,7 @@ import (
 	"github.com/muesli/termenv"
 )
 
-var theme = tint.TintICOrangePPL
+var theme = tint.TintIcOrangePpl
 
 type model struct {
 	packages []string

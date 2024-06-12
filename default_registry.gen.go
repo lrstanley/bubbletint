@@ -48,7 +48,7 @@ var (
 	TintBuiltinTangoDark               Tint = &defaulttints.TintBuiltinTangoDark{}
 	TintBuiltinTangoLight              Tint = &defaulttints.TintBuiltinTangoLight{}
 	TintC64                            Tint = &defaulttints.TintC64{}
-	TintCLRS                           Tint = &defaulttints.TintCLRS{}
+	TintClrs                           Tint = &defaulttints.TintClrs{}
 	TintCalamity                       Tint = &defaulttints.TintCalamity{}
 	TintCatppuccinFrappe               Tint = &defaulttints.TintCatppuccinFrappe{}
 	TintCatppuccinLatte                Tint = &defaulttints.TintCatppuccinLatte{}
@@ -81,7 +81,7 @@ var (
 	TintDracula                        Tint = &defaulttints.TintDracula{}
 	TintDraculaPlus                    Tint = &defaulttints.TintDraculaPlus{}
 	TintDuotoneDark                    Tint = &defaulttints.TintDuotoneDark{}
-	TintENCOM                          Tint = &defaulttints.TintENCOM{}
+	TintEncom                          Tint = &defaulttints.TintEncom{}
 	TintEarthsong                      Tint = &defaulttints.TintEarthsong{}
 	TintElemental                      Tint = &defaulttints.TintElemental{}
 	TintElementary                     Tint = &defaulttints.TintElementary{}
@@ -123,14 +123,15 @@ var (
 	TintHurtado                        Tint = &defaulttints.TintHurtado{}
 	TintHybrid                         Tint = &defaulttints.TintHybrid{}
 	TintHyper                          Tint = &defaulttints.TintHyper{}
-	TintICGreenPPL                     Tint = &defaulttints.TintICGreenPPL{}
-	TintICOrangePPL                    Tint = &defaulttints.TintICOrangePPL{}
-	TintIRBlack                        Tint = &defaulttints.TintIRBlack{}
+	TintIcGreenPpl                     Tint = &defaulttints.TintIcGreenPpl{}
+	TintIcOrangePpl                    Tint = &defaulttints.TintIcOrangePpl{}
+	TintIrBlack                        Tint = &defaulttints.TintIrBlack{}
 	TintJackieBrown                    Tint = &defaulttints.TintJackieBrown{}
 	TintJapanesque                     Tint = &defaulttints.TintJapanesque{}
 	TintJellybeans                     Tint = &defaulttints.TintJellybeans{}
 	TintJetBrainsDarcula               Tint = &defaulttints.TintJetBrainsDarcula{}
 	TintJuicyColors                    Tint = &defaulttints.TintJuicyColors{}
+	TintKanagawa                       Tint = &defaulttints.TintKanagawa{}
 	TintKibble                         Tint = &defaulttints.TintKibble{}
 	TintKolorit                        Tint = &defaulttints.TintKolorit{}
 	TintKonsolas                       Tint = &defaulttints.TintKonsolas{}
@@ -160,10 +161,11 @@ var (
 	TintMonokaiRemastered              Tint = &defaulttints.TintMonokaiRemastered{}
 	TintMonokaiSoda                    Tint = &defaulttints.TintMonokaiSoda{}
 	TintMonokaiVivid                   Tint = &defaulttints.TintMonokaiVivid{}
-	TintMoonlightII                    Tint = &defaulttints.TintMoonlightII{}
+	TintMoonlightIi                    Tint = &defaulttints.TintMoonlightIi{}
 	TintN0Tch2K                        Tint = &defaulttints.TintN0Tch2K{}
 	TintNeopolitan                     Tint = &defaulttints.TintNeopolitan{}
 	TintNeutron                        Tint = &defaulttints.TintNeutron{}
+	TintNightCity                      Tint = &defaulttints.TintNightCity{}
 	TintNightOwlishLight               Tint = &defaulttints.TintNightOwlishLight{}
 	TintNightLionV1                    Tint = &defaulttints.TintNightLionV1{}
 	TintNightLionV2                    Tint = &defaulttints.TintNightLionV2{}
@@ -179,7 +181,7 @@ var (
 	TintOneStar                        Tint = &defaulttints.TintOneStar{}
 	TintOperatorMonoDark               Tint = &defaulttints.TintOperatorMonoDark{}
 	TintOvernightSlumber               Tint = &defaulttints.TintOvernightSlumber{}
-	TintPaleNightHC                    Tint = &defaulttints.TintPaleNightHC{}
+	TintPaleNightHc                    Tint = &defaulttints.TintPaleNightHc{}
 	TintPandora                        Tint = &defaulttints.TintPandora{}
 	TintParaisoDark                    Tint = &defaulttints.TintParaisoDark{}
 	TintParasioDark                    Tint = &defaulttints.TintParasioDark{}
@@ -193,7 +195,7 @@ var (
 	TintPro                            Tint = &defaulttints.TintPro{}
 	TintProLight                       Tint = &defaulttints.TintProLight{}
 	TintPurpleRain                     Tint = &defaulttints.TintPurpleRain{}
-	TintQB64SuperDarkBlue              Tint = &defaulttints.TintQB64SuperDarkBlue{}
+	TintQb64SuperDarkBlue              Tint = &defaulttints.TintQb64SuperDarkBlue{}
 	TintRapture                        Tint = &defaulttints.TintRapture{}
 	TintRedAlert                       Tint = &defaulttints.TintRedAlert{}
 	TintRedPlanet                      Tint = &defaulttints.TintRedPlanet{}
@@ -346,7 +348,7 @@ func DefaultTints() []Tint {
 		TintBuiltinTangoDark,
 		TintBuiltinTangoLight,
 		TintC64,
-		TintCLRS,
+		TintClrs,
 		TintCalamity,
 		TintCatppuccinFrappe,
 		TintCatppuccinLatte,
@@ -379,7 +381,7 @@ func DefaultTints() []Tint {
 		TintDracula,
 		TintDraculaPlus,
 		TintDuotoneDark,
-		TintENCOM,
+		TintEncom,
 		TintEarthsong,
 		TintElemental,
 		TintElementary,
@@ -421,14 +423,15 @@ func DefaultTints() []Tint {
 		TintHurtado,
 		TintHybrid,
 		TintHyper,
-		TintICGreenPPL,
-		TintICOrangePPL,
-		TintIRBlack,
+		TintIcGreenPpl,
+		TintIcOrangePpl,
+		TintIrBlack,
 		TintJackieBrown,
 		TintJapanesque,
 		TintJellybeans,
 		TintJetBrainsDarcula,
 		TintJuicyColors,
+		TintKanagawa,
 		TintKibble,
 		TintKolorit,
 		TintKonsolas,
@@ -458,10 +461,11 @@ func DefaultTints() []Tint {
 		TintMonokaiRemastered,
 		TintMonokaiSoda,
 		TintMonokaiVivid,
-		TintMoonlightII,
+		TintMoonlightIi,
 		TintN0Tch2K,
 		TintNeopolitan,
 		TintNeutron,
+		TintNightCity,
 		TintNightOwlishLight,
 		TintNightLionV1,
 		TintNightLionV2,
@@ -477,7 +481,7 @@ func DefaultTints() []Tint {
 		TintOneStar,
 		TintOperatorMonoDark,
 		TintOvernightSlumber,
-		TintPaleNightHC,
+		TintPaleNightHc,
 		TintPandora,
 		TintParaisoDark,
 		TintParasioDark,
@@ -491,7 +495,7 @@ func DefaultTints() []Tint {
 		TintPro,
 		TintProLight,
 		TintPurpleRain,
-		TintQB64SuperDarkBlue,
+		TintQb64SuperDarkBlue,
 		TintRapture,
 		TintRedAlert,
 		TintRedPlanet,

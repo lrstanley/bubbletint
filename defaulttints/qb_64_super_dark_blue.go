@@ -20,112 +20,112 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
-// TintQB64SuperDarkBlue (QB64 Super Dark Blue) is a collection of lipgloss styles.
+// TintQb64SuperDarkBlue (QB64 Super Dark Blue) is a collection of lipgloss styles.
 //
-// Reference: https://github.com/lrstanley/bubbletint/blob/master/DEFAULT_TINTS.md#QB64SuperDarkBlue
+// Reference: https://github.com/lrstanley/bubbletint/blob/master/DEFAULT_TINTS.md#Qb64SuperDarkBlue
 //
 // Credit to:
 //   - jmmv (https://github.com/jmmv)
-type TintQB64SuperDarkBlue struct{}
+type TintQb64SuperDarkBlue struct{}
 
 // DisplayName returns the display name of the tint.
-func (t *TintQB64SuperDarkBlue) DisplayName() string {
+func (t *TintQb64SuperDarkBlue) DisplayName() string {
 	return "QB64 Super Dark Blue"
 }
 
 // ID returns the name of the tint (normalized, snakecase style).
-func (t *TintQB64SuperDarkBlue) ID() string {
+func (t *TintQb64SuperDarkBlue) ID() string {
 	return "qb_64_super_dark_blue"
 }
 
 // About returns information about the tint (and if we have credit for who
 // assisted with/created it).
-func (t *TintQB64SuperDarkBlue) About() string {
+func (t *TintQb64SuperDarkBlue) About() string {
 	return `Tint: QB64 Super Dark Blue
 Tint credits:
   * jmmv (https://github.com/jmmv)`
 }
 
 // Fg returns the recommended default foreground color for this tint.
-func (t *TintQB64SuperDarkBlue) Fg() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Fg() lipgloss.TerminalColor {
 	return lipgloss.Color("#D8D8D8")
 }
 
 // Bg returns the recommended default background color for this tint.
-func (t *TintQB64SuperDarkBlue) Bg() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Bg() lipgloss.TerminalColor {
 	return lipgloss.Color("#000027")
 }
 
 // SelectionBg returns the recommended background color for selected text.
-func (t *TintQB64SuperDarkBlue) SelectionBg() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) SelectionBg() lipgloss.TerminalColor {
 	return lipgloss.Color("#00586C")
 }
 
 // Cursor returns the recommended color for the cursor.
-func (t *TintQB64SuperDarkBlue) Cursor() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Cursor() lipgloss.TerminalColor {
 	return lipgloss.Color("#D8D8D8")
 }
 
-func (t *TintQB64SuperDarkBlue) BrightBlack() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) BrightBlack() lipgloss.TerminalColor {
 	return lipgloss.Color("#626262")
 }
 
-func (t *TintQB64SuperDarkBlue) BrightBlue() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) BrightBlue() lipgloss.TerminalColor {
 	return lipgloss.Color("#457693")
 }
 
-func (t *TintQB64SuperDarkBlue) BrightCyan() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) BrightCyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#00586C")
 }
 
-func (t *TintQB64SuperDarkBlue) BrightGreen() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) BrightGreen() lipgloss.TerminalColor {
 	return lipgloss.Color("#55CE55")
 }
 
-func (t *TintQB64SuperDarkBlue) BrightPurple() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) BrightPurple() lipgloss.TerminalColor {
 	return lipgloss.Color("#934593")
 }
 
-func (t *TintQB64SuperDarkBlue) BrightRed() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) BrightRed() lipgloss.TerminalColor {
 	return lipgloss.Color("#D8624E")
 }
 
-func (t *TintQB64SuperDarkBlue) BrightWhite() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) BrightWhite() lipgloss.TerminalColor {
 	return lipgloss.Color("#D8D8D8")
 }
 
-func (t *TintQB64SuperDarkBlue) BrightYellow() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) BrightYellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#FFA700")
 }
 
-func (t *TintQB64SuperDarkBlue) Black() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Black() lipgloss.TerminalColor {
 	return lipgloss.Color("#000000")
 }
 
-func (t *TintQB64SuperDarkBlue) Blue() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Blue() lipgloss.TerminalColor {
 	return lipgloss.Color("#054663")
 }
 
-func (t *TintQB64SuperDarkBlue) Cyan() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Cyan() lipgloss.TerminalColor {
 	return lipgloss.Color("#00485C")
 }
 
-func (t *TintQB64SuperDarkBlue) Green() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Green() lipgloss.TerminalColor {
 	return lipgloss.Color("#157E15")
 }
 
-func (t *TintQB64SuperDarkBlue) Purple() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Purple() lipgloss.TerminalColor {
 	return lipgloss.Color("#631563")
 }
 
-func (t *TintQB64SuperDarkBlue) Red() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Red() lipgloss.TerminalColor {
 	return lipgloss.Color("#98220E")
 }
 
-func (t *TintQB64SuperDarkBlue) White() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) White() lipgloss.TerminalColor {
 	return lipgloss.Color("#989898")
 }
 
-func (t *TintQB64SuperDarkBlue) Yellow() lipgloss.TerminalColor {
+func (t *TintQb64SuperDarkBlue) Yellow() lipgloss.TerminalColor {
 	return lipgloss.Color("#808000")
 }

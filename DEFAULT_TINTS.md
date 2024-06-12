@@ -334,14 +334,14 @@
 
 <a href="#C64"><img title="Palette preview for C64" src="./defaulttints/c_64.svg" width="100%" height="530"></a>
 
-## CLRS
+## Clrs
 
    * Name: CLRS
    * ID: `clrs`
-   * Usage: `tint.TintCLRS`
+   * Usage: `tint.TintClrs`
    * Reference: [https://windowsterminalthemes.dev/?theme=CLRS](https://windowsterminalthemes.dev/?theme=CLRS)
 
-<a href="#CLRS"><img title="Palette preview for CLRS" src="./defaulttints/clrs.svg" width="100%" height="530"></a>
+<a href="#Clrs"><img title="Palette preview for Clrs" src="./defaulttints/clrs.svg" width="100%" height="530"></a>
 
 ## Calamity
 
@@ -631,14 +631,14 @@
 
 <a href="#DuotoneDark"><img title="Palette preview for DuotoneDark" src="./defaulttints/duotone_dark.svg" width="100%" height="530"></a>
 
-## ENCOM
+## Encom
 
    * Name: ENCOM
    * ID: `encom`
-   * Usage: `tint.TintENCOM`
+   * Usage: `tint.TintEncom`
    * Reference: [https://windowsterminalthemes.dev/?theme=ENCOM](https://windowsterminalthemes.dev/?theme=ENCOM)
 
-<a href="#ENCOM"><img title="Palette preview for ENCOM" src="./defaulttints/encom.svg" width="100%" height="530"></a>
+<a href="#Encom"><img title="Palette preview for Encom" src="./defaulttints/encom.svg" width="100%" height="530"></a>
 
 ## Earthsong
 
@@ -1017,32 +1017,32 @@
 
 <a href="#Hyper"><img title="Palette preview for Hyper" src="./defaulttints/hyper.svg" width="100%" height="530"></a>
 
-## ICGreenPPL
+## IcGreenPpl
 
    * Name: IC_Green_PPL
    * ID: `ic_green_ppl`
-   * Usage: `tint.TintICGreenPPL`
+   * Usage: `tint.TintIcGreenPpl`
    * Reference: [https://windowsterminalthemes.dev/?theme=IC_Green_PPL](https://windowsterminalthemes.dev/?theme=IC_Green_PPL)
 
-<a href="#ICGreenPPL"><img title="Palette preview for ICGreenPPL" src="./defaulttints/ic_green_ppl.svg" width="100%" height="530"></a>
+<a href="#IcGreenPpl"><img title="Palette preview for IcGreenPpl" src="./defaulttints/ic_green_ppl.svg" width="100%" height="530"></a>
 
-## ICOrangePPL
+## IcOrangePpl
 
    * Name: IC_Orange_PPL
    * ID: `ic_orange_ppl`
-   * Usage: `tint.TintICOrangePPL`
+   * Usage: `tint.TintIcOrangePpl`
    * Reference: [https://windowsterminalthemes.dev/?theme=IC_Orange_PPL](https://windowsterminalthemes.dev/?theme=IC_Orange_PPL)
 
-<a href="#ICOrangePPL"><img title="Palette preview for ICOrangePPL" src="./defaulttints/ic_orange_ppl.svg" width="100%" height="530"></a>
+<a href="#IcOrangePpl"><img title="Palette preview for IcOrangePpl" src="./defaulttints/ic_orange_ppl.svg" width="100%" height="530"></a>
 
-## IRBlack
+## IrBlack
 
    * Name: IR_Black
    * ID: `ir_black`
-   * Usage: `tint.TintIRBlack`
+   * Usage: `tint.TintIrBlack`
    * Reference: [https://windowsterminalthemes.dev/?theme=IR_Black](https://windowsterminalthemes.dev/?theme=IR_Black)
 
-<a href="#IRBlack"><img title="Palette preview for IRBlack" src="./defaulttints/ir_black.svg" width="100%" height="530"></a>
+<a href="#IrBlack"><img title="Palette preview for IrBlack" src="./defaulttints/ir_black.svg" width="100%" height="530"></a>
 
 ## JackieBrown
 
@@ -1088,6 +1088,15 @@
    * Reference: [https://windowsterminalthemes.dev/?theme=Juicy+Colors](https://windowsterminalthemes.dev/?theme=Juicy+Colors)
 
 <a href="#JuicyColors"><img title="Palette preview for JuicyColors" src="./defaulttints/juicy_colors.svg" width="100%" height="530"></a>
+
+## Kanagawa
+
+   * Name: Kanagawa
+   * ID: `kanagawa`
+   * Usage: `tint.TintKanagawa`
+   * Reference: [https://windowsterminalthemes.dev/?theme=Kanagawa](https://windowsterminalthemes.dev/?theme=Kanagawa)
+
+<a href="#Kanagawa"><img title="Palette preview for Kanagawa" src="./defaulttints/kanagawa.svg" width="100%" height="530"></a>
 
 ## Kibble
 
@@ -1356,16 +1365,16 @@
 
 <a href="#MonokaiVivid"><img title="Palette preview for MonokaiVivid" src="./defaulttints/monokai_vivid.svg" width="100%" height="530"></a>
 
-## MoonlightII
+## MoonlightIi
 
    * Name: Moonlight II
    * ID: `moonlight_ii`
-   * Usage: `tint.TintMoonlightII`
+   * Usage: `tint.TintMoonlightIi`
    * Reference: [https://windowsterminalthemes.dev/?theme=Moonlight+II](https://windowsterminalthemes.dev/?theme=Moonlight+II)
    * Credit to:
       * atomiks (https://github.com/atomiks)
 
-<a href="#MoonlightII"><img title="Palette preview for MoonlightII" src="./defaulttints/moonlight_ii.svg" width="100%" height="530"></a>
+<a href="#MoonlightIi"><img title="Palette preview for MoonlightIi" src="./defaulttints/moonlight_ii.svg" width="100%" height="530"></a>
 
 ## N0Tch2K
 
@@ -1393,6 +1402,17 @@
    * Reference: [https://windowsterminalthemes.dev/?theme=Neutron](https://windowsterminalthemes.dev/?theme=Neutron)
 
 <a href="#Neutron"><img title="Palette preview for Neutron" src="./defaulttints/neutron.svg" width="100%" height="530"></a>
+
+## NightCity
+
+   * Name: Night City
+   * ID: `night_city`
+   * Usage: `tint.TintNightCity`
+   * Reference: [https://windowsterminalthemes.dev/?theme=Night+City](https://windowsterminalthemes.dev/?theme=Night+City)
+   * Credit to:
+      * Thomas Lane (https://github.com/tel0065)
+
+<a href="#NightCity"><img title="Palette preview for NightCity" src="./defaulttints/night_city.svg" width="100%" height="530"></a>
 
 ## NightOwlishLight
 
@@ -1533,14 +1553,14 @@
 
 <a href="#OvernightSlumber"><img title="Palette preview for OvernightSlumber" src="./defaulttints/overnight_slumber.svg" width="100%" height="530"></a>
 
-## PaleNightHC
+## PaleNightHc
 
    * Name: PaleNightHC
    * ID: `pale_night_hc`
-   * Usage: `tint.TintPaleNightHC`
+   * Usage: `tint.TintPaleNightHc`
    * Reference: [https://windowsterminalthemes.dev/?theme=PaleNightHC](https://windowsterminalthemes.dev/?theme=PaleNightHC)
 
-<a href="#PaleNightHC"><img title="Palette preview for PaleNightHC" src="./defaulttints/pale_night_hc.svg" width="100%" height="530"></a>
+<a href="#PaleNightHc"><img title="Palette preview for PaleNightHc" src="./defaulttints/pale_night_hc.svg" width="100%" height="530"></a>
 
 ## Pandora
 
@@ -1659,16 +1679,16 @@
 
 <a href="#PurpleRain"><img title="Palette preview for PurpleRain" src="./defaulttints/purple_rain.svg" width="100%" height="530"></a>
 
-## QB64SuperDarkBlue
+## Qb64SuperDarkBlue
 
    * Name: QB64 Super Dark Blue
    * ID: `qb_64_super_dark_blue`
-   * Usage: `tint.TintQB64SuperDarkBlue`
+   * Usage: `tint.TintQb64SuperDarkBlue`
    * Reference: [https://windowsterminalthemes.dev/?theme=QB64+Super+Dark+Blue](https://windowsterminalthemes.dev/?theme=QB64+Super+Dark+Blue)
    * Credit to:
       * jmmv (https://github.com/jmmv)
 
-<a href="#QB64SuperDarkBlue"><img title="Palette preview for QB64SuperDarkBlue" src="./defaulttints/qb_64_super_dark_blue.svg" width="100%" height="530"></a>
+<a href="#Qb64SuperDarkBlue"><img title="Palette preview for Qb64SuperDarkBlue" src="./defaulttints/qb_64_super_dark_blue.svg" width="100%" height="530"></a>
 
 ## Rapture
 
