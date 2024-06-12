@@ -38,7 +38,7 @@ func Tints() []Tint {
 
 // TintIDs returns a list of all registered tint IDs, sorted alphabetically by their
 // ID, using the default registry.
-func TintIDs() (ids []string) {
+func TintIDs() (ids []string) { //nolint:revive
 	return DefaultRegistry.TintIDs()
 }
 

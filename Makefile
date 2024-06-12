@@ -3,26 +3,18 @@
 license:
 	curl -sL https://liam.sh/-/gh/g/license-header.sh | bash -s
 
-up: go-upgrade-deps
-	@echo
+up:
+	go get -u ./... && go mod tidy
+	cd examples && go get -u ./... && go mod tidy
 
-go-fetch:
-	go mod download
-	go mod tidy
-
-go-upgrade-deps:
-	go get -u ./...
-	go mod tidy
-
-go-upgrade-deps-patch:
-	go get -u=patch ./...
+prepare:
 	go mod tidy
 
 commit: generate
 	git add --all defaulttints/* *.gen.go DEFAULT_TINTS.md
 	git commit -m "chore(tints): generate updated tints"
 
-generate: license go-fetch
+generate: license prepare
 	mkdir -p defaulttints
 	rm -rf defaulttints/* *.gen.go DEFAULT_TINTS.md
 	# go run cmd/tintgen/*.go

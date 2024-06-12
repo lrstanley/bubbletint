@@ -244,7 +244,7 @@ func (r *Registry) Bg() lipgloss.TerminalColor {
 	return r.GetCurrentTint().Bg()
 }
 
-// SelectionBg returns the recommended background color for selected text, using
+// SelectionBg returns the recommended background color for selected text.
 func (r *Registry) SelectionBg() lipgloss.TerminalColor {
 	return r.GetCurrentTint().SelectionBg()
 }

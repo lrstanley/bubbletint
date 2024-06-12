@@ -169,13 +169,14 @@ func main() {
 
 func fetchTints() (tints []Tint) {
 	for _, url := range TintUrls {
-		resp, err := http.Get(url)
+		resp, err := http.Get(url) //nolint:gosec,noctx
 		if err != nil {
 			panic(err)
 		}
 
 		var rawTints []Tint
-		if err := json.NewDecoder(resp.Body).Decode(&rawTints); err != nil {
+		err = json.NewDecoder(resp.Body).Decode(&rawTints)
+		if err != nil {
 			panic(err)
 		}
 		resp.Body.Close()
@@ -190,13 +191,14 @@ func fetchCredits() map[string][]CreditSource {
 	sourceMap := map[string][]CreditSource{}
 
 	for _, url := range CredUrls {
-		resp, err := http.Get(url)
+		resp, err := http.Get(url) //nolint:gosec,noctx
 		if err != nil {
 			panic(err)
 		}
 
 		var rawCredits []Credit
-		if err := json.NewDecoder(resp.Body).Decode(&rawCredits); err != nil {
+		err = json.NewDecoder(resp.Body).Decode(&rawCredits)
+		if err != nil {
 			panic(err)
 		}
 		resp.Body.Close()
@@ -236,11 +238,12 @@ func generateTint(tint TintTemplate) {
 	}
 	defer f.Close()
 
-	if err := tintTmpl.Execute(f, tint); err != nil {
+	err = tintTmpl.Execute(f, tint)
+	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println("generated", fn)
+	fmt.Println("generated", fn) //nolint:all
 }
 
 func generateTintSVG(tint TintTemplate) {
@@ -252,15 +255,16 @@ func generateTintSVG(tint TintTemplate) {
 	}
 	defer f.Close()
 
-	if err := tintSVGTmpl.Execute(f, M{
+	err = tintSVGTmpl.Execute(f, M{
 		"TintTemplate":    tint,
 		"ColorMap":        ColorMap,
 		"ColorMapSpecial": ColorMapSpecial,
-	}); err != nil {
+	})
+	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println("generated", fn)
+	fmt.Println("generated", fn) //nolint:all
 }
 
 func generateTintReadme(tints []TintTemplate) {
@@ -270,11 +274,12 @@ func generateTintReadme(tints []TintTemplate) {
 	}
 	defer f.Close()
 
-	if err := tintReadmeTmpl.Execute(f, tints); err != nil {
+	err = tintReadmeTmpl.Execute(f, tints)
+	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("generated %s\n", tintReadmePath)
+	fmt.Printf("generated %s\n", tintReadmePath) //nolint:all
 }
 
 func generateRegistry(tints []TintTemplate) {
@@ -284,9 +289,10 @@ func generateRegistry(tints []TintTemplate) {
 	}
 	defer f.Close()
 
-	if err := registryTmpl.Execute(f, tints); err != nil {
+	err = registryTmpl.Execute(f, tints)
+	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("generated %s\n", registryPath)
+	fmt.Printf("generated %s\n", registryPath) //nolint:all
 }
