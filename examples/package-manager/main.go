@@ -141,10 +141,8 @@ func max(a, b int) int {
 }
 
 func main() {
-	rand.Seed(time.Now().Unix())
-
-	if err := tea.NewProgram(newModel()).Start(); err != nil {
-		fmt.Println("Error running program:", err)
+	if _, err := tea.NewProgram(newModel()).Run(); err != nil {
+		fmt.Println("error running program:", err) //nolint:all
 		os.Exit(1)
 	}
 }

@@ -30,7 +30,7 @@ func (m history) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.height = msg.Height
 		m.width = msg.Width
 	case tea.MouseMsg:
-		if msg.Type != tea.MouseLeft {
+		if msg.Action != tea.MouseActionRelease || msg.Button != tea.MouseButtonLeft {
 			return m, nil
 		}
 
@@ -61,7 +61,7 @@ func (m history) View() string {
 	for _, item := range m.items {
 		if item == m.active {
 			// Customize the active item.
-			out = append(out, zone.Mark(m.id+item, historyStyle.Copy().Background(tint.BrightPurple()).Foreground(tint.Bg()).Render(item)))
+			out = append(out, zone.Mark(m.id+item, historyStyle.Background(tint.BrightPurple()).Foreground(tint.Bg()).Render(item)))
 		} else {
 			// Make sure to mark all zones.
 			out = append(out, zone.Mark(m.id+item, historyStyle.Render(item)))
