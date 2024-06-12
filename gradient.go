@@ -5,6 +5,8 @@
 package tint
 
 import (
+	"image/color"
+
 	"github.com/charmbracelet/lipgloss"
 	"github.com/lucasb-eyer/go-colorful"
 )
@@ -12,7 +14,7 @@ import (
 // FromTo converts a color from one color space to another colorful's BlendLuv --
 // which blends two colors in the CIE-L*u*v* color-space. The result is a slice of
 // lipgloss.TerminalColor (compatible with lipgloss methods).
-func FromTo(from, to lipgloss.TerminalColor, steps int) (gradient []lipgloss.TerminalColor) {
+func FromTo(from, to color.Color, steps int) (gradient []lipgloss.TerminalColor) {
 	gradient = make([]lipgloss.TerminalColor, steps)
 
 	for i, hex := range FromToHex(from, to, steps) {
@@ -25,7 +27,7 @@ func FromTo(from, to lipgloss.TerminalColor, steps int) (gradient []lipgloss.Ter
 // FromToHex converts a color from one color space to another colorful's BlendLuv --
 // which blends two colors in the CIE-L*u*v* color-space. The result is a slice of
 // hex colors.
-func FromToHex(from, to lipgloss.TerminalColor, steps int) (gradient []string) {
+func FromToHex(from, to color.Color, steps int) (gradient []string) {
 	start, ok := colorful.MakeColor(from)
 	if !ok {
 		panic("invalid from color specified")
