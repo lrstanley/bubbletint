@@ -21,6 +21,7 @@
     <img title="GitHub Workflow Status (test @ master)" src="https://img.shields.io/github/actions/workflow/status/lrstanley/bubbletint/test.yml?branch=master&label=test&style=flat-square">
   </a>
 
+
   <a href="https://codecov.io/gh/lrstanley/bubbletint">
     <img title="Code Coverage" src="https://img.shields.io/codecov/c/github/lrstanley/bubbletint/master?style=flat-square">
   </a>
