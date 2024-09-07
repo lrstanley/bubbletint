@@ -685,6 +685,24 @@
 
 <a href="#EspressoLibre"><img title="Palette preview for EspressoLibre" src="./defaulttints/espresso_libre.svg" width="100%" height="530"></a>
 
+## EvaDark
+
+   * Name: Eva Dark
+   * ID: `eva_dark`
+   * Usage: `tint.TintEvaDark`
+   * Reference: [https://windowsterminalthemes.dev/?theme=Eva+Dark](https://windowsterminalthemes.dev/?theme=Eva+Dark)
+
+<a href="#EvaDark"><img title="Palette preview for EvaDark" src="./defaulttints/eva_dark.svg" width="100%" height="530"></a>
+
+## EvaLight
+
+   * Name: Eva Light
+   * ID: `eva_light`
+   * Usage: `tint.TintEvaLight`
+   * Reference: [https://windowsterminalthemes.dev/?theme=Eva+Light](https://windowsterminalthemes.dev/?theme=Eva+Light)
+
+<a href="#EvaLight"><img title="Palette preview for EvaLight" src="./defaulttints/eva_light.svg" width="100%" height="530"></a>
+
 ## Fahrenheit
 
    * Name: Fahrenheit

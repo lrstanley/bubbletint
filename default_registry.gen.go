@@ -87,6 +87,8 @@ var (
 	TintElementary                     Tint = &defaulttints.TintElementary{}
 	TintEspresso                       Tint = &defaulttints.TintEspresso{}
 	TintEspressoLibre                  Tint = &defaulttints.TintEspressoLibre{}
+	TintEvaDark                        Tint = &defaulttints.TintEvaDark{}
+	TintEvaLight                       Tint = &defaulttints.TintEvaLight{}
 	TintFahrenheit                     Tint = &defaulttints.TintFahrenheit{}
 	TintFideloper                      Tint = &defaulttints.TintFideloper{}
 	TintFirefoxDev                     Tint = &defaulttints.TintFirefoxDev{}
@@ -387,6 +389,8 @@ func DefaultTints() []Tint {
 		TintElementary,
 		TintEspresso,
 		TintEspressoLibre,
+		TintEvaDark,
+		TintEvaLight,
 		TintFahrenheit,
 		TintFideloper,
 		TintFirefoxDev,
