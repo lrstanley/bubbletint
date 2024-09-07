@@ -7,10 +7,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"os"
 	"reflect"
+	"regexp"
 	"sort"
 	"strings"
 	"text/template"
@@ -167,19 +169,29 @@ func main() {
 	generateRegistry(tints)
 }
 
+var reStripTrailingComma = regexp.MustCompile(`,\s*\]\s*$`)
+
 func fetchTints() (tints []Tint) {
 	for _, url := range TintUrls {
-		resp, err := http.Get(url) //nolint:gosec,noctx
+		fmt.Printf("fetching %s\n", url) //nolint:all
+		resp, err := http.Get(url)       //nolint:gosec,noctx
 		if err != nil {
 			panic(err)
 		}
 
-		var rawTints []Tint
-		err = json.NewDecoder(resp.Body).Decode(&rawTints)
+		b, err := io.ReadAll(resp.Body)
 		if err != nil {
 			panic(err)
 		}
 		resp.Body.Close()
+
+		b = reStripTrailingComma.ReplaceAll(b, []byte("]"))
+
+		var rawTints []Tint
+		err = json.Unmarshal(b, &rawTints)
+		if err != nil {
+			panic(err)
+		}
 
 		tints = append(tints, rawTints...)
 	}
