@@ -5,7 +5,9 @@ license:
 
 up:
 	go get -u ./... && go mod tidy
+	go get -u -t ./... && go mod tidy
 	cd examples && go get -u ./... && go mod tidy
+	cd examples && go get -u -t ./... && go mod tidy
 
 prepare:
 	go mod tidy
@@ -17,7 +19,6 @@ commit: generate
 generate: license prepare
 	mkdir -p defaulttints
 	rm -rf defaulttints/* *.gen.go DEFAULT_TINTS.md
-	# go run cmd/tintgen/*.go
 	go run github.com/lrstanley/bubbletint/cmd/tintgen
 	gofmt -e -s -w defaulttints/*.go
 	gofmt -e -s -w *.go
