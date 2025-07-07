@@ -6,52 +6,52 @@ package tint
 
 type CreditSource struct {
 	// Name is the name of the credit source.
-	Name string
+	Name string `json:"name,omitempty"`
 
 	// Link is the link to the credit source.
-	Link string
+	Link string `json:"link,omitempty"`
 }
 
 // Tint is a struct that represents each tint in this package.
 type Tint struct {
 	// DisplayName returns the display name of the tint.
-	DisplayName string
+	DisplayName string `json:"display_name,omitempty"`
 
 	// ID returns the name of the tint (normalized, snakecase style).
-	ID string
+	ID string `json:"id,omitempty"`
 
 	// CreditSources returns the credit sources for the tint.
-	CreditSources []*CreditSource
+	CreditSources []*CreditSource `json:"credit_sources,omitempty"`
 
 	// Fg returns the recommended default foreground color for this tint.
-	Fg *Color
+	Fg *Color `json:"fg,omitempty"`
 
 	// Bg returns the recommended default background color for this tint.
-	Bg *Color
+	Bg *Color `json:"bg,omitempty"`
 
 	// SelectionBg returns the recommended background color for selected text. Note that this
 	// is missing from most themes.
-	SelectionBg *Color
+	SelectionBg *Color `json:"selection_bg,omitempty"`
 
 	// Cursor returns the recommended color for the cursor. Note that this is missing from
 	// most themes.
-	Cursor *Color
+	Cursor *Color `json:"cursor,omitempty"`
 
-	BrightBlack  *Color
-	BrightBlue   *Color
-	BrightCyan   *Color
-	BrightGreen  *Color
-	BrightPurple *Color
-	BrightRed    *Color
-	BrightWhite  *Color
-	BrightYellow *Color
+	BrightBlack  *Color `json:"bright_black,omitempty"`
+	BrightBlue   *Color `json:"bright_blue,omitempty"`
+	BrightCyan   *Color `json:"bright_cyan,omitempty"`
+	BrightGreen  *Color `json:"bright_green,omitempty"`
+	BrightPurple *Color `json:"bright_purple,omitempty"`
+	BrightRed    *Color `json:"bright_red,omitempty"`
+	BrightWhite  *Color `json:"bright_white,omitempty"`
+	BrightYellow *Color `json:"bright_yellow,omitempty"`
 
-	Black  *Color
-	Blue   *Color
-	Cyan   *Color
-	Green  *Color
-	Purple *Color
-	Red    *Color
-	White  *Color
-	Yellow *Color
+	Black  *Color `json:"black,omitempty"`
+	Blue   *Color `json:"blue,omitempty"`
+	Cyan   *Color `json:"cyan,omitempty"`
+	Green  *Color `json:"green,omitempty"`
+	Purple *Color `json:"purple,omitempty"`
+	Red    *Color `json:"red,omitempty"`
+	White  *Color `json:"white,omitempty"`
+	Yellow *Color `json:"yellow,omitempty"`
 }

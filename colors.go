@@ -5,6 +5,8 @@
 package tint
 
 import (
+	"encoding/json"
+	"errors"
 	"fmt"
 	"image/color"
 
@@ -15,8 +17,11 @@ var _ color.Color = &Color{} // Ensure that Color implements the color.Color int
 
 // Color implements the color.Color interface, in addition to adding a hex field. It
 // can be used anywhere a color.Color is expected.
-type Color struct {
-	R, G, B, A uint8
+type Color struct { //nolint:recvcheck
+	R uint8 `json:"r"`
+	G uint8 `json:"g"`
+	B uint8 `json:"b"`
+	A uint8 `json:"a"`
 }
 
 func (c Color) RGBA() (r, g, b, a uint32) {
@@ -34,6 +39,59 @@ func (c Color) RGBA() (r, g, b, a uint32) {
 // Hex returns the hex value of the color.
 func (c Color) Hex() string {
 	return fmt.Sprintf("#%02x%02x%02x", c.R, c.G, c.B)
+}
+
+// MarshalJSON implements the json.Marshaler interface.
+func (c Color) MarshalJSON() ([]byte, error) {
+	data := map[string]any{
+		"r": int(c.R),
+		"g": int(c.G),
+		"b": int(c.B),
+		"a": int(c.A),
+	}
+	return json.Marshal(data)
+}
+
+// UnmarshalJSON implements the json.Unmarshaler interface. It supports both
+// the RGBA values as defined by the Color struct, as well as a "hex" string in
+// place of the RGBA object, for those which do not want to write theme config
+// files by the RGBA values.
+//
+// Examples:
+//
+//	{"r": 255, "g": 0, "b": 0, "a": 255}
+//	"#ff0000"
+func (c *Color) UnmarshalJSON(data []byte) error {
+	var m map[string]any
+	err := json.Unmarshal(data, &m)
+	if err == nil {
+		r, rok := m["r"].(int)
+		g, gok := m["g"].(int)
+		b, bok := m["b"].(int)
+		a, aok := m["a"].(int)
+		if rok && gok && bok && aok {
+			c.R = uint8(r) //nolint:gosec
+			c.G = uint8(g) //nolint:gosec
+			c.B = uint8(b) //nolint:gosec
+			c.A = uint8(a) //nolint:gosec
+			return nil
+		}
+	}
+
+	// Try and parse the hex value, if one exists.
+	var hex string
+
+	herr := json.Unmarshal(data, &hex)
+	if herr != nil {
+		return fmt.Errorf("failed to unmarshal tint color (not RGBA object or hex string): %w", errors.Join(err, herr))
+	}
+
+	hexColor := FromHex(hex)
+	c.R = hexColor.R
+	c.G = hexColor.G
+	c.B = hexColor.B
+	c.A = hexColor.A
+	return nil
 }
 
 // FromHex converts a hex color string to a Color. If the hex value is invalid,
