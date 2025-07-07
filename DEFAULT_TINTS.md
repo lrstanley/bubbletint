@@ -6,7 +6,7 @@
    * Usage: `tint.Tint3024Day`
    * Reference: [https://windowsterminalthemes.dev/?theme=3024+Day](https://windowsterminalthemes.dev/?theme=3024+Day)
 
-<a href="#3024Day"><img title="Palette preview for 3024Day" src="./defaulttints/3024_day.svg" width="100%" height="530"></a>
+<a href="#3024Day"><img title="Palette preview for 3024Day" src="./svgs/3024_day.svg" width="100%" height="530"></a>
 
 ## 3024Night
 
@@ -15,7 +15,7 @@
    * Usage: `tint.Tint3024Night`
    * Reference: [https://windowsterminalthemes.dev/?theme=3024+Night](https://windowsterminalthemes.dev/?theme=3024+Night)
 
-<a href="#3024Night"><img title="Palette preview for 3024Night" src="./defaulttints/3024_night.svg" width="100%" height="530"></a>
+<a href="#3024Night"><img title="Palette preview for 3024Night" src="./svgs/3024_night.svg" width="100%" height="530"></a>
 
 ## Adventure
 
@@ -24,7 +24,7 @@
    * Usage: `tint.TintAdventure`
    * Reference: [https://windowsterminalthemes.dev/?theme=Adventure](https://windowsterminalthemes.dev/?theme=Adventure)
 
-<a href="#Adventure"><img title="Palette preview for Adventure" src="./defaulttints/adventure.svg" width="100%" height="530"></a>
+<a href="#Adventure"><img title="Palette preview for Adventure" src="./svgs/adventure.svg" width="100%" height="530"></a>
 
 ## AdventureTime
 
@@ -33,7 +33,7 @@
    * Usage: `tint.TintAdventureTime`
    * Reference: [https://windowsterminalthemes.dev/?theme=AdventureTime](https://windowsterminalthemes.dev/?theme=AdventureTime)
 
-<a href="#AdventureTime"><img title="Palette preview for AdventureTime" src="./defaulttints/adventure_time.svg" width="100%" height="530"></a>
+<a href="#AdventureTime"><img title="Palette preview for AdventureTime" src="./svgs/adventure_time.svg" width="100%" height="530"></a>
 
 ## Afterglow
 
@@ -42,7 +42,7 @@
    * Usage: `tint.TintAfterglow`
    * Reference: [https://windowsterminalthemes.dev/?theme=Afterglow](https://windowsterminalthemes.dev/?theme=Afterglow)
 
-<a href="#Afterglow"><img title="Palette preview for Afterglow" src="./defaulttints/afterglow.svg" width="100%" height="530"></a>
+<a href="#Afterglow"><img title="Palette preview for Afterglow" src="./svgs/afterglow.svg" width="100%" height="530"></a>
 
 ## AlienBlood
 
@@ -51,7 +51,7 @@
    * Usage: `tint.TintAlienBlood`
    * Reference: [https://windowsterminalthemes.dev/?theme=AlienBlood](https://windowsterminalthemes.dev/?theme=AlienBlood)
 
-<a href="#AlienBlood"><img title="Palette preview for AlienBlood" src="./defaulttints/alien_blood.svg" width="100%" height="530"></a>
+<a href="#AlienBlood"><img title="Palette preview for AlienBlood" src="./svgs/alien_blood.svg" width="100%" height="530"></a>
 
 ## Andromeda
 
@@ -60,7 +60,7 @@
    * Usage: `tint.TintAndromeda`
    * Reference: [https://windowsterminalthemes.dev/?theme=Andromeda](https://windowsterminalthemes.dev/?theme=Andromeda)
 
-<a href="#Andromeda"><img title="Palette preview for Andromeda" src="./defaulttints/andromeda.svg" width="100%" height="530"></a>
+<a href="#Andromeda"><img title="Palette preview for Andromeda" src="./svgs/andromeda.svg" width="100%" height="530"></a>
 
 ## Argonaut
 
@@ -69,7 +69,7 @@
    * Usage: `tint.TintArgonaut`
    * Reference: [https://windowsterminalthemes.dev/?theme=Argonaut](https://windowsterminalthemes.dev/?theme=Argonaut)
 
-<a href="#Argonaut"><img title="Palette preview for Argonaut" src="./defaulttints/argonaut.svg" width="100%" height="530"></a>
+<a href="#Argonaut"><img title="Palette preview for Argonaut" src="./svgs/argonaut.svg" width="100%" height="530"></a>
 
 ## Arthur
 
@@ -78,7 +78,7 @@
    * Usage: `tint.TintArthur`
    * Reference: [https://windowsterminalthemes.dev/?theme=Arthur](https://windowsterminalthemes.dev/?theme=Arthur)
 
-<a href="#Arthur"><img title="Palette preview for Arthur" src="./defaulttints/arthur.svg" width="100%" height="530"></a>
+<a href="#Arthur"><img title="Palette preview for Arthur" src="./svgs/arthur.svg" width="100%" height="530"></a>
 
 ## AtelierSulphurpool
 
@@ -87,7 +87,7 @@
    * Usage: `tint.TintAtelierSulphurpool`
    * Reference: [https://windowsterminalthemes.dev/?theme=AtelierSulphurpool](https://windowsterminalthemes.dev/?theme=AtelierSulphurpool)
 
-<a href="#AtelierSulphurpool"><img title="Palette preview for AtelierSulphurpool" src="./defaulttints/atelier_sulphurpool.svg" width="100%" height="530"></a>
+<a href="#AtelierSulphurpool"><img title="Palette preview for AtelierSulphurpool" src="./svgs/atelier_sulphurpool.svg" width="100%" height="530"></a>
 
 ## Atom
 
@@ -96,7 +96,7 @@
    * Usage: `tint.TintAtom`
    * Reference: [https://windowsterminalthemes.dev/?theme=Atom](https://windowsterminalthemes.dev/?theme=Atom)
 
-<a href="#Atom"><img title="Palette preview for Atom" src="./defaulttints/atom.svg" width="100%" height="530"></a>
+<a href="#Atom"><img title="Palette preview for Atom" src="./svgs/atom.svg" width="100%" height="530"></a>
 
 ## AtomOneLight
 
@@ -105,7 +105,7 @@
    * Usage: `tint.TintAtomOneLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=AtomOneLight](https://windowsterminalthemes.dev/?theme=AtomOneLight)
 
-<a href="#AtomOneLight"><img title="Palette preview for AtomOneLight" src="./defaulttints/atom_one_light.svg" width="100%" height="530"></a>
+<a href="#AtomOneLight"><img title="Palette preview for AtomOneLight" src="./svgs/atom_one_light.svg" width="100%" height="530"></a>
 
 ## Aurora
 
@@ -114,7 +114,7 @@
    * Usage: `tint.TintAurora`
    * Reference: [https://windowsterminalthemes.dev/?theme=Aurora](https://windowsterminalthemes.dev/?theme=Aurora)
 
-<a href="#Aurora"><img title="Palette preview for Aurora" src="./defaulttints/aurora.svg" width="100%" height="530"></a>
+<a href="#Aurora"><img title="Palette preview for Aurora" src="./svgs/aurora.svg" width="100%" height="530"></a>
 
 ## BananaBlueberry
 
@@ -123,7 +123,7 @@
    * Usage: `tint.TintBananaBlueberry`
    * Reference: [https://windowsterminalthemes.dev/?theme=Banana+Blueberry](https://windowsterminalthemes.dev/?theme=Banana+Blueberry)
 
-<a href="#BananaBlueberry"><img title="Palette preview for BananaBlueberry" src="./defaulttints/banana_blueberry.svg" width="100%" height="530"></a>
+<a href="#BananaBlueberry"><img title="Palette preview for BananaBlueberry" src="./svgs/banana_blueberry.svg" width="100%" height="530"></a>
 
 ## Batman
 
@@ -132,7 +132,7 @@
    * Usage: `tint.TintBatman`
    * Reference: [https://windowsterminalthemes.dev/?theme=Batman](https://windowsterminalthemes.dev/?theme=Batman)
 
-<a href="#Batman"><img title="Palette preview for Batman" src="./defaulttints/batman.svg" width="100%" height="530"></a>
+<a href="#Batman"><img title="Palette preview for Batman" src="./svgs/batman.svg" width="100%" height="530"></a>
 
 ## BelafonteDay
 
@@ -141,7 +141,7 @@
    * Usage: `tint.TintBelafonteDay`
    * Reference: [https://windowsterminalthemes.dev/?theme=Belafonte+Day](https://windowsterminalthemes.dev/?theme=Belafonte+Day)
 
-<a href="#BelafonteDay"><img title="Palette preview for BelafonteDay" src="./defaulttints/belafonte_day.svg" width="100%" height="530"></a>
+<a href="#BelafonteDay"><img title="Palette preview for BelafonteDay" src="./svgs/belafonte_day.svg" width="100%" height="530"></a>
 
 ## BelafonteNight
 
@@ -150,7 +150,7 @@
    * Usage: `tint.TintBelafonteNight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Belafonte+Night](https://windowsterminalthemes.dev/?theme=Belafonte+Night)
 
-<a href="#BelafonteNight"><img title="Palette preview for BelafonteNight" src="./defaulttints/belafonte_night.svg" width="100%" height="530"></a>
+<a href="#BelafonteNight"><img title="Palette preview for BelafonteNight" src="./svgs/belafonte_night.svg" width="100%" height="530"></a>
 
 ## BirdsOfParadise
 
@@ -159,7 +159,7 @@
    * Usage: `tint.TintBirdsOfParadise`
    * Reference: [https://windowsterminalthemes.dev/?theme=BirdsOfParadise](https://windowsterminalthemes.dev/?theme=BirdsOfParadise)
 
-<a href="#BirdsOfParadise"><img title="Palette preview for BirdsOfParadise" src="./defaulttints/birds_of_paradise.svg" width="100%" height="530"></a>
+<a href="#BirdsOfParadise"><img title="Palette preview for BirdsOfParadise" src="./svgs/birds_of_paradise.svg" width="100%" height="530"></a>
 
 ## Blazer
 
@@ -168,7 +168,7 @@
    * Usage: `tint.TintBlazer`
    * Reference: [https://windowsterminalthemes.dev/?theme=Blazer](https://windowsterminalthemes.dev/?theme=Blazer)
 
-<a href="#Blazer"><img title="Palette preview for Blazer" src="./defaulttints/blazer.svg" width="100%" height="530"></a>
+<a href="#Blazer"><img title="Palette preview for Blazer" src="./svgs/blazer.svg" width="100%" height="530"></a>
 
 ## BlueMatrix
 
@@ -177,7 +177,7 @@
    * Usage: `tint.TintBlueMatrix`
    * Reference: [https://windowsterminalthemes.dev/?theme=Blue+Matrix](https://windowsterminalthemes.dev/?theme=Blue+Matrix)
 
-<a href="#BlueMatrix"><img title="Palette preview for BlueMatrix" src="./defaulttints/blue_matrix.svg" width="100%" height="530"></a>
+<a href="#BlueMatrix"><img title="Palette preview for BlueMatrix" src="./svgs/blue_matrix.svg" width="100%" height="530"></a>
 
 ## BlueBerryPie
 
@@ -186,7 +186,7 @@
    * Usage: `tint.TintBlueBerryPie`
    * Reference: [https://windowsterminalthemes.dev/?theme=BlueBerryPie](https://windowsterminalthemes.dev/?theme=BlueBerryPie)
 
-<a href="#BlueBerryPie"><img title="Palette preview for BlueBerryPie" src="./defaulttints/blue_berry_pie.svg" width="100%" height="530"></a>
+<a href="#BlueBerryPie"><img title="Palette preview for BlueBerryPie" src="./svgs/blue_berry_pie.svg" width="100%" height="530"></a>
 
 ## BlulocoDark
 
@@ -195,7 +195,7 @@
    * Usage: `tint.TintBlulocoDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=BlulocoDark](https://windowsterminalthemes.dev/?theme=BlulocoDark)
 
-<a href="#BlulocoDark"><img title="Palette preview for BlulocoDark" src="./defaulttints/bluloco_dark.svg" width="100%" height="530"></a>
+<a href="#BlulocoDark"><img title="Palette preview for BlulocoDark" src="./svgs/bluloco_dark.svg" width="100%" height="530"></a>
 
 ## BlulocoLight
 
@@ -204,7 +204,7 @@
    * Usage: `tint.TintBlulocoLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=BlulocoLight](https://windowsterminalthemes.dev/?theme=BlulocoLight)
 
-<a href="#BlulocoLight"><img title="Palette preview for BlulocoLight" src="./defaulttints/bluloco_light.svg" width="100%" height="530"></a>
+<a href="#BlulocoLight"><img title="Palette preview for BlulocoLight" src="./svgs/bluloco_light.svg" width="100%" height="530"></a>
 
 ## Borland
 
@@ -213,7 +213,7 @@
    * Usage: `tint.TintBorland`
    * Reference: [https://windowsterminalthemes.dev/?theme=Borland](https://windowsterminalthemes.dev/?theme=Borland)
 
-<a href="#Borland"><img title="Palette preview for Borland" src="./defaulttints/borland.svg" width="100%" height="530"></a>
+<a href="#Borland"><img title="Palette preview for Borland" src="./svgs/borland.svg" width="100%" height="530"></a>
 
 ## Breeze
 
@@ -222,7 +222,7 @@
    * Usage: `tint.TintBreeze`
    * Reference: [https://windowsterminalthemes.dev/?theme=Breeze](https://windowsterminalthemes.dev/?theme=Breeze)
 
-<a href="#Breeze"><img title="Palette preview for Breeze" src="./defaulttints/breeze.svg" width="100%" height="530"></a>
+<a href="#Breeze"><img title="Palette preview for Breeze" src="./svgs/breeze.svg" width="100%" height="530"></a>
 
 ## BrightLights
 
@@ -231,7 +231,7 @@
    * Usage: `tint.TintBrightLights`
    * Reference: [https://windowsterminalthemes.dev/?theme=Bright+Lights](https://windowsterminalthemes.dev/?theme=Bright+Lights)
 
-<a href="#BrightLights"><img title="Palette preview for BrightLights" src="./defaulttints/bright_lights.svg" width="100%" height="530"></a>
+<a href="#BrightLights"><img title="Palette preview for BrightLights" src="./svgs/bright_lights.svg" width="100%" height="530"></a>
 
 ## Broadcast
 
@@ -240,7 +240,7 @@
    * Usage: `tint.TintBroadcast`
    * Reference: [https://windowsterminalthemes.dev/?theme=Broadcast](https://windowsterminalthemes.dev/?theme=Broadcast)
 
-<a href="#Broadcast"><img title="Palette preview for Broadcast" src="./defaulttints/broadcast.svg" width="100%" height="530"></a>
+<a href="#Broadcast"><img title="Palette preview for Broadcast" src="./svgs/broadcast.svg" width="100%" height="530"></a>
 
 ## Brogrammer
 
@@ -249,7 +249,7 @@
    * Usage: `tint.TintBrogrammer`
    * Reference: [https://windowsterminalthemes.dev/?theme=Brogrammer](https://windowsterminalthemes.dev/?theme=Brogrammer)
 
-<a href="#Brogrammer"><img title="Palette preview for Brogrammer" src="./defaulttints/brogrammer.svg" width="100%" height="530"></a>
+<a href="#Brogrammer"><img title="Palette preview for Brogrammer" src="./svgs/brogrammer.svg" width="100%" height="530"></a>
 
 ## Bubbles
 
@@ -260,7 +260,7 @@
    * Credit to:
       * jos3s (https://github.com/jos3s)
 
-<a href="#Bubbles"><img title="Palette preview for Bubbles" src="./defaulttints/bubbles.svg" width="100%" height="530"></a>
+<a href="#Bubbles"><img title="Palette preview for Bubbles" src="./svgs/bubbles.svg" width="100%" height="530"></a>
 
 ## BuiltinDark
 
@@ -269,7 +269,7 @@
    * Usage: `tint.TintBuiltinDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Builtin+Dark](https://windowsterminalthemes.dev/?theme=Builtin+Dark)
 
-<a href="#BuiltinDark"><img title="Palette preview for BuiltinDark" src="./defaulttints/builtin_dark.svg" width="100%" height="530"></a>
+<a href="#BuiltinDark"><img title="Palette preview for BuiltinDark" src="./svgs/builtin_dark.svg" width="100%" height="530"></a>
 
 ## BuiltinLight
 
@@ -278,7 +278,7 @@
    * Usage: `tint.TintBuiltinLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Builtin+Light](https://windowsterminalthemes.dev/?theme=Builtin+Light)
 
-<a href="#BuiltinLight"><img title="Palette preview for BuiltinLight" src="./defaulttints/builtin_light.svg" width="100%" height="530"></a>
+<a href="#BuiltinLight"><img title="Palette preview for BuiltinLight" src="./svgs/builtin_light.svg" width="100%" height="530"></a>
 
 ## BuiltinPastelDark
 
@@ -287,7 +287,7 @@
    * Usage: `tint.TintBuiltinPastelDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Builtin+Pastel+Dark](https://windowsterminalthemes.dev/?theme=Builtin+Pastel+Dark)
 
-<a href="#BuiltinPastelDark"><img title="Palette preview for BuiltinPastelDark" src="./defaulttints/builtin_pastel_dark.svg" width="100%" height="530"></a>
+<a href="#BuiltinPastelDark"><img title="Palette preview for BuiltinPastelDark" src="./svgs/builtin_pastel_dark.svg" width="100%" height="530"></a>
 
 ## BuiltinSolarizedDark
 
@@ -296,7 +296,7 @@
    * Usage: `tint.TintBuiltinSolarizedDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Builtin+Solarized+Dark](https://windowsterminalthemes.dev/?theme=Builtin+Solarized+Dark)
 
-<a href="#BuiltinSolarizedDark"><img title="Palette preview for BuiltinSolarizedDark" src="./defaulttints/builtin_solarized_dark.svg" width="100%" height="530"></a>
+<a href="#BuiltinSolarizedDark"><img title="Palette preview for BuiltinSolarizedDark" src="./svgs/builtin_solarized_dark.svg" width="100%" height="530"></a>
 
 ## BuiltinSolarizedLight
 
@@ -305,7 +305,7 @@
    * Usage: `tint.TintBuiltinSolarizedLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Builtin+Solarized+Light](https://windowsterminalthemes.dev/?theme=Builtin+Solarized+Light)
 
-<a href="#BuiltinSolarizedLight"><img title="Palette preview for BuiltinSolarizedLight" src="./defaulttints/builtin_solarized_light.svg" width="100%" height="530"></a>
+<a href="#BuiltinSolarizedLight"><img title="Palette preview for BuiltinSolarizedLight" src="./svgs/builtin_solarized_light.svg" width="100%" height="530"></a>
 
 ## BuiltinTangoDark
 
@@ -314,7 +314,7 @@
    * Usage: `tint.TintBuiltinTangoDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Builtin+Tango+Dark](https://windowsterminalthemes.dev/?theme=Builtin+Tango+Dark)
 
-<a href="#BuiltinTangoDark"><img title="Palette preview for BuiltinTangoDark" src="./defaulttints/builtin_tango_dark.svg" width="100%" height="530"></a>
+<a href="#BuiltinTangoDark"><img title="Palette preview for BuiltinTangoDark" src="./svgs/builtin_tango_dark.svg" width="100%" height="530"></a>
 
 ## BuiltinTangoLight
 
@@ -323,7 +323,7 @@
    * Usage: `tint.TintBuiltinTangoLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Builtin+Tango+Light](https://windowsterminalthemes.dev/?theme=Builtin+Tango+Light)
 
-<a href="#BuiltinTangoLight"><img title="Palette preview for BuiltinTangoLight" src="./defaulttints/builtin_tango_light.svg" width="100%" height="530"></a>
+<a href="#BuiltinTangoLight"><img title="Palette preview for BuiltinTangoLight" src="./svgs/builtin_tango_light.svg" width="100%" height="530"></a>
 
 ## C64
 
@@ -332,7 +332,7 @@
    * Usage: `tint.TintC64`
    * Reference: [https://windowsterminalthemes.dev/?theme=C64](https://windowsterminalthemes.dev/?theme=C64)
 
-<a href="#C64"><img title="Palette preview for C64" src="./defaulttints/c_64.svg" width="100%" height="530"></a>
+<a href="#C64"><img title="Palette preview for C64" src="./svgs/c_64.svg" width="100%" height="530"></a>
 
 ## Clrs
 
@@ -341,7 +341,7 @@
    * Usage: `tint.TintClrs`
    * Reference: [https://windowsterminalthemes.dev/?theme=CLRS](https://windowsterminalthemes.dev/?theme=CLRS)
 
-<a href="#Clrs"><img title="Palette preview for Clrs" src="./defaulttints/clrs.svg" width="100%" height="530"></a>
+<a href="#Clrs"><img title="Palette preview for Clrs" src="./svgs/clrs.svg" width="100%" height="530"></a>
 
 ## Calamity
 
@@ -350,7 +350,7 @@
    * Usage: `tint.TintCalamity`
    * Reference: [https://windowsterminalthemes.dev/?theme=Calamity](https://windowsterminalthemes.dev/?theme=Calamity)
 
-<a href="#Calamity"><img title="Palette preview for Calamity" src="./defaulttints/calamity.svg" width="100%" height="530"></a>
+<a href="#Calamity"><img title="Palette preview for Calamity" src="./svgs/calamity.svg" width="100%" height="530"></a>
 
 ## CatppuccinFrappe
 
@@ -359,7 +359,7 @@
    * Usage: `tint.TintCatppuccinFrappe`
    * Reference: [https://windowsterminalthemes.dev/?theme=Catppuccin+Frappe](https://windowsterminalthemes.dev/?theme=Catppuccin+Frappe)
 
-<a href="#CatppuccinFrappe"><img title="Palette preview for CatppuccinFrappe" src="./defaulttints/catppuccin_frappe.svg" width="100%" height="530"></a>
+<a href="#CatppuccinFrappe"><img title="Palette preview for CatppuccinFrappe" src="./svgs/catppuccin_frappe.svg" width="100%" height="530"></a>
 
 ## CatppuccinLatte
 
@@ -368,7 +368,7 @@
    * Usage: `tint.TintCatppuccinLatte`
    * Reference: [https://windowsterminalthemes.dev/?theme=Catppuccin+Latte](https://windowsterminalthemes.dev/?theme=Catppuccin+Latte)
 
-<a href="#CatppuccinLatte"><img title="Palette preview for CatppuccinLatte" src="./defaulttints/catppuccin_latte.svg" width="100%" height="530"></a>
+<a href="#CatppuccinLatte"><img title="Palette preview for CatppuccinLatte" src="./svgs/catppuccin_latte.svg" width="100%" height="530"></a>
 
 ## CatppuccinMacchiato
 
@@ -377,7 +377,7 @@
    * Usage: `tint.TintCatppuccinMacchiato`
    * Reference: [https://windowsterminalthemes.dev/?theme=Catppuccin+Macchiato](https://windowsterminalthemes.dev/?theme=Catppuccin+Macchiato)
 
-<a href="#CatppuccinMacchiato"><img title="Palette preview for CatppuccinMacchiato" src="./defaulttints/catppuccin_macchiato.svg" width="100%" height="530"></a>
+<a href="#CatppuccinMacchiato"><img title="Palette preview for CatppuccinMacchiato" src="./svgs/catppuccin_macchiato.svg" width="100%" height="530"></a>
 
 ## CatppuccinMocha
 
@@ -386,7 +386,7 @@
    * Usage: `tint.TintCatppuccinMocha`
    * Reference: [https://windowsterminalthemes.dev/?theme=Catppuccin+Mocha](https://windowsterminalthemes.dev/?theme=Catppuccin+Mocha)
 
-<a href="#CatppuccinMocha"><img title="Palette preview for CatppuccinMocha" src="./defaulttints/catppuccin_mocha.svg" width="100%" height="530"></a>
+<a href="#CatppuccinMocha"><img title="Palette preview for CatppuccinMocha" src="./svgs/catppuccin_mocha.svg" width="100%" height="530"></a>
 
 ## Chalk
 
@@ -395,7 +395,7 @@
    * Usage: `tint.TintChalk`
    * Reference: [https://windowsterminalthemes.dev/?theme=Chalk](https://windowsterminalthemes.dev/?theme=Chalk)
 
-<a href="#Chalk"><img title="Palette preview for Chalk" src="./defaulttints/chalk.svg" width="100%" height="530"></a>
+<a href="#Chalk"><img title="Palette preview for Chalk" src="./svgs/chalk.svg" width="100%" height="530"></a>
 
 ## Chalkboard
 
@@ -404,7 +404,7 @@
    * Usage: `tint.TintChalkboard`
    * Reference: [https://windowsterminalthemes.dev/?theme=Chalkboard](https://windowsterminalthemes.dev/?theme=Chalkboard)
 
-<a href="#Chalkboard"><img title="Palette preview for Chalkboard" src="./defaulttints/chalkboard.svg" width="100%" height="530"></a>
+<a href="#Chalkboard"><img title="Palette preview for Chalkboard" src="./svgs/chalkboard.svg" width="100%" height="530"></a>
 
 ## ChallengerDeep
 
@@ -413,7 +413,7 @@
    * Usage: `tint.TintChallengerDeep`
    * Reference: [https://windowsterminalthemes.dev/?theme=ChallengerDeep](https://windowsterminalthemes.dev/?theme=ChallengerDeep)
 
-<a href="#ChallengerDeep"><img title="Palette preview for ChallengerDeep" src="./defaulttints/challenger_deep.svg" width="100%" height="530"></a>
+<a href="#ChallengerDeep"><img title="Palette preview for ChallengerDeep" src="./svgs/challenger_deep.svg" width="100%" height="530"></a>
 
 ## Chester
 
@@ -422,7 +422,7 @@
    * Usage: `tint.TintChester`
    * Reference: [https://windowsterminalthemes.dev/?theme=Chester](https://windowsterminalthemes.dev/?theme=Chester)
 
-<a href="#Chester"><img title="Palette preview for Chester" src="./defaulttints/chester.svg" width="100%" height="530"></a>
+<a href="#Chester"><img title="Palette preview for Chester" src="./svgs/chester.svg" width="100%" height="530"></a>
 
 ## Ciapre
 
@@ -431,7 +431,7 @@
    * Usage: `tint.TintCiapre`
    * Reference: [https://windowsterminalthemes.dev/?theme=Ciapre](https://windowsterminalthemes.dev/?theme=Ciapre)
 
-<a href="#Ciapre"><img title="Palette preview for Ciapre" src="./defaulttints/ciapre.svg" width="100%" height="530"></a>
+<a href="#Ciapre"><img title="Palette preview for Ciapre" src="./svgs/ciapre.svg" width="100%" height="530"></a>
 
 ## CobaltNeon
 
@@ -440,7 +440,7 @@
    * Usage: `tint.TintCobaltNeon`
    * Reference: [https://windowsterminalthemes.dev/?theme=Cobalt+Neon](https://windowsterminalthemes.dev/?theme=Cobalt+Neon)
 
-<a href="#CobaltNeon"><img title="Palette preview for CobaltNeon" src="./defaulttints/cobalt_neon.svg" width="100%" height="530"></a>
+<a href="#CobaltNeon"><img title="Palette preview for CobaltNeon" src="./svgs/cobalt_neon.svg" width="100%" height="530"></a>
 
 ## Cobalt2
 
@@ -449,7 +449,7 @@
    * Usage: `tint.TintCobalt2`
    * Reference: [https://windowsterminalthemes.dev/?theme=Cobalt2](https://windowsterminalthemes.dev/?theme=Cobalt2)
 
-<a href="#Cobalt2"><img title="Palette preview for Cobalt2" src="./defaulttints/cobalt_2.svg" width="100%" height="530"></a>
+<a href="#Cobalt2"><img title="Palette preview for Cobalt2" src="./svgs/cobalt_2.svg" width="100%" height="530"></a>
 
 ## ContrastLight
 
@@ -458,7 +458,7 @@
    * Usage: `tint.TintContrastLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Contrast+Light](https://windowsterminalthemes.dev/?theme=Contrast+Light)
 
-<a href="#ContrastLight"><img title="Palette preview for ContrastLight" src="./defaulttints/contrast_light.svg" width="100%" height="530"></a>
+<a href="#ContrastLight"><img title="Palette preview for ContrastLight" src="./svgs/contrast_light.svg" width="100%" height="530"></a>
 
 ## CrayonPonyFish
 
@@ -467,7 +467,7 @@
    * Usage: `tint.TintCrayonPonyFish`
    * Reference: [https://windowsterminalthemes.dev/?theme=CrayonPonyFish](https://windowsterminalthemes.dev/?theme=CrayonPonyFish)
 
-<a href="#CrayonPonyFish"><img title="Palette preview for CrayonPonyFish" src="./defaulttints/crayon_pony_fish.svg" width="100%" height="530"></a>
+<a href="#CrayonPonyFish"><img title="Palette preview for CrayonPonyFish" src="./svgs/crayon_pony_fish.svg" width="100%" height="530"></a>
 
 ## CrystalViolet
 
@@ -476,7 +476,7 @@
    * Usage: `tint.TintCrystalViolet`
    * Reference: [https://windowsterminalthemes.dev/?theme=Crystal+Violet](https://windowsterminalthemes.dev/?theme=Crystal+Violet)
 
-<a href="#CrystalViolet"><img title="Palette preview for CrystalViolet" src="./defaulttints/crystal_violet.svg" width="100%" height="530"></a>
+<a href="#CrystalViolet"><img title="Palette preview for CrystalViolet" src="./svgs/crystal_violet.svg" width="100%" height="530"></a>
 
 ## CyberCube
 
@@ -485,7 +485,7 @@
    * Usage: `tint.TintCyberCube`
    * Reference: [https://windowsterminalthemes.dev/?theme=Cyber+Cube](https://windowsterminalthemes.dev/?theme=Cyber+Cube)
 
-<a href="#CyberCube"><img title="Palette preview for CyberCube" src="./defaulttints/cyber_cube.svg" width="100%" height="530"></a>
+<a href="#CyberCube"><img title="Palette preview for CyberCube" src="./svgs/cyber_cube.svg" width="100%" height="530"></a>
 
 ## CyberPunk2077
 
@@ -494,7 +494,7 @@
    * Usage: `tint.TintCyberPunk2077`
    * Reference: [https://windowsterminalthemes.dev/?theme=CyberPunk2077](https://windowsterminalthemes.dev/?theme=CyberPunk2077)
 
-<a href="#CyberPunk2077"><img title="Palette preview for CyberPunk2077" src="./defaulttints/cyber_punk_2077.svg" width="100%" height="530"></a>
+<a href="#CyberPunk2077"><img title="Palette preview for CyberPunk2077" src="./svgs/cyber_punk_2077.svg" width="100%" height="530"></a>
 
 ## Cyberdyne
 
@@ -503,7 +503,7 @@
    * Usage: `tint.TintCyberdyne`
    * Reference: [https://windowsterminalthemes.dev/?theme=Cyberdyne](https://windowsterminalthemes.dev/?theme=Cyberdyne)
 
-<a href="#Cyberdyne"><img title="Palette preview for Cyberdyne" src="./defaulttints/cyberdyne.svg" width="100%" height="530"></a>
+<a href="#Cyberdyne"><img title="Palette preview for Cyberdyne" src="./svgs/cyberdyne.svg" width="100%" height="530"></a>
 
 ## DarkPastel
 
@@ -512,7 +512,7 @@
    * Usage: `tint.TintDarkPastel`
    * Reference: [https://windowsterminalthemes.dev/?theme=Dark+Pastel](https://windowsterminalthemes.dev/?theme=Dark+Pastel)
 
-<a href="#DarkPastel"><img title="Palette preview for DarkPastel" src="./defaulttints/dark_pastel.svg" width="100%" height="530"></a>
+<a href="#DarkPastel"><img title="Palette preview for DarkPastel" src="./svgs/dark_pastel.svg" width="100%" height="530"></a>
 
 ## DarkPlus
 
@@ -521,7 +521,7 @@
    * Usage: `tint.TintDarkPlus`
    * Reference: [https://windowsterminalthemes.dev/?theme=Dark%2B](https://windowsterminalthemes.dev/?theme=Dark%2B)
 
-<a href="#DarkPlus"><img title="Palette preview for DarkPlus" src="./defaulttints/dark_plus.svg" width="100%" height="530"></a>
+<a href="#DarkPlus"><img title="Palette preview for DarkPlus" src="./svgs/dark_plus.svg" width="100%" height="530"></a>
 
 ## Darkside
 
@@ -530,7 +530,7 @@
    * Usage: `tint.TintDarkside`
    * Reference: [https://windowsterminalthemes.dev/?theme=Darkside](https://windowsterminalthemes.dev/?theme=Darkside)
 
-<a href="#Darkside"><img title="Palette preview for Darkside" src="./defaulttints/darkside.svg" width="100%" height="530"></a>
+<a href="#Darkside"><img title="Palette preview for Darkside" src="./svgs/darkside.svg" width="100%" height="530"></a>
 
 ## Desert
 
@@ -539,7 +539,7 @@
    * Usage: `tint.TintDesert`
    * Reference: [https://windowsterminalthemes.dev/?theme=Desert](https://windowsterminalthemes.dev/?theme=Desert)
 
-<a href="#Desert"><img title="Palette preview for Desert" src="./defaulttints/desert.svg" width="100%" height="530"></a>
+<a href="#Desert"><img title="Palette preview for Desert" src="./svgs/desert.svg" width="100%" height="530"></a>
 
 ## DimmedMonokai
 
@@ -548,7 +548,7 @@
    * Usage: `tint.TintDimmedMonokai`
    * Reference: [https://windowsterminalthemes.dev/?theme=DimmedMonokai](https://windowsterminalthemes.dev/?theme=DimmedMonokai)
 
-<a href="#DimmedMonokai"><img title="Palette preview for DimmedMonokai" src="./defaulttints/dimmed_monokai.svg" width="100%" height="530"></a>
+<a href="#DimmedMonokai"><img title="Palette preview for DimmedMonokai" src="./svgs/dimmed_monokai.svg" width="100%" height="530"></a>
 
 ## Django
 
@@ -557,7 +557,7 @@
    * Usage: `tint.TintDjango`
    * Reference: [https://windowsterminalthemes.dev/?theme=Django](https://windowsterminalthemes.dev/?theme=Django)
 
-<a href="#Django"><img title="Palette preview for Django" src="./defaulttints/django.svg" width="100%" height="530"></a>
+<a href="#Django"><img title="Palette preview for Django" src="./svgs/django.svg" width="100%" height="530"></a>
 
 ## DjangoRebornAgain
 
@@ -566,7 +566,7 @@
    * Usage: `tint.TintDjangoRebornAgain`
    * Reference: [https://windowsterminalthemes.dev/?theme=DjangoRebornAgain](https://windowsterminalthemes.dev/?theme=DjangoRebornAgain)
 
-<a href="#DjangoRebornAgain"><img title="Palette preview for DjangoRebornAgain" src="./defaulttints/django_reborn_again.svg" width="100%" height="530"></a>
+<a href="#DjangoRebornAgain"><img title="Palette preview for DjangoRebornAgain" src="./svgs/django_reborn_again.svg" width="100%" height="530"></a>
 
 ## DjangoSmooth
 
@@ -575,7 +575,7 @@
    * Usage: `tint.TintDjangoSmooth`
    * Reference: [https://windowsterminalthemes.dev/?theme=DjangoSmooth](https://windowsterminalthemes.dev/?theme=DjangoSmooth)
 
-<a href="#DjangoSmooth"><img title="Palette preview for DjangoSmooth" src="./defaulttints/django_smooth.svg" width="100%" height="530"></a>
+<a href="#DjangoSmooth"><img title="Palette preview for DjangoSmooth" src="./svgs/django_smooth.svg" width="100%" height="530"></a>
 
 ## DoomPeacock
 
@@ -584,7 +584,7 @@
    * Usage: `tint.TintDoomPeacock`
    * Reference: [https://windowsterminalthemes.dev/?theme=Doom+Peacock](https://windowsterminalthemes.dev/?theme=Doom+Peacock)
 
-<a href="#DoomPeacock"><img title="Palette preview for DoomPeacock" src="./defaulttints/doom_peacock.svg" width="100%" height="530"></a>
+<a href="#DoomPeacock"><img title="Palette preview for DoomPeacock" src="./svgs/doom_peacock.svg" width="100%" height="530"></a>
 
 ## DoomOne
 
@@ -593,7 +593,7 @@
    * Usage: `tint.TintDoomOne`
    * Reference: [https://windowsterminalthemes.dev/?theme=DoomOne](https://windowsterminalthemes.dev/?theme=DoomOne)
 
-<a href="#DoomOne"><img title="Palette preview for DoomOne" src="./defaulttints/doom_one.svg" width="100%" height="530"></a>
+<a href="#DoomOne"><img title="Palette preview for DoomOne" src="./svgs/doom_one.svg" width="100%" height="530"></a>
 
 ## DotGov
 
@@ -602,7 +602,7 @@
    * Usage: `tint.TintDotGov`
    * Reference: [https://windowsterminalthemes.dev/?theme=DotGov](https://windowsterminalthemes.dev/?theme=DotGov)
 
-<a href="#DotGov"><img title="Palette preview for DotGov" src="./defaulttints/dot_gov.svg" width="100%" height="530"></a>
+<a href="#DotGov"><img title="Palette preview for DotGov" src="./svgs/dot_gov.svg" width="100%" height="530"></a>
 
 ## Dracula
 
@@ -611,7 +611,7 @@
    * Usage: `tint.TintDracula`
    * Reference: [https://windowsterminalthemes.dev/?theme=Dracula](https://windowsterminalthemes.dev/?theme=Dracula)
 
-<a href="#Dracula"><img title="Palette preview for Dracula" src="./defaulttints/dracula.svg" width="100%" height="530"></a>
+<a href="#Dracula"><img title="Palette preview for Dracula" src="./svgs/dracula.svg" width="100%" height="530"></a>
 
 ## DraculaPlus
 
@@ -620,7 +620,7 @@
    * Usage: `tint.TintDraculaPlus`
    * Reference: [https://windowsterminalthemes.dev/?theme=Dracula%2B](https://windowsterminalthemes.dev/?theme=Dracula%2B)
 
-<a href="#DraculaPlus"><img title="Palette preview for DraculaPlus" src="./defaulttints/dracula_plus.svg" width="100%" height="530"></a>
+<a href="#DraculaPlus"><img title="Palette preview for DraculaPlus" src="./svgs/dracula_plus.svg" width="100%" height="530"></a>
 
 ## DuotoneDark
 
@@ -629,7 +629,7 @@
    * Usage: `tint.TintDuotoneDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Duotone+Dark](https://windowsterminalthemes.dev/?theme=Duotone+Dark)
 
-<a href="#DuotoneDark"><img title="Palette preview for DuotoneDark" src="./defaulttints/duotone_dark.svg" width="100%" height="530"></a>
+<a href="#DuotoneDark"><img title="Palette preview for DuotoneDark" src="./svgs/duotone_dark.svg" width="100%" height="530"></a>
 
 ## Encom
 
@@ -638,7 +638,7 @@
    * Usage: `tint.TintEncom`
    * Reference: [https://windowsterminalthemes.dev/?theme=ENCOM](https://windowsterminalthemes.dev/?theme=ENCOM)
 
-<a href="#Encom"><img title="Palette preview for Encom" src="./defaulttints/encom.svg" width="100%" height="530"></a>
+<a href="#Encom"><img title="Palette preview for Encom" src="./svgs/encom.svg" width="100%" height="530"></a>
 
 ## Earthsong
 
@@ -647,7 +647,7 @@
    * Usage: `tint.TintEarthsong`
    * Reference: [https://windowsterminalthemes.dev/?theme=Earthsong](https://windowsterminalthemes.dev/?theme=Earthsong)
 
-<a href="#Earthsong"><img title="Palette preview for Earthsong" src="./defaulttints/earthsong.svg" width="100%" height="530"></a>
+<a href="#Earthsong"><img title="Palette preview for Earthsong" src="./svgs/earthsong.svg" width="100%" height="530"></a>
 
 ## Elemental
 
@@ -656,7 +656,7 @@
    * Usage: `tint.TintElemental`
    * Reference: [https://windowsterminalthemes.dev/?theme=Elemental](https://windowsterminalthemes.dev/?theme=Elemental)
 
-<a href="#Elemental"><img title="Palette preview for Elemental" src="./defaulttints/elemental.svg" width="100%" height="530"></a>
+<a href="#Elemental"><img title="Palette preview for Elemental" src="./svgs/elemental.svg" width="100%" height="530"></a>
 
 ## Elementary
 
@@ -665,7 +665,7 @@
    * Usage: `tint.TintElementary`
    * Reference: [https://windowsterminalthemes.dev/?theme=Elementary](https://windowsterminalthemes.dev/?theme=Elementary)
 
-<a href="#Elementary"><img title="Palette preview for Elementary" src="./defaulttints/elementary.svg" width="100%" height="530"></a>
+<a href="#Elementary"><img title="Palette preview for Elementary" src="./svgs/elementary.svg" width="100%" height="530"></a>
 
 ## Espresso
 
@@ -674,7 +674,7 @@
    * Usage: `tint.TintEspresso`
    * Reference: [https://windowsterminalthemes.dev/?theme=Espresso](https://windowsterminalthemes.dev/?theme=Espresso)
 
-<a href="#Espresso"><img title="Palette preview for Espresso" src="./defaulttints/espresso.svg" width="100%" height="530"></a>
+<a href="#Espresso"><img title="Palette preview for Espresso" src="./svgs/espresso.svg" width="100%" height="530"></a>
 
 ## EspressoLibre
 
@@ -683,7 +683,7 @@
    * Usage: `tint.TintEspressoLibre`
    * Reference: [https://windowsterminalthemes.dev/?theme=Espresso+Libre](https://windowsterminalthemes.dev/?theme=Espresso+Libre)
 
-<a href="#EspressoLibre"><img title="Palette preview for EspressoLibre" src="./defaulttints/espresso_libre.svg" width="100%" height="530"></a>
+<a href="#EspressoLibre"><img title="Palette preview for EspressoLibre" src="./svgs/espresso_libre.svg" width="100%" height="530"></a>
 
 ## EvaDark
 
@@ -692,7 +692,7 @@
    * Usage: `tint.TintEvaDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Eva+Dark](https://windowsterminalthemes.dev/?theme=Eva+Dark)
 
-<a href="#EvaDark"><img title="Palette preview for EvaDark" src="./defaulttints/eva_dark.svg" width="100%" height="530"></a>
+<a href="#EvaDark"><img title="Palette preview for EvaDark" src="./svgs/eva_dark.svg" width="100%" height="530"></a>
 
 ## EvaLight
 
@@ -701,7 +701,7 @@
    * Usage: `tint.TintEvaLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Eva+Light](https://windowsterminalthemes.dev/?theme=Eva+Light)
 
-<a href="#EvaLight"><img title="Palette preview for EvaLight" src="./defaulttints/eva_light.svg" width="100%" height="530"></a>
+<a href="#EvaLight"><img title="Palette preview for EvaLight" src="./svgs/eva_light.svg" width="100%" height="530"></a>
 
 ## Fahrenheit
 
@@ -710,7 +710,7 @@
    * Usage: `tint.TintFahrenheit`
    * Reference: [https://windowsterminalthemes.dev/?theme=Fahrenheit](https://windowsterminalthemes.dev/?theme=Fahrenheit)
 
-<a href="#Fahrenheit"><img title="Palette preview for Fahrenheit" src="./defaulttints/fahrenheit.svg" width="100%" height="530"></a>
+<a href="#Fahrenheit"><img title="Palette preview for Fahrenheit" src="./svgs/fahrenheit.svg" width="100%" height="530"></a>
 
 ## Fideloper
 
@@ -719,7 +719,7 @@
    * Usage: `tint.TintFideloper`
    * Reference: [https://windowsterminalthemes.dev/?theme=Fideloper](https://windowsterminalthemes.dev/?theme=Fideloper)
 
-<a href="#Fideloper"><img title="Palette preview for Fideloper" src="./defaulttints/fideloper.svg" width="100%" height="530"></a>
+<a href="#Fideloper"><img title="Palette preview for Fideloper" src="./svgs/fideloper.svg" width="100%" height="530"></a>
 
 ## FirefoxDev
 
@@ -728,7 +728,7 @@
    * Usage: `tint.TintFirefoxDev`
    * Reference: [https://windowsterminalthemes.dev/?theme=FirefoxDev](https://windowsterminalthemes.dev/?theme=FirefoxDev)
 
-<a href="#FirefoxDev"><img title="Palette preview for FirefoxDev" src="./defaulttints/firefox_dev.svg" width="100%" height="530"></a>
+<a href="#FirefoxDev"><img title="Palette preview for FirefoxDev" src="./svgs/firefox_dev.svg" width="100%" height="530"></a>
 
 ## Firewatch
 
@@ -737,7 +737,7 @@
    * Usage: `tint.TintFirewatch`
    * Reference: [https://windowsterminalthemes.dev/?theme=Firewatch](https://windowsterminalthemes.dev/?theme=Firewatch)
 
-<a href="#Firewatch"><img title="Palette preview for Firewatch" src="./defaulttints/firewatch.svg" width="100%" height="530"></a>
+<a href="#Firewatch"><img title="Palette preview for Firewatch" src="./svgs/firewatch.svg" width="100%" height="530"></a>
 
 ## FishTank
 
@@ -746,7 +746,7 @@
    * Usage: `tint.TintFishTank`
    * Reference: [https://windowsterminalthemes.dev/?theme=FishTank](https://windowsterminalthemes.dev/?theme=FishTank)
 
-<a href="#FishTank"><img title="Palette preview for FishTank" src="./defaulttints/fish_tank.svg" width="100%" height="530"></a>
+<a href="#FishTank"><img title="Palette preview for FishTank" src="./svgs/fish_tank.svg" width="100%" height="530"></a>
 
 ## Flat
 
@@ -755,7 +755,7 @@
    * Usage: `tint.TintFlat`
    * Reference: [https://windowsterminalthemes.dev/?theme=Flat](https://windowsterminalthemes.dev/?theme=Flat)
 
-<a href="#Flat"><img title="Palette preview for Flat" src="./defaulttints/flat.svg" width="100%" height="530"></a>
+<a href="#Flat"><img title="Palette preview for Flat" src="./svgs/flat.svg" width="100%" height="530"></a>
 
 ## Flatland
 
@@ -764,7 +764,7 @@
    * Usage: `tint.TintFlatland`
    * Reference: [https://windowsterminalthemes.dev/?theme=Flatland](https://windowsterminalthemes.dev/?theme=Flatland)
 
-<a href="#Flatland"><img title="Palette preview for Flatland" src="./defaulttints/flatland.svg" width="100%" height="530"></a>
+<a href="#Flatland"><img title="Palette preview for Flatland" src="./svgs/flatland.svg" width="100%" height="530"></a>
 
 ## Floraverse
 
@@ -773,7 +773,7 @@
    * Usage: `tint.TintFloraverse`
    * Reference: [https://windowsterminalthemes.dev/?theme=Floraverse](https://windowsterminalthemes.dev/?theme=Floraverse)
 
-<a href="#Floraverse"><img title="Palette preview for Floraverse" src="./defaulttints/floraverse.svg" width="100%" height="530"></a>
+<a href="#Floraverse"><img title="Palette preview for Floraverse" src="./svgs/floraverse.svg" width="100%" height="530"></a>
 
 ## ForestBlue
 
@@ -782,7 +782,7 @@
    * Usage: `tint.TintForestBlue`
    * Reference: [https://windowsterminalthemes.dev/?theme=ForestBlue](https://windowsterminalthemes.dev/?theme=ForestBlue)
 
-<a href="#ForestBlue"><img title="Palette preview for ForestBlue" src="./defaulttints/forest_blue.svg" width="100%" height="530"></a>
+<a href="#ForestBlue"><img title="Palette preview for ForestBlue" src="./svgs/forest_blue.svg" width="100%" height="530"></a>
 
 ## Framer
 
@@ -791,7 +791,7 @@
    * Usage: `tint.TintFramer`
    * Reference: [https://windowsterminalthemes.dev/?theme=Framer](https://windowsterminalthemes.dev/?theme=Framer)
 
-<a href="#Framer"><img title="Palette preview for Framer" src="./defaulttints/framer.svg" width="100%" height="530"></a>
+<a href="#Framer"><img title="Palette preview for Framer" src="./svgs/framer.svg" width="100%" height="530"></a>
 
 ## FrontEndDelight
 
@@ -800,7 +800,7 @@
    * Usage: `tint.TintFrontEndDelight`
    * Reference: [https://windowsterminalthemes.dev/?theme=FrontEndDelight](https://windowsterminalthemes.dev/?theme=FrontEndDelight)
 
-<a href="#FrontEndDelight"><img title="Palette preview for FrontEndDelight" src="./defaulttints/front_end_delight.svg" width="100%" height="530"></a>
+<a href="#FrontEndDelight"><img title="Palette preview for FrontEndDelight" src="./svgs/front_end_delight.svg" width="100%" height="530"></a>
 
 ## FunForrest
 
@@ -809,7 +809,7 @@
    * Usage: `tint.TintFunForrest`
    * Reference: [https://windowsterminalthemes.dev/?theme=FunForrest](https://windowsterminalthemes.dev/?theme=FunForrest)
 
-<a href="#FunForrest"><img title="Palette preview for FunForrest" src="./defaulttints/fun_forrest.svg" width="100%" height="530"></a>
+<a href="#FunForrest"><img title="Palette preview for FunForrest" src="./svgs/fun_forrest.svg" width="100%" height="530"></a>
 
 ## Galaxy
 
@@ -818,7 +818,7 @@
    * Usage: `tint.TintGalaxy`
    * Reference: [https://windowsterminalthemes.dev/?theme=Galaxy](https://windowsterminalthemes.dev/?theme=Galaxy)
 
-<a href="#Galaxy"><img title="Palette preview for Galaxy" src="./defaulttints/galaxy.svg" width="100%" height="530"></a>
+<a href="#Galaxy"><img title="Palette preview for Galaxy" src="./svgs/galaxy.svg" width="100%" height="530"></a>
 
 ## Galizur
 
@@ -827,7 +827,7 @@
    * Usage: `tint.TintGalizur`
    * Reference: [https://windowsterminalthemes.dev/?theme=Galizur](https://windowsterminalthemes.dev/?theme=Galizur)
 
-<a href="#Galizur"><img title="Palette preview for Galizur" src="./defaulttints/galizur.svg" width="100%" height="530"></a>
+<a href="#Galizur"><img title="Palette preview for Galizur" src="./svgs/galizur.svg" width="100%" height="530"></a>
 
 ## Ganyu
 
@@ -838,7 +838,7 @@
    * Credit to:
       * resyfer (https://github.com/resyfer)
 
-<a href="#Ganyu"><img title="Palette preview for Ganyu" src="./defaulttints/ganyu.svg" width="100%" height="530"></a>
+<a href="#Ganyu"><img title="Palette preview for Ganyu" src="./svgs/ganyu.svg" width="100%" height="530"></a>
 
 ## Github
 
@@ -847,7 +847,7 @@
    * Usage: `tint.TintGithub`
    * Reference: [https://windowsterminalthemes.dev/?theme=Github](https://windowsterminalthemes.dev/?theme=Github)
 
-<a href="#Github"><img title="Palette preview for Github" src="./defaulttints/github.svg" width="100%" height="530"></a>
+<a href="#Github"><img title="Palette preview for Github" src="./svgs/github.svg" width="100%" height="530"></a>
 
 ## Glacier
 
@@ -856,7 +856,7 @@
    * Usage: `tint.TintGlacier`
    * Reference: [https://windowsterminalthemes.dev/?theme=Glacier](https://windowsterminalthemes.dev/?theme=Glacier)
 
-<a href="#Glacier"><img title="Palette preview for Glacier" src="./defaulttints/glacier.svg" width="100%" height="530"></a>
+<a href="#Glacier"><img title="Palette preview for Glacier" src="./svgs/glacier.svg" width="100%" height="530"></a>
 
 ## Glorious
 
@@ -867,7 +867,7 @@
    * Credit to:
       * alex (https://github.com/AlexMailo)
 
-<a href="#Glorious"><img title="Palette preview for Glorious" src="./defaulttints/glorious.svg" width="100%" height="530"></a>
+<a href="#Glorious"><img title="Palette preview for Glorious" src="./svgs/glorious.svg" width="100%" height="530"></a>
 
 ## Grape
 
@@ -876,7 +876,7 @@
    * Usage: `tint.TintGrape`
    * Reference: [https://windowsterminalthemes.dev/?theme=Grape](https://windowsterminalthemes.dev/?theme=Grape)
 
-<a href="#Grape"><img title="Palette preview for Grape" src="./defaulttints/grape.svg" width="100%" height="530"></a>
+<a href="#Grape"><img title="Palette preview for Grape" src="./svgs/grape.svg" width="100%" height="530"></a>
 
 ## Grass
 
@@ -885,7 +885,7 @@
    * Usage: `tint.TintGrass`
    * Reference: [https://windowsterminalthemes.dev/?theme=Grass](https://windowsterminalthemes.dev/?theme=Grass)
 
-<a href="#Grass"><img title="Palette preview for Grass" src="./defaulttints/grass.svg" width="100%" height="530"></a>
+<a href="#Grass"><img title="Palette preview for Grass" src="./svgs/grass.svg" width="100%" height="530"></a>
 
 ## GruvboxDark
 
@@ -894,7 +894,7 @@
    * Usage: `tint.TintGruvboxDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Gruvbox+Dark](https://windowsterminalthemes.dev/?theme=Gruvbox+Dark)
 
-<a href="#GruvboxDark"><img title="Palette preview for GruvboxDark" src="./defaulttints/gruvbox_dark.svg" width="100%" height="530"></a>
+<a href="#GruvboxDark"><img title="Palette preview for GruvboxDark" src="./svgs/gruvbox_dark.svg" width="100%" height="530"></a>
 
 ## GruvboxLight
 
@@ -903,7 +903,7 @@
    * Usage: `tint.TintGruvboxLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Gruvbox+Light](https://windowsterminalthemes.dev/?theme=Gruvbox+Light)
 
-<a href="#GruvboxLight"><img title="Palette preview for GruvboxLight" src="./defaulttints/gruvbox_light.svg" width="100%" height="530"></a>
+<a href="#GruvboxLight"><img title="Palette preview for GruvboxLight" src="./svgs/gruvbox_light.svg" width="100%" height="530"></a>
 
 ## Guezwhoz
 
@@ -912,7 +912,7 @@
    * Usage: `tint.TintGuezwhoz`
    * Reference: [https://windowsterminalthemes.dev/?theme=Guezwhoz](https://windowsterminalthemes.dev/?theme=Guezwhoz)
 
-<a href="#Guezwhoz"><img title="Palette preview for Guezwhoz" src="./defaulttints/guezwhoz.svg" width="100%" height="530"></a>
+<a href="#Guezwhoz"><img title="Palette preview for Guezwhoz" src="./svgs/guezwhoz.svg" width="100%" height="530"></a>
 
 ## Hacktober
 
@@ -921,7 +921,7 @@
    * Usage: `tint.TintHacktober`
    * Reference: [https://windowsterminalthemes.dev/?theme=Hacktober](https://windowsterminalthemes.dev/?theme=Hacktober)
 
-<a href="#Hacktober"><img title="Palette preview for Hacktober" src="./defaulttints/hacktober.svg" width="100%" height="530"></a>
+<a href="#Hacktober"><img title="Palette preview for Hacktober" src="./svgs/hacktober.svg" width="100%" height="530"></a>
 
 ## Hardcore
 
@@ -930,7 +930,7 @@
    * Usage: `tint.TintHardcore`
    * Reference: [https://windowsterminalthemes.dev/?theme=Hardcore](https://windowsterminalthemes.dev/?theme=Hardcore)
 
-<a href="#Hardcore"><img title="Palette preview for Hardcore" src="./defaulttints/hardcore.svg" width="100%" height="530"></a>
+<a href="#Hardcore"><img title="Palette preview for Hardcore" src="./svgs/hardcore.svg" width="100%" height="530"></a>
 
 ## Harper
 
@@ -939,7 +939,7 @@
    * Usage: `tint.TintHarper`
    * Reference: [https://windowsterminalthemes.dev/?theme=Harper](https://windowsterminalthemes.dev/?theme=Harper)
 
-<a href="#Harper"><img title="Palette preview for Harper" src="./defaulttints/harper.svg" width="100%" height="530"></a>
+<a href="#Harper"><img title="Palette preview for Harper" src="./svgs/harper.svg" width="100%" height="530"></a>
 
 ## Highway
 
@@ -948,7 +948,7 @@
    * Usage: `tint.TintHighway`
    * Reference: [https://windowsterminalthemes.dev/?theme=Highway](https://windowsterminalthemes.dev/?theme=Highway)
 
-<a href="#Highway"><img title="Palette preview for Highway" src="./defaulttints/highway.svg" width="100%" height="530"></a>
+<a href="#Highway"><img title="Palette preview for Highway" src="./svgs/highway.svg" width="100%" height="530"></a>
 
 ## HipsterGreen
 
@@ -957,7 +957,7 @@
    * Usage: `tint.TintHipsterGreen`
    * Reference: [https://windowsterminalthemes.dev/?theme=Hipster+Green](https://windowsterminalthemes.dev/?theme=Hipster+Green)
 
-<a href="#HipsterGreen"><img title="Palette preview for HipsterGreen" src="./defaulttints/hipster_green.svg" width="100%" height="530"></a>
+<a href="#HipsterGreen"><img title="Palette preview for HipsterGreen" src="./svgs/hipster_green.svg" width="100%" height="530"></a>
 
 ## Hivacruz
 
@@ -966,7 +966,7 @@
    * Usage: `tint.TintHivacruz`
    * Reference: [https://windowsterminalthemes.dev/?theme=Hivacruz](https://windowsterminalthemes.dev/?theme=Hivacruz)
 
-<a href="#Hivacruz"><img title="Palette preview for Hivacruz" src="./defaulttints/hivacruz.svg" width="100%" height="530"></a>
+<a href="#Hivacruz"><img title="Palette preview for Hivacruz" src="./svgs/hivacruz.svg" width="100%" height="530"></a>
 
 ## Homebrew
 
@@ -975,7 +975,7 @@
    * Usage: `tint.TintHomebrew`
    * Reference: [https://windowsterminalthemes.dev/?theme=Homebrew](https://windowsterminalthemes.dev/?theme=Homebrew)
 
-<a href="#Homebrew"><img title="Palette preview for Homebrew" src="./defaulttints/homebrew.svg" width="100%" height="530"></a>
+<a href="#Homebrew"><img title="Palette preview for Homebrew" src="./svgs/homebrew.svg" width="100%" height="530"></a>
 
 ## Hopscotch
 
@@ -984,7 +984,7 @@
    * Usage: `tint.TintHopscotch`
    * Reference: [https://windowsterminalthemes.dev/?theme=Hopscotch](https://windowsterminalthemes.dev/?theme=Hopscotch)
 
-<a href="#Hopscotch"><img title="Palette preview for Hopscotch" src="./defaulttints/hopscotch.svg" width="100%" height="530"></a>
+<a href="#Hopscotch"><img title="Palette preview for Hopscotch" src="./svgs/hopscotch.svg" width="100%" height="530"></a>
 
 ## Hopscotch256
 
@@ -993,7 +993,7 @@
    * Usage: `tint.TintHopscotch256`
    * Reference: [https://windowsterminalthemes.dev/?theme=Hopscotch.256](https://windowsterminalthemes.dev/?theme=Hopscotch.256)
 
-<a href="#Hopscotch256"><img title="Palette preview for Hopscotch256" src="./defaulttints/hopscotch_256.svg" width="100%" height="530"></a>
+<a href="#Hopscotch256"><img title="Palette preview for Hopscotch256" src="./svgs/hopscotch_256.svg" width="100%" height="530"></a>
 
 ## Horizon
 
@@ -1004,7 +1004,7 @@
    * Credit to:
       * wafelack (https://github.com/wafelack)
 
-<a href="#Horizon"><img title="Palette preview for Horizon" src="./defaulttints/horizon.svg" width="100%" height="530"></a>
+<a href="#Horizon"><img title="Palette preview for Horizon" src="./svgs/horizon.svg" width="100%" height="530"></a>
 
 ## Hurtado
 
@@ -1013,7 +1013,7 @@
    * Usage: `tint.TintHurtado`
    * Reference: [https://windowsterminalthemes.dev/?theme=Hurtado](https://windowsterminalthemes.dev/?theme=Hurtado)
 
-<a href="#Hurtado"><img title="Palette preview for Hurtado" src="./defaulttints/hurtado.svg" width="100%" height="530"></a>
+<a href="#Hurtado"><img title="Palette preview for Hurtado" src="./svgs/hurtado.svg" width="100%" height="530"></a>
 
 ## Hybrid
 
@@ -1022,7 +1022,7 @@
    * Usage: `tint.TintHybrid`
    * Reference: [https://windowsterminalthemes.dev/?theme=Hybrid](https://windowsterminalthemes.dev/?theme=Hybrid)
 
-<a href="#Hybrid"><img title="Palette preview for Hybrid" src="./defaulttints/hybrid.svg" width="100%" height="530"></a>
+<a href="#Hybrid"><img title="Palette preview for Hybrid" src="./svgs/hybrid.svg" width="100%" height="530"></a>
 
 ## Hyper
 
@@ -1033,7 +1033,7 @@
    * Credit to:
       * shivang (https://github.com/ShivangMathur1)
 
-<a href="#Hyper"><img title="Palette preview for Hyper" src="./defaulttints/hyper.svg" width="100%" height="530"></a>
+<a href="#Hyper"><img title="Palette preview for Hyper" src="./svgs/hyper.svg" width="100%" height="530"></a>
 
 ## IcGreenPpl
 
@@ -1042,7 +1042,7 @@
    * Usage: `tint.TintIcGreenPpl`
    * Reference: [https://windowsterminalthemes.dev/?theme=IC_Green_PPL](https://windowsterminalthemes.dev/?theme=IC_Green_PPL)
 
-<a href="#IcGreenPpl"><img title="Palette preview for IcGreenPpl" src="./defaulttints/ic_green_ppl.svg" width="100%" height="530"></a>
+<a href="#IcGreenPpl"><img title="Palette preview for IcGreenPpl" src="./svgs/ic_green_ppl.svg" width="100%" height="530"></a>
 
 ## IcOrangePpl
 
@@ -1051,7 +1051,7 @@
    * Usage: `tint.TintIcOrangePpl`
    * Reference: [https://windowsterminalthemes.dev/?theme=IC_Orange_PPL](https://windowsterminalthemes.dev/?theme=IC_Orange_PPL)
 
-<a href="#IcOrangePpl"><img title="Palette preview for IcOrangePpl" src="./defaulttints/ic_orange_ppl.svg" width="100%" height="530"></a>
+<a href="#IcOrangePpl"><img title="Palette preview for IcOrangePpl" src="./svgs/ic_orange_ppl.svg" width="100%" height="530"></a>
 
 ## IrBlack
 
@@ -1060,7 +1060,7 @@
    * Usage: `tint.TintIrBlack`
    * Reference: [https://windowsterminalthemes.dev/?theme=IR_Black](https://windowsterminalthemes.dev/?theme=IR_Black)
 
-<a href="#IrBlack"><img title="Palette preview for IrBlack" src="./defaulttints/ir_black.svg" width="100%" height="530"></a>
+<a href="#IrBlack"><img title="Palette preview for IrBlack" src="./svgs/ir_black.svg" width="100%" height="530"></a>
 
 ## JackieBrown
 
@@ -1069,7 +1069,7 @@
    * Usage: `tint.TintJackieBrown`
    * Reference: [https://windowsterminalthemes.dev/?theme=Jackie+Brown](https://windowsterminalthemes.dev/?theme=Jackie+Brown)
 
-<a href="#JackieBrown"><img title="Palette preview for JackieBrown" src="./defaulttints/jackie_brown.svg" width="100%" height="530"></a>
+<a href="#JackieBrown"><img title="Palette preview for JackieBrown" src="./svgs/jackie_brown.svg" width="100%" height="530"></a>
 
 ## Japanesque
 
@@ -1078,7 +1078,7 @@
    * Usage: `tint.TintJapanesque`
    * Reference: [https://windowsterminalthemes.dev/?theme=Japanesque](https://windowsterminalthemes.dev/?theme=Japanesque)
 
-<a href="#Japanesque"><img title="Palette preview for Japanesque" src="./defaulttints/japanesque.svg" width="100%" height="530"></a>
+<a href="#Japanesque"><img title="Palette preview for Japanesque" src="./svgs/japanesque.svg" width="100%" height="530"></a>
 
 ## Jellybeans
 
@@ -1087,7 +1087,7 @@
    * Usage: `tint.TintJellybeans`
    * Reference: [https://windowsterminalthemes.dev/?theme=Jellybeans](https://windowsterminalthemes.dev/?theme=Jellybeans)
 
-<a href="#Jellybeans"><img title="Palette preview for Jellybeans" src="./defaulttints/jellybeans.svg" width="100%" height="530"></a>
+<a href="#Jellybeans"><img title="Palette preview for Jellybeans" src="./svgs/jellybeans.svg" width="100%" height="530"></a>
 
 ## JetBrainsDarcula
 
@@ -1096,7 +1096,7 @@
    * Usage: `tint.TintJetBrainsDarcula`
    * Reference: [https://windowsterminalthemes.dev/?theme=JetBrains+Darcula](https://windowsterminalthemes.dev/?theme=JetBrains+Darcula)
 
-<a href="#JetBrainsDarcula"><img title="Palette preview for JetBrainsDarcula" src="./defaulttints/jet_brains_darcula.svg" width="100%" height="530"></a>
+<a href="#JetBrainsDarcula"><img title="Palette preview for JetBrainsDarcula" src="./svgs/jet_brains_darcula.svg" width="100%" height="530"></a>
 
 ## JuicyColors
 
@@ -1105,7 +1105,7 @@
    * Usage: `tint.TintJuicyColors`
    * Reference: [https://windowsterminalthemes.dev/?theme=Juicy+Colors](https://windowsterminalthemes.dev/?theme=Juicy+Colors)
 
-<a href="#JuicyColors"><img title="Palette preview for JuicyColors" src="./defaulttints/juicy_colors.svg" width="100%" height="530"></a>
+<a href="#JuicyColors"><img title="Palette preview for JuicyColors" src="./svgs/juicy_colors.svg" width="100%" height="530"></a>
 
 ## Kanagawa
 
@@ -1114,7 +1114,7 @@
    * Usage: `tint.TintKanagawa`
    * Reference: [https://windowsterminalthemes.dev/?theme=Kanagawa](https://windowsterminalthemes.dev/?theme=Kanagawa)
 
-<a href="#Kanagawa"><img title="Palette preview for Kanagawa" src="./defaulttints/kanagawa.svg" width="100%" height="530"></a>
+<a href="#Kanagawa"><img title="Palette preview for Kanagawa" src="./svgs/kanagawa.svg" width="100%" height="530"></a>
 
 ## Kibble
 
@@ -1123,7 +1123,7 @@
    * Usage: `tint.TintKibble`
    * Reference: [https://windowsterminalthemes.dev/?theme=Kibble](https://windowsterminalthemes.dev/?theme=Kibble)
 
-<a href="#Kibble"><img title="Palette preview for Kibble" src="./defaulttints/kibble.svg" width="100%" height="530"></a>
+<a href="#Kibble"><img title="Palette preview for Kibble" src="./svgs/kibble.svg" width="100%" height="530"></a>
 
 ## Kolorit
 
@@ -1132,7 +1132,7 @@
    * Usage: `tint.TintKolorit`
    * Reference: [https://windowsterminalthemes.dev/?theme=Kolorit](https://windowsterminalthemes.dev/?theme=Kolorit)
 
-<a href="#Kolorit"><img title="Palette preview for Kolorit" src="./defaulttints/kolorit.svg" width="100%" height="530"></a>
+<a href="#Kolorit"><img title="Palette preview for Kolorit" src="./svgs/kolorit.svg" width="100%" height="530"></a>
 
 ## Konsolas
 
@@ -1141,7 +1141,7 @@
    * Usage: `tint.TintKonsolas`
    * Reference: [https://windowsterminalthemes.dev/?theme=Konsolas](https://windowsterminalthemes.dev/?theme=Konsolas)
 
-<a href="#Konsolas"><img title="Palette preview for Konsolas" src="./defaulttints/konsolas.svg" width="100%" height="530"></a>
+<a href="#Konsolas"><img title="Palette preview for Konsolas" src="./svgs/konsolas.svg" width="100%" height="530"></a>
 
 ## LabFox
 
@@ -1150,7 +1150,7 @@
    * Usage: `tint.TintLabFox`
    * Reference: [https://windowsterminalthemes.dev/?theme=Lab+Fox](https://windowsterminalthemes.dev/?theme=Lab+Fox)
 
-<a href="#LabFox"><img title="Palette preview for LabFox" src="./defaulttints/lab_fox.svg" width="100%" height="530"></a>
+<a href="#LabFox"><img title="Palette preview for LabFox" src="./svgs/lab_fox.svg" width="100%" height="530"></a>
 
 ## Laser
 
@@ -1159,7 +1159,7 @@
    * Usage: `tint.TintLaser`
    * Reference: [https://windowsterminalthemes.dev/?theme=Laser](https://windowsterminalthemes.dev/?theme=Laser)
 
-<a href="#Laser"><img title="Palette preview for Laser" src="./defaulttints/laser.svg" width="100%" height="530"></a>
+<a href="#Laser"><img title="Palette preview for Laser" src="./svgs/laser.svg" width="100%" height="530"></a>
 
 ## LaterThisEvening
 
@@ -1168,7 +1168,7 @@
    * Usage: `tint.TintLaterThisEvening`
    * Reference: [https://windowsterminalthemes.dev/?theme=Later+This+Evening](https://windowsterminalthemes.dev/?theme=Later+This+Evening)
 
-<a href="#LaterThisEvening"><img title="Palette preview for LaterThisEvening" src="./defaulttints/later_this_evening.svg" width="100%" height="530"></a>
+<a href="#LaterThisEvening"><img title="Palette preview for LaterThisEvening" src="./svgs/later_this_evening.svg" width="100%" height="530"></a>
 
 ## Lavandula
 
@@ -1177,7 +1177,7 @@
    * Usage: `tint.TintLavandula`
    * Reference: [https://windowsterminalthemes.dev/?theme=Lavandula](https://windowsterminalthemes.dev/?theme=Lavandula)
 
-<a href="#Lavandula"><img title="Palette preview for Lavandula" src="./defaulttints/lavandula.svg" width="100%" height="530"></a>
+<a href="#Lavandula"><img title="Palette preview for Lavandula" src="./svgs/lavandula.svg" width="100%" height="530"></a>
 
 ## LiquidCarbon
 
@@ -1186,7 +1186,7 @@
    * Usage: `tint.TintLiquidCarbon`
    * Reference: [https://windowsterminalthemes.dev/?theme=LiquidCarbon](https://windowsterminalthemes.dev/?theme=LiquidCarbon)
 
-<a href="#LiquidCarbon"><img title="Palette preview for LiquidCarbon" src="./defaulttints/liquid_carbon.svg" width="100%" height="530"></a>
+<a href="#LiquidCarbon"><img title="Palette preview for LiquidCarbon" src="./svgs/liquid_carbon.svg" width="100%" height="530"></a>
 
 ## LiquidCarbonTransparent
 
@@ -1195,7 +1195,7 @@
    * Usage: `tint.TintLiquidCarbonTransparent`
    * Reference: [https://windowsterminalthemes.dev/?theme=LiquidCarbonTransparent](https://windowsterminalthemes.dev/?theme=LiquidCarbonTransparent)
 
-<a href="#LiquidCarbonTransparent"><img title="Palette preview for LiquidCarbonTransparent" src="./defaulttints/liquid_carbon_transparent.svg" width="100%" height="530"></a>
+<a href="#LiquidCarbonTransparent"><img title="Palette preview for LiquidCarbonTransparent" src="./svgs/liquid_carbon_transparent.svg" width="100%" height="530"></a>
 
 ## LiquidCarbonTransparentInverse
 
@@ -1204,7 +1204,7 @@
    * Usage: `tint.TintLiquidCarbonTransparentInverse`
    * Reference: [https://windowsterminalthemes.dev/?theme=LiquidCarbonTransparentInverse](https://windowsterminalthemes.dev/?theme=LiquidCarbonTransparentInverse)
 
-<a href="#LiquidCarbonTransparentInverse"><img title="Palette preview for LiquidCarbonTransparentInverse" src="./defaulttints/liquid_carbon_transparent_inverse.svg" width="100%" height="530"></a>
+<a href="#LiquidCarbonTransparentInverse"><img title="Palette preview for LiquidCarbonTransparentInverse" src="./svgs/liquid_carbon_transparent_inverse.svg" width="100%" height="530"></a>
 
 ## ManPage
 
@@ -1213,7 +1213,7 @@
    * Usage: `tint.TintManPage`
    * Reference: [https://windowsterminalthemes.dev/?theme=Man+Page](https://windowsterminalthemes.dev/?theme=Man+Page)
 
-<a href="#ManPage"><img title="Palette preview for ManPage" src="./defaulttints/man_page.svg" width="100%" height="530"></a>
+<a href="#ManPage"><img title="Palette preview for ManPage" src="./svgs/man_page.svg" width="100%" height="530"></a>
 
 ## Material
 
@@ -1222,7 +1222,7 @@
    * Usage: `tint.TintMaterial`
    * Reference: [https://windowsterminalthemes.dev/?theme=Material](https://windowsterminalthemes.dev/?theme=Material)
 
-<a href="#Material"><img title="Palette preview for Material" src="./defaulttints/material.svg" width="100%" height="530"></a>
+<a href="#Material"><img title="Palette preview for Material" src="./svgs/material.svg" width="100%" height="530"></a>
 
 ## MaterialDark
 
@@ -1231,7 +1231,7 @@
    * Usage: `tint.TintMaterialDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=MaterialDark](https://windowsterminalthemes.dev/?theme=MaterialDark)
 
-<a href="#MaterialDark"><img title="Palette preview for MaterialDark" src="./defaulttints/material_dark.svg" width="100%" height="530"></a>
+<a href="#MaterialDark"><img title="Palette preview for MaterialDark" src="./svgs/material_dark.svg" width="100%" height="530"></a>
 
 ## MaterialDarker
 
@@ -1240,7 +1240,7 @@
    * Usage: `tint.TintMaterialDarker`
    * Reference: [https://windowsterminalthemes.dev/?theme=MaterialDarker](https://windowsterminalthemes.dev/?theme=MaterialDarker)
 
-<a href="#MaterialDarker"><img title="Palette preview for MaterialDarker" src="./defaulttints/material_darker.svg" width="100%" height="530"></a>
+<a href="#MaterialDarker"><img title="Palette preview for MaterialDarker" src="./svgs/material_darker.svg" width="100%" height="530"></a>
 
 ## MaterialOcean
 
@@ -1249,7 +1249,7 @@
    * Usage: `tint.TintMaterialOcean`
    * Reference: [https://windowsterminalthemes.dev/?theme=MaterialOcean](https://windowsterminalthemes.dev/?theme=MaterialOcean)
 
-<a href="#MaterialOcean"><img title="Palette preview for MaterialOcean" src="./defaulttints/material_ocean.svg" width="100%" height="530"></a>
+<a href="#MaterialOcean"><img title="Palette preview for MaterialOcean" src="./svgs/material_ocean.svg" width="100%" height="530"></a>
 
 ## Mathias
 
@@ -1258,7 +1258,7 @@
    * Usage: `tint.TintMathias`
    * Reference: [https://windowsterminalthemes.dev/?theme=Mathias](https://windowsterminalthemes.dev/?theme=Mathias)
 
-<a href="#Mathias"><img title="Palette preview for Mathias" src="./defaulttints/mathias.svg" width="100%" height="530"></a>
+<a href="#Mathias"><img title="Palette preview for Mathias" src="./svgs/mathias.svg" width="100%" height="530"></a>
 
 ## Medallion
 
@@ -1267,7 +1267,7 @@
    * Usage: `tint.TintMedallion`
    * Reference: [https://windowsterminalthemes.dev/?theme=Medallion](https://windowsterminalthemes.dev/?theme=Medallion)
 
-<a href="#Medallion"><img title="Palette preview for Medallion" src="./defaulttints/medallion.svg" width="100%" height="530"></a>
+<a href="#Medallion"><img title="Palette preview for Medallion" src="./svgs/medallion.svg" width="100%" height="530"></a>
 
 ## Mirage
 
@@ -1276,7 +1276,7 @@
    * Usage: `tint.TintMirage`
    * Reference: [https://windowsterminalthemes.dev/?theme=Mirage](https://windowsterminalthemes.dev/?theme=Mirage)
 
-<a href="#Mirage"><img title="Palette preview for Mirage" src="./defaulttints/mirage.svg" width="100%" height="530"></a>
+<a href="#Mirage"><img title="Palette preview for Mirage" src="./svgs/mirage.svg" width="100%" height="530"></a>
 
 ## Misterioso
 
@@ -1285,7 +1285,7 @@
    * Usage: `tint.TintMisterioso`
    * Reference: [https://windowsterminalthemes.dev/?theme=Misterioso](https://windowsterminalthemes.dev/?theme=Misterioso)
 
-<a href="#Misterioso"><img title="Palette preview for Misterioso" src="./defaulttints/misterioso.svg" width="100%" height="530"></a>
+<a href="#Misterioso"><img title="Palette preview for Misterioso" src="./svgs/misterioso.svg" width="100%" height="530"></a>
 
 ## Molokai
 
@@ -1294,7 +1294,7 @@
    * Usage: `tint.TintMolokai`
    * Reference: [https://windowsterminalthemes.dev/?theme=Molokai](https://windowsterminalthemes.dev/?theme=Molokai)
 
-<a href="#Molokai"><img title="Palette preview for Molokai" src="./defaulttints/molokai.svg" width="100%" height="530"></a>
+<a href="#Molokai"><img title="Palette preview for Molokai" src="./svgs/molokai.svg" width="100%" height="530"></a>
 
 ## MonaLisa
 
@@ -1303,7 +1303,7 @@
    * Usage: `tint.TintMonaLisa`
    * Reference: [https://windowsterminalthemes.dev/?theme=MonaLisa](https://windowsterminalthemes.dev/?theme=MonaLisa)
 
-<a href="#MonaLisa"><img title="Palette preview for MonaLisa" src="./defaulttints/mona_lisa.svg" width="100%" height="530"></a>
+<a href="#MonaLisa"><img title="Palette preview for MonaLisa" src="./svgs/mona_lisa.svg" width="100%" height="530"></a>
 
 ## MonokaiCmder
 
@@ -1314,7 +1314,7 @@
    * Credit to:
       * vdurante (https://github.com/vdurante/windows-terminal-monokai-cmder)
 
-<a href="#MonokaiCmder"><img title="Palette preview for MonokaiCmder" src="./defaulttints/monokai_cmder.svg" width="100%" height="530"></a>
+<a href="#MonokaiCmder"><img title="Palette preview for MonokaiCmder" src="./svgs/monokai_cmder.svg" width="100%" height="530"></a>
 
 ## MonokaiOctagon
 
@@ -1323,7 +1323,7 @@
    * Usage: `tint.TintMonokaiOctagon`
    * Reference: [https://windowsterminalthemes.dev/?theme=Monokai+Octagon](https://windowsterminalthemes.dev/?theme=Monokai+Octagon)
 
-<a href="#MonokaiOctagon"><img title="Palette preview for MonokaiOctagon" src="./defaulttints/monokai_octagon.svg" width="100%" height="530"></a>
+<a href="#MonokaiOctagon"><img title="Palette preview for MonokaiOctagon" src="./svgs/monokai_octagon.svg" width="100%" height="530"></a>
 
 ## MonokaiPro
 
@@ -1334,7 +1334,7 @@
    * Credit to:
       * monokai (https://monokai.pro)
 
-<a href="#MonokaiPro"><img title="Palette preview for MonokaiPro" src="./defaulttints/monokai_pro.svg" width="100%" height="530"></a>
+<a href="#MonokaiPro"><img title="Palette preview for MonokaiPro" src="./svgs/monokai_pro.svg" width="100%" height="530"></a>
 
 ## MonokaiProFilterOctagon
 
@@ -1345,7 +1345,7 @@
    * Credit to:
       * monokai (https://monokai.pro)
 
-<a href="#MonokaiProFilterOctagon"><img title="Palette preview for MonokaiProFilterOctagon" src="./defaulttints/monokai_pro_filter_octagon.svg" width="100%" height="530"></a>
+<a href="#MonokaiProFilterOctagon"><img title="Palette preview for MonokaiProFilterOctagon" src="./svgs/monokai_pro_filter_octagon.svg" width="100%" height="530"></a>
 
 ## MonokaiProFilterRistretto
 
@@ -1354,7 +1354,7 @@
    * Usage: `tint.TintMonokaiProFilterRistretto`
    * Reference: [https://windowsterminalthemes.dev/?theme=Monokai+Pro+%28Filter+Ristretto%29](https://windowsterminalthemes.dev/?theme=Monokai+Pro+%28Filter+Ristretto%29)
 
-<a href="#MonokaiProFilterRistretto"><img title="Palette preview for MonokaiProFilterRistretto" src="./defaulttints/monokai_pro_filter_ristretto.svg" width="100%" height="530"></a>
+<a href="#MonokaiProFilterRistretto"><img title="Palette preview for MonokaiProFilterRistretto" src="./svgs/monokai_pro_filter_ristretto.svg" width="100%" height="530"></a>
 
 ## MonokaiRemastered
 
@@ -1363,7 +1363,7 @@
    * Usage: `tint.TintMonokaiRemastered`
    * Reference: [https://windowsterminalthemes.dev/?theme=Monokai+Remastered](https://windowsterminalthemes.dev/?theme=Monokai+Remastered)
 
-<a href="#MonokaiRemastered"><img title="Palette preview for MonokaiRemastered" src="./defaulttints/monokai_remastered.svg" width="100%" height="530"></a>
+<a href="#MonokaiRemastered"><img title="Palette preview for MonokaiRemastered" src="./svgs/monokai_remastered.svg" width="100%" height="530"></a>
 
 ## MonokaiSoda
 
@@ -1372,7 +1372,7 @@
    * Usage: `tint.TintMonokaiSoda`
    * Reference: [https://windowsterminalthemes.dev/?theme=Monokai+Soda](https://windowsterminalthemes.dev/?theme=Monokai+Soda)
 
-<a href="#MonokaiSoda"><img title="Palette preview for MonokaiSoda" src="./defaulttints/monokai_soda.svg" width="100%" height="530"></a>
+<a href="#MonokaiSoda"><img title="Palette preview for MonokaiSoda" src="./svgs/monokai_soda.svg" width="100%" height="530"></a>
 
 ## MonokaiVivid
 
@@ -1381,7 +1381,7 @@
    * Usage: `tint.TintMonokaiVivid`
    * Reference: [https://windowsterminalthemes.dev/?theme=Monokai+Vivid](https://windowsterminalthemes.dev/?theme=Monokai+Vivid)
 
-<a href="#MonokaiVivid"><img title="Palette preview for MonokaiVivid" src="./defaulttints/monokai_vivid.svg" width="100%" height="530"></a>
+<a href="#MonokaiVivid"><img title="Palette preview for MonokaiVivid" src="./svgs/monokai_vivid.svg" width="100%" height="530"></a>
 
 ## MoonlightIi
 
@@ -1392,7 +1392,7 @@
    * Credit to:
       * atomiks (https://github.com/atomiks)
 
-<a href="#MoonlightIi"><img title="Palette preview for MoonlightIi" src="./defaulttints/moonlight_ii.svg" width="100%" height="530"></a>
+<a href="#MoonlightIi"><img title="Palette preview for MoonlightIi" src="./svgs/moonlight_ii.svg" width="100%" height="530"></a>
 
 ## N0Tch2K
 
@@ -1401,7 +1401,7 @@
    * Usage: `tint.TintN0Tch2K`
    * Reference: [https://windowsterminalthemes.dev/?theme=N0tch2k](https://windowsterminalthemes.dev/?theme=N0tch2k)
 
-<a href="#N0Tch2K"><img title="Palette preview for N0Tch2K" src="./defaulttints/n_0_tch_2_k.svg" width="100%" height="530"></a>
+<a href="#N0Tch2K"><img title="Palette preview for N0Tch2K" src="./svgs/n_0_tch_2_k.svg" width="100%" height="530"></a>
 
 ## Neopolitan
 
@@ -1410,7 +1410,7 @@
    * Usage: `tint.TintNeopolitan`
    * Reference: [https://windowsterminalthemes.dev/?theme=Neopolitan](https://windowsterminalthemes.dev/?theme=Neopolitan)
 
-<a href="#Neopolitan"><img title="Palette preview for Neopolitan" src="./defaulttints/neopolitan.svg" width="100%" height="530"></a>
+<a href="#Neopolitan"><img title="Palette preview for Neopolitan" src="./svgs/neopolitan.svg" width="100%" height="530"></a>
 
 ## Neutron
 
@@ -1419,7 +1419,7 @@
    * Usage: `tint.TintNeutron`
    * Reference: [https://windowsterminalthemes.dev/?theme=Neutron](https://windowsterminalthemes.dev/?theme=Neutron)
 
-<a href="#Neutron"><img title="Palette preview for Neutron" src="./defaulttints/neutron.svg" width="100%" height="530"></a>
+<a href="#Neutron"><img title="Palette preview for Neutron" src="./svgs/neutron.svg" width="100%" height="530"></a>
 
 ## NightCity
 
@@ -1430,7 +1430,7 @@
    * Credit to:
       * Thomas Lane (https://github.com/tel0065)
 
-<a href="#NightCity"><img title="Palette preview for NightCity" src="./defaulttints/night_city.svg" width="100%" height="530"></a>
+<a href="#NightCity"><img title="Palette preview for NightCity" src="./svgs/night_city.svg" width="100%" height="530"></a>
 
 ## NightOwlishLight
 
@@ -1439,7 +1439,7 @@
    * Usage: `tint.TintNightOwlishLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Night+Owlish+Light](https://windowsterminalthemes.dev/?theme=Night+Owlish+Light)
 
-<a href="#NightOwlishLight"><img title="Palette preview for NightOwlishLight" src="./defaulttints/night_owlish_light.svg" width="100%" height="530"></a>
+<a href="#NightOwlishLight"><img title="Palette preview for NightOwlishLight" src="./svgs/night_owlish_light.svg" width="100%" height="530"></a>
 
 ## NightLionV1
 
@@ -1448,7 +1448,7 @@
    * Usage: `tint.TintNightLionV1`
    * Reference: [https://windowsterminalthemes.dev/?theme=NightLion+v1](https://windowsterminalthemes.dev/?theme=NightLion+v1)
 
-<a href="#NightLionV1"><img title="Palette preview for NightLionV1" src="./defaulttints/night_lion_v_1.svg" width="100%" height="530"></a>
+<a href="#NightLionV1"><img title="Palette preview for NightLionV1" src="./svgs/night_lion_v_1.svg" width="100%" height="530"></a>
 
 ## NightLionV2
 
@@ -1457,7 +1457,7 @@
    * Usage: `tint.TintNightLionV2`
    * Reference: [https://windowsterminalthemes.dev/?theme=NightLion+v2](https://windowsterminalthemes.dev/?theme=NightLion+v2)
 
-<a href="#NightLionV2"><img title="Palette preview for NightLionV2" src="./defaulttints/night_lion_v_2.svg" width="100%" height="530"></a>
+<a href="#NightLionV2"><img title="Palette preview for NightLionV2" src="./svgs/night_lion_v_2.svg" width="100%" height="530"></a>
 
 ## NocturnalWinter
 
@@ -1466,7 +1466,7 @@
    * Usage: `tint.TintNocturnalWinter`
    * Reference: [https://windowsterminalthemes.dev/?theme=Nocturnal+Winter](https://windowsterminalthemes.dev/?theme=Nocturnal+Winter)
 
-<a href="#NocturnalWinter"><img title="Palette preview for NocturnalWinter" src="./defaulttints/nocturnal_winter.svg" width="100%" height="530"></a>
+<a href="#NocturnalWinter"><img title="Palette preview for NocturnalWinter" src="./svgs/nocturnal_winter.svg" width="100%" height="530"></a>
 
 ## Novel
 
@@ -1475,7 +1475,7 @@
    * Usage: `tint.TintNovel`
    * Reference: [https://windowsterminalthemes.dev/?theme=Novel](https://windowsterminalthemes.dev/?theme=Novel)
 
-<a href="#Novel"><img title="Palette preview for Novel" src="./defaulttints/novel.svg" width="100%" height="530"></a>
+<a href="#Novel"><img title="Palette preview for Novel" src="./svgs/novel.svg" width="100%" height="530"></a>
 
 ## Obsidian
 
@@ -1484,7 +1484,7 @@
    * Usage: `tint.TintObsidian`
    * Reference: [https://windowsterminalthemes.dev/?theme=Obsidian](https://windowsterminalthemes.dev/?theme=Obsidian)
 
-<a href="#Obsidian"><img title="Palette preview for Obsidian" src="./defaulttints/obsidian.svg" width="100%" height="530"></a>
+<a href="#Obsidian"><img title="Palette preview for Obsidian" src="./svgs/obsidian.svg" width="100%" height="530"></a>
 
 ## Ocean
 
@@ -1493,7 +1493,7 @@
    * Usage: `tint.TintOcean`
    * Reference: [https://windowsterminalthemes.dev/?theme=Ocean](https://windowsterminalthemes.dev/?theme=Ocean)
 
-<a href="#Ocean"><img title="Palette preview for Ocean" src="./defaulttints/ocean.svg" width="100%" height="530"></a>
+<a href="#Ocean"><img title="Palette preview for Ocean" src="./svgs/ocean.svg" width="100%" height="530"></a>
 
 ## OceanicMaterial
 
@@ -1502,7 +1502,7 @@
    * Usage: `tint.TintOceanicMaterial`
    * Reference: [https://windowsterminalthemes.dev/?theme=OceanicMaterial](https://windowsterminalthemes.dev/?theme=OceanicMaterial)
 
-<a href="#OceanicMaterial"><img title="Palette preview for OceanicMaterial" src="./defaulttints/oceanic_material.svg" width="100%" height="530"></a>
+<a href="#OceanicMaterial"><img title="Palette preview for OceanicMaterial" src="./svgs/oceanic_material.svg" width="100%" height="530"></a>
 
 ## Ollie
 
@@ -1511,7 +1511,7 @@
    * Usage: `tint.TintOllie`
    * Reference: [https://windowsterminalthemes.dev/?theme=Ollie](https://windowsterminalthemes.dev/?theme=Ollie)
 
-<a href="#Ollie"><img title="Palette preview for Ollie" src="./defaulttints/ollie.svg" width="100%" height="530"></a>
+<a href="#Ollie"><img title="Palette preview for Ollie" src="./svgs/ollie.svg" width="100%" height="530"></a>
 
 ## OneDark
 
@@ -1522,7 +1522,7 @@
    * Credit to:
       * azrikahar (https://github.com/azrikahar)
 
-<a href="#OneDark"><img title="Palette preview for OneDark" src="./defaulttints/one_dark.svg" width="100%" height="530"></a>
+<a href="#OneDark"><img title="Palette preview for OneDark" src="./svgs/one_dark.svg" width="100%" height="530"></a>
 
 ## OneHalfDark
 
@@ -1531,7 +1531,7 @@
    * Usage: `tint.TintOneHalfDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=OneHalfDark](https://windowsterminalthemes.dev/?theme=OneHalfDark)
 
-<a href="#OneHalfDark"><img title="Palette preview for OneHalfDark" src="./defaulttints/one_half_dark.svg" width="100%" height="530"></a>
+<a href="#OneHalfDark"><img title="Palette preview for OneHalfDark" src="./svgs/one_half_dark.svg" width="100%" height="530"></a>
 
 ## OneHalfLight
 
@@ -1540,7 +1540,7 @@
    * Usage: `tint.TintOneHalfLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=OneHalfLight](https://windowsterminalthemes.dev/?theme=OneHalfLight)
 
-<a href="#OneHalfLight"><img title="Palette preview for OneHalfLight" src="./defaulttints/one_half_light.svg" width="100%" height="530"></a>
+<a href="#OneHalfLight"><img title="Palette preview for OneHalfLight" src="./svgs/one_half_light.svg" width="100%" height="530"></a>
 
 ## OneStar
 
@@ -1551,7 +1551,7 @@
    * Credit to:
       * jos3s (https://github.com/jos3s)
 
-<a href="#OneStar"><img title="Palette preview for OneStar" src="./defaulttints/one_star.svg" width="100%" height="530"></a>
+<a href="#OneStar"><img title="Palette preview for OneStar" src="./svgs/one_star.svg" width="100%" height="530"></a>
 
 ## OperatorMonoDark
 
@@ -1560,7 +1560,7 @@
    * Usage: `tint.TintOperatorMonoDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Operator+Mono+Dark](https://windowsterminalthemes.dev/?theme=Operator+Mono+Dark)
 
-<a href="#OperatorMonoDark"><img title="Palette preview for OperatorMonoDark" src="./defaulttints/operator_mono_dark.svg" width="100%" height="530"></a>
+<a href="#OperatorMonoDark"><img title="Palette preview for OperatorMonoDark" src="./svgs/operator_mono_dark.svg" width="100%" height="530"></a>
 
 ## OvernightSlumber
 
@@ -1569,7 +1569,7 @@
    * Usage: `tint.TintOvernightSlumber`
    * Reference: [https://windowsterminalthemes.dev/?theme=Overnight+Slumber](https://windowsterminalthemes.dev/?theme=Overnight+Slumber)
 
-<a href="#OvernightSlumber"><img title="Palette preview for OvernightSlumber" src="./defaulttints/overnight_slumber.svg" width="100%" height="530"></a>
+<a href="#OvernightSlumber"><img title="Palette preview for OvernightSlumber" src="./svgs/overnight_slumber.svg" width="100%" height="530"></a>
 
 ## PaleNightHc
 
@@ -1578,7 +1578,7 @@
    * Usage: `tint.TintPaleNightHc`
    * Reference: [https://windowsterminalthemes.dev/?theme=PaleNightHC](https://windowsterminalthemes.dev/?theme=PaleNightHC)
 
-<a href="#PaleNightHc"><img title="Palette preview for PaleNightHc" src="./defaulttints/pale_night_hc.svg" width="100%" height="530"></a>
+<a href="#PaleNightHc"><img title="Palette preview for PaleNightHc" src="./svgs/pale_night_hc.svg" width="100%" height="530"></a>
 
 ## Pandora
 
@@ -1587,7 +1587,7 @@
    * Usage: `tint.TintPandora`
    * Reference: [https://windowsterminalthemes.dev/?theme=Pandora](https://windowsterminalthemes.dev/?theme=Pandora)
 
-<a href="#Pandora"><img title="Palette preview for Pandora" src="./defaulttints/pandora.svg" width="100%" height="530"></a>
+<a href="#Pandora"><img title="Palette preview for Pandora" src="./svgs/pandora.svg" width="100%" height="530"></a>
 
 ## ParaisoDark
 
@@ -1596,7 +1596,7 @@
    * Usage: `tint.TintParaisoDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Paraiso+Dark](https://windowsterminalthemes.dev/?theme=Paraiso+Dark)
 
-<a href="#ParaisoDark"><img title="Palette preview for ParaisoDark" src="./defaulttints/paraiso_dark.svg" width="100%" height="530"></a>
+<a href="#ParaisoDark"><img title="Palette preview for ParaisoDark" src="./svgs/paraiso_dark.svg" width="100%" height="530"></a>
 
 ## ParasioDark
 
@@ -1605,7 +1605,7 @@
    * Usage: `tint.TintParasioDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Parasio+Dark](https://windowsterminalthemes.dev/?theme=Parasio+Dark)
 
-<a href="#ParasioDark"><img title="Palette preview for ParasioDark" src="./defaulttints/parasio_dark.svg" width="100%" height="530"></a>
+<a href="#ParasioDark"><img title="Palette preview for ParasioDark" src="./svgs/parasio_dark.svg" width="100%" height="530"></a>
 
 ## PaulMillr
 
@@ -1614,7 +1614,7 @@
    * Usage: `tint.TintPaulMillr`
    * Reference: [https://windowsterminalthemes.dev/?theme=PaulMillr](https://windowsterminalthemes.dev/?theme=PaulMillr)
 
-<a href="#PaulMillr"><img title="Palette preview for PaulMillr" src="./defaulttints/paul_millr.svg" width="100%" height="530"></a>
+<a href="#PaulMillr"><img title="Palette preview for PaulMillr" src="./svgs/paul_millr.svg" width="100%" height="530"></a>
 
 ## PencilDark
 
@@ -1623,7 +1623,7 @@
    * Usage: `tint.TintPencilDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=PencilDark](https://windowsterminalthemes.dev/?theme=PencilDark)
 
-<a href="#PencilDark"><img title="Palette preview for PencilDark" src="./defaulttints/pencil_dark.svg" width="100%" height="530"></a>
+<a href="#PencilDark"><img title="Palette preview for PencilDark" src="./svgs/pencil_dark.svg" width="100%" height="530"></a>
 
 ## PencilLight
 
@@ -1632,7 +1632,7 @@
    * Usage: `tint.TintPencilLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=PencilLight](https://windowsterminalthemes.dev/?theme=PencilLight)
 
-<a href="#PencilLight"><img title="Palette preview for PencilLight" src="./defaulttints/pencil_light.svg" width="100%" height="530"></a>
+<a href="#PencilLight"><img title="Palette preview for PencilLight" src="./svgs/pencil_light.svg" width="100%" height="530"></a>
 
 ## PiattoLight
 
@@ -1641,7 +1641,7 @@
    * Usage: `tint.TintPiattoLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Piatto+Light](https://windowsterminalthemes.dev/?theme=Piatto+Light)
 
-<a href="#PiattoLight"><img title="Palette preview for PiattoLight" src="./defaulttints/piatto_light.svg" width="100%" height="530"></a>
+<a href="#PiattoLight"><img title="Palette preview for PiattoLight" src="./svgs/piatto_light.svg" width="100%" height="530"></a>
 
 ## Pnevma
 
@@ -1650,7 +1650,7 @@
    * Usage: `tint.TintPnevma`
    * Reference: [https://windowsterminalthemes.dev/?theme=Pnevma](https://windowsterminalthemes.dev/?theme=Pnevma)
 
-<a href="#Pnevma"><img title="Palette preview for Pnevma" src="./defaulttints/pnevma.svg" width="100%" height="530"></a>
+<a href="#Pnevma"><img title="Palette preview for Pnevma" src="./svgs/pnevma.svg" width="100%" height="530"></a>
 
 ## PoppingAndLocking
 
@@ -1659,7 +1659,7 @@
    * Usage: `tint.TintPoppingAndLocking`
    * Reference: [https://windowsterminalthemes.dev/?theme=Popping+and+Locking](https://windowsterminalthemes.dev/?theme=Popping+and+Locking)
 
-<a href="#PoppingAndLocking"><img title="Palette preview for PoppingAndLocking" src="./defaulttints/popping_and_locking.svg" width="100%" height="530"></a>
+<a href="#PoppingAndLocking"><img title="Palette preview for PoppingAndLocking" src="./svgs/popping_and_locking.svg" width="100%" height="530"></a>
 
 ## Primer
 
@@ -1668,7 +1668,7 @@
    * Usage: `tint.TintPrimer`
    * Reference: [https://windowsterminalthemes.dev/?theme=Primer](https://windowsterminalthemes.dev/?theme=Primer)
 
-<a href="#Primer"><img title="Palette preview for Primer" src="./defaulttints/primer.svg" width="100%" height="530"></a>
+<a href="#Primer"><img title="Palette preview for Primer" src="./svgs/primer.svg" width="100%" height="530"></a>
 
 ## Pro
 
@@ -1677,7 +1677,7 @@
    * Usage: `tint.TintPro`
    * Reference: [https://windowsterminalthemes.dev/?theme=Pro](https://windowsterminalthemes.dev/?theme=Pro)
 
-<a href="#Pro"><img title="Palette preview for Pro" src="./defaulttints/pro.svg" width="100%" height="530"></a>
+<a href="#Pro"><img title="Palette preview for Pro" src="./svgs/pro.svg" width="100%" height="530"></a>
 
 ## ProLight
 
@@ -1686,7 +1686,7 @@
    * Usage: `tint.TintProLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Pro+Light](https://windowsterminalthemes.dev/?theme=Pro+Light)
 
-<a href="#ProLight"><img title="Palette preview for ProLight" src="./defaulttints/pro_light.svg" width="100%" height="530"></a>
+<a href="#ProLight"><img title="Palette preview for ProLight" src="./svgs/pro_light.svg" width="100%" height="530"></a>
 
 ## PurpleRain
 
@@ -1695,7 +1695,7 @@
    * Usage: `tint.TintPurpleRain`
    * Reference: [https://windowsterminalthemes.dev/?theme=Purple+Rain](https://windowsterminalthemes.dev/?theme=Purple+Rain)
 
-<a href="#PurpleRain"><img title="Palette preview for PurpleRain" src="./defaulttints/purple_rain.svg" width="100%" height="530"></a>
+<a href="#PurpleRain"><img title="Palette preview for PurpleRain" src="./svgs/purple_rain.svg" width="100%" height="530"></a>
 
 ## Qb64SuperDarkBlue
 
@@ -1706,7 +1706,7 @@
    * Credit to:
       * jmmv (https://github.com/jmmv)
 
-<a href="#Qb64SuperDarkBlue"><img title="Palette preview for Qb64SuperDarkBlue" src="./defaulttints/qb_64_super_dark_blue.svg" width="100%" height="530"></a>
+<a href="#Qb64SuperDarkBlue"><img title="Palette preview for Qb64SuperDarkBlue" src="./svgs/qb_64_super_dark_blue.svg" width="100%" height="530"></a>
 
 ## Rapture
 
@@ -1715,7 +1715,7 @@
    * Usage: `tint.TintRapture`
    * Reference: [https://windowsterminalthemes.dev/?theme=Rapture](https://windowsterminalthemes.dev/?theme=Rapture)
 
-<a href="#Rapture"><img title="Palette preview for Rapture" src="./defaulttints/rapture.svg" width="100%" height="530"></a>
+<a href="#Rapture"><img title="Palette preview for Rapture" src="./svgs/rapture.svg" width="100%" height="530"></a>
 
 ## RedAlert
 
@@ -1724,7 +1724,7 @@
    * Usage: `tint.TintRedAlert`
    * Reference: [https://windowsterminalthemes.dev/?theme=Red+Alert](https://windowsterminalthemes.dev/?theme=Red+Alert)
 
-<a href="#RedAlert"><img title="Palette preview for RedAlert" src="./defaulttints/red_alert.svg" width="100%" height="530"></a>
+<a href="#RedAlert"><img title="Palette preview for RedAlert" src="./svgs/red_alert.svg" width="100%" height="530"></a>
 
 ## RedPlanet
 
@@ -1733,7 +1733,7 @@
    * Usage: `tint.TintRedPlanet`
    * Reference: [https://windowsterminalthemes.dev/?theme=Red+Planet](https://windowsterminalthemes.dev/?theme=Red+Planet)
 
-<a href="#RedPlanet"><img title="Palette preview for RedPlanet" src="./defaulttints/red_planet.svg" width="100%" height="530"></a>
+<a href="#RedPlanet"><img title="Palette preview for RedPlanet" src="./svgs/red_planet.svg" width="100%" height="530"></a>
 
 ## RedSands
 
@@ -1742,7 +1742,7 @@
    * Usage: `tint.TintRedSands`
    * Reference: [https://windowsterminalthemes.dev/?theme=Red+Sands](https://windowsterminalthemes.dev/?theme=Red+Sands)
 
-<a href="#RedSands"><img title="Palette preview for RedSands" src="./defaulttints/red_sands.svg" width="100%" height="530"></a>
+<a href="#RedSands"><img title="Palette preview for RedSands" src="./svgs/red_sands.svg" width="100%" height="530"></a>
 
 ## Relaxed
 
@@ -1751,7 +1751,7 @@
    * Usage: `tint.TintRelaxed`
    * Reference: [https://windowsterminalthemes.dev/?theme=Relaxed](https://windowsterminalthemes.dev/?theme=Relaxed)
 
-<a href="#Relaxed"><img title="Palette preview for Relaxed" src="./defaulttints/relaxed.svg" width="100%" height="530"></a>
+<a href="#Relaxed"><img title="Palette preview for Relaxed" src="./svgs/relaxed.svg" width="100%" height="530"></a>
 
 ## Retrowave
 
@@ -1762,7 +1762,7 @@
    * Credit to:
       * Chrissy LeMaire (https://github.com/potatoqualitee)
 
-<a href="#Retrowave"><img title="Palette preview for Retrowave" src="./defaulttints/retrowave.svg" width="100%" height="530"></a>
+<a href="#Retrowave"><img title="Palette preview for Retrowave" src="./svgs/retrowave.svg" width="100%" height="530"></a>
 
 ## Rippedcasts
 
@@ -1771,7 +1771,7 @@
    * Usage: `tint.TintRippedcasts`
    * Reference: [https://windowsterminalthemes.dev/?theme=Rippedcasts](https://windowsterminalthemes.dev/?theme=Rippedcasts)
 
-<a href="#Rippedcasts"><img title="Palette preview for Rippedcasts" src="./defaulttints/rippedcasts.svg" width="100%" height="530"></a>
+<a href="#Rippedcasts"><img title="Palette preview for Rippedcasts" src="./svgs/rippedcasts.svg" width="100%" height="530"></a>
 
 ## RosePine
 
@@ -1780,7 +1780,7 @@
    * Usage: `tint.TintRosePine`
    * Reference: [https://windowsterminalthemes.dev/?theme=Rose+Pine](https://windowsterminalthemes.dev/?theme=Rose+Pine)
 
-<a href="#RosePine"><img title="Palette preview for RosePine" src="./defaulttints/rose_pine.svg" width="100%" height="530"></a>
+<a href="#RosePine"><img title="Palette preview for RosePine" src="./svgs/rose_pine.svg" width="100%" height="530"></a>
 
 ## Rouge2
 
@@ -1789,7 +1789,7 @@
    * Usage: `tint.TintRouge2`
    * Reference: [https://windowsterminalthemes.dev/?theme=Rouge+2](https://windowsterminalthemes.dev/?theme=Rouge+2)
 
-<a href="#Rouge2"><img title="Palette preview for Rouge2" src="./defaulttints/rouge_2.svg" width="100%" height="530"></a>
+<a href="#Rouge2"><img title="Palette preview for Rouge2" src="./svgs/rouge_2.svg" width="100%" height="530"></a>
 
 ## Royal
 
@@ -1798,7 +1798,7 @@
    * Usage: `tint.TintRoyal`
    * Reference: [https://windowsterminalthemes.dev/?theme=Royal](https://windowsterminalthemes.dev/?theme=Royal)
 
-<a href="#Royal"><img title="Palette preview for Royal" src="./defaulttints/royal.svg" width="100%" height="530"></a>
+<a href="#Royal"><img title="Palette preview for Royal" src="./svgs/royal.svg" width="100%" height="530"></a>
 
 ## Ryuuko
 
@@ -1807,7 +1807,7 @@
    * Usage: `tint.TintRyuuko`
    * Reference: [https://windowsterminalthemes.dev/?theme=Ryuuko](https://windowsterminalthemes.dev/?theme=Ryuuko)
 
-<a href="#Ryuuko"><img title="Palette preview for Ryuuko" src="./defaulttints/ryuuko.svg" width="100%" height="530"></a>
+<a href="#Ryuuko"><img title="Palette preview for Ryuuko" src="./svgs/ryuuko.svg" width="100%" height="530"></a>
 
 ## Sakura
 
@@ -1816,7 +1816,7 @@
    * Usage: `tint.TintSakura`
    * Reference: [https://windowsterminalthemes.dev/?theme=Sakura](https://windowsterminalthemes.dev/?theme=Sakura)
 
-<a href="#Sakura"><img title="Palette preview for Sakura" src="./defaulttints/sakura.svg" width="100%" height="530"></a>
+<a href="#Sakura"><img title="Palette preview for Sakura" src="./svgs/sakura.svg" width="100%" height="530"></a>
 
 ## ScarletProtocol
 
@@ -1825,7 +1825,7 @@
    * Usage: `tint.TintScarletProtocol`
    * Reference: [https://windowsterminalthemes.dev/?theme=Scarlet+Protocol](https://windowsterminalthemes.dev/?theme=Scarlet+Protocol)
 
-<a href="#ScarletProtocol"><img title="Palette preview for ScarletProtocol" src="./defaulttints/scarlet_protocol.svg" width="100%" height="530"></a>
+<a href="#ScarletProtocol"><img title="Palette preview for ScarletProtocol" src="./svgs/scarlet_protocol.svg" width="100%" height="530"></a>
 
 ## SeaShells
 
@@ -1834,7 +1834,7 @@
    * Usage: `tint.TintSeaShells`
    * Reference: [https://windowsterminalthemes.dev/?theme=SeaShells](https://windowsterminalthemes.dev/?theme=SeaShells)
 
-<a href="#SeaShells"><img title="Palette preview for SeaShells" src="./defaulttints/sea_shells.svg" width="100%" height="530"></a>
+<a href="#SeaShells"><img title="Palette preview for SeaShells" src="./svgs/sea_shells.svg" width="100%" height="530"></a>
 
 ## SeafoamPastel
 
@@ -1843,7 +1843,7 @@
    * Usage: `tint.TintSeafoamPastel`
    * Reference: [https://windowsterminalthemes.dev/?theme=Seafoam+Pastel](https://windowsterminalthemes.dev/?theme=Seafoam+Pastel)
 
-<a href="#SeafoamPastel"><img title="Palette preview for SeafoamPastel" src="./defaulttints/seafoam_pastel.svg" width="100%" height="530"></a>
+<a href="#SeafoamPastel"><img title="Palette preview for SeafoamPastel" src="./svgs/seafoam_pastel.svg" width="100%" height="530"></a>
 
 ## SerendipityMidnight
 
@@ -1855,7 +1855,7 @@
       * Michael Andreuzza (https://github.com/michael-andreuzza)
       * Chaphasilor (https://github.com/Chaphasilor)
 
-<a href="#SerendipityMidnight"><img title="Palette preview for SerendipityMidnight" src="./defaulttints/serendipity_midnight.svg" width="100%" height="530"></a>
+<a href="#SerendipityMidnight"><img title="Palette preview for SerendipityMidnight" src="./svgs/serendipity_midnight.svg" width="100%" height="530"></a>
 
 ## SerendipityMorning
 
@@ -1867,7 +1867,7 @@
       * Michael Andreuzza (https://github.com/michael-andreuzza)
       * Chaphasilor (https://github.com/Chaphasilor)
 
-<a href="#SerendipityMorning"><img title="Palette preview for SerendipityMorning" src="./defaulttints/serendipity_morning.svg" width="100%" height="530"></a>
+<a href="#SerendipityMorning"><img title="Palette preview for SerendipityMorning" src="./svgs/serendipity_morning.svg" width="100%" height="530"></a>
 
 ## SerendipitySunset
 
@@ -1879,7 +1879,7 @@
       * Michael Andreuzza (https://github.com/michael-andreuzza)
       * Chaphasilor (https://github.com/Chaphasilor)
 
-<a href="#SerendipitySunset"><img title="Palette preview for SerendipitySunset" src="./defaulttints/serendipity_sunset.svg" width="100%" height="530"></a>
+<a href="#SerendipitySunset"><img title="Palette preview for SerendipitySunset" src="./svgs/serendipity_sunset.svg" width="100%" height="530"></a>
 
 ## Seti
 
@@ -1888,7 +1888,7 @@
    * Usage: `tint.TintSeti`
    * Reference: [https://windowsterminalthemes.dev/?theme=Seti](https://windowsterminalthemes.dev/?theme=Seti)
 
-<a href="#Seti"><img title="Palette preview for Seti" src="./defaulttints/seti.svg" width="100%" height="530"></a>
+<a href="#Seti"><img title="Palette preview for Seti" src="./svgs/seti.svg" width="100%" height="530"></a>
 
 ## Shaman
 
@@ -1897,7 +1897,7 @@
    * Usage: `tint.TintShaman`
    * Reference: [https://windowsterminalthemes.dev/?theme=Shaman](https://windowsterminalthemes.dev/?theme=Shaman)
 
-<a href="#Shaman"><img title="Palette preview for Shaman" src="./defaulttints/shaman.svg" width="100%" height="530"></a>
+<a href="#Shaman"><img title="Palette preview for Shaman" src="./svgs/shaman.svg" width="100%" height="530"></a>
 
 ## Slate
 
@@ -1906,7 +1906,7 @@
    * Usage: `tint.TintSlate`
    * Reference: [https://windowsterminalthemes.dev/?theme=Slate](https://windowsterminalthemes.dev/?theme=Slate)
 
-<a href="#Slate"><img title="Palette preview for Slate" src="./defaulttints/slate.svg" width="100%" height="530"></a>
+<a href="#Slate"><img title="Palette preview for Slate" src="./svgs/slate.svg" width="100%" height="530"></a>
 
 ## SleepyHollow
 
@@ -1915,7 +1915,7 @@
    * Usage: `tint.TintSleepyHollow`
    * Reference: [https://windowsterminalthemes.dev/?theme=SleepyHollow](https://windowsterminalthemes.dev/?theme=SleepyHollow)
 
-<a href="#SleepyHollow"><img title="Palette preview for SleepyHollow" src="./defaulttints/sleepy_hollow.svg" width="100%" height="530"></a>
+<a href="#SleepyHollow"><img title="Palette preview for SleepyHollow" src="./svgs/sleepy_hollow.svg" width="100%" height="530"></a>
 
 ## Smyck
 
@@ -1924,7 +1924,7 @@
    * Usage: `tint.TintSmyck`
    * Reference: [https://windowsterminalthemes.dev/?theme=Smyck](https://windowsterminalthemes.dev/?theme=Smyck)
 
-<a href="#Smyck"><img title="Palette preview for Smyck" src="./defaulttints/smyck.svg" width="100%" height="530"></a>
+<a href="#Smyck"><img title="Palette preview for Smyck" src="./svgs/smyck.svg" width="100%" height="530"></a>
 
 ## Snazzy
 
@@ -1933,7 +1933,7 @@
    * Usage: `tint.TintSnazzy`
    * Reference: [https://windowsterminalthemes.dev/?theme=Snazzy](https://windowsterminalthemes.dev/?theme=Snazzy)
 
-<a href="#Snazzy"><img title="Palette preview for Snazzy" src="./defaulttints/snazzy.svg" width="100%" height="530"></a>
+<a href="#Snazzy"><img title="Palette preview for Snazzy" src="./svgs/snazzy.svg" width="100%" height="530"></a>
 
 ## SoftServer
 
@@ -1942,7 +1942,7 @@
    * Usage: `tint.TintSoftServer`
    * Reference: [https://windowsterminalthemes.dev/?theme=SoftServer](https://windowsterminalthemes.dev/?theme=SoftServer)
 
-<a href="#SoftServer"><img title="Palette preview for SoftServer" src="./defaulttints/soft_server.svg" width="100%" height="530"></a>
+<a href="#SoftServer"><img title="Palette preview for SoftServer" src="./svgs/soft_server.svg" width="100%" height="530"></a>
 
 ## SolarizedDarcula
 
@@ -1951,7 +1951,7 @@
    * Usage: `tint.TintSolarizedDarcula`
    * Reference: [https://windowsterminalthemes.dev/?theme=Solarized+Darcula](https://windowsterminalthemes.dev/?theme=Solarized+Darcula)
 
-<a href="#SolarizedDarcula"><img title="Palette preview for SolarizedDarcula" src="./defaulttints/solarized_darcula.svg" width="100%" height="530"></a>
+<a href="#SolarizedDarcula"><img title="Palette preview for SolarizedDarcula" src="./svgs/solarized_darcula.svg" width="100%" height="530"></a>
 
 ## SolarizedDarkPatched
 
@@ -1960,7 +1960,7 @@
    * Usage: `tint.TintSolarizedDarkPatched`
    * Reference: [https://windowsterminalthemes.dev/?theme=Solarized+Dark+-+Patched](https://windowsterminalthemes.dev/?theme=Solarized+Dark+-+Patched)
 
-<a href="#SolarizedDarkPatched"><img title="Palette preview for SolarizedDarkPatched" src="./defaulttints/solarized_dark___patched.svg" width="100%" height="530"></a>
+<a href="#SolarizedDarkPatched"><img title="Palette preview for SolarizedDarkPatched" src="./svgs/solarized_dark___patched.svg" width="100%" height="530"></a>
 
 ## SolarizedDarkHigherContrast
 
@@ -1969,7 +1969,7 @@
    * Usage: `tint.TintSolarizedDarkHigherContrast`
    * Reference: [https://windowsterminalthemes.dev/?theme=Solarized+Dark+Higher+Contrast](https://windowsterminalthemes.dev/?theme=Solarized+Dark+Higher+Contrast)
 
-<a href="#SolarizedDarkHigherContrast"><img title="Palette preview for SolarizedDarkHigherContrast" src="./defaulttints/solarized_dark_higher_contrast.svg" width="100%" height="530"></a>
+<a href="#SolarizedDarkHigherContrast"><img title="Palette preview for SolarizedDarkHigherContrast" src="./svgs/solarized_dark_higher_contrast.svg" width="100%" height="530"></a>
 
 ## SonoranGothic
 
@@ -1980,7 +1980,7 @@
    * Credit to:
       * d-mckee (https://github.com/d-mckee)
 
-<a href="#SonoranGothic"><img title="Palette preview for SonoranGothic" src="./defaulttints/sonoran_gothic.svg" width="100%" height="530"></a>
+<a href="#SonoranGothic"><img title="Palette preview for SonoranGothic" src="./svgs/sonoran_gothic.svg" width="100%" height="530"></a>
 
 ## SonoranSunrise
 
@@ -1991,7 +1991,7 @@
    * Credit to:
       * d-mckee (https://github.com/d-mckee)
 
-<a href="#SonoranSunrise"><img title="Palette preview for SonoranSunrise" src="./defaulttints/sonoran_sunrise.svg" width="100%" height="530"></a>
+<a href="#SonoranSunrise"><img title="Palette preview for SonoranSunrise" src="./svgs/sonoran_sunrise.svg" width="100%" height="530"></a>
 
 ## SpaceGray
 
@@ -2000,7 +2000,7 @@
    * Usage: `tint.TintSpaceGray`
    * Reference: [https://windowsterminalthemes.dev/?theme=SpaceGray](https://windowsterminalthemes.dev/?theme=SpaceGray)
 
-<a href="#SpaceGray"><img title="Palette preview for SpaceGray" src="./defaulttints/space_gray.svg" width="100%" height="530"></a>
+<a href="#SpaceGray"><img title="Palette preview for SpaceGray" src="./svgs/space_gray.svg" width="100%" height="530"></a>
 
 ## SpaceGrayEighties
 
@@ -2009,7 +2009,7 @@
    * Usage: `tint.TintSpaceGrayEighties`
    * Reference: [https://windowsterminalthemes.dev/?theme=SpaceGray+Eighties](https://windowsterminalthemes.dev/?theme=SpaceGray+Eighties)
 
-<a href="#SpaceGrayEighties"><img title="Palette preview for SpaceGrayEighties" src="./defaulttints/space_gray_eighties.svg" width="100%" height="530"></a>
+<a href="#SpaceGrayEighties"><img title="Palette preview for SpaceGrayEighties" src="./svgs/space_gray_eighties.svg" width="100%" height="530"></a>
 
 ## SpaceGrayEightiesDull
 
@@ -2018,7 +2018,7 @@
    * Usage: `tint.TintSpaceGrayEightiesDull`
    * Reference: [https://windowsterminalthemes.dev/?theme=SpaceGray+Eighties+Dull](https://windowsterminalthemes.dev/?theme=SpaceGray+Eighties+Dull)
 
-<a href="#SpaceGrayEightiesDull"><img title="Palette preview for SpaceGrayEightiesDull" src="./defaulttints/space_gray_eighties_dull.svg" width="100%" height="530"></a>
+<a href="#SpaceGrayEightiesDull"><img title="Palette preview for SpaceGrayEightiesDull" src="./svgs/space_gray_eighties_dull.svg" width="100%" height="530"></a>
 
 ## Spacedust
 
@@ -2027,7 +2027,7 @@
    * Usage: `tint.TintSpacedust`
    * Reference: [https://windowsterminalthemes.dev/?theme=Spacedust](https://windowsterminalthemes.dev/?theme=Spacedust)
 
-<a href="#Spacedust"><img title="Palette preview for Spacedust" src="./defaulttints/spacedust.svg" width="100%" height="530"></a>
+<a href="#Spacedust"><img title="Palette preview for Spacedust" src="./svgs/spacedust.svg" width="100%" height="530"></a>
 
 ## Spiderman
 
@@ -2036,7 +2036,7 @@
    * Usage: `tint.TintSpiderman`
    * Reference: [https://windowsterminalthemes.dev/?theme=Spiderman](https://windowsterminalthemes.dev/?theme=Spiderman)
 
-<a href="#Spiderman"><img title="Palette preview for Spiderman" src="./defaulttints/spiderman.svg" width="100%" height="530"></a>
+<a href="#Spiderman"><img title="Palette preview for Spiderman" src="./svgs/spiderman.svg" width="100%" height="530"></a>
 
 ## Spring
 
@@ -2045,7 +2045,7 @@
    * Usage: `tint.TintSpring`
    * Reference: [https://windowsterminalthemes.dev/?theme=Spring](https://windowsterminalthemes.dev/?theme=Spring)
 
-<a href="#Spring"><img title="Palette preview for Spring" src="./defaulttints/spring.svg" width="100%" height="530"></a>
+<a href="#Spring"><img title="Palette preview for Spring" src="./svgs/spring.svg" width="100%" height="530"></a>
 
 ## Square
 
@@ -2054,7 +2054,7 @@
    * Usage: `tint.TintSquare`
    * Reference: [https://windowsterminalthemes.dev/?theme=Square](https://windowsterminalthemes.dev/?theme=Square)
 
-<a href="#Square"><img title="Palette preview for Square" src="./defaulttints/square.svg" width="100%" height="530"></a>
+<a href="#Square"><img title="Palette preview for Square" src="./svgs/square.svg" width="100%" height="530"></a>
 
 ## Sublette
 
@@ -2065,7 +2065,7 @@
    * Credit to:
       * sublee (https://github.com/sublee)
 
-<a href="#Sublette"><img title="Palette preview for Sublette" src="./defaulttints/sublette.svg" width="100%" height="530"></a>
+<a href="#Sublette"><img title="Palette preview for Sublette" src="./svgs/sublette.svg" width="100%" height="530"></a>
 
 ## Subliminal
 
@@ -2074,7 +2074,7 @@
    * Usage: `tint.TintSubliminal`
    * Reference: [https://windowsterminalthemes.dev/?theme=Subliminal](https://windowsterminalthemes.dev/?theme=Subliminal)
 
-<a href="#Subliminal"><img title="Palette preview for Subliminal" src="./defaulttints/subliminal.svg" width="100%" height="530"></a>
+<a href="#Subliminal"><img title="Palette preview for Subliminal" src="./svgs/subliminal.svg" width="100%" height="530"></a>
 
 ## Sundried
 
@@ -2083,7 +2083,7 @@
    * Usage: `tint.TintSundried`
    * Reference: [https://windowsterminalthemes.dev/?theme=Sundried](https://windowsterminalthemes.dev/?theme=Sundried)
 
-<a href="#Sundried"><img title="Palette preview for Sundried" src="./defaulttints/sundried.svg" width="100%" height="530"></a>
+<a href="#Sundried"><img title="Palette preview for Sundried" src="./svgs/sundried.svg" width="100%" height="530"></a>
 
 ## Symfonic
 
@@ -2092,7 +2092,7 @@
    * Usage: `tint.TintSymfonic`
    * Reference: [https://windowsterminalthemes.dev/?theme=Symfonic](https://windowsterminalthemes.dev/?theme=Symfonic)
 
-<a href="#Symfonic"><img title="Palette preview for Symfonic" src="./defaulttints/symfonic.svg" width="100%" height="530"></a>
+<a href="#Symfonic"><img title="Palette preview for Symfonic" src="./svgs/symfonic.svg" width="100%" height="530"></a>
 
 ## TangoAdapted
 
@@ -2101,7 +2101,7 @@
    * Usage: `tint.TintTangoAdapted`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tango+Adapted](https://windowsterminalthemes.dev/?theme=Tango+Adapted)
 
-<a href="#TangoAdapted"><img title="Palette preview for TangoAdapted" src="./defaulttints/tango_adapted.svg" width="100%" height="530"></a>
+<a href="#TangoAdapted"><img title="Palette preview for TangoAdapted" src="./svgs/tango_adapted.svg" width="100%" height="530"></a>
 
 ## TangoHalfAdapted
 
@@ -2110,7 +2110,7 @@
    * Usage: `tint.TintTangoHalfAdapted`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tango+Half+Adapted](https://windowsterminalthemes.dev/?theme=Tango+Half+Adapted)
 
-<a href="#TangoHalfAdapted"><img title="Palette preview for TangoHalfAdapted" src="./defaulttints/tango_half_adapted.svg" width="100%" height="530"></a>
+<a href="#TangoHalfAdapted"><img title="Palette preview for TangoHalfAdapted" src="./svgs/tango_half_adapted.svg" width="100%" height="530"></a>
 
 ## Teerb
 
@@ -2119,7 +2119,7 @@
    * Usage: `tint.TintTeerb`
    * Reference: [https://windowsterminalthemes.dev/?theme=Teerb](https://windowsterminalthemes.dev/?theme=Teerb)
 
-<a href="#Teerb"><img title="Palette preview for Teerb" src="./defaulttints/teerb.svg" width="100%" height="530"></a>
+<a href="#Teerb"><img title="Palette preview for Teerb" src="./svgs/teerb.svg" width="100%" height="530"></a>
 
 ## TerminalBasic
 
@@ -2128,7 +2128,7 @@
    * Usage: `tint.TintTerminalBasic`
    * Reference: [https://windowsterminalthemes.dev/?theme=Terminal+Basic](https://windowsterminalthemes.dev/?theme=Terminal+Basic)
 
-<a href="#TerminalBasic"><img title="Palette preview for TerminalBasic" src="./defaulttints/terminal_basic.svg" width="100%" height="530"></a>
+<a href="#TerminalBasic"><img title="Palette preview for TerminalBasic" src="./svgs/terminal_basic.svg" width="100%" height="530"></a>
 
 ## ThayerBright
 
@@ -2137,7 +2137,7 @@
    * Usage: `tint.TintThayerBright`
    * Reference: [https://windowsterminalthemes.dev/?theme=Thayer+Bright](https://windowsterminalthemes.dev/?theme=Thayer+Bright)
 
-<a href="#ThayerBright"><img title="Palette preview for ThayerBright" src="./defaulttints/thayer_bright.svg" width="100%" height="530"></a>
+<a href="#ThayerBright"><img title="Palette preview for ThayerBright" src="./svgs/thayer_bright.svg" width="100%" height="530"></a>
 
 ## TheHulk
 
@@ -2146,7 +2146,7 @@
    * Usage: `tint.TintTheHulk`
    * Reference: [https://windowsterminalthemes.dev/?theme=The+Hulk](https://windowsterminalthemes.dev/?theme=The+Hulk)
 
-<a href="#TheHulk"><img title="Palette preview for TheHulk" src="./defaulttints/the_hulk.svg" width="100%" height="530"></a>
+<a href="#TheHulk"><img title="Palette preview for TheHulk" src="./svgs/the_hulk.svg" width="100%" height="530"></a>
 
 ## TinaciousDesignDark
 
@@ -2155,7 +2155,7 @@
    * Usage: `tint.TintTinaciousDesignDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tinacious+Design+%28Dark%29](https://windowsterminalthemes.dev/?theme=Tinacious+Design+%28Dark%29)
 
-<a href="#TinaciousDesignDark"><img title="Palette preview for TinaciousDesignDark" src="./defaulttints/tinacious_design_dark.svg" width="100%" height="530"></a>
+<a href="#TinaciousDesignDark"><img title="Palette preview for TinaciousDesignDark" src="./svgs/tinacious_design_dark.svg" width="100%" height="530"></a>
 
 ## TinaciousDesignLight
 
@@ -2164,7 +2164,7 @@
    * Usage: `tint.TintTinaciousDesignLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tinacious+Design+%28Light%29](https://windowsterminalthemes.dev/?theme=Tinacious+Design+%28Light%29)
 
-<a href="#TinaciousDesignLight"><img title="Palette preview for TinaciousDesignLight" src="./defaulttints/tinacious_design_light.svg" width="100%" height="530"></a>
+<a href="#TinaciousDesignLight"><img title="Palette preview for TinaciousDesignLight" src="./svgs/tinacious_design_light.svg" width="100%" height="530"></a>
 
 ## TokyoNight
 
@@ -2173,7 +2173,7 @@
    * Usage: `tint.TintTokyoNight`
    * Reference: [https://windowsterminalthemes.dev/?theme=TokyoNight](https://windowsterminalthemes.dev/?theme=TokyoNight)
 
-<a href="#TokyoNight"><img title="Palette preview for TokyoNight" src="./defaulttints/tokyo_night.svg" width="100%" height="530"></a>
+<a href="#TokyoNight"><img title="Palette preview for TokyoNight" src="./svgs/tokyo_night.svg" width="100%" height="530"></a>
 
 ## TokyoNightLight
 
@@ -2182,7 +2182,7 @@
    * Usage: `tint.TintTokyoNightLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=TokyoNightLight](https://windowsterminalthemes.dev/?theme=TokyoNightLight)
 
-<a href="#TokyoNightLight"><img title="Palette preview for TokyoNightLight" src="./defaulttints/tokyo_night_light.svg" width="100%" height="530"></a>
+<a href="#TokyoNightLight"><img title="Palette preview for TokyoNightLight" src="./svgs/tokyo_night_light.svg" width="100%" height="530"></a>
 
 ## TokyoNightStorm
 
@@ -2191,7 +2191,7 @@
    * Usage: `tint.TintTokyoNightStorm`
    * Reference: [https://windowsterminalthemes.dev/?theme=TokyoNightStorm](https://windowsterminalthemes.dev/?theme=TokyoNightStorm)
 
-<a href="#TokyoNightStorm"><img title="Palette preview for TokyoNightStorm" src="./defaulttints/tokyo_night_storm.svg" width="100%" height="530"></a>
+<a href="#TokyoNightStorm"><img title="Palette preview for TokyoNightStorm" src="./svgs/tokyo_night_storm.svg" width="100%" height="530"></a>
 
 ## Tomorrow
 
@@ -2200,7 +2200,7 @@
    * Usage: `tint.TintTomorrow`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tomorrow](https://windowsterminalthemes.dev/?theme=Tomorrow)
 
-<a href="#Tomorrow"><img title="Palette preview for Tomorrow" src="./defaulttints/tomorrow.svg" width="100%" height="530"></a>
+<a href="#Tomorrow"><img title="Palette preview for Tomorrow" src="./svgs/tomorrow.svg" width="100%" height="530"></a>
 
 ## TomorrowNight
 
@@ -2209,7 +2209,7 @@
    * Usage: `tint.TintTomorrowNight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tomorrow+Night](https://windowsterminalthemes.dev/?theme=Tomorrow+Night)
 
-<a href="#TomorrowNight"><img title="Palette preview for TomorrowNight" src="./defaulttints/tomorrow_night.svg" width="100%" height="530"></a>
+<a href="#TomorrowNight"><img title="Palette preview for TomorrowNight" src="./svgs/tomorrow_night.svg" width="100%" height="530"></a>
 
 ## TomorrowNightBlue
 
@@ -2218,7 +2218,7 @@
    * Usage: `tint.TintTomorrowNightBlue`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Blue](https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Blue)
 
-<a href="#TomorrowNightBlue"><img title="Palette preview for TomorrowNightBlue" src="./defaulttints/tomorrow_night_blue.svg" width="100%" height="530"></a>
+<a href="#TomorrowNightBlue"><img title="Palette preview for TomorrowNightBlue" src="./svgs/tomorrow_night_blue.svg" width="100%" height="530"></a>
 
 ## TomorrowNightBright
 
@@ -2227,7 +2227,7 @@
    * Usage: `tint.TintTomorrowNightBright`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Bright](https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Bright)
 
-<a href="#TomorrowNightBright"><img title="Palette preview for TomorrowNightBright" src="./defaulttints/tomorrow_night_bright.svg" width="100%" height="530"></a>
+<a href="#TomorrowNightBright"><img title="Palette preview for TomorrowNightBright" src="./svgs/tomorrow_night_bright.svg" width="100%" height="530"></a>
 
 ## TomorrowNightBurns
 
@@ -2236,7 +2236,7 @@
    * Usage: `tint.TintTomorrowNightBurns`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Burns](https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Burns)
 
-<a href="#TomorrowNightBurns"><img title="Palette preview for TomorrowNightBurns" src="./defaulttints/tomorrow_night_burns.svg" width="100%" height="530"></a>
+<a href="#TomorrowNightBurns"><img title="Palette preview for TomorrowNightBurns" src="./svgs/tomorrow_night_burns.svg" width="100%" height="530"></a>
 
 ## TomorrowNightEighties
 
@@ -2245,7 +2245,7 @@
    * Usage: `tint.TintTomorrowNightEighties`
    * Reference: [https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Eighties](https://windowsterminalthemes.dev/?theme=Tomorrow+Night+Eighties)
 
-<a href="#TomorrowNightEighties"><img title="Palette preview for TomorrowNightEighties" src="./defaulttints/tomorrow_night_eighties.svg" width="100%" height="530"></a>
+<a href="#TomorrowNightEighties"><img title="Palette preview for TomorrowNightEighties" src="./svgs/tomorrow_night_eighties.svg" width="100%" height="530"></a>
 
 ## ToyChest
 
@@ -2254,7 +2254,7 @@
    * Usage: `tint.TintToyChest`
    * Reference: [https://windowsterminalthemes.dev/?theme=ToyChest](https://windowsterminalthemes.dev/?theme=ToyChest)
 
-<a href="#ToyChest"><img title="Palette preview for ToyChest" src="./defaulttints/toy_chest.svg" width="100%" height="530"></a>
+<a href="#ToyChest"><img title="Palette preview for ToyChest" src="./svgs/toy_chest.svg" width="100%" height="530"></a>
 
 ## Treehouse
 
@@ -2263,7 +2263,7 @@
    * Usage: `tint.TintTreehouse`
    * Reference: [https://windowsterminalthemes.dev/?theme=Treehouse](https://windowsterminalthemes.dev/?theme=Treehouse)
 
-<a href="#Treehouse"><img title="Palette preview for Treehouse" src="./defaulttints/treehouse.svg" width="100%" height="530"></a>
+<a href="#Treehouse"><img title="Palette preview for Treehouse" src="./svgs/treehouse.svg" width="100%" height="530"></a>
 
 ## Twilight
 
@@ -2272,7 +2272,7 @@
    * Usage: `tint.TintTwilight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Twilight](https://windowsterminalthemes.dev/?theme=Twilight)
 
-<a href="#Twilight"><img title="Palette preview for Twilight" src="./defaulttints/twilight.svg" width="100%" height="530"></a>
+<a href="#Twilight"><img title="Palette preview for Twilight" src="./svgs/twilight.svg" width="100%" height="530"></a>
 
 ## Ubuntu
 
@@ -2281,7 +2281,7 @@
    * Usage: `tint.TintUbuntu`
    * Reference: [https://windowsterminalthemes.dev/?theme=Ubuntu](https://windowsterminalthemes.dev/?theme=Ubuntu)
 
-<a href="#Ubuntu"><img title="Palette preview for Ubuntu" src="./defaulttints/ubuntu.svg" width="100%" height="530"></a>
+<a href="#Ubuntu"><img title="Palette preview for Ubuntu" src="./svgs/ubuntu.svg" width="100%" height="530"></a>
 
 ## UltraViolent
 
@@ -2290,7 +2290,7 @@
    * Usage: `tint.TintUltraViolent`
    * Reference: [https://windowsterminalthemes.dev/?theme=UltraViolent](https://windowsterminalthemes.dev/?theme=UltraViolent)
 
-<a href="#UltraViolent"><img title="Palette preview for UltraViolent" src="./defaulttints/ultra_violent.svg" width="100%" height="530"></a>
+<a href="#UltraViolent"><img title="Palette preview for UltraViolent" src="./svgs/ultra_violent.svg" width="100%" height="530"></a>
 
 ## UnderTheSea
 
@@ -2299,7 +2299,7 @@
    * Usage: `tint.TintUnderTheSea`
    * Reference: [https://windowsterminalthemes.dev/?theme=UnderTheSea](https://windowsterminalthemes.dev/?theme=UnderTheSea)
 
-<a href="#UnderTheSea"><img title="Palette preview for UnderTheSea" src="./defaulttints/under_the_sea.svg" width="100%" height="530"></a>
+<a href="#UnderTheSea"><img title="Palette preview for UnderTheSea" src="./svgs/under_the_sea.svg" width="100%" height="530"></a>
 
 ## Unholy
 
@@ -2308,7 +2308,7 @@
    * Usage: `tint.TintUnholy`
    * Reference: [https://windowsterminalthemes.dev/?theme=Unholy](https://windowsterminalthemes.dev/?theme=Unholy)
 
-<a href="#Unholy"><img title="Palette preview for Unholy" src="./defaulttints/unholy.svg" width="100%" height="530"></a>
+<a href="#Unholy"><img title="Palette preview for Unholy" src="./svgs/unholy.svg" width="100%" height="530"></a>
 
 ## Unikitty
 
@@ -2317,7 +2317,7 @@
    * Usage: `tint.TintUnikitty`
    * Reference: [https://windowsterminalthemes.dev/?theme=Unikitty](https://windowsterminalthemes.dev/?theme=Unikitty)
 
-<a href="#Unikitty"><img title="Palette preview for Unikitty" src="./defaulttints/unikitty.svg" width="100%" height="530"></a>
+<a href="#Unikitty"><img title="Palette preview for Unikitty" src="./svgs/unikitty.svg" width="100%" height="530"></a>
 
 ## Urple
 
@@ -2326,7 +2326,7 @@
    * Usage: `tint.TintUrple`
    * Reference: [https://windowsterminalthemes.dev/?theme=Urple](https://windowsterminalthemes.dev/?theme=Urple)
 
-<a href="#Urple"><img title="Palette preview for Urple" src="./defaulttints/urple.svg" width="100%" height="530"></a>
+<a href="#Urple"><img title="Palette preview for Urple" src="./svgs/urple.svg" width="100%" height="530"></a>
 
 ## Vaughn
 
@@ -2335,7 +2335,7 @@
    * Usage: `tint.TintVaughn`
    * Reference: [https://windowsterminalthemes.dev/?theme=Vaughn](https://windowsterminalthemes.dev/?theme=Vaughn)
 
-<a href="#Vaughn"><img title="Palette preview for Vaughn" src="./defaulttints/vaughn.svg" width="100%" height="530"></a>
+<a href="#Vaughn"><img title="Palette preview for Vaughn" src="./svgs/vaughn.svg" width="100%" height="530"></a>
 
 ## VibrantInk
 
@@ -2344,7 +2344,7 @@
    * Usage: `tint.TintVibrantInk`
    * Reference: [https://windowsterminalthemes.dev/?theme=VibrantInk](https://windowsterminalthemes.dev/?theme=VibrantInk)
 
-<a href="#VibrantInk"><img title="Palette preview for VibrantInk" src="./defaulttints/vibrant_ink.svg" width="100%" height="530"></a>
+<a href="#VibrantInk"><img title="Palette preview for VibrantInk" src="./svgs/vibrant_ink.svg" width="100%" height="530"></a>
 
 ## VioletDark
 
@@ -2353,7 +2353,7 @@
    * Usage: `tint.TintVioletDark`
    * Reference: [https://windowsterminalthemes.dev/?theme=Violet+Dark](https://windowsterminalthemes.dev/?theme=Violet+Dark)
 
-<a href="#VioletDark"><img title="Palette preview for VioletDark" src="./defaulttints/violet_dark.svg" width="100%" height="530"></a>
+<a href="#VioletDark"><img title="Palette preview for VioletDark" src="./svgs/violet_dark.svg" width="100%" height="530"></a>
 
 ## VioletLight
 
@@ -2362,7 +2362,7 @@
    * Usage: `tint.TintVioletLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=Violet+Light](https://windowsterminalthemes.dev/?theme=Violet+Light)
 
-<a href="#VioletLight"><img title="Palette preview for VioletLight" src="./defaulttints/violet_light.svg" width="100%" height="530"></a>
+<a href="#VioletLight"><img title="Palette preview for VioletLight" src="./svgs/violet_light.svg" width="100%" height="530"></a>
 
 ## WarmNeon
 
@@ -2371,7 +2371,7 @@
    * Usage: `tint.TintWarmNeon`
    * Reference: [https://windowsterminalthemes.dev/?theme=WarmNeon](https://windowsterminalthemes.dev/?theme=WarmNeon)
 
-<a href="#WarmNeon"><img title="Palette preview for WarmNeon" src="./defaulttints/warm_neon.svg" width="100%" height="530"></a>
+<a href="#WarmNeon"><img title="Palette preview for WarmNeon" src="./svgs/warm_neon.svg" width="100%" height="530"></a>
 
 ## Wez
 
@@ -2380,7 +2380,7 @@
    * Usage: `tint.TintWez`
    * Reference: [https://windowsterminalthemes.dev/?theme=Wez](https://windowsterminalthemes.dev/?theme=Wez)
 
-<a href="#Wez"><img title="Palette preview for Wez" src="./defaulttints/wez.svg" width="100%" height="530"></a>
+<a href="#Wez"><img title="Palette preview for Wez" src="./svgs/wez.svg" width="100%" height="530"></a>
 
 ## Whimsy
 
@@ -2389,7 +2389,7 @@
    * Usage: `tint.TintWhimsy`
    * Reference: [https://windowsterminalthemes.dev/?theme=Whimsy](https://windowsterminalthemes.dev/?theme=Whimsy)
 
-<a href="#Whimsy"><img title="Palette preview for Whimsy" src="./defaulttints/whimsy.svg" width="100%" height="530"></a>
+<a href="#Whimsy"><img title="Palette preview for Whimsy" src="./svgs/whimsy.svg" width="100%" height="530"></a>
 
 ## WildCherry
 
@@ -2398,7 +2398,7 @@
    * Usage: `tint.TintWildCherry`
    * Reference: [https://windowsterminalthemes.dev/?theme=WildCherry](https://windowsterminalthemes.dev/?theme=WildCherry)
 
-<a href="#WildCherry"><img title="Palette preview for WildCherry" src="./defaulttints/wild_cherry.svg" width="100%" height="530"></a>
+<a href="#WildCherry"><img title="Palette preview for WildCherry" src="./svgs/wild_cherry.svg" width="100%" height="530"></a>
 
 ## Wombat
 
@@ -2407,7 +2407,7 @@
    * Usage: `tint.TintWombat`
    * Reference: [https://windowsterminalthemes.dev/?theme=Wombat](https://windowsterminalthemes.dev/?theme=Wombat)
 
-<a href="#Wombat"><img title="Palette preview for Wombat" src="./defaulttints/wombat.svg" width="100%" height="530"></a>
+<a href="#Wombat"><img title="Palette preview for Wombat" src="./svgs/wombat.svg" width="100%" height="530"></a>
 
 ## Wryan
 
@@ -2416,7 +2416,7 @@
    * Usage: `tint.TintWryan`
    * Reference: [https://windowsterminalthemes.dev/?theme=Wryan](https://windowsterminalthemes.dev/?theme=Wryan)
 
-<a href="#Wryan"><img title="Palette preview for Wryan" src="./defaulttints/wryan.svg" width="100%" height="530"></a>
+<a href="#Wryan"><img title="Palette preview for Wryan" src="./svgs/wryan.svg" width="100%" height="530"></a>
 
 ## Zenburn
 
@@ -2425,7 +2425,7 @@
    * Usage: `tint.TintZenburn`
    * Reference: [https://windowsterminalthemes.dev/?theme=Zenburn](https://windowsterminalthemes.dev/?theme=Zenburn)
 
-<a href="#Zenburn"><img title="Palette preview for Zenburn" src="./defaulttints/zenburn.svg" width="100%" height="530"></a>
+<a href="#Zenburn"><img title="Palette preview for Zenburn" src="./svgs/zenburn.svg" width="100%" height="530"></a>
 
 ## Zeonica
 
@@ -2434,7 +2434,7 @@
    * Usage: `tint.TintZeonica`
    * Reference: [https://windowsterminalthemes.dev/?theme=Zeonica](https://windowsterminalthemes.dev/?theme=Zeonica)
 
-<a href="#Zeonica"><img title="Palette preview for Zeonica" src="./defaulttints/zeonica.svg" width="100%" height="530"></a>
+<a href="#Zeonica"><img title="Palette preview for Zeonica" src="./svgs/zeonica.svg" width="100%" height="530"></a>
 
 ## Ayu
 
@@ -2443,7 +2443,7 @@
    * Usage: `tint.TintAyu`
    * Reference: [https://windowsterminalthemes.dev/?theme=ayu](https://windowsterminalthemes.dev/?theme=ayu)
 
-<a href="#Ayu"><img title="Palette preview for Ayu" src="./defaulttints/ayu.svg" width="100%" height="530"></a>
+<a href="#Ayu"><img title="Palette preview for Ayu" src="./svgs/ayu.svg" width="100%" height="530"></a>
 
 ## AyuLight
 
@@ -2452,7 +2452,7 @@
    * Usage: `tint.TintAyuLight`
    * Reference: [https://windowsterminalthemes.dev/?theme=ayu_light](https://windowsterminalthemes.dev/?theme=ayu_light)
 
-<a href="#AyuLight"><img title="Palette preview for AyuLight" src="./defaulttints/ayu_light.svg" width="100%" height="530"></a>
+<a href="#AyuLight"><img title="Palette preview for AyuLight" src="./svgs/ayu_light.svg" width="100%" height="530"></a>
 
 ## CoffeeTheme
 
@@ -2461,7 +2461,7 @@
    * Usage: `tint.TintCoffeeTheme`
    * Reference: [https://windowsterminalthemes.dev/?theme=coffee_theme](https://windowsterminalthemes.dev/?theme=coffee_theme)
 
-<a href="#CoffeeTheme"><img title="Palette preview for CoffeeTheme" src="./defaulttints/coffee_theme.svg" width="100%" height="530"></a>
+<a href="#CoffeeTheme"><img title="Palette preview for CoffeeTheme" src="./svgs/coffee_theme.svg" width="100%" height="530"></a>
 
 ## Coolnight
 
@@ -2470,7 +2470,7 @@
    * Usage: `tint.TintCoolnight`
    * Reference: [https://windowsterminalthemes.dev/?theme=coolnight](https://windowsterminalthemes.dev/?theme=coolnight)
 
-<a href="#Coolnight"><img title="Palette preview for Coolnight" src="./defaulttints/coolnight.svg" width="100%" height="530"></a>
+<a href="#Coolnight"><img title="Palette preview for Coolnight" src="./svgs/coolnight.svg" width="100%" height="530"></a>
 
 ## Cyberpunk
 
@@ -2479,7 +2479,7 @@
    * Usage: `tint.TintCyberpunk`
    * Reference: [https://windowsterminalthemes.dev/?theme=cyberpunk](https://windowsterminalthemes.dev/?theme=cyberpunk)
 
-<a href="#Cyberpunk"><img title="Palette preview for Cyberpunk" src="./defaulttints/cyberpunk.svg" width="100%" height="530"></a>
+<a href="#Cyberpunk"><img title="Palette preview for Cyberpunk" src="./svgs/cyberpunk.svg" width="100%" height="530"></a>
 
 ## Deep
 
@@ -2488,7 +2488,7 @@
    * Usage: `tint.TintDeep`
    * Reference: [https://windowsterminalthemes.dev/?theme=deep](https://windowsterminalthemes.dev/?theme=deep)
 
-<a href="#Deep"><img title="Palette preview for Deep" src="./defaulttints/deep.svg" width="100%" height="530"></a>
+<a href="#Deep"><img title="Palette preview for Deep" src="./svgs/deep.svg" width="100%" height="530"></a>
 
 ## H4Rithd
 
@@ -2497,7 +2497,7 @@
    * Usage: `tint.TintH4Rithd`
    * Reference: [https://windowsterminalthemes.dev/?theme=h4rithd](https://windowsterminalthemes.dev/?theme=h4rithd)
 
-<a href="#H4Rithd"><img title="Palette preview for H4Rithd" src="./defaulttints/h_4_rithd.svg" width="100%" height="530"></a>
+<a href="#H4Rithd"><img title="Palette preview for H4Rithd" src="./svgs/h_4_rithd.svg" width="100%" height="530"></a>
 
 ## H4RithdCom
 
@@ -2506,7 +2506,7 @@
    * Usage: `tint.TintH4RithdCom`
    * Reference: [https://windowsterminalthemes.dev/?theme=h4rithd.com](https://windowsterminalthemes.dev/?theme=h4rithd.com)
 
-<a href="#H4RithdCom"><img title="Palette preview for H4RithdCom" src="./defaulttints/h_4_rithd_com.svg" width="100%" height="530"></a>
+<a href="#H4RithdCom"><img title="Palette preview for H4RithdCom" src="./svgs/h_4_rithd_com.svg" width="100%" height="530"></a>
 
 ## Idea
 
@@ -2515,7 +2515,7 @@
    * Usage: `tint.TintIdea`
    * Reference: [https://windowsterminalthemes.dev/?theme=idea](https://windowsterminalthemes.dev/?theme=idea)
 
-<a href="#Idea"><img title="Palette preview for Idea" src="./defaulttints/idea.svg" width="100%" height="530"></a>
+<a href="#Idea"><img title="Palette preview for Idea" src="./svgs/idea.svg" width="100%" height="530"></a>
 
 ## IdleToes
 
@@ -2524,7 +2524,7 @@
    * Usage: `tint.TintIdleToes`
    * Reference: [https://windowsterminalthemes.dev/?theme=idleToes](https://windowsterminalthemes.dev/?theme=idleToes)
 
-<a href="#IdleToes"><img title="Palette preview for IdleToes" src="./defaulttints/idle_toes.svg" width="100%" height="530"></a>
+<a href="#IdleToes"><img title="Palette preview for IdleToes" src="./svgs/idle_toes.svg" width="100%" height="530"></a>
 
 ## Jubi
 
@@ -2533,7 +2533,7 @@
    * Usage: `tint.TintJubi`
    * Reference: [https://windowsterminalthemes.dev/?theme=jubi](https://windowsterminalthemes.dev/?theme=jubi)
 
-<a href="#Jubi"><img title="Palette preview for Jubi" src="./defaulttints/jubi.svg" width="100%" height="530"></a>
+<a href="#Jubi"><img title="Palette preview for Jubi" src="./svgs/jubi.svg" width="100%" height="530"></a>
 
 ## Lovelace
 
@@ -2542,7 +2542,7 @@
    * Usage: `tint.TintLovelace`
    * Reference: [https://windowsterminalthemes.dev/?theme=lovelace](https://windowsterminalthemes.dev/?theme=lovelace)
 
-<a href="#Lovelace"><img title="Palette preview for Lovelace" src="./defaulttints/lovelace.svg" width="100%" height="530"></a>
+<a href="#Lovelace"><img title="Palette preview for Lovelace" src="./svgs/lovelace.svg" width="100%" height="530"></a>
 
 ## MidnightInMojave
 
@@ -2551,7 +2551,7 @@
    * Usage: `tint.TintMidnightInMojave`
    * Reference: [https://windowsterminalthemes.dev/?theme=midnight-in-mojave](https://windowsterminalthemes.dev/?theme=midnight-in-mojave)
 
-<a href="#MidnightInMojave"><img title="Palette preview for MidnightInMojave" src="./defaulttints/midnight_in_mojave.svg" width="100%" height="530"></a>
+<a href="#MidnightInMojave"><img title="Palette preview for MidnightInMojave" src="./svgs/midnight_in_mojave.svg" width="100%" height="530"></a>
 
 ## Nord
 
@@ -2560,7 +2560,7 @@
    * Usage: `tint.TintNord`
    * Reference: [https://windowsterminalthemes.dev/?theme=nord](https://windowsterminalthemes.dev/?theme=nord)
 
-<a href="#Nord"><img title="Palette preview for Nord" src="./defaulttints/nord.svg" width="100%" height="530"></a>
+<a href="#Nord"><img title="Palette preview for Nord" src="./svgs/nord.svg" width="100%" height="530"></a>
 
 ## Primary
 
@@ -2569,7 +2569,7 @@
    * Usage: `tint.TintPrimary`
    * Reference: [https://windowsterminalthemes.dev/?theme=primary](https://windowsterminalthemes.dev/?theme=primary)
 
-<a href="#Primary"><img title="Palette preview for Primary" src="./defaulttints/primary.svg" width="100%" height="530"></a>
+<a href="#Primary"><img title="Palette preview for Primary" src="./svgs/primary.svg" width="100%" height="530"></a>
 
 ## Purplepeter
 
@@ -2578,7 +2578,7 @@
    * Usage: `tint.TintPurplepeter`
    * Reference: [https://windowsterminalthemes.dev/?theme=purplepeter](https://windowsterminalthemes.dev/?theme=purplepeter)
 
-<a href="#Purplepeter"><img title="Palette preview for Purplepeter" src="./defaulttints/purplepeter.svg" width="100%" height="530"></a>
+<a href="#Purplepeter"><img title="Palette preview for Purplepeter" src="./svgs/purplepeter.svg" width="100%" height="530"></a>
 
 ## Rebecca
 
@@ -2587,7 +2587,7 @@
    * Usage: `tint.TintRebecca`
    * Reference: [https://windowsterminalthemes.dev/?theme=rebecca](https://windowsterminalthemes.dev/?theme=rebecca)
 
-<a href="#Rebecca"><img title="Palette preview for Rebecca" src="./defaulttints/rebecca.svg" width="100%" height="530"></a>
+<a href="#Rebecca"><img title="Palette preview for Rebecca" src="./svgs/rebecca.svg" width="100%" height="530"></a>
 
 ## ShadesOfPurple
 
@@ -2596,7 +2596,7 @@
    * Usage: `tint.TintShadesOfPurple`
    * Reference: [https://windowsterminalthemes.dev/?theme=shades-of-purple](https://windowsterminalthemes.dev/?theme=shades-of-purple)
 
-<a href="#ShadesOfPurple"><img title="Palette preview for ShadesOfPurple" src="./defaulttints/shades_of_purple.svg" width="100%" height="530"></a>
+<a href="#ShadesOfPurple"><img title="Palette preview for ShadesOfPurple" src="./svgs/shades_of_purple.svg" width="100%" height="530"></a>
 
 ## Synthwave
 
@@ -2605,7 +2605,7 @@
    * Usage: `tint.TintSynthwave`
    * Reference: [https://windowsterminalthemes.dev/?theme=synthwave](https://windowsterminalthemes.dev/?theme=synthwave)
 
-<a href="#Synthwave"><img title="Palette preview for Synthwave" src="./defaulttints/synthwave.svg" width="100%" height="530"></a>
+<a href="#Synthwave"><img title="Palette preview for Synthwave" src="./svgs/synthwave.svg" width="100%" height="530"></a>
 
 ## SynthwaveEverything
 
@@ -2614,5 +2614,5 @@
    * Usage: `tint.TintSynthwaveEverything`
    * Reference: [https://windowsterminalthemes.dev/?theme=synthwave-everything](https://windowsterminalthemes.dev/?theme=synthwave-everything)
 
-<a href="#SynthwaveEverything"><img title="Palette preview for SynthwaveEverything" src="./defaulttints/synthwave_everything.svg" width="100%" height="530"></a>
+<a href="#SynthwaveEverything"><img title="Palette preview for SynthwaveEverything" src="./svgs/synthwave_everything.svg" width="100%" height="530"></a>
 

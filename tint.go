@@ -4,49 +4,54 @@
 
 package tint
 
-import (
-	"github.com/charmbracelet/lipgloss"
-)
+type CreditSource struct {
+	// Name is the name of the credit source.
+	Name string
 
-// Tint is an interface that represents each tint in this package.
-type Tint interface {
+	// Link is the link to the credit source.
+	Link string
+}
+
+// Tint is a struct that represents each tint in this package.
+type Tint struct {
 	// DisplayName returns the display name of the tint.
-	DisplayName() string
+	DisplayName string
 
 	// ID returns the name of the tint (normalized, snakecase style).
-	ID() string
+	ID string
 
-	// About returns information about the tint (and if we have credit for who
-	// assisted with/created it).
-	About() string
+	// CreditSources returns the credit sources for the tint.
+	CreditSources []*CreditSource
 
 	// Fg returns the recommended default foreground color for this tint.
-	Fg() lipgloss.TerminalColor
+	Fg *Color
 
 	// Bg returns the recommended default background color for this tint.
-	Bg() lipgloss.TerminalColor
+	Bg *Color
 
-	// SelectionBg returns the recommended background color for selected text.
-	SelectionBg() lipgloss.TerminalColor
+	// SelectionBg returns the recommended background color for selected text. Note that this
+	// is missing from most themes.
+	SelectionBg *Color
 
-	// Cursor returns the recommended color for the cursor.
-	Cursor() lipgloss.TerminalColor
+	// Cursor returns the recommended color for the cursor. Note that this is missing from
+	// most themes.
+	Cursor *Color
 
-	BrightBlack() lipgloss.TerminalColor
-	BrightBlue() lipgloss.TerminalColor
-	BrightCyan() lipgloss.TerminalColor
-	BrightGreen() lipgloss.TerminalColor
-	BrightPurple() lipgloss.TerminalColor
-	BrightRed() lipgloss.TerminalColor
-	BrightWhite() lipgloss.TerminalColor
-	BrightYellow() lipgloss.TerminalColor
+	BrightBlack  *Color
+	BrightBlue   *Color
+	BrightCyan   *Color
+	BrightGreen  *Color
+	BrightPurple *Color
+	BrightRed    *Color
+	BrightWhite  *Color
+	BrightYellow *Color
 
-	Black() lipgloss.TerminalColor
-	Blue() lipgloss.TerminalColor
-	Cyan() lipgloss.TerminalColor
-	Green() lipgloss.TerminalColor
-	Purple() lipgloss.TerminalColor
-	Red() lipgloss.TerminalColor
-	White() lipgloss.TerminalColor
-	Yellow() lipgloss.TerminalColor
+	Black  *Color
+	Blue   *Color
+	Cyan   *Color
+	Green  *Color
+	Purple *Color
+	Red    *Color
+	White  *Color
+	Yellow *Color
 }

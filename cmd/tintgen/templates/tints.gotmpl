@@ -1,0 +1,52 @@
+{{ header }}
+//
+// All tints can be previewed here:
+//  * https://github.com/lrstanley/bubbletint/blob/master/DEFAULT_TINTS.md
+//
+// Generated using tints/themes from:
+//  * https://github.com/atomcorp/themes
+//  * https://github.com/mbadolato/iTerm2-Color-Schemes
+
+package tint
+
+{{- range $index, $tint := . }}
+    // Tint{{ .StructName }} ({{ .Tint.Name }}) is a collection of lipgloss styles.
+    //
+    // Reference: https://github.com/lrstanley/bubbletint/blob/master/DEFAULT_TINTS.md#{{ .StructName }}
+    {{- if gt (len $tint.CreditSources) 0 }}
+    //
+    // Credit to:
+    {{- range .CreditSources }}
+    //  * {{ .Name }} ({{ .Link }})
+    {{- end }}
+    {{- end }}
+    var Tint{{ .StructName }} = &Tint{
+        DisplayName: {{ .Tint.Name | quote }},
+        ID: {{ .NameNormalized | quote }},
+        CreditSources: []*CreditSource{
+        {{- range .CreditSources }}
+            { Name: {{ .Name | quote }}, Link: {{ .Link | quote }}},
+        {{- end }}
+        },
+        Fg: {{ .Tint.Fg | rgba_go }},
+        Bg: {{ .Tint.Bg | rgba_go }},
+        SelectionBg: {{ .Tint.SelectionBg | rgba_go }},
+        Cursor: {{ .Tint.Cursor | rgba_go }},
+        BrightBlack: {{ .Tint.BrightBlack | rgba_go }},
+        BrightBlue: {{ .Tint.BrightBlue | rgba_go }},
+        BrightCyan: {{ .Tint.BrightCyan | rgba_go }},
+        BrightGreen: {{ .Tint.BrightGreen | rgba_go }},
+        BrightPurple: {{ .Tint.BrightPurple | rgba_go }},
+        BrightRed: {{ .Tint.BrightRed | rgba_go }},
+        BrightWhite: {{ .Tint.BrightWhite | rgba_go }},
+        BrightYellow: {{ .Tint.BrightYellow | rgba_go }},
+        Black: {{ .Tint.Black | rgba_go }},
+        Blue: {{ .Tint.Blue | rgba_go }},
+        Cyan: {{ .Tint.Cyan | rgba_go }},
+        Green: {{ .Tint.Green | rgba_go }},
+        Purple: {{ .Tint.Purple | rgba_go }},
+        Red: {{ .Tint.Red | rgba_go }},
+        White: {{ .Tint.White | rgba_go }},
+        Yellow: {{ .Tint.Yellow | rgba_go }},
+    }
+{{- end }}

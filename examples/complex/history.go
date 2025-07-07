@@ -5,33 +5,36 @@
 package main
 
 import (
-	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-	tint "github.com/lrstanley/bubbletint"
-	zone "github.com/lrstanley/bubblezone"
+	tea "github.com/charmbracelet/bubbletea/v2"
+	"github.com/charmbracelet/lipgloss/v2"
+	tint "github.com/lrstanley/bubbletint/v2"
+	zone "github.com/lrstanley/bubblezone/v2"
 )
 
 type history struct {
 	id     string
 	height int
 	width  int
+	dark   bool
 
 	active string
 	items  []string
 }
 
-func (m history) Init() tea.Cmd {
+func (m *history) Init() tea.Cmd {
 	return nil
 }
 
-func (m history) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (m *history) Update(msg tea.Msg) tea.Cmd { //nolint:unparam
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
 		m.height = msg.Height
 		m.width = msg.Width
-	case tea.MouseMsg:
-		if msg.Action != tea.MouseActionRelease || msg.Button != tea.MouseButtonLeft {
-			return m, nil
+	case tea.BackgroundColorMsg:
+		m.dark = msg.IsDark()
+	case tea.MouseReleaseMsg:
+		if msg.Button != tea.MouseLeft {
+			return nil
 		}
 
 		for _, item := range m.items {
@@ -42,26 +45,32 @@ func (m history) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		}
 	}
-	return m, nil
+	return nil
 }
 
-func (m history) View() string {
+func (m *history) View() string {
 	historyStyle := lipgloss.NewStyle().
 		Align(lipgloss.Left).
-		Foreground(tint.Fg()).
-		Background(tint.Bg()).
-		Margin(1).
+		Foreground(tint.Current().Fg).
+		Background(tint.Darken(tint.Current().Bg, 25)).
+		Margin(0, 1).
 		Padding(1, 2).
 		Width((m.width / len(m.items)) - 2).
-		Height(m.height - 3).
-		MaxHeight(m.height - 1)
+		Height(m.height).
+		MaxHeight(m.height)
 
 	out := []string{}
 
 	for _, item := range m.items {
 		if item == m.active {
 			// Customize the active item.
-			out = append(out, zone.Mark(m.id+item, historyStyle.Background(tint.BrightPurple()).Foreground(tint.Bg()).Render(item)))
+			out = append(out, zone.Mark(
+				m.id+item,
+				historyStyle.
+					Background(tint.Lighten(tint.Current().Bg, 25)).
+					Foreground(tint.Lighten(tint.Current().Fg, 25)).
+					Render(item),
+			))
 		} else {
 			// Make sure to mark all zones.
 			out = append(out, zone.Mark(m.id+item, historyStyle.Render(item)))

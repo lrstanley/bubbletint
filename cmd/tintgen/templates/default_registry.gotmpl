@@ -2,16 +2,6 @@
 
 package tint
 
-import (
-	"github.com/lrstanley/bubbletint/defaulttints"
-)
-
-var (
-{{- range $index, $tint := . }}
-    Tint{{ .StructName }} Tint = &defaulttints.Tint{{ .StructName }}{}
-{{- end }}
-)
-
 func NewDefaultRegistry() {
     DefaultRegistry = NewRegistry(
         TintDraculaPlus,
@@ -24,8 +14,8 @@ func NewDefaultRegistry() {
 // though make sure to do it before your app initializes and uses the registry.
 var DefaultRegistry *Registry
 
-func DefaultTints() []Tint {
-    return []Tint{
+func DefaultTints() []*Tint {
+    return []*Tint{
     {{- range $index, $tint := . }}
         Tint{{ .StructName }},
     {{- end }}

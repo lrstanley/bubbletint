@@ -5,32 +5,31 @@
 package main
 
 import (
-	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-	tint "github.com/lrstanley/bubbletint"
-	zone "github.com/lrstanley/bubblezone"
+	tea "github.com/charmbracelet/bubbletea/v2"
+	"github.com/charmbracelet/lipgloss/v2"
+	tint "github.com/lrstanley/bubbletint/v2"
+	zone "github.com/lrstanley/bubblezone/v2"
 )
 
 type dialog struct {
-	id     string
-	height int
-	width  int
-
+	id       string
 	active   string
 	question string
 }
 
-func (m dialog) Init() tea.Cmd {
+func (m *dialog) Init() tea.Cmd {
 	return nil
 }
 
-func (m dialog) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (m *dialog) GetHeight() int {
+	return lipgloss.Height(m.View())
+}
+
+func (m *dialog) Update(msg tea.Msg) tea.Cmd { //nolint:unparam
 	switch msg := msg.(type) {
-	case tea.WindowSizeMsg:
-		m.width = msg.Width
-	case tea.MouseMsg:
-		if msg.Action != tea.MouseActionRelease || msg.Button != tea.MouseButtonLeft {
-			return m, nil
+	case tea.MouseReleaseMsg:
+		if msg.Button != tea.MouseLeft {
+			return nil
 		}
 
 		if zone.Get(m.id + "confirm").InBounds(msg) {
@@ -39,27 +38,27 @@ func (m dialog) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.active = "cancel"
 		}
 
-		return m, nil
+		return nil
 	}
-	return m, nil
+	return nil
 }
 
-func (m dialog) View() string {
+func (m *dialog) View() string {
 	dialogBoxStyle := lipgloss.NewStyle().
 		Border(lipgloss.RoundedBorder(), true).
-		BorderForeground(tint.BrightPurple()).
+		BorderForeground(tint.Current().BrightPurple).
 		Padding(1, 0)
 
 	buttonStyle := lipgloss.NewStyle().
-		Foreground(tint.Fg()).
-		Background(tint.BrightBlack()).
+		Foreground(tint.Current().Fg).
+		Background(tint.Current().BrightBlack).
 		Padding(0, 3).
 		MarginTop(1).
 		MarginRight(2)
 
-	activeButtonStyle := buttonStyle.Copy().
-		Foreground(tint.Black()).
-		Background(tint.BrightPurple()).
+	activeButtonStyle := buttonStyle.
+		Foreground(tint.Darken(tint.Current().Black, 25)).
+		Background(tint.Current().BrightPurple).
 		MarginRight(2).
 		Underline(true)
 
@@ -73,7 +72,7 @@ func (m dialog) View() string {
 		cancelButton = activeButtonStyle.Render("Maybe")
 	}
 
-	question := lipgloss.NewStyle().Width(27).Align(lipgloss.Center).Render("Are you sure you want to eat marmalade?")
+	question := lipgloss.NewStyle().Width(27).Align(lipgloss.Center).Render(m.question)
 	buttons := lipgloss.JoinHorizontal(
 		lipgloss.Top,
 		zone.Mark(m.id+"confirm", okButton),
