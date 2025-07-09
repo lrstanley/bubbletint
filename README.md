@@ -81,7 +81,9 @@
   terminal setup.
 - :heavy_check_mark: Piecemeal support for specific tints. Really like one specific
   tint, and want to use that as the standard for your TUI? No problem!
-- :heavy_check_mark: Extendible via interfaces. Easily create custom tints.
+- :heavy_check_mark: Extendible with your own custom tints, in addition to marhsalling
+  and unmarshalling from JSON, if you wanted to support reading/writing tints to
+  and from a file.
 - :heavy_check_mark: Works with `lipgloss` and similar tools which support the
   `color.Color` interface from **stdlib**!
 
@@ -92,7 +94,7 @@
 <!-- template:begin:goget -->
 <!-- do not edit anything in this "template" block, its auto-generated -->
 ```console
-go get -u github.com/lrstanley/bubbletint@latest
+go get -u github.com/lrstanley/bubbletint/v2@latest
 ```
 <!-- template:end:goget -->
 
@@ -115,10 +117,12 @@ func main() {
 	// [...]
 	tint.NewDefaultRegistry()
 	tint.SetTint(tint.TintDraculaPlus) // Set a specific tint.
-	tint.SetTintID("dracula_plus") // Or by ID (this aligns with a Tint's ID() method).
+	tint.SetTintID("dracula_plus") // Or by ID (this aligns with a Tint's ID field).
 
-	// You can now use methods like tint.Bg(), tint.Fg(), tint.BrightGreen(), etc.
-	style := lipgloss.NewStyle().SetForeground(tint.Fg()).Background(tint.BrightGreen())
+	// You can now use the current tint from the registry:
+	style := lipgloss.NewStyle().
+		SetForeground(tint.Current().Fg).
+		Background(tint.Current().BrightGreen)
 }
 ```
 
@@ -136,10 +140,14 @@ import (
 func main() {
 	// [...]
 	theme := tint.NewRegistry(
-		tint.TintDraculaPlus, // Set default/current tint.
-		tint.TintGithub,
-		tint.TintTomorrow,
-		tint.TintTokyoNight,
+		// Default tint.
+		tint.TintDraculaPlus,
+		// All others you want to register.
+		tint.TintCatppuccinFrappe,
+		tint.TintCatppuccinMocha,
+		tint.TintDraculaPlus,
+		tint.TintMonokaiPro,
+		tint.TintTinaciousDesignDark,
 	}
 
 	theme.Register(tint.TintNord) // Register additional tints on the custom registry.
@@ -148,8 +156,10 @@ func main() {
 	// Can also paginate through tints, using PreviousTint/NextTint
 	theme.NextTint()
 
-	// You can now use methods like theme.Bg(), theme.Fg(), theme.BrightGreen(), etc.
-	style := lipgloss.NewStyle().SetForeground(theme.Fg()).Background(theme.BrightGreen())
+	// You can now use the current tint from the registry:
+	style := lipgloss.NewStyle().
+		SetForeground(theme.Current().Fg).
+		Background(theme.Current().BrightGreen)
 }
 ```
 
@@ -165,18 +175,46 @@ import (
 
 var (
 	statusbarStyle = lipgloss.NewStyle().
-		SetForeground(tint.TintDraculaPlus.Fg()).
-		Background(tint.TintDraculaPlus.BrightGreen())
+		SetForeground(tint.TintDraculaPlus.Fg).
+		Background(tint.TintDraculaPlus.BrightGreen)
 )
 
 // Or:
 var (
 	theme = tint.TintDraculaPlus
-	statusbarStyle = lipgloss.NewStyle().SetForeground(theme.Fg()).Background(theme.BrightGreen())
+	statusbarStyle = lipgloss.NewStyle().
+		SetForeground(theme.Fg).
+		Background(theme.BrightGreen)
 )
 ```
 
 ... and that's it!
+
+### Gradients, Lighten and Darken
+
+We also support gradients, in addition to lightening and darkening a tint very easily.
+
+- Gradients can add a nice touch to your application by making it stand out.
+  - For quality blending of colors, the users terminal would need to support 256bit/true color
+    support. If this is not available, gradients will only have so many individual color stops.
+- Lighten and Darken are useful for making colors:
+  - Stand out better between foreground and background.
+  - Making things more "subtle" or "muted" in appearance.
+
+Using `Gradient()`:
+
+```go
+theme := tint.TintDraculaPlus
+tint.Gradient(10, theme.BrightRed, theme.BrightPurple, theme.BrightGreen) // returns []color.Color
+```
+
+Using `Lighten()` and `Darken()`:
+
+```go
+theme := tint.TintDraculaPlus
+tint.Lighten(theme, 50) // Lightens the color by 50%, returning a new color.Color.
+tint.Darken(theme, 50) // Darkens the color by 50%, returning a new color.Color.
+```
 
 ---
 
@@ -185,9 +223,9 @@ var (
 ### Package manager example
 
 - Uses a static theme with a specific palette for the entire application.
-- [Example source](./examples/package-manager/main.go).
+- [Example source](./examples/package-manager/main.go)
 
-![package-manager example](https://cdn.liam.sh/share/2022/11/WindowsTerminal_atWQHluo9n.gif)
+![package-manager example](./examples/package-manager/demo.gif)
 
 ### Complex example
 
@@ -196,7 +234,26 @@ var (
   may make sense for some of the provided tints).
 - [Example source](./examples/complex).
 
-![complex example](https://cdn.liam.sh/share/2022/11/WindowsTerminal_kBG3oPPSrH.gif)
+![complex example](./examples/complex/demo.gif)
+
+### Loading tints from a file
+
+- Uses the `json` package to load a tint from a file.
+- Unmarshalling supports both `RGBA` objects and hex strings.
+  - Example: `{"r": 255, "g": 0, "b": 0, "a": 255}` or `"#ff0000"`
+  - Hex strings would be easier for end users in most cases.
+- Marshalling supports RGBA. This is to ensure that we don't lose the alpha channel
+  of the color when marshalling to JSON. Alpha channels default to `255` with all
+  of the default tints, but if you use custom tints, this will help keep that info.
+- [Example source](./examples/load-from-file).
+
+![load-from-file example](./examples/load-from-file/demo.gif)
+
+---
+
+## Breaking Changes from v1 to v2
+
+TODO
 
 ---
 

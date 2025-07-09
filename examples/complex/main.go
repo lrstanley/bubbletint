@@ -151,7 +151,7 @@ func main() {
 
 	// Initialize the default tint we want.
 	tint.NewDefaultRegistry()
-	tint.SetTint(tint.TintMisterioso)
+	tint.SetTint(tint.TintDraculaPlus)
 
 	m := &model{
 		tabs: &tabs{

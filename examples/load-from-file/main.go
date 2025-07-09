@@ -84,11 +84,11 @@ func (m model) View() string {
 
 	elapsed := time.Since(m.startTime).Round(time.Second)
 	info := m.styles.info.Width(ew).Render(
-		fmt.Sprintf("⏱️  Elapsed: %s | ⌨️  Last key: %s", elapsed, m.lastKey),
+		fmt.Sprintf("Elapsed: %s | Last key: %s", elapsed, m.lastKey),
 	)
 
 	help := m.styles.help.Width(ew).Render(
-		"💡  Press 'q' or Ctrl+C to quit • Type in the textarea above",
+		"Press 'q' or Ctrl+C to quit • Type in the textarea above",
 	)
 
 	content := lipgloss.JoinVertical(
