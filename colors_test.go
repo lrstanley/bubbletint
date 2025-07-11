@@ -89,6 +89,12 @@ func TestDarken(t *testing.T) {
 			percent:  100,
 			expected: color.RGBA{R: 0, G: 0, B: 0, A: 255}, // #020202
 		},
+		{
+			name:     "darken-nil-color",
+			color:    nil,
+			percent:  50,
+			expected: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -143,6 +149,12 @@ func TestLighten(t *testing.T) {
 			color:    mustHex(t, "#000000"),
 			percent:  100,
 			expected: color.RGBA{R: 255, G: 255, B: 255, A: 255}, // #fcfcfc
+		},
+		{
+			name:     "lighten-nil-color",
+			color:    nil,
+			percent:  50,
+			expected: nil,
 		},
 	}
 	for _, tt := range tests {

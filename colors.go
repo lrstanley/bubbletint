@@ -184,6 +184,10 @@ func Gradient(steps int, stops ...color.Color) []color.Color {
 
 // Darken takes a color and makes it darker by a specific percentage (0-100, clamped).
 func Darken(c color.Color, percent int) color.Color {
+	if c == nil {
+		return nil
+	}
+
 	mult := 1.0 - max(min(float64(percent), 100), 0)/100.0
 
 	r, g, b, a := c.RGBA()
@@ -197,6 +201,10 @@ func Darken(c color.Color, percent int) color.Color {
 
 // Lighten makes a color lighter by a specific percentage (0-100, clamped).
 func Lighten(c color.Color, percent int) color.Color {
+	if c == nil {
+		return nil
+	}
+
 	add := 255 * (max(min(float64(percent), 100), 0) / 100.0)
 
 	r, g, b, a := c.RGBA()
