@@ -231,11 +231,10 @@ func TestAlpha(t *testing.T) {
 
 func TestGradient(t *testing.T) {
 	tests := []struct {
-		name        string
-		steps       int
-		stops       []color.Color
-		expected    []color.Color
-		shouldPanic bool
+		name     string
+		steps    int
+		stops    []color.Color
+		expected []color.Color
 	}{
 		{
 			name:  "2-colors-10-steps",
@@ -326,7 +325,11 @@ func TestGradient(t *testing.T) {
 			stops: []color.Color{
 				color.RGBA{R: 255, G: 0, B: 0, A: 255},
 			},
-			shouldPanic: true,
+			expected: []color.Color{
+				&color.RGBA{R: 255, G: 0, B: 0, A: 255},
+				&color.RGBA{R: 255, G: 0, B: 0, A: 255},
+				&color.RGBA{R: 255, G: 0, B: 0, A: 255},
+			},
 		},
 		{
 			name:  "insufficient-steps",
@@ -335,25 +338,15 @@ func TestGradient(t *testing.T) {
 				color.RGBA{R: 255, G: 0, B: 0, A: 255},
 				color.RGBA{R: 0, G: 0, B: 255, A: 255},
 			},
-			shouldPanic: true,
+			expected: []color.Color{
+				&color.RGBA{R: 255, G: 0, B: 0, A: 255},
+				&color.RGBA{R: 0, G: 0, B: 255, A: 255},
+			},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if tt.shouldPanic {
-				defer func() {
-					if r := recover(); r == nil {
-						t.Errorf("Gradient() should have panic'ed")
-					}
-				}()
-			}
-
 			got := Gradient(tt.steps, tt.stops...)
-
-			if tt.shouldPanic {
-				t.Errorf("Gradient() should have panic'ed but didn't")
-				return
-			}
 
 			if len(got) != len(tt.expected) {
 				t.Errorf("Gradient() = %v length, want %v length", len(got), len(tt.expected))

@@ -110,12 +110,26 @@ func FromHex(hex string) *Color {
 	}
 }
 
+// ensureValidAlpha ensures that the alpha value of a color is not 0, and if it is,
+// we will set it to 1. This is useful for when we are converting from RGB -> RGBA,
+// and the alpha value is lost in the conversion.
 func ensureValidAlpha(c color.Color) color.Color {
 	_, _, _, a := c.RGBA()
 	if a == 0 {
 		return Alpha(c, 1)
 	}
 	return c
+}
+
+// filterNilColors filters out any nil colors from the provided slice.
+func filterNilColors(stops []color.Color) (filtered []color.Color) {
+	for _, k := range stops {
+		if k == nil {
+			continue
+		}
+		filtered = append(filtered, k)
+	}
+	return filtered
 }
 
 // Gradient blends a series of colors together using multiple stops, into the provided
@@ -126,12 +140,25 @@ func ensureValidAlpha(c color.Color) color.Color {
 // will set the alpha to opaque, as it's not possible to blend something completely
 // transparent.
 func Gradient(steps int, stops ...color.Color) []color.Color {
-	if len(stops) < 2 {
-		panic("must provide at least two stops")
+	// Bound to a minimum of 2 steps. If they only provided one, it's actually invalid,
+	// but will ensure that we don't panic.
+	if steps < 2 {
+		steps = 2
 	}
 
-	if steps < 2 {
-		panic("must provide at least two steps")
+	stops = filterNilColors(stops)
+
+	if len(stops) == 0 {
+		return nil
+	}
+
+	// They they only provided one valid color, we will just return an array of that color.
+	if len(stops) == 1 {
+		rstops := make([]color.Color, steps)
+		for i := range rstops {
+			rstops[i] = stops[0]
+		}
+		return rstops
 	}
 
 	cstops := make([]colorful.Color, len(stops)) // colorful-converted stops.
