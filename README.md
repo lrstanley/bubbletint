@@ -71,7 +71,7 @@
 
 ## :sparkles: Features
 
-- :heavy_check_mark: Utilize 280+ built-in tints. [Check them all out here!](./DEFAULT_TINTS.md)
+- :heavy_check_mark: Utilize 280+ built-in tints. [Check them all out here!](https://lrstanley.github.io/bubbletint/)
   We're taking advantage of the great work others have done
   with [Windows Terminal Themes](https://windowsterminalthemes.dev/)
   and [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes),
@@ -98,7 +98,7 @@ go get -u github.com/lrstanley/bubbletint/v2@latest
 ```
 <!-- template:end:goget -->
 
-[Take a look at all tints here](./DEFAULT_TINTS.md).
+[Take a look at all tints here](https://lrstanley.github.io/bubbletint/).
 
 BubbleTint supports three different modes of usage, as shown below:
 

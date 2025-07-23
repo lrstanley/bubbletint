@@ -1,7 +1,7 @@
 {{ header }}
 //
 // All tints can be previewed here:
-//  * https://github.com/lrstanley/bubbletint/blob/master/DEFAULT_TINTS.md
+//  * https://github.com/lrstanley/bubbletint/blob/master/DEFAULT_TINTS.html
 //
 // Generated using tints/themes from:
 //  * https://github.com/atomcorp/themes
@@ -12,7 +12,7 @@ package tint
 {{- range $index, $tint := . }}
     // Tint{{ .StructName }} ({{ .Tint.Name }}) is a collection of lipgloss styles.
     //
-    // Reference: https://github.com/lrstanley/bubbletint/blob/master/DEFAULT_TINTS.md#{{ .StructName }}
+    // Reference: https://lrstanley.github.io/bubbletint/#{{ .StructName }}
     {{- if gt (len $tint.CreditSources) 0 }}
     //
     // Credit to:

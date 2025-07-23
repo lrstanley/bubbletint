@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"log/slog"
 	"net/http"
 	"net/url"
@@ -76,7 +77,7 @@ var (
 			if err != nil {
 				return "nil"
 			}
-			return fmt.Sprintf("&Color{r: %d, g: %d, b: %d, a: %d}", int(c.R*255), int(c.G*255), int(c.B*255), 255)
+			return fmt.Sprintf("&Color{R: %d, G: %d, B: %d, A: %d}", int(c.R*255), int(c.G*255), int(c.B*255), 255)
 		},
 		"isbright": func(c string) bool {
 			return strings.Contains(c, "Bright")
@@ -93,15 +94,15 @@ var (
 			Funcs(funcMap).
 			ParseFiles("templates/tints.gotmpl"),
 	)
-	tintSVGTmpl = template.Must(
+	tintHTMLTmpl = template.Must(
+		template.New("tint_html.gotmpl").
+			Funcs(funcMap).
+			ParseFiles("templates/tint_html.gotmpl"),
+	)
+	svgTmpl = template.Must(
 		template.New("tint_svg.gotmpl").
 			Funcs(funcMap).
 			ParseFiles("templates/tint_svg.gotmpl"),
-	)
-	tintReadmeTmpl = template.Must(
-		template.New("tint_readme.gotmpl").
-			Funcs(funcMap).
-			ParseFiles("templates/tint_readme.gotmpl"),
 	)
 	registryTmpl = template.Must(
 		template.New("default_registry.gotmpl").
@@ -168,15 +169,26 @@ func main() {
 		tints = append(tints, t)
 	}
 
-	for _, tint := range tints { //nolint:all
-		generateFile(filepath.Join(os.Args[1], fmt.Sprintf("svgs/%s.svg", tint.NameNormalized)), tintSVGTmpl, map[string]any{
-			"TintTemplate":    tint,
-			"ColorMap":        ColorMap,
-			"ColorMapSpecial": ColorMapSpecial,
+	// Create public directory
+	publicDir := filepath.Join(os.Args[1], "public")
+	if err := os.MkdirAll(publicDir, 0o755); err != nil {
+		log.Fatalf("failed to create public directory: %v", err)
+	}
+
+	// Generate individual SVG files for each tint
+	for _, tint := range tints {
+		svgFilename := filepath.Join(publicDir, fmt.Sprintf("%s.svg", tint.StructName))
+		generateFile(svgFilename, svgTmpl, map[string]any{
+			"TintTemplate": tint,
+			"ColorMap":     ColorMap,
 		})
 	}
 
-	generateFile(filepath.Join(os.Args[1], "DEFAULT_TINTS.md"), tintReadmeTmpl, tints)
+	// Generate HTML file that references the SVG files
+	generateFile(filepath.Join(publicDir, "index.html"), tintHTMLTmpl, map[string]any{
+		"Tints": tints,
+	})
+
 	generateFile(filepath.Join(os.Args[1], "tints.gen.go"), tintsTmpl, tints)
 	generateFile(filepath.Join(os.Args[1], "default_registry.gen.go"), registryTmpl, tints)
 }

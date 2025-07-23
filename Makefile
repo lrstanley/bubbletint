@@ -14,12 +14,11 @@ prepare:
 	go mod tidy
 
 commit: generate
-	git add --all defaulttints/* *.gen.go DEFAULT_TINTS.md
+	git add --all defaulttints/* *.gen.go
 	git commit -m "chore(tints): generate updated tints"
 
 generate: license prepare
-	mkdir -p svgs/
-	rm -rf DEFAULT_TINTS.md
+	rm -rf ./public
 	cd ./cmd/tintgen && go run . ../../
 	gofmt -e -s -w *.go
 	go vet *.go
