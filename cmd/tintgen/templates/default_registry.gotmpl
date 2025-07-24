@@ -14,10 +14,33 @@ func NewDefaultRegistry() {
 // though make sure to do it before your app initializes and uses the registry.
 var DefaultRegistry *Registry
 
+// DefaultTints returns all pre-configured tints.
 func DefaultTints() []*Tint {
     return []*Tint{
     {{- range $index, $tint := . }}
         Tint{{ .StructName }},
+    {{- end }}
+    }
+}
+
+// DefaultDarkTints returns all pre-configured dark tints.
+func DefaultDarkTints() []*Tint {
+    return []*Tint{
+    {{- range $index, $tint := . }}
+        {{- if $tint.Tint.IsDark }}
+            Tint{{ .StructName }},
+        {{- end }}
+    {{- end }}
+    }
+}
+
+// DefaultLightTints returns all pre-configured light tints.
+func DefaultLightTints() []*Tint {
+    return []*Tint{
+    {{- range $index, $tint := . }}
+        {{- if not $tint.Tint.IsDark }}
+            Tint{{ .StructName }},
+        {{- end }}
     {{- end }}
     }
 }

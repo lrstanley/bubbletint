@@ -28,6 +28,7 @@ package tint
             { Name: {{ .Name | quote }}, Link: {{ .Link | quote }}},
         {{- end }}
         },
+        Dark: {{ .Tint.IsDark }},
         Fg: {{ .Tint.Fg | rgba_go }},
         Bg: {{ .Tint.Bg | rgba_go }},
         SelectionBg: {{ .Tint.SelectionBg | rgba_go }},

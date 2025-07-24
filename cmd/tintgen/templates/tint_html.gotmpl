@@ -34,6 +34,39 @@
             padding: 10px 0;
             border-bottom: 1px solid #444;
         }
+        .filter-controls {
+            background: #3a3a3a;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4a9eff;
+        }
+        .filter-controls h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .filter-options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .filter-option input[type="radio"] {
+            accent-color: #4a9eff;
+        }
+        .filter-option label {
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .filter-option label:hover {
+            color: #4a9eff;
+        }
         .tint-info {
             background: #3a3a3a;
             padding: 8px 12px;
@@ -138,6 +171,11 @@
             .container {
                 padding: 15px;
             }
+            .filter-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
         }
 
         .tints-grid {
@@ -152,6 +190,11 @@
             border-radius: 12px;
             padding: 10px;
             background: #2d2d2d;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .tint-item.hidden {
+            display: none;
         }
 
         .tint-item h2 {
@@ -171,8 +214,6 @@
             width: 100%;
             position: relative;
         }
-
-
 
         @media (max-width: 1300px) {
             .tints-grid {
@@ -207,11 +248,68 @@
                 console.error('Could not copy text: ', err);
             });
         }
+
+        // Filter function
+        function filterTints(filterType) {
+            const tintItems = document.querySelectorAll('.tint-item');
+            const tocLinks = document.querySelectorAll('.nav-toc a');
+
+            tintItems.forEach(item => {
+                const isDark = item.getAttribute('data-tint-type') === 'dark';
+                const itemId = item.querySelector('h2').getAttribute('id');
+
+                switch(filterType) {
+                    case 'all':
+                        item.classList.remove('hidden');
+                        break;
+                    case 'dark':
+                        item.classList.toggle('hidden', !isDark);
+                        break;
+                    case 'light':
+                        item.classList.toggle('hidden', isDark);
+                        break;
+                }
+
+                // Filter table of contents links
+                tocLinks.forEach(link => {
+                    if (link.getAttribute('href') === '#' + itemId) {
+                        const shouldShow = filterType === 'all' ||
+                            (filterType === 'dark' && isDark) ||
+                            (filterType === 'light' && !isDark);
+                        link.parentElement.style.display = shouldShow ? 'block' : 'none';
+                    }
+                });
+            });
+        }
+
+        // Initialize filter on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default filter to 'all'
+            document.getElementById('filter-all').checked = true;
+        });
     </script>
 </head>
 <body>
     <div class="container">
         <h1>🌈 BubbleTint &middot; Default Tints</h1>
+
+        <div class="filter-controls">
+            <h3>Filter Tints</h3>
+            <div class="filter-options">
+                <div class="filter-option">
+                    <input type="radio" id="filter-all" name="tint-filter" value="all" onchange="filterTints('all')">
+                    <label for="filter-all">All Tints</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="filter-dark" name="tint-filter" value="dark" onchange="filterTints('dark')">
+                    <label for="filter-dark">Dark Tints</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="filter-light" name="tint-filter" value="light" onchange="filterTints('light')">
+                    <label for="filter-light">Light Tints</label>
+                </div>
+            </div>
+        </div>
 
         <div class="nav-toc">
             <h3>Table of Contents</h3>
@@ -224,7 +322,7 @@
 
         <div class="tints-grid">
         {{- range $i, $tint := .Tints }}
-        <div class="tint-item">
+        <div class="tint-item" data-tint-type="{{ if $tint.Tint.IsDark }}dark{{ else }}light{{ end }}">
             <h2 id="{{ .StructName }}"><a href="#{{ .StructName }}" style="text-decoration: none; color: inherit;">{{ .StructName }}</a></h2>
 
             <div class="tint-info">

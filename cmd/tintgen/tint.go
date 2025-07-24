@@ -4,6 +4,8 @@
 
 package main
 
+import "github.com/lucasb-eyer/go-colorful"
+
 type TintTemplate struct {
 	StructName     string
 	NameNormalized string
@@ -37,6 +39,15 @@ type Tint struct {
 	Red    string `json:"red" validate:"required,hexcolor"`
 	White  string `json:"white" validate:"required,hexcolor"`
 	Yellow string `json:"yellow" validate:"required,hexcolor"`
+}
+
+func (t *Tint) IsDark() bool {
+	bg, err := colorful.Hex(t.Bg)
+	if err != nil {
+		return false
+	}
+	_, _, l := bg.Hsl()
+	return l < 0.5
 }
 
 type Credit struct {

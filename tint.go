@@ -23,6 +23,10 @@ type Tint struct {
 	// CreditSources returns the credit sources for the tint.
 	CreditSources []*CreditSource `json:"credit_sources,omitempty"`
 
+	// Dark returns whether the tint is dark (background color has a luminosity
+	// less than 0.5).
+	Dark bool `json:"dark,omitempty"`
+
 	// Fg returns the recommended default foreground color for this tint.
 	Fg *Color `json:"fg,omitempty"`
 
