@@ -44,3 +44,25 @@ func DefaultLightTints() []*Tint {
     {{- end }}
     }
 }
+
+// DefaultTintsByID returns a tint by its ID using tints in the default registry. If the
+// ID is not found, it returns nil.
+func DefaultTintsByID(id string) *Tint {
+    switch id {
+    {{- range $index, $tint := . }}
+        case {{ .NameNormalized | quote }}:
+            return Tint{{ .StructName }}
+    {{- end }}
+    }
+    return nil
+}
+
+// DefaultTintIDs returns all available tint IDs in the default registry. This can be
+// used for filtering (e.g. fuzzy search).
+func DefaultTintIDs() []string {
+    return []string{
+    {{- range $index, $tint := . }}
+        {{ .NameNormalized | quote }},
+    {{- end }}
+    }
+}
