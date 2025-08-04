@@ -327,7 +327,7 @@
 
             <div class="tint-info">
                 <ul>
-                    <li><strong>ID:</strong> <code>{{ .NameNormalized }}</code></li>
+                    <li><strong>ID:</strong> <code style="cursor: pointer;" onclick="copyToClipboard('{{ .NameNormalized }}', this)" title="Click to copy ID">{{ .NameNormalized }}</code></li>
                     <li><strong>Usage:</strong> <code style="cursor: pointer;" onclick="copyToClipboard('tint.Tint{{ .StructName }}', this)" title="Click to copy usage">tint.Tint{{ .StructName }}</code></li>
                     {{- if gt (len .CreditSources) 0 }}
                     <li><strong>Credit:</strong> {{- range $i, $credit := .CreditSources }}{{ if $i }}, {{ end }}{{ .Name }}{{- end }}</li>
