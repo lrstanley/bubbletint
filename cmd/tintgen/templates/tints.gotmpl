@@ -13,10 +13,10 @@ package tint
     // Tint{{ .StructName }} ({{ .Tint.Name }}) is a collection of lipgloss styles.
     //
     // Reference: https://lrstanley.github.io/bubbletint/#{{ .StructName }}
-    {{- if gt (len $tint.CreditSources) 0 }}
+    {{- if gt (len $tint.Tint.Meta.Credits) 0 }}
     //
     // Credit to:
-    {{- range .CreditSources }}
+    {{- range $tint.Tint.Meta.Credits }}
     //  * {{ .Name }} ({{ .Link }})
     {{- end }}
     {{- end }}
@@ -24,7 +24,7 @@ package tint
         DisplayName: {{ .Tint.Name | quote }},
         ID: {{ .NameNormalized | quote }},
         CreditSources: []*CreditSource{
-        {{- range .CreditSources }}
+        {{- range $tint.Tint.Meta.Credits }}
             { Name: {{ .Name | quote }}, Link: {{ .Link | quote }}},
         {{- end }}
         },

@@ -11,11 +11,9 @@ import (
 	"log"
 	"log/slog"
 	"net/http"
-	"net/url"
 	"os"
 	"path/filepath"
 	"reflect"
-	"regexp"
 	"sort"
 	"strings"
 	"text/template"
@@ -30,13 +28,7 @@ var logger = slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
 }))
 
 var (
-	TintUrls = []string{
-		"https://github.com/atomcorp/themes/raw/master/app/src/custom-colour-schemes.json",
-		"https://github.com/atomcorp/themes/raw/master/app/src/backupthemes.json",
-	}
-	CredUrls = []string{
-		"https://github.com/atomcorp/themes/raw/master/app/src/credits.json",
-	}
+	TintUrl         = "https://github.com/charmbracelet/vhs/raw/refs/heads/main/themes.json"
 	ColorMapSpecial = []string{
 		"SelectionBg", "Cursor",
 	}
@@ -58,7 +50,6 @@ var (
 
 	funcMap = template.FuncMap{
 		"header": func() string { return header },
-		"urlenc": url.QueryEscape,
 		"dynamiccolor": func(t Tint, field string) string {
 			r := reflect.ValueOf(&t)
 			f := reflect.Indirect(r).FieldByName(field)
@@ -81,9 +72,6 @@ var (
 		},
 		"isbright": func(c string) bool {
 			return strings.Contains(c, "Bright")
-		},
-		"shortbright": func(c string) string {
-			return strings.Replace(c, "Bright", "Bright\n", 1)
 		},
 		"quote": func(s string) string {
 			return fmt.Sprintf("%q", s)
@@ -130,7 +118,6 @@ func main() {
 	}
 
 	rawTints := fetchTints()
-	sourceMap := fetchCredits()
 
 	sort.SliceStable(rawTints, func(i, j int) bool {
 		return rawTints[i].Name < rawTints[j].Name
@@ -161,21 +148,17 @@ func main() {
 		}
 
 		tintNames = append(tintNames, t.NameNormalized, t.StructName)
-
-		if _, ok := sourceMap[tint.Name]; ok {
-			t.CreditSources = sourceMap[tint.Name]
-		}
-
 		tints = append(tints, t)
 	}
 
-	// Create public directory
+	// Create public directory.
 	publicDir := filepath.Join(os.Args[1], "public")
-	if err := os.MkdirAll(publicDir, 0o755); err != nil {
+	err := os.MkdirAll(publicDir, 0o750)
+	if err != nil {
 		log.Fatalf("failed to create public directory: %v", err)
 	}
 
-	// Generate individual SVG files for each tint
+	// Generate individual SVG files for each tint.
 	for _, tint := range tints {
 		svgFilename := filepath.Join(publicDir, fmt.Sprintf("%s.svg", tint.StructName))
 		generateFile(svgFilename, svgTmpl, map[string]any{
@@ -184,7 +167,7 @@ func main() {
 		})
 	}
 
-	// Generate HTML file that references the SVG files
+	// Generate HTML file that references the SVG files.
 	generateFile(filepath.Join(publicDir, "index.html"), tintHTMLTmpl, map[string]any{
 		"Tints": tints,
 	})
@@ -193,84 +176,36 @@ func main() {
 	generateFile(filepath.Join(os.Args[1], "default_registry.gen.go"), registryTmpl, tints)
 }
 
-var reStripTrailingComma = regexp.MustCompile(`,\s*\]\s*$`)
-
 func fetchTints() (tints []Tint) {
-	for _, url := range TintUrls {
-		logger.Info("fetching tint data", "url", url) //nolint:all
-		resp, err := http.Get(url)                    //nolint:gosec,noctx
+	logger.Info("fetching tint data", "url", TintUrl) //nolint:all
+	resp, err := http.Get(TintUrl)                    //nolint:gosec,noctx
+	if err != nil {
+		panic(err)
+	}
+
+	b, err := io.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+	_ = resp.Body.Close()
+
+	var rawTints []Tint
+	err = json.Unmarshal(b, &rawTints)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, tint := range rawTints {
+		err = val.Struct(tint)
 		if err != nil {
-			panic(err)
+			logger.Error("invalid tint", "error", err) //nolint:all
+			continue
 		}
 
-		b, err := io.ReadAll(resp.Body)
-		if err != nil {
-			panic(err)
-		}
-		_ = resp.Body.Close()
-
-		b = reStripTrailingComma.ReplaceAll(b, []byte("]"))
-
-		var rawTints []Tint
-		err = json.Unmarshal(b, &rawTints)
-		if err != nil {
-			panic(err)
-		}
-
-		for _, tint := range rawTints {
-			err = val.Struct(tint)
-			if err != nil {
-				logger.Error("invalid tint", "error", err) //nolint:all
-				continue
-			}
-
-			tints = append(tints, tint)
-		}
+		tints = append(tints, tint)
 	}
 
 	return tints
-}
-
-func fetchCredits() map[string][]CreditSource {
-	sourceMap := map[string][]CreditSource{}
-
-	for _, url := range CredUrls {
-		resp, err := http.Get(url) //nolint:gosec,noctx
-		if err != nil {
-			panic(err)
-		}
-
-		var rawCredits []Credit
-		err = json.NewDecoder(resp.Body).Decode(&rawCredits)
-		if err != nil {
-			panic(err)
-		}
-		_ = resp.Body.Close()
-
-		for _, credit := range rawCredits {
-			for _, tint := range credit.Tints {
-				if _, ok := sourceMap[tint]; !ok {
-					sourceMap[tint] = []CreditSource{}
-				}
-
-				for _, source := range credit.Sources {
-					// Check to see if the credit was already added.
-					exists := false
-					for _, origSource := range sourceMap[tint] {
-						if origSource.Link == source.Link {
-							exists = true
-							break
-						}
-					}
-					if !exists {
-						sourceMap[tint] = append(sourceMap[tint], source)
-					}
-				}
-			}
-		}
-	}
-
-	return sourceMap
 }
 
 func generateFile(path string, tmpl *template.Template, data any) {
