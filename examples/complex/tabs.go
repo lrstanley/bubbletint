@@ -7,10 +7,10 @@ package main
 import (
 	"strings"
 
-	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-	tint "github.com/lrstanley/bubbletint"
-	zone "github.com/lrstanley/bubblezone"
+	tea "github.com/charmbracelet/bubbletea/v2"
+	"github.com/charmbracelet/lipgloss/v2"
+	tint "github.com/lrstanley/bubbletint/v2"
+	zone "github.com/lrstanley/bubblezone/v2"
 )
 
 var (
@@ -35,28 +35,45 @@ var (
 		BottomLeft:  "┴",
 		BottomRight: "┴",
 	}
+
+	tab = lipgloss.NewStyle().
+		Border(tabBorder, true).
+		Padding(0, 1)
+
+	activeTab = tab.Border(activeTabBorder, true)
+
+	tabGap = tab.
+		BorderTop(false).
+		BorderLeft(false).
+		BorderRight(false)
 )
 
 type tabs struct {
-	id     string
-	height int
-	width  int
+	id    string
+	width int
+	dark  bool
 
 	active string
 	items  []string
 }
 
-func (m tabs) Init() tea.Cmd {
+func (m *tabs) Init() tea.Cmd {
 	return nil
 }
 
-func (m tabs) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (m *tabs) GetHeight() int {
+	return lipgloss.Height(m.View())
+}
+
+func (m *tabs) Update(msg tea.Msg) tea.Cmd { //nolint:unparam
 	switch msg := msg.(type) {
+	case tea.BackgroundColorMsg:
+		m.dark = msg.IsDark()
 	case tea.WindowSizeMsg:
 		m.width = msg.Width
-	case tea.MouseMsg:
-		if msg.Action != tea.MouseActionRelease || msg.Button != tea.MouseButtonLeft {
-			return m, nil
+	case tea.MouseReleaseMsg:
+		if msg.Button != tea.MouseLeft {
+			return nil
 		}
 
 		for _, item := range m.items {
@@ -67,36 +84,27 @@ func (m tabs) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		}
 
-		return m, nil
+		return nil
 	}
-	return m, nil
+	return nil
 }
 
-func (m tabs) View() string {
-	tab := lipgloss.NewStyle().
-		Border(tabBorder, true).
-		BorderForeground(tint.BrightPurple()).
-		Padding(0, 1)
-
-	activeTab := tab.Border(activeTabBorder, true)
-
-	tabGap := tab.
-		BorderTop(false).
-		BorderLeft(false).
-		BorderRight(false)
-
+func (m *tabs) View() string {
 	out := []string{}
 
 	for _, item := range m.items {
 		// Make sure to mark each tab when rendering.
 		if item == m.active {
-			out = append(out, zone.Mark(m.id+item, activeTab.Render(item)))
+			out = append(out, zone.Mark(m.id+item, activeTab.BorderForeground(tint.Current().BrightPurple).Render(item)))
 		} else {
-			out = append(out, zone.Mark(m.id+item, tab.Render(item)))
+			out = append(out, zone.Mark(
+				m.id+item,
+				tab.BorderForeground(tint.Current().BrightPurple).Render(item)),
+			)
 		}
 	}
 	row := lipgloss.JoinHorizontal(lipgloss.Top, out...)
-	gap := tabGap.Render(strings.Repeat(" ", max(0, m.width-lipgloss.Width(row)-2)))
+	gap := tabGap.BorderForeground(tint.Current().BrightPurple).Render(strings.Repeat(" ", max(0, m.width-lipgloss.Width(row)-2)))
 	row = lipgloss.JoinHorizontal(lipgloss.Bottom, row, gap)
 	return row
 }

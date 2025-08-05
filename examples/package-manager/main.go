@@ -9,17 +9,17 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
+	"math/rand/v2"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
-	"github.com/charmbracelet/bubbles/progress"
-	"github.com/charmbracelet/bubbles/spinner"
-	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-	tint "github.com/lrstanley/bubbletint"
-	"github.com/muesli/termenv"
+	"github.com/charmbracelet/bubbles/v2/progress"
+	"github.com/charmbracelet/bubbles/v2/spinner"
+	tea "github.com/charmbracelet/bubbletea/v2"
+	"github.com/charmbracelet/lipgloss/v2"
+	tint "github.com/lrstanley/bubbletint/v2"
 )
 
 var theme = tint.TintIcOrangePpl
@@ -36,13 +36,12 @@ type model struct {
 
 func newModel() model {
 	p := progress.New(
-		progress.WithColorProfile(termenv.TrueColor),
-		progress.WithScaledGradient(tint.Hex(theme.BrightPurple()), tint.Hex(theme.BrightBlue())),
+		progress.WithScaledGradient(theme.BrightPurple.Hex(), theme.BrightBlue.Hex()),
 		progress.WithWidth(40),
 		progress.WithoutPercentage(),
 	)
 	s := spinner.New()
-	s.Style = lipgloss.NewStyle().Foreground(theme.Fg())
+	s.Style = lipgloss.NewStyle().Foreground(theme.Fg)
 	return model{
 		packages: getPackages(),
 		spinner:  s,
@@ -75,7 +74,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		m.index++
 
-		checkMark := lipgloss.NewStyle().Foreground(theme.Green()).SetString("✓")
+		checkMark := lipgloss.NewStyle().Foreground(theme.Green).SetString("✓")
 
 		return m, tea.Batch(
 			progressCmd,
@@ -87,21 +86,19 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.spinner, cmd = m.spinner.Update(msg)
 		return m, cmd
 	case progress.FrameMsg:
-		newModel, cmd := m.progress.Update(msg)
-		if newModel, ok := newModel.(progress.Model); ok {
-			m.progress = newModel
-		}
+		var cmd tea.Cmd
+		m.progress, cmd = m.progress.Update(msg)
 		return m, cmd
 	}
 	return m, nil
 }
 
 func (m model) View() string {
-	currentPkgNameStyle := lipgloss.NewStyle().Foreground(theme.BrightPurple())
+	currentPkgNameStyle := lipgloss.NewStyle().Foreground(theme.BrightPurple)
 	doneStyle := lipgloss.NewStyle().Margin(1, 2)
 
 	n := len(m.packages)
-	w := lipgloss.Width(fmt.Sprintf("%d", n))
+	w := lipgloss.Width(strconv.Itoa(n))
 
 	if m.done {
 		return doneStyle.Render(fmt.Sprintf("Done! Installed %d packages.\n", n))
@@ -127,17 +124,10 @@ type installedPkgMsg string
 func downloadAndInstall(pkg string) tea.Cmd {
 	// This is where you'd do i/o stuff to download and install packages. In
 	// our case we're just pausing for a moment to simulate the process.
-	d := time.Millisecond * time.Duration(rand.Intn(500))
-	return tea.Tick(d, func(t time.Time) tea.Msg {
+	d := time.Millisecond * time.Duration(rand.IntN(500)) //nolint:gosec
+	return tea.Tick(d, func(_ time.Time) tea.Msg {
 		return installedPkgMsg(pkg)
 	})
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
 
 func main() {

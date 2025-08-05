@@ -6,299 +6,6 @@
 
 package tint
 
-import (
-	"github.com/lrstanley/bubbletint/defaulttints"
-)
-
-var (
-	Tint3024Day                        Tint = &defaulttints.Tint3024Day{}
-	Tint3024Night                      Tint = &defaulttints.Tint3024Night{}
-	TintAdventure                      Tint = &defaulttints.TintAdventure{}
-	TintAdventureTime                  Tint = &defaulttints.TintAdventureTime{}
-	TintAfterglow                      Tint = &defaulttints.TintAfterglow{}
-	TintAlienBlood                     Tint = &defaulttints.TintAlienBlood{}
-	TintAndromeda                      Tint = &defaulttints.TintAndromeda{}
-	TintArgonaut                       Tint = &defaulttints.TintArgonaut{}
-	TintArthur                         Tint = &defaulttints.TintArthur{}
-	TintAtelierSulphurpool             Tint = &defaulttints.TintAtelierSulphurpool{}
-	TintAtom                           Tint = &defaulttints.TintAtom{}
-	TintAtomOneLight                   Tint = &defaulttints.TintAtomOneLight{}
-	TintAurora                         Tint = &defaulttints.TintAurora{}
-	TintBananaBlueberry                Tint = &defaulttints.TintBananaBlueberry{}
-	TintBatman                         Tint = &defaulttints.TintBatman{}
-	TintBelafonteDay                   Tint = &defaulttints.TintBelafonteDay{}
-	TintBelafonteNight                 Tint = &defaulttints.TintBelafonteNight{}
-	TintBirdsOfParadise                Tint = &defaulttints.TintBirdsOfParadise{}
-	TintBlazer                         Tint = &defaulttints.TintBlazer{}
-	TintBlueMatrix                     Tint = &defaulttints.TintBlueMatrix{}
-	TintBlueBerryPie                   Tint = &defaulttints.TintBlueBerryPie{}
-	TintBlulocoDark                    Tint = &defaulttints.TintBlulocoDark{}
-	TintBlulocoLight                   Tint = &defaulttints.TintBlulocoLight{}
-	TintBorland                        Tint = &defaulttints.TintBorland{}
-	TintBreeze                         Tint = &defaulttints.TintBreeze{}
-	TintBrightLights                   Tint = &defaulttints.TintBrightLights{}
-	TintBroadcast                      Tint = &defaulttints.TintBroadcast{}
-	TintBrogrammer                     Tint = &defaulttints.TintBrogrammer{}
-	TintBubbles                        Tint = &defaulttints.TintBubbles{}
-	TintBuiltinDark                    Tint = &defaulttints.TintBuiltinDark{}
-	TintBuiltinLight                   Tint = &defaulttints.TintBuiltinLight{}
-	TintBuiltinPastelDark              Tint = &defaulttints.TintBuiltinPastelDark{}
-	TintBuiltinSolarizedDark           Tint = &defaulttints.TintBuiltinSolarizedDark{}
-	TintBuiltinSolarizedLight          Tint = &defaulttints.TintBuiltinSolarizedLight{}
-	TintBuiltinTangoDark               Tint = &defaulttints.TintBuiltinTangoDark{}
-	TintBuiltinTangoLight              Tint = &defaulttints.TintBuiltinTangoLight{}
-	TintC64                            Tint = &defaulttints.TintC64{}
-	TintClrs                           Tint = &defaulttints.TintClrs{}
-	TintCalamity                       Tint = &defaulttints.TintCalamity{}
-	TintCatppuccinFrappe               Tint = &defaulttints.TintCatppuccinFrappe{}
-	TintCatppuccinLatte                Tint = &defaulttints.TintCatppuccinLatte{}
-	TintCatppuccinMacchiato            Tint = &defaulttints.TintCatppuccinMacchiato{}
-	TintCatppuccinMocha                Tint = &defaulttints.TintCatppuccinMocha{}
-	TintChalk                          Tint = &defaulttints.TintChalk{}
-	TintChalkboard                     Tint = &defaulttints.TintChalkboard{}
-	TintChallengerDeep                 Tint = &defaulttints.TintChallengerDeep{}
-	TintChester                        Tint = &defaulttints.TintChester{}
-	TintCiapre                         Tint = &defaulttints.TintCiapre{}
-	TintCobaltNeon                     Tint = &defaulttints.TintCobaltNeon{}
-	TintCobalt2                        Tint = &defaulttints.TintCobalt2{}
-	TintContrastLight                  Tint = &defaulttints.TintContrastLight{}
-	TintCrayonPonyFish                 Tint = &defaulttints.TintCrayonPonyFish{}
-	TintCrystalViolet                  Tint = &defaulttints.TintCrystalViolet{}
-	TintCyberCube                      Tint = &defaulttints.TintCyberCube{}
-	TintCyberPunk2077                  Tint = &defaulttints.TintCyberPunk2077{}
-	TintCyberdyne                      Tint = &defaulttints.TintCyberdyne{}
-	TintDarkPastel                     Tint = &defaulttints.TintDarkPastel{}
-	TintDarkPlus                       Tint = &defaulttints.TintDarkPlus{}
-	TintDarkside                       Tint = &defaulttints.TintDarkside{}
-	TintDesert                         Tint = &defaulttints.TintDesert{}
-	TintDimmedMonokai                  Tint = &defaulttints.TintDimmedMonokai{}
-	TintDjango                         Tint = &defaulttints.TintDjango{}
-	TintDjangoRebornAgain              Tint = &defaulttints.TintDjangoRebornAgain{}
-	TintDjangoSmooth                   Tint = &defaulttints.TintDjangoSmooth{}
-	TintDoomPeacock                    Tint = &defaulttints.TintDoomPeacock{}
-	TintDoomOne                        Tint = &defaulttints.TintDoomOne{}
-	TintDotGov                         Tint = &defaulttints.TintDotGov{}
-	TintDracula                        Tint = &defaulttints.TintDracula{}
-	TintDraculaPlus                    Tint = &defaulttints.TintDraculaPlus{}
-	TintDuotoneDark                    Tint = &defaulttints.TintDuotoneDark{}
-	TintEncom                          Tint = &defaulttints.TintEncom{}
-	TintEarthsong                      Tint = &defaulttints.TintEarthsong{}
-	TintElemental                      Tint = &defaulttints.TintElemental{}
-	TintElementary                     Tint = &defaulttints.TintElementary{}
-	TintEspresso                       Tint = &defaulttints.TintEspresso{}
-	TintEspressoLibre                  Tint = &defaulttints.TintEspressoLibre{}
-	TintEvaDark                        Tint = &defaulttints.TintEvaDark{}
-	TintEvaLight                       Tint = &defaulttints.TintEvaLight{}
-	TintFahrenheit                     Tint = &defaulttints.TintFahrenheit{}
-	TintFideloper                      Tint = &defaulttints.TintFideloper{}
-	TintFirefoxDev                     Tint = &defaulttints.TintFirefoxDev{}
-	TintFirewatch                      Tint = &defaulttints.TintFirewatch{}
-	TintFishTank                       Tint = &defaulttints.TintFishTank{}
-	TintFlat                           Tint = &defaulttints.TintFlat{}
-	TintFlatland                       Tint = &defaulttints.TintFlatland{}
-	TintFloraverse                     Tint = &defaulttints.TintFloraverse{}
-	TintForestBlue                     Tint = &defaulttints.TintForestBlue{}
-	TintFramer                         Tint = &defaulttints.TintFramer{}
-	TintFrontEndDelight                Tint = &defaulttints.TintFrontEndDelight{}
-	TintFunForrest                     Tint = &defaulttints.TintFunForrest{}
-	TintGalaxy                         Tint = &defaulttints.TintGalaxy{}
-	TintGalizur                        Tint = &defaulttints.TintGalizur{}
-	TintGanyu                          Tint = &defaulttints.TintGanyu{}
-	TintGithub                         Tint = &defaulttints.TintGithub{}
-	TintGlacier                        Tint = &defaulttints.TintGlacier{}
-	TintGlorious                       Tint = &defaulttints.TintGlorious{}
-	TintGrape                          Tint = &defaulttints.TintGrape{}
-	TintGrass                          Tint = &defaulttints.TintGrass{}
-	TintGruvboxDark                    Tint = &defaulttints.TintGruvboxDark{}
-	TintGruvboxLight                   Tint = &defaulttints.TintGruvboxLight{}
-	TintGuezwhoz                       Tint = &defaulttints.TintGuezwhoz{}
-	TintHacktober                      Tint = &defaulttints.TintHacktober{}
-	TintHardcore                       Tint = &defaulttints.TintHardcore{}
-	TintHarper                         Tint = &defaulttints.TintHarper{}
-	TintHighway                        Tint = &defaulttints.TintHighway{}
-	TintHipsterGreen                   Tint = &defaulttints.TintHipsterGreen{}
-	TintHivacruz                       Tint = &defaulttints.TintHivacruz{}
-	TintHomebrew                       Tint = &defaulttints.TintHomebrew{}
-	TintHopscotch                      Tint = &defaulttints.TintHopscotch{}
-	TintHopscotch256                   Tint = &defaulttints.TintHopscotch256{}
-	TintHorizon                        Tint = &defaulttints.TintHorizon{}
-	TintHurtado                        Tint = &defaulttints.TintHurtado{}
-	TintHybrid                         Tint = &defaulttints.TintHybrid{}
-	TintHyper                          Tint = &defaulttints.TintHyper{}
-	TintIcGreenPpl                     Tint = &defaulttints.TintIcGreenPpl{}
-	TintIcOrangePpl                    Tint = &defaulttints.TintIcOrangePpl{}
-	TintIrBlack                        Tint = &defaulttints.TintIrBlack{}
-	TintJackieBrown                    Tint = &defaulttints.TintJackieBrown{}
-	TintJapanesque                     Tint = &defaulttints.TintJapanesque{}
-	TintJellybeans                     Tint = &defaulttints.TintJellybeans{}
-	TintJetBrainsDarcula               Tint = &defaulttints.TintJetBrainsDarcula{}
-	TintJuicyColors                    Tint = &defaulttints.TintJuicyColors{}
-	TintKanagawa                       Tint = &defaulttints.TintKanagawa{}
-	TintKibble                         Tint = &defaulttints.TintKibble{}
-	TintKolorit                        Tint = &defaulttints.TintKolorit{}
-	TintKonsolas                       Tint = &defaulttints.TintKonsolas{}
-	TintLabFox                         Tint = &defaulttints.TintLabFox{}
-	TintLaser                          Tint = &defaulttints.TintLaser{}
-	TintLaterThisEvening               Tint = &defaulttints.TintLaterThisEvening{}
-	TintLavandula                      Tint = &defaulttints.TintLavandula{}
-	TintLiquidCarbon                   Tint = &defaulttints.TintLiquidCarbon{}
-	TintLiquidCarbonTransparent        Tint = &defaulttints.TintLiquidCarbonTransparent{}
-	TintLiquidCarbonTransparentInverse Tint = &defaulttints.TintLiquidCarbonTransparentInverse{}
-	TintManPage                        Tint = &defaulttints.TintManPage{}
-	TintMaterial                       Tint = &defaulttints.TintMaterial{}
-	TintMaterialDark                   Tint = &defaulttints.TintMaterialDark{}
-	TintMaterialDarker                 Tint = &defaulttints.TintMaterialDarker{}
-	TintMaterialOcean                  Tint = &defaulttints.TintMaterialOcean{}
-	TintMathias                        Tint = &defaulttints.TintMathias{}
-	TintMedallion                      Tint = &defaulttints.TintMedallion{}
-	TintMirage                         Tint = &defaulttints.TintMirage{}
-	TintMisterioso                     Tint = &defaulttints.TintMisterioso{}
-	TintMolokai                        Tint = &defaulttints.TintMolokai{}
-	TintMonaLisa                       Tint = &defaulttints.TintMonaLisa{}
-	TintMonokaiCmder                   Tint = &defaulttints.TintMonokaiCmder{}
-	TintMonokaiOctagon                 Tint = &defaulttints.TintMonokaiOctagon{}
-	TintMonokaiPro                     Tint = &defaulttints.TintMonokaiPro{}
-	TintMonokaiProFilterOctagon        Tint = &defaulttints.TintMonokaiProFilterOctagon{}
-	TintMonokaiProFilterRistretto      Tint = &defaulttints.TintMonokaiProFilterRistretto{}
-	TintMonokaiRemastered              Tint = &defaulttints.TintMonokaiRemastered{}
-	TintMonokaiSoda                    Tint = &defaulttints.TintMonokaiSoda{}
-	TintMonokaiVivid                   Tint = &defaulttints.TintMonokaiVivid{}
-	TintMoonlightIi                    Tint = &defaulttints.TintMoonlightIi{}
-	TintN0Tch2K                        Tint = &defaulttints.TintN0Tch2K{}
-	TintNeopolitan                     Tint = &defaulttints.TintNeopolitan{}
-	TintNeutron                        Tint = &defaulttints.TintNeutron{}
-	TintNightCity                      Tint = &defaulttints.TintNightCity{}
-	TintNightOwlishLight               Tint = &defaulttints.TintNightOwlishLight{}
-	TintNightLionV1                    Tint = &defaulttints.TintNightLionV1{}
-	TintNightLionV2                    Tint = &defaulttints.TintNightLionV2{}
-	TintNocturnalWinter                Tint = &defaulttints.TintNocturnalWinter{}
-	TintNovel                          Tint = &defaulttints.TintNovel{}
-	TintObsidian                       Tint = &defaulttints.TintObsidian{}
-	TintOcean                          Tint = &defaulttints.TintOcean{}
-	TintOceanicMaterial                Tint = &defaulttints.TintOceanicMaterial{}
-	TintOllie                          Tint = &defaulttints.TintOllie{}
-	TintOneDark                        Tint = &defaulttints.TintOneDark{}
-	TintOneHalfDark                    Tint = &defaulttints.TintOneHalfDark{}
-	TintOneHalfLight                   Tint = &defaulttints.TintOneHalfLight{}
-	TintOneStar                        Tint = &defaulttints.TintOneStar{}
-	TintOperatorMonoDark               Tint = &defaulttints.TintOperatorMonoDark{}
-	TintOvernightSlumber               Tint = &defaulttints.TintOvernightSlumber{}
-	TintPaleNightHc                    Tint = &defaulttints.TintPaleNightHc{}
-	TintPandora                        Tint = &defaulttints.TintPandora{}
-	TintParaisoDark                    Tint = &defaulttints.TintParaisoDark{}
-	TintParasioDark                    Tint = &defaulttints.TintParasioDark{}
-	TintPaulMillr                      Tint = &defaulttints.TintPaulMillr{}
-	TintPencilDark                     Tint = &defaulttints.TintPencilDark{}
-	TintPencilLight                    Tint = &defaulttints.TintPencilLight{}
-	TintPiattoLight                    Tint = &defaulttints.TintPiattoLight{}
-	TintPnevma                         Tint = &defaulttints.TintPnevma{}
-	TintPoppingAndLocking              Tint = &defaulttints.TintPoppingAndLocking{}
-	TintPrimer                         Tint = &defaulttints.TintPrimer{}
-	TintPro                            Tint = &defaulttints.TintPro{}
-	TintProLight                       Tint = &defaulttints.TintProLight{}
-	TintPurpleRain                     Tint = &defaulttints.TintPurpleRain{}
-	TintQb64SuperDarkBlue              Tint = &defaulttints.TintQb64SuperDarkBlue{}
-	TintRapture                        Tint = &defaulttints.TintRapture{}
-	TintRedAlert                       Tint = &defaulttints.TintRedAlert{}
-	TintRedPlanet                      Tint = &defaulttints.TintRedPlanet{}
-	TintRedSands                       Tint = &defaulttints.TintRedSands{}
-	TintRelaxed                        Tint = &defaulttints.TintRelaxed{}
-	TintRetrowave                      Tint = &defaulttints.TintRetrowave{}
-	TintRippedcasts                    Tint = &defaulttints.TintRippedcasts{}
-	TintRosePine                       Tint = &defaulttints.TintRosePine{}
-	TintRouge2                         Tint = &defaulttints.TintRouge2{}
-	TintRoyal                          Tint = &defaulttints.TintRoyal{}
-	TintRyuuko                         Tint = &defaulttints.TintRyuuko{}
-	TintSakura                         Tint = &defaulttints.TintSakura{}
-	TintScarletProtocol                Tint = &defaulttints.TintScarletProtocol{}
-	TintSeaShells                      Tint = &defaulttints.TintSeaShells{}
-	TintSeafoamPastel                  Tint = &defaulttints.TintSeafoamPastel{}
-	TintSerendipityMidnight            Tint = &defaulttints.TintSerendipityMidnight{}
-	TintSerendipityMorning             Tint = &defaulttints.TintSerendipityMorning{}
-	TintSerendipitySunset              Tint = &defaulttints.TintSerendipitySunset{}
-	TintSeti                           Tint = &defaulttints.TintSeti{}
-	TintShaman                         Tint = &defaulttints.TintShaman{}
-	TintSlate                          Tint = &defaulttints.TintSlate{}
-	TintSleepyHollow                   Tint = &defaulttints.TintSleepyHollow{}
-	TintSmyck                          Tint = &defaulttints.TintSmyck{}
-	TintSnazzy                         Tint = &defaulttints.TintSnazzy{}
-	TintSoftServer                     Tint = &defaulttints.TintSoftServer{}
-	TintSolarizedDarcula               Tint = &defaulttints.TintSolarizedDarcula{}
-	TintSolarizedDarkPatched           Tint = &defaulttints.TintSolarizedDarkPatched{}
-	TintSolarizedDarkHigherContrast    Tint = &defaulttints.TintSolarizedDarkHigherContrast{}
-	TintSonoranGothic                  Tint = &defaulttints.TintSonoranGothic{}
-	TintSonoranSunrise                 Tint = &defaulttints.TintSonoranSunrise{}
-	TintSpaceGray                      Tint = &defaulttints.TintSpaceGray{}
-	TintSpaceGrayEighties              Tint = &defaulttints.TintSpaceGrayEighties{}
-	TintSpaceGrayEightiesDull          Tint = &defaulttints.TintSpaceGrayEightiesDull{}
-	TintSpacedust                      Tint = &defaulttints.TintSpacedust{}
-	TintSpiderman                      Tint = &defaulttints.TintSpiderman{}
-	TintSpring                         Tint = &defaulttints.TintSpring{}
-	TintSquare                         Tint = &defaulttints.TintSquare{}
-	TintSublette                       Tint = &defaulttints.TintSublette{}
-	TintSubliminal                     Tint = &defaulttints.TintSubliminal{}
-	TintSundried                       Tint = &defaulttints.TintSundried{}
-	TintSymfonic                       Tint = &defaulttints.TintSymfonic{}
-	TintTangoAdapted                   Tint = &defaulttints.TintTangoAdapted{}
-	TintTangoHalfAdapted               Tint = &defaulttints.TintTangoHalfAdapted{}
-	TintTeerb                          Tint = &defaulttints.TintTeerb{}
-	TintTerminalBasic                  Tint = &defaulttints.TintTerminalBasic{}
-	TintThayerBright                   Tint = &defaulttints.TintThayerBright{}
-	TintTheHulk                        Tint = &defaulttints.TintTheHulk{}
-	TintTinaciousDesignDark            Tint = &defaulttints.TintTinaciousDesignDark{}
-	TintTinaciousDesignLight           Tint = &defaulttints.TintTinaciousDesignLight{}
-	TintTokyoNight                     Tint = &defaulttints.TintTokyoNight{}
-	TintTokyoNightLight                Tint = &defaulttints.TintTokyoNightLight{}
-	TintTokyoNightStorm                Tint = &defaulttints.TintTokyoNightStorm{}
-	TintTomorrow                       Tint = &defaulttints.TintTomorrow{}
-	TintTomorrowNight                  Tint = &defaulttints.TintTomorrowNight{}
-	TintTomorrowNightBlue              Tint = &defaulttints.TintTomorrowNightBlue{}
-	TintTomorrowNightBright            Tint = &defaulttints.TintTomorrowNightBright{}
-	TintTomorrowNightBurns             Tint = &defaulttints.TintTomorrowNightBurns{}
-	TintTomorrowNightEighties          Tint = &defaulttints.TintTomorrowNightEighties{}
-	TintToyChest                       Tint = &defaulttints.TintToyChest{}
-	TintTreehouse                      Tint = &defaulttints.TintTreehouse{}
-	TintTwilight                       Tint = &defaulttints.TintTwilight{}
-	TintUbuntu                         Tint = &defaulttints.TintUbuntu{}
-	TintUltraViolent                   Tint = &defaulttints.TintUltraViolent{}
-	TintUnderTheSea                    Tint = &defaulttints.TintUnderTheSea{}
-	TintUnholy                         Tint = &defaulttints.TintUnholy{}
-	TintUnikitty                       Tint = &defaulttints.TintUnikitty{}
-	TintUrple                          Tint = &defaulttints.TintUrple{}
-	TintVaughn                         Tint = &defaulttints.TintVaughn{}
-	TintVibrantInk                     Tint = &defaulttints.TintVibrantInk{}
-	TintVioletDark                     Tint = &defaulttints.TintVioletDark{}
-	TintVioletLight                    Tint = &defaulttints.TintVioletLight{}
-	TintWarmNeon                       Tint = &defaulttints.TintWarmNeon{}
-	TintWez                            Tint = &defaulttints.TintWez{}
-	TintWhimsy                         Tint = &defaulttints.TintWhimsy{}
-	TintWildCherry                     Tint = &defaulttints.TintWildCherry{}
-	TintWombat                         Tint = &defaulttints.TintWombat{}
-	TintWryan                          Tint = &defaulttints.TintWryan{}
-	TintZenburn                        Tint = &defaulttints.TintZenburn{}
-	TintZeonica                        Tint = &defaulttints.TintZeonica{}
-	TintAyu                            Tint = &defaulttints.TintAyu{}
-	TintAyuLight                       Tint = &defaulttints.TintAyuLight{}
-	TintCoffeeTheme                    Tint = &defaulttints.TintCoffeeTheme{}
-	TintCoolnight                      Tint = &defaulttints.TintCoolnight{}
-	TintCyberpunk                      Tint = &defaulttints.TintCyberpunk{}
-	TintDeep                           Tint = &defaulttints.TintDeep{}
-	TintH4Rithd                        Tint = &defaulttints.TintH4Rithd{}
-	TintH4RithdCom                     Tint = &defaulttints.TintH4RithdCom{}
-	TintIdea                           Tint = &defaulttints.TintIdea{}
-	TintIdleToes                       Tint = &defaulttints.TintIdleToes{}
-	TintJubi                           Tint = &defaulttints.TintJubi{}
-	TintLovelace                       Tint = &defaulttints.TintLovelace{}
-	TintMidnightInMojave               Tint = &defaulttints.TintMidnightInMojave{}
-	TintNord                           Tint = &defaulttints.TintNord{}
-	TintPrimary                        Tint = &defaulttints.TintPrimary{}
-	TintPurplepeter                    Tint = &defaulttints.TintPurplepeter{}
-	TintRebecca                        Tint = &defaulttints.TintRebecca{}
-	TintShadesOfPurple                 Tint = &defaulttints.TintShadesOfPurple{}
-	TintSynthwave                      Tint = &defaulttints.TintSynthwave{}
-	TintSynthwaveEverything            Tint = &defaulttints.TintSynthwaveEverything{}
-)
-
 func NewDefaultRegistry() {
 	DefaultRegistry = NewRegistry(
 		TintDraculaPlus,
@@ -311,21 +18,27 @@ func NewDefaultRegistry() {
 // though make sure to do it before your app initializes and uses the registry.
 var DefaultRegistry *Registry
 
-func DefaultTints() []Tint {
-	return []Tint{
+// DefaultTints returns all pre-configured tints.
+func DefaultTints() []*Tint {
+	return []*Tint{
 		Tint3024Day,
 		Tint3024Night,
+		TintAardvarkBlue,
+		TintAbernathy,
 		TintAdventure,
 		TintAdventureTime,
 		TintAfterglow,
+		TintAlabaster,
 		TintAlienBlood,
 		TintAndromeda,
+		TintAppleClassic,
 		TintArgonaut,
 		TintArthur,
 		TintAtelierSulphurpool,
 		TintAtom,
 		TintAtomOneLight,
 		TintAurora,
+		TintAyuMirage,
 		TintBananaBlueberry,
 		TintBatman,
 		TintBelafonteDay,
@@ -334,6 +47,7 @@ func DefaultTints() []Tint {
 		TintBlazer,
 		TintBlueMatrix,
 		TintBlueBerryPie,
+		TintBlueDolphin,
 		TintBlulocoDark,
 		TintBlulocoLight,
 		TintBorland,
@@ -350,6 +64,7 @@ func DefaultTints() []Tint {
 		TintBuiltinTangoDark,
 		TintBuiltinTangoLight,
 		TintC64,
+		TintCga,
 		TintClrs,
 		TintCalamity,
 		TintCatppuccinFrappe,
@@ -389,9 +104,9 @@ func DefaultTints() []Tint {
 		TintElementary,
 		TintEspresso,
 		TintEspressoLibre,
-		TintEvaDark,
-		TintEvaLight,
+		TintEverblush,
 		TintFahrenheit,
+		TintFairyfloss,
 		TintFideloper,
 		TintFirefoxDev,
 		TintFirewatch,
@@ -406,14 +121,20 @@ func DefaultTints() []Tint {
 		TintGalaxy,
 		TintGalizur,
 		TintGanyu,
+		TintGitHubDark,
 		TintGithub,
 		TintGlacier,
 		TintGlorious,
 		TintGrape,
 		TintGrass,
-		TintGruvboxDark,
+		TintGreyGreen,
 		TintGruvboxLight,
+		TintGruvboxDark,
+		TintGruvboxDarkHard,
 		TintGuezwhoz,
+		TintHaX0RBlue,
+		TintHaX0RGr33N,
+		TintHaX0RR3D,
 		TintHacktober,
 		TintHardcore,
 		TintHarper,
@@ -447,9 +168,11 @@ func DefaultTints() []Tint {
 		TintLiquidCarbonTransparent,
 		TintLiquidCarbonTransparentInverse,
 		TintManPage,
+		TintMariana,
 		TintMaterial,
 		TintMaterialDark,
 		TintMaterialDarker,
+		TintMaterialDesignColors,
 		TintMaterialOcean,
 		TintMathias,
 		TintMedallion,
@@ -458,7 +181,6 @@ func DefaultTints() []Tint {
 		TintMolokai,
 		TintMonaLisa,
 		TintMonokaiCmder,
-		TintMonokaiOctagon,
 		TintMonokaiPro,
 		TintMonokaiProFilterOctagon,
 		TintMonokaiProFilterRistretto,
@@ -467,9 +189,9 @@ func DefaultTints() []Tint {
 		TintMonokaiVivid,
 		TintMoonlightIi,
 		TintN0Tch2K,
+		TintNeon,
 		TintNeopolitan,
 		TintNeutron,
-		TintNightCity,
 		TintNightOwlishLight,
 		TintNightLionV1,
 		TintNightLionV2,
@@ -477,6 +199,7 @@ func DefaultTints() []Tint {
 		TintNovel,
 		TintObsidian,
 		TintOcean,
+		TintOceanicNext,
 		TintOceanicMaterial,
 		TintOllie,
 		TintOneDark,
@@ -488,10 +211,10 @@ func DefaultTints() []Tint {
 		TintPaleNightHc,
 		TintPandora,
 		TintParaisoDark,
-		TintParasioDark,
 		TintPaulMillr,
 		TintPencilDark,
 		TintPencilLight,
+		TintPeppermint,
 		TintPiattoLight,
 		TintPnevma,
 		TintPoppingAndLocking,
@@ -501,10 +224,13 @@ func DefaultTints() []Tint {
 		TintPurpleRain,
 		TintQb64SuperDarkBlue,
 		TintRapture,
+		TintRaycastDark,
+		TintRaycastLight,
 		TintRedAlert,
 		TintRedPlanet,
 		TintRedSands,
 		TintRelaxed,
+		TintRetro,
 		TintRetrowave,
 		TintRippedcasts,
 		TintRosePine,
@@ -541,6 +267,7 @@ func DefaultTints() []Tint {
 		TintSubliminal,
 		TintSundried,
 		TintSymfonic,
+		TintSynthwaveAlpha,
 		TintTangoAdapted,
 		TintTangoHalfAdapted,
 		TintTeerb,
@@ -562,6 +289,7 @@ func DefaultTints() []Tint {
 		TintTreehouse,
 		TintTwilight,
 		TintUbuntu,
+		TintUltraDark,
 		TintUltraViolent,
 		TintUnderTheSea,
 		TintUnholy,
@@ -579,25 +307,1456 @@ func DefaultTints() []Tint {
 		TintWryan,
 		TintZenburn,
 		TintZeonica,
+		TintArcoiris,
 		TintAyu,
 		TintAyuLight,
 		TintCoffeeTheme,
 		TintCoolnight,
 		TintCyberpunk,
+		TintDarkermatrix,
+		TintDarkmatrix,
 		TintDeep,
+		TintDuckbones,
 		TintH4Rithd,
 		TintH4RithdCom,
+		TintITerm2DarkBackground,
+		TintITerm2Default,
+		TintITerm2LightBackground,
+		TintITerm2PastelDarkBackground,
+		TintITerm2Smoooooth,
+		TintITerm2SolarizedDark,
+		TintITerm2SolarizedLight,
+		TintITerm2TangoDark,
+		TintITerm2TangoLight,
+		TintIcebergDark,
+		TintIcebergLight,
 		TintIdea,
 		TintIdleToes,
 		TintJubi,
+		TintKanagawabones,
 		TintLovelace,
+		TintMatrix,
 		TintMidnightInMojave,
+		TintNeobonesDark,
+		TintNeobonesLight,
+		TintNiji,
 		TintNord,
+		TintNordLight,
 		TintPrimary,
 		TintPurplepeter,
 		TintRebecca,
+		TintRosePineDawn,
+		TintRosePineMoon,
+		TintSeoulbonesDark,
+		TintSeoulbonesLight,
 		TintShadesOfPurple,
 		TintSynthwave,
 		TintSynthwaveEverything,
+		TintTokyonight,
+		TintTokyonightDay,
+		TintTokyonightStorm,
+		TintVimbones,
+		TintWilmersdorf,
+		TintZenbones,
+		TintZenbonesDark,
+		TintZenbonesLight,
+		TintZenburned,
+		TintZenwrittenDark,
+		TintZenwrittenLight,
+	}
+}
+
+// DefaultDarkTints returns all pre-configured dark tints.
+func DefaultDarkTints() []*Tint {
+	return []*Tint{
+		Tint3024Night,
+		TintAardvarkBlue,
+		TintAbernathy,
+		TintAdventure,
+		TintAdventureTime,
+		TintAfterglow,
+		TintAlienBlood,
+		TintAndromeda,
+		TintAppleClassic,
+		TintArgonaut,
+		TintArthur,
+		TintAtelierSulphurpool,
+		TintAtom,
+		TintAurora,
+		TintAyuMirage,
+		TintBananaBlueberry,
+		TintBatman,
+		TintBelafonteNight,
+		TintBirdsOfParadise,
+		TintBlazer,
+		TintBlueMatrix,
+		TintBlueBerryPie,
+		TintBlueDolphin,
+		TintBlulocoDark,
+		TintBorland,
+		TintBreeze,
+		TintBrightLights,
+		TintBroadcast,
+		TintBrogrammer,
+		TintBubbles,
+		TintBuiltinDark,
+		TintBuiltinPastelDark,
+		TintBuiltinSolarizedDark,
+		TintBuiltinTangoDark,
+		TintC64,
+		TintCga,
+		TintCalamity,
+		TintCatppuccinFrappe,
+		TintCatppuccinMacchiato,
+		TintCatppuccinMocha,
+		TintChalk,
+		TintChalkboard,
+		TintChallengerDeep,
+		TintChester,
+		TintCiapre,
+		TintCobaltNeon,
+		TintCobalt2,
+		TintCrayonPonyFish,
+		TintCrystalViolet,
+		TintCyberCube,
+		TintCyberPunk2077,
+		TintCyberdyne,
+		TintDarkPastel,
+		TintDarkPlus,
+		TintDarkside,
+		TintDesert,
+		TintDimmedMonokai,
+		TintDjango,
+		TintDjangoRebornAgain,
+		TintDjangoSmooth,
+		TintDoomPeacock,
+		TintDoomOne,
+		TintDotGov,
+		TintDracula,
+		TintDraculaPlus,
+		TintDuotoneDark,
+		TintEncom,
+		TintEarthsong,
+		TintElemental,
+		TintElementary,
+		TintEspresso,
+		TintEspressoLibre,
+		TintEverblush,
+		TintFahrenheit,
+		TintFairyfloss,
+		TintFideloper,
+		TintFirefoxDev,
+		TintFirewatch,
+		TintFishTank,
+		TintFlat,
+		TintFlatland,
+		TintFloraverse,
+		TintForestBlue,
+		TintFramer,
+		TintFrontEndDelight,
+		TintFunForrest,
+		TintGalaxy,
+		TintGalizur,
+		TintGanyu,
+		TintGitHubDark,
+		TintGlacier,
+		TintGlorious,
+		TintGrape,
+		TintGrass,
+		TintGreyGreen,
+		TintGruvboxDark,
+		TintGruvboxDarkHard,
+		TintGuezwhoz,
+		TintHaX0RBlue,
+		TintHaX0RGr33N,
+		TintHaX0RR3D,
+		TintHacktober,
+		TintHardcore,
+		TintHarper,
+		TintHighway,
+		TintHipsterGreen,
+		TintHivacruz,
+		TintHomebrew,
+		TintHopscotch,
+		TintHopscotch256,
+		TintHorizon,
+		TintHurtado,
+		TintHybrid,
+		TintHyper,
+		TintIcGreenPpl,
+		TintIcOrangePpl,
+		TintIrBlack,
+		TintJackieBrown,
+		TintJapanesque,
+		TintJellybeans,
+		TintJetBrainsDarcula,
+		TintJuicyColors,
+		TintKanagawa,
+		TintKibble,
+		TintKolorit,
+		TintKonsolas,
+		TintLabFox,
+		TintLaser,
+		TintLaterThisEvening,
+		TintLavandula,
+		TintLiquidCarbon,
+		TintLiquidCarbonTransparent,
+		TintLiquidCarbonTransparentInverse,
+		TintMariana,
+		TintMaterialDark,
+		TintMaterialDarker,
+		TintMaterialDesignColors,
+		TintMaterialOcean,
+		TintMathias,
+		TintMedallion,
+		TintMirage,
+		TintMisterioso,
+		TintMolokai,
+		TintMonaLisa,
+		TintMonokaiCmder,
+		TintMonokaiPro,
+		TintMonokaiProFilterOctagon,
+		TintMonokaiProFilterRistretto,
+		TintMonokaiRemastered,
+		TintMonokaiSoda,
+		TintMonokaiVivid,
+		TintMoonlightIi,
+		TintN0Tch2K,
+		TintNeon,
+		TintNeopolitan,
+		TintNeutron,
+		TintNightLionV1,
+		TintNightLionV2,
+		TintNocturnalWinter,
+		TintObsidian,
+		TintOcean,
+		TintOceanicNext,
+		TintOceanicMaterial,
+		TintOllie,
+		TintOneDark,
+		TintOneHalfDark,
+		TintOneStar,
+		TintOperatorMonoDark,
+		TintOvernightSlumber,
+		TintPaleNightHc,
+		TintPandora,
+		TintParaisoDark,
+		TintPaulMillr,
+		TintPencilDark,
+		TintPeppermint,
+		TintPnevma,
+		TintPoppingAndLocking,
+		TintPrimer,
+		TintPro,
+		TintPurpleRain,
+		TintQb64SuperDarkBlue,
+		TintRapture,
+		TintRaycastDark,
+		TintRedAlert,
+		TintRedPlanet,
+		TintRedSands,
+		TintRelaxed,
+		TintRetro,
+		TintRetrowave,
+		TintRippedcasts,
+		TintRosePine,
+		TintRouge2,
+		TintRoyal,
+		TintRyuuko,
+		TintSakura,
+		TintScarletProtocol,
+		TintSeaShells,
+		TintSeafoamPastel,
+		TintSerendipityMidnight,
+		TintSerendipitySunset,
+		TintSeti,
+		TintShaman,
+		TintSlate,
+		TintSleepyHollow,
+		TintSmyck,
+		TintSnazzy,
+		TintSoftServer,
+		TintSolarizedDarcula,
+		TintSolarizedDarkPatched,
+		TintSolarizedDarkHigherContrast,
+		TintSonoranGothic,
+		TintSpaceGray,
+		TintSpaceGrayEighties,
+		TintSpaceGrayEightiesDull,
+		TintSpacedust,
+		TintSpiderman,
+		TintSquare,
+		TintSublette,
+		TintSubliminal,
+		TintSundried,
+		TintSymfonic,
+		TintSynthwaveAlpha,
+		TintTeerb,
+		TintThayerBright,
+		TintTheHulk,
+		TintTinaciousDesignDark,
+		TintTokyoNight,
+		TintTokyoNightStorm,
+		TintTomorrowNight,
+		TintTomorrowNightBlue,
+		TintTomorrowNightBright,
+		TintTomorrowNightBurns,
+		TintTomorrowNightEighties,
+		TintToyChest,
+		TintTreehouse,
+		TintTwilight,
+		TintUbuntu,
+		TintUltraDark,
+		TintUltraViolent,
+		TintUnderTheSea,
+		TintUnholy,
+		TintUrple,
+		TintVaughn,
+		TintVibrantInk,
+		TintVioletDark,
+		TintWarmNeon,
+		TintWez,
+		TintWhimsy,
+		TintWildCherry,
+		TintWombat,
+		TintWryan,
+		TintZenburn,
+		TintZeonica,
+		TintArcoiris,
+		TintAyu,
+		TintCoolnight,
+		TintCyberpunk,
+		TintDarkermatrix,
+		TintDarkmatrix,
+		TintDeep,
+		TintDuckbones,
+		TintH4Rithd,
+		TintH4RithdCom,
+		TintITerm2DarkBackground,
+		TintITerm2Default,
+		TintITerm2PastelDarkBackground,
+		TintITerm2Smoooooth,
+		TintITerm2SolarizedDark,
+		TintITerm2TangoDark,
+		TintIcebergDark,
+		TintIdea,
+		TintIdleToes,
+		TintJubi,
+		TintKanagawabones,
+		TintLovelace,
+		TintMatrix,
+		TintMidnightInMojave,
+		TintNeobonesDark,
+		TintNiji,
+		TintNord,
+		TintPurplepeter,
+		TintRebecca,
+		TintRosePineMoon,
+		TintSeoulbonesDark,
+		TintShadesOfPurple,
+		TintSynthwave,
+		TintSynthwaveEverything,
+		TintTokyonight,
+		TintTokyonightStorm,
+		TintWilmersdorf,
+		TintZenbonesDark,
+		TintZenburned,
+		TintZenwrittenDark,
+	}
+}
+
+// DefaultLightTints returns all pre-configured light tints.
+func DefaultLightTints() []*Tint {
+	return []*Tint{
+		Tint3024Day,
+		TintAlabaster,
+		TintAtomOneLight,
+		TintBelafonteDay,
+		TintBlulocoLight,
+		TintBuiltinLight,
+		TintBuiltinSolarizedLight,
+		TintBuiltinTangoLight,
+		TintClrs,
+		TintCatppuccinLatte,
+		TintContrastLight,
+		TintGithub,
+		TintGruvboxLight,
+		TintManPage,
+		TintMaterial,
+		TintNightOwlishLight,
+		TintNovel,
+		TintOneHalfLight,
+		TintPencilLight,
+		TintPiattoLight,
+		TintProLight,
+		TintRaycastLight,
+		TintSerendipityMorning,
+		TintSonoranSunrise,
+		TintSpring,
+		TintTangoAdapted,
+		TintTangoHalfAdapted,
+		TintTerminalBasic,
+		TintTinaciousDesignLight,
+		TintTokyoNightLight,
+		TintTomorrow,
+		TintUnikitty,
+		TintVioletLight,
+		TintAyuLight,
+		TintCoffeeTheme,
+		TintITerm2LightBackground,
+		TintITerm2SolarizedLight,
+		TintITerm2TangoLight,
+		TintIcebergLight,
+		TintNeobonesLight,
+		TintNordLight,
+		TintPrimary,
+		TintRosePineDawn,
+		TintSeoulbonesLight,
+		TintTokyonightDay,
+		TintVimbones,
+		TintZenbones,
+		TintZenbonesLight,
+		TintZenwrittenLight,
+	}
+}
+
+// DefaultTintsByID returns a tint by its ID using tints in the default registry. If the
+// ID is not found, it returns nil.
+func DefaultTintsByID(id string) *Tint {
+	switch id {
+	case "3024_day":
+		return Tint3024Day
+	case "3024_night":
+		return Tint3024Night
+	case "aardvark_blue":
+		return TintAardvarkBlue
+	case "abernathy":
+		return TintAbernathy
+	case "adventure":
+		return TintAdventure
+	case "adventure_time":
+		return TintAdventureTime
+	case "afterglow":
+		return TintAfterglow
+	case "alabaster":
+		return TintAlabaster
+	case "alien_blood":
+		return TintAlienBlood
+	case "andromeda":
+		return TintAndromeda
+	case "apple_classic":
+		return TintAppleClassic
+	case "argonaut":
+		return TintArgonaut
+	case "arthur":
+		return TintArthur
+	case "atelier_sulphurpool":
+		return TintAtelierSulphurpool
+	case "atom":
+		return TintAtom
+	case "atom_one_light":
+		return TintAtomOneLight
+	case "aurora":
+		return TintAurora
+	case "ayu_mirage":
+		return TintAyuMirage
+	case "banana_blueberry":
+		return TintBananaBlueberry
+	case "batman":
+		return TintBatman
+	case "belafonte_day":
+		return TintBelafonteDay
+	case "belafonte_night":
+		return TintBelafonteNight
+	case "birds_of_paradise":
+		return TintBirdsOfParadise
+	case "blazer":
+		return TintBlazer
+	case "blue_matrix":
+		return TintBlueMatrix
+	case "blue_berry_pie":
+		return TintBlueBerryPie
+	case "blue_dolphin":
+		return TintBlueDolphin
+	case "bluloco_dark":
+		return TintBlulocoDark
+	case "bluloco_light":
+		return TintBlulocoLight
+	case "borland":
+		return TintBorland
+	case "breeze":
+		return TintBreeze
+	case "bright_lights":
+		return TintBrightLights
+	case "broadcast":
+		return TintBroadcast
+	case "brogrammer":
+		return TintBrogrammer
+	case "bubbles":
+		return TintBubbles
+	case "builtin_dark":
+		return TintBuiltinDark
+	case "builtin_light":
+		return TintBuiltinLight
+	case "builtin_pastel_dark":
+		return TintBuiltinPastelDark
+	case "builtin_solarized_dark":
+		return TintBuiltinSolarizedDark
+	case "builtin_solarized_light":
+		return TintBuiltinSolarizedLight
+	case "builtin_tango_dark":
+		return TintBuiltinTangoDark
+	case "builtin_tango_light":
+		return TintBuiltinTangoLight
+	case "c_64":
+		return TintC64
+	case "cga":
+		return TintCga
+	case "clrs":
+		return TintClrs
+	case "calamity":
+		return TintCalamity
+	case "catppuccin_frappe":
+		return TintCatppuccinFrappe
+	case "catppuccin_latte":
+		return TintCatppuccinLatte
+	case "catppuccin_macchiato":
+		return TintCatppuccinMacchiato
+	case "catppuccin_mocha":
+		return TintCatppuccinMocha
+	case "chalk":
+		return TintChalk
+	case "chalkboard":
+		return TintChalkboard
+	case "challenger_deep":
+		return TintChallengerDeep
+	case "chester":
+		return TintChester
+	case "ciapre":
+		return TintCiapre
+	case "cobalt_neon":
+		return TintCobaltNeon
+	case "cobalt_2":
+		return TintCobalt2
+	case "contrast_light":
+		return TintContrastLight
+	case "crayon_pony_fish":
+		return TintCrayonPonyFish
+	case "crystal_violet":
+		return TintCrystalViolet
+	case "cyber_cube":
+		return TintCyberCube
+	case "cyber_punk_2077":
+		return TintCyberPunk2077
+	case "cyberdyne":
+		return TintCyberdyne
+	case "dark_pastel":
+		return TintDarkPastel
+	case "dark_plus":
+		return TintDarkPlus
+	case "darkside":
+		return TintDarkside
+	case "desert":
+		return TintDesert
+	case "dimmed_monokai":
+		return TintDimmedMonokai
+	case "django":
+		return TintDjango
+	case "django_reborn_again":
+		return TintDjangoRebornAgain
+	case "django_smooth":
+		return TintDjangoSmooth
+	case "doom_peacock":
+		return TintDoomPeacock
+	case "doom_one":
+		return TintDoomOne
+	case "dot_gov":
+		return TintDotGov
+	case "dracula":
+		return TintDracula
+	case "dracula_plus":
+		return TintDraculaPlus
+	case "duotone_dark":
+		return TintDuotoneDark
+	case "encom":
+		return TintEncom
+	case "earthsong":
+		return TintEarthsong
+	case "elemental":
+		return TintElemental
+	case "elementary":
+		return TintElementary
+	case "espresso":
+		return TintEspresso
+	case "espresso_libre":
+		return TintEspressoLibre
+	case "everblush":
+		return TintEverblush
+	case "fahrenheit":
+		return TintFahrenheit
+	case "fairyfloss":
+		return TintFairyfloss
+	case "fideloper":
+		return TintFideloper
+	case "firefox_dev":
+		return TintFirefoxDev
+	case "firewatch":
+		return TintFirewatch
+	case "fish_tank":
+		return TintFishTank
+	case "flat":
+		return TintFlat
+	case "flatland":
+		return TintFlatland
+	case "floraverse":
+		return TintFloraverse
+	case "forest_blue":
+		return TintForestBlue
+	case "framer":
+		return TintFramer
+	case "front_end_delight":
+		return TintFrontEndDelight
+	case "fun_forrest":
+		return TintFunForrest
+	case "galaxy":
+		return TintGalaxy
+	case "galizur":
+		return TintGalizur
+	case "ganyu":
+		return TintGanyu
+	case "git_hub_dark":
+		return TintGitHubDark
+	case "github":
+		return TintGithub
+	case "glacier":
+		return TintGlacier
+	case "glorious":
+		return TintGlorious
+	case "grape":
+		return TintGrape
+	case "grass":
+		return TintGrass
+	case "grey_green":
+		return TintGreyGreen
+	case "gruvbox_light":
+		return TintGruvboxLight
+	case "gruvbox_dark":
+		return TintGruvboxDark
+	case "gruvbox_dark_hard":
+		return TintGruvboxDarkHard
+	case "guezwhoz":
+		return TintGuezwhoz
+	case "ha_x_0_r_blue":
+		return TintHaX0RBlue
+	case "ha_x_0_r_gr_33_n":
+		return TintHaX0RGr33N
+	case "ha_x_0_r_r_3_d":
+		return TintHaX0RR3D
+	case "hacktober":
+		return TintHacktober
+	case "hardcore":
+		return TintHardcore
+	case "harper":
+		return TintHarper
+	case "highway":
+		return TintHighway
+	case "hipster_green":
+		return TintHipsterGreen
+	case "hivacruz":
+		return TintHivacruz
+	case "homebrew":
+		return TintHomebrew
+	case "hopscotch":
+		return TintHopscotch
+	case "hopscotch_256":
+		return TintHopscotch256
+	case "horizon":
+		return TintHorizon
+	case "hurtado":
+		return TintHurtado
+	case "hybrid":
+		return TintHybrid
+	case "hyper":
+		return TintHyper
+	case "ic_green_ppl":
+		return TintIcGreenPpl
+	case "ic_orange_ppl":
+		return TintIcOrangePpl
+	case "ir_black":
+		return TintIrBlack
+	case "jackie_brown":
+		return TintJackieBrown
+	case "japanesque":
+		return TintJapanesque
+	case "jellybeans":
+		return TintJellybeans
+	case "jet_brains_darcula":
+		return TintJetBrainsDarcula
+	case "juicy_colors":
+		return TintJuicyColors
+	case "kanagawa":
+		return TintKanagawa
+	case "kibble":
+		return TintKibble
+	case "kolorit":
+		return TintKolorit
+	case "konsolas":
+		return TintKonsolas
+	case "lab_fox":
+		return TintLabFox
+	case "laser":
+		return TintLaser
+	case "later_this_evening":
+		return TintLaterThisEvening
+	case "lavandula":
+		return TintLavandula
+	case "liquid_carbon":
+		return TintLiquidCarbon
+	case "liquid_carbon_transparent":
+		return TintLiquidCarbonTransparent
+	case "liquid_carbon_transparent_inverse":
+		return TintLiquidCarbonTransparentInverse
+	case "man_page":
+		return TintManPage
+	case "mariana":
+		return TintMariana
+	case "material":
+		return TintMaterial
+	case "material_dark":
+		return TintMaterialDark
+	case "material_darker":
+		return TintMaterialDarker
+	case "material_design_colors":
+		return TintMaterialDesignColors
+	case "material_ocean":
+		return TintMaterialOcean
+	case "mathias":
+		return TintMathias
+	case "medallion":
+		return TintMedallion
+	case "mirage":
+		return TintMirage
+	case "misterioso":
+		return TintMisterioso
+	case "molokai":
+		return TintMolokai
+	case "mona_lisa":
+		return TintMonaLisa
+	case "monokai_cmder":
+		return TintMonokaiCmder
+	case "monokai_pro":
+		return TintMonokaiPro
+	case "monokai_pro_filter_octagon":
+		return TintMonokaiProFilterOctagon
+	case "monokai_pro_filter_ristretto":
+		return TintMonokaiProFilterRistretto
+	case "monokai_remastered":
+		return TintMonokaiRemastered
+	case "monokai_soda":
+		return TintMonokaiSoda
+	case "monokai_vivid":
+		return TintMonokaiVivid
+	case "moonlight_ii":
+		return TintMoonlightIi
+	case "n_0_tch_2_k":
+		return TintN0Tch2K
+	case "neon":
+		return TintNeon
+	case "neopolitan":
+		return TintNeopolitan
+	case "neutron":
+		return TintNeutron
+	case "night_owlish_light":
+		return TintNightOwlishLight
+	case "night_lion_v_1":
+		return TintNightLionV1
+	case "night_lion_v_2":
+		return TintNightLionV2
+	case "nocturnal_winter":
+		return TintNocturnalWinter
+	case "novel":
+		return TintNovel
+	case "obsidian":
+		return TintObsidian
+	case "ocean":
+		return TintOcean
+	case "oceanic_next":
+		return TintOceanicNext
+	case "oceanic_material":
+		return TintOceanicMaterial
+	case "ollie":
+		return TintOllie
+	case "one_dark":
+		return TintOneDark
+	case "one_half_dark":
+		return TintOneHalfDark
+	case "one_half_light":
+		return TintOneHalfLight
+	case "one_star":
+		return TintOneStar
+	case "operator_mono_dark":
+		return TintOperatorMonoDark
+	case "overnight_slumber":
+		return TintOvernightSlumber
+	case "pale_night_hc":
+		return TintPaleNightHc
+	case "pandora":
+		return TintPandora
+	case "paraiso_dark":
+		return TintParaisoDark
+	case "paul_millr":
+		return TintPaulMillr
+	case "pencil_dark":
+		return TintPencilDark
+	case "pencil_light":
+		return TintPencilLight
+	case "peppermint":
+		return TintPeppermint
+	case "piatto_light":
+		return TintPiattoLight
+	case "pnevma":
+		return TintPnevma
+	case "popping_and_locking":
+		return TintPoppingAndLocking
+	case "primer":
+		return TintPrimer
+	case "pro":
+		return TintPro
+	case "pro_light":
+		return TintProLight
+	case "purple_rain":
+		return TintPurpleRain
+	case "qb_64_super_dark_blue":
+		return TintQb64SuperDarkBlue
+	case "rapture":
+		return TintRapture
+	case "raycast_dark":
+		return TintRaycastDark
+	case "raycast_light":
+		return TintRaycastLight
+	case "red_alert":
+		return TintRedAlert
+	case "red_planet":
+		return TintRedPlanet
+	case "red_sands":
+		return TintRedSands
+	case "relaxed":
+		return TintRelaxed
+	case "retro":
+		return TintRetro
+	case "retrowave":
+		return TintRetrowave
+	case "rippedcasts":
+		return TintRippedcasts
+	case "rose_pine":
+		return TintRosePine
+	case "rouge_2":
+		return TintRouge2
+	case "royal":
+		return TintRoyal
+	case "ryuuko":
+		return TintRyuuko
+	case "sakura":
+		return TintSakura
+	case "scarlet_protocol":
+		return TintScarletProtocol
+	case "sea_shells":
+		return TintSeaShells
+	case "seafoam_pastel":
+		return TintSeafoamPastel
+	case "serendipity_midnight":
+		return TintSerendipityMidnight
+	case "serendipity_morning":
+		return TintSerendipityMorning
+	case "serendipity_sunset":
+		return TintSerendipitySunset
+	case "seti":
+		return TintSeti
+	case "shaman":
+		return TintShaman
+	case "slate":
+		return TintSlate
+	case "sleepy_hollow":
+		return TintSleepyHollow
+	case "smyck":
+		return TintSmyck
+	case "snazzy":
+		return TintSnazzy
+	case "soft_server":
+		return TintSoftServer
+	case "solarized_darcula":
+		return TintSolarizedDarcula
+	case "solarized_dark___patched":
+		return TintSolarizedDarkPatched
+	case "solarized_dark_higher_contrast":
+		return TintSolarizedDarkHigherContrast
+	case "sonoran_gothic":
+		return TintSonoranGothic
+	case "sonoran_sunrise":
+		return TintSonoranSunrise
+	case "space_gray":
+		return TintSpaceGray
+	case "space_gray_eighties":
+		return TintSpaceGrayEighties
+	case "space_gray_eighties_dull":
+		return TintSpaceGrayEightiesDull
+	case "spacedust":
+		return TintSpacedust
+	case "spiderman":
+		return TintSpiderman
+	case "spring":
+		return TintSpring
+	case "square":
+		return TintSquare
+	case "sublette":
+		return TintSublette
+	case "subliminal":
+		return TintSubliminal
+	case "sundried":
+		return TintSundried
+	case "symfonic":
+		return TintSymfonic
+	case "synthwave_alpha":
+		return TintSynthwaveAlpha
+	case "tango_adapted":
+		return TintTangoAdapted
+	case "tango_half_adapted":
+		return TintTangoHalfAdapted
+	case "teerb":
+		return TintTeerb
+	case "terminal_basic":
+		return TintTerminalBasic
+	case "thayer_bright":
+		return TintThayerBright
+	case "the_hulk":
+		return TintTheHulk
+	case "tinacious_design_dark":
+		return TintTinaciousDesignDark
+	case "tinacious_design_light":
+		return TintTinaciousDesignLight
+	case "tokyo_night":
+		return TintTokyoNight
+	case "tokyo_night_light":
+		return TintTokyoNightLight
+	case "tokyo_night_storm":
+		return TintTokyoNightStorm
+	case "tomorrow":
+		return TintTomorrow
+	case "tomorrow_night":
+		return TintTomorrowNight
+	case "tomorrow_night_blue":
+		return TintTomorrowNightBlue
+	case "tomorrow_night_bright":
+		return TintTomorrowNightBright
+	case "tomorrow_night_burns":
+		return TintTomorrowNightBurns
+	case "tomorrow_night_eighties":
+		return TintTomorrowNightEighties
+	case "toy_chest":
+		return TintToyChest
+	case "treehouse":
+		return TintTreehouse
+	case "twilight":
+		return TintTwilight
+	case "ubuntu":
+		return TintUbuntu
+	case "ultra_dark":
+		return TintUltraDark
+	case "ultra_violent":
+		return TintUltraViolent
+	case "under_the_sea":
+		return TintUnderTheSea
+	case "unholy":
+		return TintUnholy
+	case "unikitty":
+		return TintUnikitty
+	case "urple":
+		return TintUrple
+	case "vaughn":
+		return TintVaughn
+	case "vibrant_ink":
+		return TintVibrantInk
+	case "violet_dark":
+		return TintVioletDark
+	case "violet_light":
+		return TintVioletLight
+	case "warm_neon":
+		return TintWarmNeon
+	case "wez":
+		return TintWez
+	case "whimsy":
+		return TintWhimsy
+	case "wild_cherry":
+		return TintWildCherry
+	case "wombat":
+		return TintWombat
+	case "wryan":
+		return TintWryan
+	case "zenburn":
+		return TintZenburn
+	case "zeonica":
+		return TintZeonica
+	case "arcoiris":
+		return TintArcoiris
+	case "ayu":
+		return TintAyu
+	case "ayu_light":
+		return TintAyuLight
+	case "coffee_theme":
+		return TintCoffeeTheme
+	case "coolnight":
+		return TintCoolnight
+	case "cyberpunk":
+		return TintCyberpunk
+	case "darkermatrix":
+		return TintDarkermatrix
+	case "darkmatrix":
+		return TintDarkmatrix
+	case "deep":
+		return TintDeep
+	case "duckbones":
+		return TintDuckbones
+	case "h_4_rithd":
+		return TintH4Rithd
+	case "h_4_rithd_com":
+		return TintH4RithdCom
+	case "i_term_2_dark_background":
+		return TintITerm2DarkBackground
+	case "i_term_2_default":
+		return TintITerm2Default
+	case "i_term_2_light_background":
+		return TintITerm2LightBackground
+	case "i_term_2_pastel_dark_background":
+		return TintITerm2PastelDarkBackground
+	case "i_term_2_smoooooth":
+		return TintITerm2Smoooooth
+	case "i_term_2_solarized_dark":
+		return TintITerm2SolarizedDark
+	case "i_term_2_solarized_light":
+		return TintITerm2SolarizedLight
+	case "i_term_2_tango_dark":
+		return TintITerm2TangoDark
+	case "i_term_2_tango_light":
+		return TintITerm2TangoLight
+	case "iceberg_dark":
+		return TintIcebergDark
+	case "iceberg_light":
+		return TintIcebergLight
+	case "idea":
+		return TintIdea
+	case "idle_toes":
+		return TintIdleToes
+	case "jubi":
+		return TintJubi
+	case "kanagawabones":
+		return TintKanagawabones
+	case "lovelace":
+		return TintLovelace
+	case "matrix":
+		return TintMatrix
+	case "midnight_in_mojave":
+		return TintMidnightInMojave
+	case "neobones_dark":
+		return TintNeobonesDark
+	case "neobones_light":
+		return TintNeobonesLight
+	case "niji":
+		return TintNiji
+	case "nord":
+		return TintNord
+	case "nord_light":
+		return TintNordLight
+	case "primary":
+		return TintPrimary
+	case "purplepeter":
+		return TintPurplepeter
+	case "rebecca":
+		return TintRebecca
+	case "rose_pine_dawn":
+		return TintRosePineDawn
+	case "rose_pine_moon":
+		return TintRosePineMoon
+	case "seoulbones_dark":
+		return TintSeoulbonesDark
+	case "seoulbones_light":
+		return TintSeoulbonesLight
+	case "shades_of_purple":
+		return TintShadesOfPurple
+	case "synthwave":
+		return TintSynthwave
+	case "synthwave_everything":
+		return TintSynthwaveEverything
+	case "tokyonight":
+		return TintTokyonight
+	case "tokyonight_day":
+		return TintTokyonightDay
+	case "tokyonight_storm":
+		return TintTokyonightStorm
+	case "vimbones":
+		return TintVimbones
+	case "wilmersdorf":
+		return TintWilmersdorf
+	case "zenbones":
+		return TintZenbones
+	case "zenbones_dark":
+		return TintZenbonesDark
+	case "zenbones_light":
+		return TintZenbonesLight
+	case "zenburned":
+		return TintZenburned
+	case "zenwritten_dark":
+		return TintZenwrittenDark
+	case "zenwritten_light":
+		return TintZenwrittenLight
+	}
+	return nil
+}
+
+// DefaultTintIDs returns all available tint IDs in the default registry. This can be
+// used for filtering (e.g. fuzzy search).
+func DefaultTintIDs() []string {
+	return []string{
+		"3024_day",
+		"3024_night",
+		"aardvark_blue",
+		"abernathy",
+		"adventure",
+		"adventure_time",
+		"afterglow",
+		"alabaster",
+		"alien_blood",
+		"andromeda",
+		"apple_classic",
+		"argonaut",
+		"arthur",
+		"atelier_sulphurpool",
+		"atom",
+		"atom_one_light",
+		"aurora",
+		"ayu_mirage",
+		"banana_blueberry",
+		"batman",
+		"belafonte_day",
+		"belafonte_night",
+		"birds_of_paradise",
+		"blazer",
+		"blue_matrix",
+		"blue_berry_pie",
+		"blue_dolphin",
+		"bluloco_dark",
+		"bluloco_light",
+		"borland",
+		"breeze",
+		"bright_lights",
+		"broadcast",
+		"brogrammer",
+		"bubbles",
+		"builtin_dark",
+		"builtin_light",
+		"builtin_pastel_dark",
+		"builtin_solarized_dark",
+		"builtin_solarized_light",
+		"builtin_tango_dark",
+		"builtin_tango_light",
+		"c_64",
+		"cga",
+		"clrs",
+		"calamity",
+		"catppuccin_frappe",
+		"catppuccin_latte",
+		"catppuccin_macchiato",
+		"catppuccin_mocha",
+		"chalk",
+		"chalkboard",
+		"challenger_deep",
+		"chester",
+		"ciapre",
+		"cobalt_neon",
+		"cobalt_2",
+		"contrast_light",
+		"crayon_pony_fish",
+		"crystal_violet",
+		"cyber_cube",
+		"cyber_punk_2077",
+		"cyberdyne",
+		"dark_pastel",
+		"dark_plus",
+		"darkside",
+		"desert",
+		"dimmed_monokai",
+		"django",
+		"django_reborn_again",
+		"django_smooth",
+		"doom_peacock",
+		"doom_one",
+		"dot_gov",
+		"dracula",
+		"dracula_plus",
+		"duotone_dark",
+		"encom",
+		"earthsong",
+		"elemental",
+		"elementary",
+		"espresso",
+		"espresso_libre",
+		"everblush",
+		"fahrenheit",
+		"fairyfloss",
+		"fideloper",
+		"firefox_dev",
+		"firewatch",
+		"fish_tank",
+		"flat",
+		"flatland",
+		"floraverse",
+		"forest_blue",
+		"framer",
+		"front_end_delight",
+		"fun_forrest",
+		"galaxy",
+		"galizur",
+		"ganyu",
+		"git_hub_dark",
+		"github",
+		"glacier",
+		"glorious",
+		"grape",
+		"grass",
+		"grey_green",
+		"gruvbox_light",
+		"gruvbox_dark",
+		"gruvbox_dark_hard",
+		"guezwhoz",
+		"ha_x_0_r_blue",
+		"ha_x_0_r_gr_33_n",
+		"ha_x_0_r_r_3_d",
+		"hacktober",
+		"hardcore",
+		"harper",
+		"highway",
+		"hipster_green",
+		"hivacruz",
+		"homebrew",
+		"hopscotch",
+		"hopscotch_256",
+		"horizon",
+		"hurtado",
+		"hybrid",
+		"hyper",
+		"ic_green_ppl",
+		"ic_orange_ppl",
+		"ir_black",
+		"jackie_brown",
+		"japanesque",
+		"jellybeans",
+		"jet_brains_darcula",
+		"juicy_colors",
+		"kanagawa",
+		"kibble",
+		"kolorit",
+		"konsolas",
+		"lab_fox",
+		"laser",
+		"later_this_evening",
+		"lavandula",
+		"liquid_carbon",
+		"liquid_carbon_transparent",
+		"liquid_carbon_transparent_inverse",
+		"man_page",
+		"mariana",
+		"material",
+		"material_dark",
+		"material_darker",
+		"material_design_colors",
+		"material_ocean",
+		"mathias",
+		"medallion",
+		"mirage",
+		"misterioso",
+		"molokai",
+		"mona_lisa",
+		"monokai_cmder",
+		"monokai_pro",
+		"monokai_pro_filter_octagon",
+		"monokai_pro_filter_ristretto",
+		"monokai_remastered",
+		"monokai_soda",
+		"monokai_vivid",
+		"moonlight_ii",
+		"n_0_tch_2_k",
+		"neon",
+		"neopolitan",
+		"neutron",
+		"night_owlish_light",
+		"night_lion_v_1",
+		"night_lion_v_2",
+		"nocturnal_winter",
+		"novel",
+		"obsidian",
+		"ocean",
+		"oceanic_next",
+		"oceanic_material",
+		"ollie",
+		"one_dark",
+		"one_half_dark",
+		"one_half_light",
+		"one_star",
+		"operator_mono_dark",
+		"overnight_slumber",
+		"pale_night_hc",
+		"pandora",
+		"paraiso_dark",
+		"paul_millr",
+		"pencil_dark",
+		"pencil_light",
+		"peppermint",
+		"piatto_light",
+		"pnevma",
+		"popping_and_locking",
+		"primer",
+		"pro",
+		"pro_light",
+		"purple_rain",
+		"qb_64_super_dark_blue",
+		"rapture",
+		"raycast_dark",
+		"raycast_light",
+		"red_alert",
+		"red_planet",
+		"red_sands",
+		"relaxed",
+		"retro",
+		"retrowave",
+		"rippedcasts",
+		"rose_pine",
+		"rouge_2",
+		"royal",
+		"ryuuko",
+		"sakura",
+		"scarlet_protocol",
+		"sea_shells",
+		"seafoam_pastel",
+		"serendipity_midnight",
+		"serendipity_morning",
+		"serendipity_sunset",
+		"seti",
+		"shaman",
+		"slate",
+		"sleepy_hollow",
+		"smyck",
+		"snazzy",
+		"soft_server",
+		"solarized_darcula",
+		"solarized_dark___patched",
+		"solarized_dark_higher_contrast",
+		"sonoran_gothic",
+		"sonoran_sunrise",
+		"space_gray",
+		"space_gray_eighties",
+		"space_gray_eighties_dull",
+		"spacedust",
+		"spiderman",
+		"spring",
+		"square",
+		"sublette",
+		"subliminal",
+		"sundried",
+		"symfonic",
+		"synthwave_alpha",
+		"tango_adapted",
+		"tango_half_adapted",
+		"teerb",
+		"terminal_basic",
+		"thayer_bright",
+		"the_hulk",
+		"tinacious_design_dark",
+		"tinacious_design_light",
+		"tokyo_night",
+		"tokyo_night_light",
+		"tokyo_night_storm",
+		"tomorrow",
+		"tomorrow_night",
+		"tomorrow_night_blue",
+		"tomorrow_night_bright",
+		"tomorrow_night_burns",
+		"tomorrow_night_eighties",
+		"toy_chest",
+		"treehouse",
+		"twilight",
+		"ubuntu",
+		"ultra_dark",
+		"ultra_violent",
+		"under_the_sea",
+		"unholy",
+		"unikitty",
+		"urple",
+		"vaughn",
+		"vibrant_ink",
+		"violet_dark",
+		"violet_light",
+		"warm_neon",
+		"wez",
+		"whimsy",
+		"wild_cherry",
+		"wombat",
+		"wryan",
+		"zenburn",
+		"zeonica",
+		"arcoiris",
+		"ayu",
+		"ayu_light",
+		"coffee_theme",
+		"coolnight",
+		"cyberpunk",
+		"darkermatrix",
+		"darkmatrix",
+		"deep",
+		"duckbones",
+		"h_4_rithd",
+		"h_4_rithd_com",
+		"i_term_2_dark_background",
+		"i_term_2_default",
+		"i_term_2_light_background",
+		"i_term_2_pastel_dark_background",
+		"i_term_2_smoooooth",
+		"i_term_2_solarized_dark",
+		"i_term_2_solarized_light",
+		"i_term_2_tango_dark",
+		"i_term_2_tango_light",
+		"iceberg_dark",
+		"iceberg_light",
+		"idea",
+		"idle_toes",
+		"jubi",
+		"kanagawabones",
+		"lovelace",
+		"matrix",
+		"midnight_in_mojave",
+		"neobones_dark",
+		"neobones_light",
+		"niji",
+		"nord",
+		"nord_light",
+		"primary",
+		"purplepeter",
+		"rebecca",
+		"rose_pine_dawn",
+		"rose_pine_moon",
+		"seoulbones_dark",
+		"seoulbones_light",
+		"shades_of_purple",
+		"synthwave",
+		"synthwave_everything",
+		"tokyonight",
+		"tokyonight_day",
+		"tokyonight_storm",
+		"vimbones",
+		"wilmersdorf",
+		"zenbones",
+		"zenbones_dark",
+		"zenbones_light",
+		"zenburned",
+		"zenwritten_dark",
+		"zenwritten_light",
 	}
 }
