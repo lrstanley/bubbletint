@@ -314,23 +314,23 @@
         <div class="nav-toc">
             <h3>Table of Contents</h3>
             <ul>
-                        {{- range $i, $tint := .Tints }}
-        <li><a href="#{{ .StructName }}">{{ .StructName }}</a></li>
-        {{- end }}
+              {{- range $i, $tint := .Tints }}
+                <li><a href="#{{ .StructName }}">{{ .Tint.Name }}</a></li>
+              {{- end }}
             </ul>
         </div>
 
         <div class="tints-grid">
         {{- range $i, $tint := .Tints }}
         <div class="tint-item" data-tint-type="{{ if $tint.Tint.IsDark }}dark{{ else }}light{{ end }}">
-            <h2 id="{{ .StructName }}"><a href="#{{ .StructName }}" style="text-decoration: none; color: inherit;">{{ .StructName }}</a></h2>
+            <h2 id="{{ .StructName }}"><a href="#{{ .StructName }}" style="text-decoration: none; color: inherit;">{{ .Tint.Name }}</a></h2>
 
             <div class="tint-info">
                 <ul>
                     <li><strong>ID:</strong> <code style="cursor: pointer;" onclick="copyToClipboard('{{ .NameNormalized }}', this)" title="Click to copy ID">{{ .NameNormalized }}</code></li>
                     <li><strong>Usage:</strong> <code style="cursor: pointer;" onclick="copyToClipboard('tint.Tint{{ .StructName }}', this)" title="Click to copy usage">tint.Tint{{ .StructName }}</code></li>
                     {{- if gt (len $tint.Tint.Meta.Credits) 0 }}
-                    <li><strong>Credit:</strong> {{- range $i, $credit := $tint.Tint.Meta.Credits }}{{ if $i }}, {{ end }}{{ .Name }}{{- end }}</li>
+                    <li><strong>Credit:</strong> {{- range $i, $credit := $tint.Tint.Meta.Credits }}{{ if $i }} | {{ end }}<a href={{ .Link | quote }} target="_blank">{{ .Name }}</a>{{- end }}</li>
                     {{- end }}
                 </ul>
             </div>
