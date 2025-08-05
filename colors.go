@@ -5,10 +5,12 @@
 package tint
 
 import (
+	"cmp"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"image/color"
+	"slices"
 
 	"github.com/lucasb-eyer/go-colorful"
 )
@@ -96,40 +98,55 @@ func (c *Color) UnmarshalJSON(data []byte) error {
 
 // FromHex converts a hex color string to a Color. If the hex value is invalid,
 // it will default to rgba(0, 0, 0, 255). Supports both #RRGGBB and #RGB formats.
-func FromHex(hex string) *Color {
-	c, err := colorful.Hex(hex)
-	if err != nil {
-		return &Color{A: 255}
+func FromHex(s string) *Color {
+	if s == "" || s[0] != '#' {
+		return nil
 	}
 
-	return &Color{
-		R: uint8(c.R * 255),
-		G: uint8(c.G * 255),
-		B: uint8(c.B * 255),
-		A: 255,
+	var hasError bool
+	hexToByte := func(b byte) byte {
+		switch {
+		case b >= '0' && b <= '9':
+			return b - '0'
+		case b >= 'a' && b <= 'f':
+			return b - 'a' + 10
+		case b >= 'A' && b <= 'F':
+			return b - 'A' + 10
+		}
+		hasError = true
+		return 0
 	}
+
+	c := &Color{}
+	c.A = 0xff
+
+	switch len(s) {
+	case 7:
+		c.R = hexToByte(s[1])<<4 + hexToByte(s[2])
+		c.G = hexToByte(s[3])<<4 + hexToByte(s[4])
+		c.B = hexToByte(s[5])<<4 + hexToByte(s[6])
+	case 4:
+		c.R = hexToByte(s[1]) * 17
+		c.G = hexToByte(s[2]) * 17
+		c.B = hexToByte(s[3]) * 17
+	default:
+		hasError = true
+	}
+	if hasError {
+		return nil
+	}
+	return c
 }
 
-// ensureValidAlpha ensures that the alpha value of a color is not 0, and if it is,
-// we will set it to 1. This is useful for when we are converting from RGB -> RGBA,
-// and the alpha value is lost in the conversion.
-func ensureValidAlpha(c color.Color) color.Color {
+// ensureNotTransparent ensures that the alpha value of a color is not 0, and if
+// it is, we will set it to 1. This is useful for when we are converting from
+// RGB -> RGBA, and the alpha value is lost in the conversion for gradient purposes.
+func ensureNotTransparent(c color.Color) color.Color {
 	_, _, _, a := c.RGBA()
 	if a == 0 {
 		return Alpha(c, 1)
 	}
 	return c
-}
-
-// filterNilColors filters out any nil colors from the provided slice.
-func filterNilColors(stops []color.Color) (filtered []color.Color) {
-	for _, k := range stops {
-		if k == nil {
-			continue
-		}
-		filtered = append(filtered, k)
-	}
-	return filtered
 }
 
 // Gradient blends a series of colors together using multiple stops, into the provided
@@ -146,111 +163,113 @@ func Gradient(steps int, stops ...color.Color) []color.Color {
 		steps = 2
 	}
 
-	stops = filterNilColors(stops)
+	// Ensure they didn't provide any nil colors.
+	stops = slices.DeleteFunc(stops, func(c color.Color) bool {
+		return c == nil
+	})
 
 	if len(stops) == 0 {
-		return nil
+		return nil // We can't safely fallback.
 	}
 
-	// They they only provided one valid color, we will just return an array of that color.
+	// If they only provided one valid color (or some nil colors), we will just return
+	// an array of that color, for the amount of steps they requested.
 	if len(stops) == 1 {
-		rstops := make([]color.Color, steps)
-		for i := range rstops {
-			rstops[i] = stops[0]
+		singleColor := stops[0]
+		result := make([]color.Color, steps)
+		for i := range result {
+			result[i] = singleColor
 		}
-		return rstops
+		return result
 	}
 
-	cstops := make([]colorful.Color, len(stops)) // colorful-converted stops.
+	blended := make([]color.Color, steps)
+
+	// Convert stops to colorful.Color once
+	cstops := make([]colorful.Color, len(stops))
 	for i, k := range stops {
-		cstops[i], _ = colorful.MakeColor(ensureValidAlpha(k))
+		cstops[i], _ = colorful.MakeColor(ensureNotTransparent(k))
 	}
 
-	// Each segment will have a certain amount of colors we need to calculate and
-	// distribute. We will likely have a remainder, so we need to distribute those
-	// across the segments.
-	segments := make([]int, len(cstops)-1)
-	defaultSize := steps / len(segments)
-	remainingSteps := steps % len(segments)
+	numSegments := len(cstops) - 1
+	defaultSize := steps / numSegments
+	remainingSteps := steps % numSegments
 
-	for i := range segments {
-		segments[i] = defaultSize
-
-		// Distribute remaining across segments so we can meet the number of steps
-		// exactly.
-		if i < remainingSteps {
-			segments[i]++
-		}
-	}
-
-	blended := make([]color.Color, 0, steps)
-
-	// For each segment, we will blend the colors between the start and end stop
-	// we calculated for that specific segment.
-	for i := range segments {
+	resultIndex := 0
+	for i := range numSegments {
 		from := cstops[i]
 		to := cstops[i+1]
-		size := segments[i]
 
-		for j := range size {
-			// Defaults to 0, which would result in the "from" color.
+		// Calculate segment size.
+		segmentSize := defaultSize
+		if i < remainingSteps {
+			segmentSize++
+		}
+
+		divisor := float64(segmentSize - 1)
+
+		// Generate colors for this segment.
+		for j := range segmentSize {
 			var blendingFactor float64
-
-			// Adjust the blending factor (angle in the HCL color space) when there
-			// is more than one color in this segment.
-			if size > 1 {
-				blendingFactor = float64(j) / float64(size-1)
+			if segmentSize > 1 {
+				blendingFactor = float64(j) / divisor
 			}
-
-			blended = append(blended, from.BlendHcl(to, blendingFactor))
+			blended[resultIndex] = from.BlendLab(to, blendingFactor).Clamped()
+			resultIndex++
 		}
 	}
 
 	return blended
 }
 
-// Darken takes a color and makes it darker by a specific percentage (0-100, clamped).
-func Darken(c color.Color, percent int) color.Color {
+func clamp[T cmp.Ordered](v, low, high T) T {
+	if high < low {
+		high, low = low, high
+	}
+	return min(high, max(low, v))
+}
+
+// Darken takes a color and makes it darker by a specific percentage (0-1, clamped).
+func Darken(c color.Color, percent float64) color.Color {
 	if c == nil {
 		return nil
 	}
-
-	mult := 1.0 - max(min(float64(percent), 100), 0)/100.0
-
+	mult := 1.0 - clamp(percent, 0, 1)
 	r, g, b, a := c.RGBA()
 	return color.RGBA{
 		R: uint8(float64(r>>8) * mult),
 		G: uint8(float64(g>>8) * mult),
 		B: uint8(float64(b>>8) * mult),
-		A: uint8(a >> 8), //nolint:gosec
+		A: uint8(min(255, float64(a>>8))),
 	}
 }
 
-// Lighten makes a color lighter by a specific percentage (0-100, clamped).
-func Lighten(c color.Color, percent int) color.Color {
+// Lighten makes a color lighter by a specific percentage (0-1, clamped).
+func Lighten(c color.Color, percent float64) color.Color {
 	if c == nil {
 		return nil
 	}
-
-	add := 255 * (max(min(float64(percent), 100), 0) / 100.0)
-
+	add := 255 * (clamp(percent, 0, 1))
 	r, g, b, a := c.RGBA()
 	return color.RGBA{
 		R: uint8(min(255, float64(r>>8)+add)),
 		G: uint8(min(255, float64(g>>8)+add)),
 		B: uint8(min(255, float64(b>>8)+add)),
-		A: uint8(a >> 8), //nolint:gosec
+		A: uint8(min(255, float64(a>>8))),
 	}
 }
 
-// Alpha adjusts the alpha value of a color using a 0-1 float scale (0 = fully
-// transparent, 1 = fully opaque).
+// Alpha adjusts the alpha value of a color using a 0-1 (clamped) float scale
+// 0 = transparent, 1 = opaque.
 func Alpha(c color.Color, alpha float64) color.Color {
+	if c == nil {
+		return nil
+	}
 	r, g, b, _ := c.RGBA()
 	return color.RGBA{
-		R: uint8(r >> 8), //nolint:gosec
-		G: uint8(g >> 8), //nolint:gosec
-		B: uint8(b >> 8), //nolint:gosec
-		A: uint8(max(min(alpha, 1), 0) * 255),
+		R: uint8(min(255, float64(r>>8))),
+		G: uint8(min(255, float64(g>>8))),
+		B: uint8(min(255, float64(b>>8))),
+		A: uint8(clamp(alpha, 0, 1) * 255),
 	}
 }
