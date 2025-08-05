@@ -1,4 +1,4 @@
-module github.com/lrstanley/bubbletint/chromatint/v2
+module github.com/lrstanley/bubbletint/v2/chromatint
 
 go 1.24.4
 
