@@ -2,16 +2,6 @@
 
 package tint
 
-import (
-	"github.com/lrstanley/bubbletint/defaulttints"
-)
-
-var (
-{{- range $index, $tint := . }}
-    Tint{{ .StructName }} Tint = &defaulttints.Tint{{ .StructName }}{}
-{{- end }}
-)
-
 func NewDefaultRegistry() {
     DefaultRegistry = NewRegistry(
         TintDraculaPlus,
@@ -24,10 +14,55 @@ func NewDefaultRegistry() {
 // though make sure to do it before your app initializes and uses the registry.
 var DefaultRegistry *Registry
 
-func DefaultTints() []Tint {
-    return []Tint{
+// DefaultTints returns all pre-configured tints.
+func DefaultTints() []*Tint {
+    return []*Tint{
     {{- range $index, $tint := . }}
         Tint{{ .StructName }},
+    {{- end }}
+    }
+}
+
+// DefaultDarkTints returns all pre-configured dark tints.
+func DefaultDarkTints() []*Tint {
+    return []*Tint{
+    {{- range $index, $tint := . }}
+        {{- if $tint.Tint.IsDark }}
+            Tint{{ .StructName }},
+        {{- end }}
+    {{- end }}
+    }
+}
+
+// DefaultLightTints returns all pre-configured light tints.
+func DefaultLightTints() []*Tint {
+    return []*Tint{
+    {{- range $index, $tint := . }}
+        {{- if not $tint.Tint.IsDark }}
+            Tint{{ .StructName }},
+        {{- end }}
+    {{- end }}
+    }
+}
+
+// DefaultTintsByID returns a tint by its ID using tints in the default registry. If the
+// ID is not found, it returns nil.
+func DefaultTintsByID(id string) *Tint {
+    switch id {
+    {{- range $index, $tint := . }}
+        case {{ .NameNormalized | quote }}:
+            return Tint{{ .StructName }}
+    {{- end }}
+    }
+    return nil
+}
+
+// DefaultTintIDs returns all available tint IDs in the default registry. This can be
+// used for filtering (e.g. fuzzy search).
+func DefaultTintIDs() []string {
+    return []string{
+    {{- range $index, $tint := . }}
+        {{ .NameNormalized | quote }},
     {{- end }}
     }
 }

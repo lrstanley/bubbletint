@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Default Tints - Bubbletint</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #4a9eff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #ffffff;
+            margin: 0;
+        }
+        .github-link {
+            color: #4a9eff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 16px;
+            border: 2px solid #4a9eff;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .github-link:hover {
+            background: #4a9eff;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        h2 {
+            color: #4a9eff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+        }
+        .filter-controls {
+            background: #3a3a3a;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4a9eff;
+        }
+        .filter-controls h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .filter-options {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .filter-option input[type="radio"] {
+            accent-color: #4a9eff;
+        }
+        .filter-option label {
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .filter-option label:hover {
+            color: #4a9eff;
+        }
+        .tint-info {
+            background: #3a3a3a;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4a9eff;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            font-size: 14px;
+        }
+        .tint-info ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        .tint-info li {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .tint-info code {
+            background: #555;
+            color: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .tint-info a {
+            color: #4a9eff;
+            text-decoration: none;
+        }
+        .tint-info a:hover {
+            text-decoration: underline;
+        }
+        .color-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .color-table th {
+            background: #333;
+            color: white;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .color-table td {
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        .color-table tr:last-child td:first-child {
+            border-bottom-left-radius: 8px;
+        }
+        .color-table tr:last-child td:last-child {
+            border-bottom-right-radius: 8px;
+        }
+        .nav-toc {
+            background: #3a3a3a;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        .nav-toc h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+        .nav-toc ul {
+            columns: 3;
+            column-gap: 30px;
+            margin: 0;
+            padding-left: 20px;
+        }
+        .nav-toc li {
+            margin-bottom: 5px;
+            break-inside: avoid;
+        }
+        .nav-toc a {
+            color: #4a9eff;
+            text-decoration: none;
+        }
+        .nav-toc a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .nav-toc ul {
+                columns: 1;
+            }
+            .container {
+                padding: 15px;
+            }
+            .filter-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        .tints-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .tint-item {
+            border: 1px solid #555;
+            border-radius: 12px;
+            padding: 10px;
+            background: #2d2d2d;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .tint-item.hidden {
+            display: none;
+        }
+
+        .tint-item h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4a9eff;
+            padding-top: 0;
+            padding-bottom: 10px;
+        }
+
+        .tint-item .tint-info {
+            margin: 15px 0;
+        }
+
+        .tint-item .svg-container {
+            margin: 15px 0 0 0;
+            width: 100%;
+            position: relative;
+        }
+
+        @media (max-width: 1300px) {
+            .tints-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+    <script>
+        // Copy to clipboard function
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Show a brief visual feedback
+                const originalText = element.textContent;
+                const originalColor = element.style.color;
+                const originalBackground = element.style.backgroundColor;
+
+                element.textContent = 'Copied!';
+                element.style.color = '#ffffff';
+                element.style.backgroundColor = '#28a745';
+                element.style.padding = '2px 6px';
+                element.style.borderRadius = '3px';
+
+                setTimeout(() => {
+                    element.textContent = originalText;
+                    element.style.color = originalColor;
+                    element.style.backgroundColor = originalBackground;
+                    element.style.padding = '';
+                    element.style.borderRadius = '';
+                }, 1000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        // Filter function
+        function filterTints(filterType) {
+            const tintItems = document.querySelectorAll('.tint-item');
+            const tocLinks = document.querySelectorAll('.nav-toc a');
+
+            tintItems.forEach(item => {
+                const isDark = item.getAttribute('data-tint-type') === 'dark';
+                const itemId = item.querySelector('h2').getAttribute('id');
+
+                switch(filterType) {
+                    case 'all':
+                        item.classList.remove('hidden');
+                        break;
+                    case 'dark':
+                        item.classList.toggle('hidden', !isDark);
+                        break;
+                    case 'light':
+                        item.classList.toggle('hidden', isDark);
+                        break;
+                }
+
+                // Filter table of contents links
+                tocLinks.forEach(link => {
+                    if (link.getAttribute('href') === '#' + itemId) {
+                        const shouldShow = filterType === 'all' ||
+                            (filterType === 'dark' && isDark) ||
+                            (filterType === 'light' && !isDark);
+                        link.parentElement.style.display = shouldShow ? 'block' : 'none';
+                    }
+                });
+            });
+        }
+
+        // Initialize filter on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default filter to 'all'
+            document.getElementById('filter-all').checked = true;
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="title-container">
+            <h1>🌈 BubbleTint &middot; Default Tints</h1>
+            <a href="https://github.com/lrstanley/bubbletint" class="github-link" target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                GitHub
+            </a>
+        </div>
+
+        <div class="filter-controls">
+            <h3>Filter Tints</h3>
+            <div class="filter-options">
+                <div class="filter-option">
+                    <input type="radio" id="filter-all" name="tint-filter" value="all" onchange="filterTints('all')">
+                    <label for="filter-all">All Tints</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="filter-dark" name="tint-filter" value="dark" onchange="filterTints('dark')">
+                    <label for="filter-dark">Dark Tints</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="filter-light" name="tint-filter" value="light" onchange="filterTints('light')">
+                    <label for="filter-light">Light Tints</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-toc">
+            <h3>Table of Contents</h3>
+            <ul>
+              {{- range $i, $tint := .Tints }}
+                <li><a href="#{{ .StructName }}">{{ .Tint.Name }}</a></li>
+              {{- end }}
+            </ul>
+        </div>
+
+        <div class="tints-grid">
+        {{- range $i, $tint := .Tints }}
+        <div class="tint-item" data-tint-type="{{ if $tint.Tint.IsDark }}dark{{ else }}light{{ end }}">
+            <h2 id="{{ .StructName }}"><a href="#{{ .StructName }}" style="text-decoration: none; color: inherit;">{{ .Tint.Name }}</a></h2>
+
+            <div class="tint-info">
+                <ul>
+                    <li><strong>ID:</strong> <code style="cursor: pointer;" onclick="copyToClipboard('{{ .NameNormalized }}', this)" title="Click to copy ID">{{ .NameNormalized }}</code></li>
+                    <li><strong>Usage:</strong> <code style="cursor: pointer;" onclick="copyToClipboard('tint.Tint{{ .StructName }}', this)" title="Click to copy usage">tint.Tint{{ .StructName }}</code></li>
+                    {{- if gt (len $tint.Tint.Meta.Credits) 0 }}
+                    <li><strong>Credit:</strong> {{- range $i, $credit := $tint.Tint.Meta.Credits }}{{ if $i }} | {{ end }}<a href={{ .Link | quote }} target="_blank">{{ .Name }}</a>{{- end }}</li>
+                    {{- end }}
+                </ul>
+            </div>
+
+            <div class="svg-container">
+                <img src="./{{ .StructName }}.svg"
+                     alt="{{ .StructName }} color table"
+                     loading="lazy"
+                     style="width: 100%; height: auto; border-radius: 8px;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                     onload="this.nextElementSibling.style.display='none';">
+                <div class="loading-placeholder" style="display: flex; align-items: center; justify-content: center; height: 300px; background: #3a3a3a; border-radius: 8px;">
+                    <div style="text-align: center; color: #aaa;">
+                        <div style="font-size: 24px; margin-bottom: 10px;">🎨</div>
+                        <div>Loading {{ .StructName }} color table...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+        </div>
+    </div>
+</body>
+</html>

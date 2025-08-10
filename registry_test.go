@@ -7,14 +7,12 @@ package tint
 import (
 	"reflect"
 	"testing"
-
-	"github.com/charmbracelet/lipgloss"
 )
 
 func TestNewRegistry(t *testing.T) {
 	type args struct {
-		defaultTint Tint
-		tints       []Tint
+		defaultTint *Tint
+		tints       []*Tint
 	}
 	tests := []struct {
 		name string
@@ -23,11 +21,11 @@ func TestNewRegistry(t *testing.T) {
 	}{
 		{
 			name: "no default",
-			args: args{defaultTint: nil, tints: []Tint{TintDraculaPlus}},
+			args: args{defaultTint: nil, tints: []*Tint{TintDraculaPlus}},
 			want: &Registry{
 				currentTint: "",
-				tints: map[string]Tint{
-					TintDraculaPlus.ID(): TintDraculaPlus,
+				tints: map[string]*Tint{
+					TintDraculaPlus.ID: TintDraculaPlus,
 				},
 			},
 		},
@@ -36,17 +34,17 @@ func TestNewRegistry(t *testing.T) {
 			args: args{defaultTint: nil, tints: nil},
 			want: &Registry{
 				currentTint: "",
-				tints:       map[string]Tint{},
+				tints:       map[string]*Tint{},
 			},
 		},
 		{
 			name: "with default and tints",
-			args: args{defaultTint: Tint3024Day, tints: []Tint{TintDraculaPlus}},
+			args: args{defaultTint: Tint3024Day, tints: []*Tint{TintDraculaPlus}},
 			want: &Registry{
-				currentTint: Tint3024Day.ID(),
-				tints: map[string]Tint{
-					TintDraculaPlus.ID(): TintDraculaPlus,
-					Tint3024Day.ID():     Tint3024Day,
+				currentTint: Tint3024Day.ID,
+				tints: map[string]*Tint{
+					TintDraculaPlus.ID: TintDraculaPlus,
+					Tint3024Day.ID:     Tint3024Day,
 				},
 			},
 		},
@@ -54,9 +52,9 @@ func TestNewRegistry(t *testing.T) {
 			name: "with default and no tints",
 			args: args{defaultTint: Tint3024Day, tints: nil},
 			want: &Registry{
-				currentTint: Tint3024Day.ID(),
-				tints: map[string]Tint{
-					Tint3024Day.ID(): Tint3024Day,
+				currentTint: Tint3024Day.ID,
+				tints: map[string]*Tint{
+					Tint3024Day.ID: Tint3024Day,
 				},
 			},
 		},
@@ -92,12 +90,12 @@ func TestRegistry_Unregister(t *testing.T) {
 		t.Errorf("expected 2 tints, got %d", len(reg.Tints()))
 	}
 
-	reg.UnregisterIDs(TintDraculaPlus.ID())
+	reg.UnregisterIDs(TintDraculaPlus.ID)
 	if len(reg.Tints()) != 1 {
 		t.Errorf("expected 1 tint, got %d", len(reg.Tints()))
 	}
 
-	if other := reg.Tints()[0]; other.ID() != Tint3024Day.ID() {
+	if other := reg.Tints()[0]; other.ID != Tint3024Day.ID {
 		t.Errorf("expected %v, got %v", Tint3024Day, other)
 	}
 
@@ -114,14 +112,14 @@ func TestRegistry_SetTint(t *testing.T) {
 
 	reg.SetTint(Tint3024Day)
 
-	if reg.GetCurrentTint().ID() != Tint3024Day.ID() {
-		t.Errorf("expected %v, got %v", Tint3024Day, reg.GetCurrentTint())
+	if reg.Current().ID != Tint3024Day.ID {
+		t.Errorf("expected %v, got %v", Tint3024Day, reg.Current())
 	}
 
-	reg.SetTintID(TintDraculaPlus.ID())
+	reg.SetTintID(TintDraculaPlus.ID)
 
-	if reg.GetCurrentTint().ID() != TintDraculaPlus.ID() {
-		t.Errorf("expected %v, got %v", TintDraculaPlus, reg.GetCurrentTint())
+	if reg.Current().ID != TintDraculaPlus.ID {
+		t.Errorf("expected %v, got %v", TintDraculaPlus, reg.Current())
 	}
 
 	if ok := reg.SetTintID("invalid"); ok {
@@ -133,114 +131,52 @@ func TestRegistry_PreviousNextTint(t *testing.T) {
 	// Intentionally adding tints in the list out of order.
 	reg := NewRegistry(TintDraculaPlus, TintDraculaPlus, Tint3024Day, TintSynthwave)
 
-	if reg.GetCurrentTint().ID() != TintDraculaPlus.ID() {
-		t.Errorf("expected %v, got %v", TintDraculaPlus, reg.GetCurrentTint())
+	if reg.Current().ID != TintDraculaPlus.ID {
+		t.Errorf("expected %v, got %v", TintDraculaPlus, reg.Current())
 	}
 
 	reg.NextTint()
 
-	if reg.GetCurrentTint().ID() != TintSynthwave.ID() {
-		t.Errorf("expected %v, got %v", TintSynthwave, reg.GetCurrentTint())
+	if reg.Current().ID != TintSynthwave.ID {
+		t.Errorf("expected %v, got %v", TintSynthwave, reg.Current())
 	}
 
 	reg.NextTint()
 
-	if reg.GetCurrentTint().ID() != TintSynthwave.ID() {
-		t.Errorf("expected %v, got %v", TintSynthwave, reg.GetCurrentTint())
+	if reg.Current().ID != TintSynthwave.ID {
+		t.Errorf("expected %v, got %v", TintSynthwave, reg.Current())
 	}
 
 	reg.PreviousTint()
 
-	if reg.GetCurrentTint().ID() != TintDraculaPlus.ID() {
-		t.Errorf("expected %v, got %v", TintDraculaPlus, reg.GetCurrentTint())
+	if reg.Current().ID != TintDraculaPlus.ID {
+		t.Errorf("expected %v, got %v", TintDraculaPlus, reg.Current())
 	}
 
 	reg.PreviousTint()
 
-	if reg.GetCurrentTint().ID() != Tint3024Day.ID() {
-		t.Errorf("expected %v, got %v", Tint3024Day, reg.GetCurrentTint())
+	if reg.Current().ID != Tint3024Day.ID {
+		t.Errorf("expected %v, got %v", Tint3024Day, reg.Current())
 	}
 
 	reg.PreviousTint()
 
-	if reg.GetCurrentTint().ID() != Tint3024Day.ID() {
-		t.Errorf("expected %v, got %v", Tint3024Day, reg.GetCurrentTint())
+	if reg.Current().ID != Tint3024Day.ID {
+		t.Errorf("expected %v, got %v", Tint3024Day, reg.Current())
 	}
 
 	// If there currently isn't a default, then the first tint in the list is used.
 	reg = NewRegistry(nil, TintDraculaPlus, Tint3024Day, TintSynthwave)
 	reg.NextTint()
 
-	if reg.GetCurrentTint().ID() != Tint3024Day.ID() {
-		t.Errorf("expected %v, got %v", Tint3024Day, reg.GetCurrentTint())
+	if reg.Current().ID != Tint3024Day.ID {
+		t.Errorf("expected %v, got %v", Tint3024Day, reg.Current())
 	}
 
 	reg = NewRegistry(nil, TintDraculaPlus, Tint3024Day, TintSynthwave)
 	reg.PreviousTint()
 
-	if reg.GetCurrentTint().ID() != Tint3024Day.ID() {
-		t.Errorf("expected %v, got %v", Tint3024Day, reg.GetCurrentTint())
-	}
-}
-
-func TestRegistry_AllColors(t *testing.T) {
-	NewDefaultRegistry()
-
-	ids := DefaultRegistry.TintIDs()
-
-	for _, id := range ids {
-		t.Run(id, func(t *testing.T) {
-			DefaultRegistry.SetTintID(id)
-
-			colors := []lipgloss.TerminalColor{
-				Fg(),
-				Bg(),
-				SelectionBg(),
-				Cursor(),
-				BrightBlack(),
-				BrightBlue(),
-				BrightCyan(),
-				BrightGreen(),
-				BrightPurple(),
-				BrightRed(),
-				BrightWhite(),
-				BrightYellow(),
-				Black(),
-				Blue(),
-				Cyan(),
-				Green(),
-				Purple(),
-				Red(),
-				White(),
-				Yellow(),
-
-				DefaultRegistry.Fg(),
-				DefaultRegistry.Bg(),
-				DefaultRegistry.SelectionBg(),
-				DefaultRegistry.Cursor(),
-				DefaultRegistry.BrightBlack(),
-				DefaultRegistry.BrightBlue(),
-				DefaultRegistry.BrightCyan(),
-				DefaultRegistry.BrightGreen(),
-				DefaultRegistry.BrightPurple(),
-				DefaultRegistry.BrightRed(),
-				DefaultRegistry.BrightWhite(),
-				DefaultRegistry.BrightYellow(),
-				DefaultRegistry.Black(),
-				DefaultRegistry.Blue(),
-				DefaultRegistry.Cyan(),
-				DefaultRegistry.Green(),
-				DefaultRegistry.Purple(),
-				DefaultRegistry.Red(),
-				DefaultRegistry.White(),
-				DefaultRegistry.Yellow(),
-			}
-
-			for _, c := range colors {
-				if c == nil {
-					t.Errorf("expected color, got nil")
-				}
-			}
-		})
+	if reg.Current().ID != Tint3024Day.ID {
+		t.Errorf("expected %v, got %v", Tint3024Day, reg.Current())
 	}
 }

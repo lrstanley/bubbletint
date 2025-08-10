@@ -6,27 +6,48 @@ package main
 
 import (
 	"fmt"
+	"image/color"
 	"os"
 
-	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-	tint "github.com/lrstanley/bubbletint"
-	zone "github.com/lrstanley/bubblezone"
+	tea "github.com/charmbracelet/bubbletea/v2"
+	"github.com/charmbracelet/lipgloss/v2"
+	tint "github.com/lrstanley/bubbletint/v2"
+	zone "github.com/lrstanley/bubblezone/v2"
 )
 
 // This is a modified version of this example, supporting full screen, dynamic
 // resizing, and clickable models (tabs, lists, dialogs, etc).
 // 	https://github.com/charmbracelet/lipgloss/blob/master/example
 
+func adapt(light, dark color.Color) color.Color {
+	if tint.Current().Dark {
+		return dark
+	}
+	return light
+}
+
+func adaptBright(c color.Color, amount float64) color.Color {
+	if tint.Current().Dark {
+		return tint.Lighten(c, amount)
+	}
+	return tint.Darken(c, amount)
+}
+
+type ThemeChangedMsg struct{}
+
 type model struct {
 	height int
 	width  int
 
-	tabs    tea.Model
-	dialog  tea.Model
-	list1   tea.Model
-	list2   tea.Model
-	history tea.Model
+	// Styles.
+	themeTitleStyle lipgloss.Style
+
+	// Child components.
+	tabs    *tabs
+	dialog  *dialog
+	list1   *list
+	list2   *list
+	history *history
 }
 
 func (m model) Init() tea.Cmd {
@@ -37,31 +58,38 @@ func (m model) isInitialized() bool {
 	return m.height != 0 && m.width != 0
 }
 
-func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-	if !m.isInitialized() {
-		if _, ok := msg.(tea.WindowSizeMsg); !ok {
-			return m, nil
-		}
-	}
+func (m *model) setStyles() {
+	m.themeTitleStyle = lipgloss.NewStyle().
+		Foreground(tint.Current().Fg).
+		Padding(0, 1)
+}
 
+func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
-		// Example of toggling mouse event tracking on/off.
 		if msg.String() == "ctrl+e" {
 			zone.SetEnabled(!zone.Enabled())
 			return m, nil
 		}
 
-		if msg.String() == "ctrl+left" {
+		if msg.String() == "left" {
 			tint.PreviousTint()
+			m.setStyles()
 
-			return m, nil
+			return m, tea.Sequence(
+				tea.SetBackgroundColor(tint.Current().Bg),
+				func() tea.Msg { return ThemeChangedMsg{} },
+			)
 		}
 
-		if msg.String() == "ctrl+right" {
+		if msg.String() == "right" {
 			tint.NextTint()
+			m.setStyles()
 
-			return m, nil
+			return m, tea.Sequence(
+				tea.SetBackgroundColor(tint.Current().Bg),
+				func() tea.Msg { return ThemeChangedMsg{} },
+			)
 		}
 
 		if msg.String() == "ctrl+c" {
@@ -70,29 +98,29 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.WindowSizeMsg:
 		m.height = msg.Height
 		m.width = msg.Width
-		msg.Height -= 2
-		msg.Width -= 4
-		return m.propagate(msg), nil
 	}
 
-	return m.propagate(msg), nil
+	return m, m.propagate(msg) //nolint:gocritic
 }
 
-func (m *model) propagate(msg tea.Msg) tea.Model {
+func (m model) propagate(msg tea.Msg) tea.Cmd {
 	// Propagate to all children.
-	m.tabs, _ = m.tabs.Update(msg)
-	m.dialog, _ = m.dialog.Update(msg)
-	m.list1, _ = m.list1.Update(msg)
-	m.list2, _ = m.list2.Update(msg)
-
-	if msg, ok := msg.(tea.WindowSizeMsg); ok {
-		msg.Height -= m.tabs.(tabs).height + m.list1.(list).height
-		m.history, _ = m.history.Update(msg)
-		return m
+	cmds := []tea.Cmd{
+		m.tabs.Update(msg),
+		m.dialog.Update(msg),
+		m.list1.Update(msg),
+		m.list2.Update(msg),
 	}
 
-	m.history, _ = m.history.Update(msg)
-	return m
+	if msg, ok := msg.(tea.WindowSizeMsg); ok {
+		msg.Height -= m.tabs.GetHeight() +
+			max(m.list1.GetHeight(), m.list2.GetHeight(), m.dialog.GetHeight()) +
+			3 // +1 for bottom margin on tabs, +1 for top margin on history + 1 for tint changer.
+
+		cmds = append(cmds, m.history.Update(msg))
+		return tea.Batch(cmds...)
+	}
+	return tea.Batch(append(cmds, m.history.Update(msg))...)
 }
 
 func (m model) View() string {
@@ -100,37 +128,32 @@ func (m model) View() string {
 		return ""
 	}
 
-	themeTitle := lipgloss.NewStyle().
-		Background(tint.Bg()).
-		Foreground(tint.Fg()).
-		Padding(0, 1)
+	s := lipgloss.NewStyle().MaxHeight(m.height).MaxWidth(m.width)
 
-	s := lipgloss.NewStyle().MaxHeight(m.height).MaxWidth(m.width).Padding(1, 2, 1, 2)
-
-	return zone.Scan(s.Render(lipgloss.JoinVertical(lipgloss.Top,
-		lipgloss.JoinHorizontal(
-			lipgloss.Left,
-			themeTitle.Render("theme"),
-			" ",
-			tint.ID(),
+	return zone.Scan(s.Render(
+		lipgloss.JoinVertical(lipgloss.Top,
+			lipgloss.JoinHorizontal(
+				lipgloss.Left,
+				m.themeTitleStyle.Render("theme "+tint.Current().ID),
+				lipgloss.PlaceHorizontal(
+					m.width-len(tint.Current().ID)-5-5, // 5 = theme, 5 = padding
+					lipgloss.Right,
+					m.themeTitleStyle.Render("[←left / right→] to change theme"),
+					lipgloss.WithWhitespaceChars(" "),
+				),
+			),
+			lipgloss.NewStyle().MarginBottom(1).Render(m.tabs.View()),
 			lipgloss.PlaceHorizontal(
-				m.width-len(tint.ID())-5-5, // 5 = theme, 5 = padding
-				lipgloss.Right,
-				themeTitle.Render("[ctrl+left / ctrl+right] to change theme"),
+				m.width, lipgloss.Center,
+				lipgloss.JoinHorizontal(
+					lipgloss.Top,
+					m.list1.View(), m.list2.View(), m.dialog.View(),
+				),
 				lipgloss.WithWhitespaceChars(" "),
 			),
+			lipgloss.NewStyle().MarginTop(1).Render(m.history.View()),
 		),
-		m.tabs.View(), "",
-		lipgloss.PlaceHorizontal(
-			m.width, lipgloss.Center,
-			lipgloss.JoinHorizontal(
-				lipgloss.Top,
-				m.list1.View(), m.list2.View(), m.dialog.View(),
-			),
-			lipgloss.WithWhitespaceChars(" "),
-		),
-		m.history.View(),
-	)))
+	))
 }
 
 func main() {
@@ -140,59 +163,39 @@ func main() {
 
 	// Initialize the default tint we want.
 	tint.NewDefaultRegistry()
-	tint.SetTint(tint.TintNord)
+	tint.SetTint(tint.TintDraculaPlus)
 
 	m := &model{
-		tabs: &tabs{
-			id:     zone.NewPrefix(), // Give each type an ID, so no zones will conflict.
-			height: 3,
-			active: "Lip Gloss",
-			items:  []string{"Lip Gloss", "Blush", "Eye Shadow", "Mascara", "Foundation"},
-		},
-		dialog: &dialog{
-			id:       zone.NewPrefix(),
-			height:   8,
-			active:   "confirm",
-			question: "Are you sure you want to eat marmalade?",
-		},
-		list1: &list{
-			id:     zone.NewPrefix(),
-			height: 8,
-			title:  "Citrus Fruits to Try",
-			items: []listItem{
-				{name: "Grapefruit", done: true},
-				{name: "Yuzu", done: false},
-				{name: "Citron", done: false},
-				{name: "Kumquat", done: true},
-				{name: "Pomelo", done: false},
-			},
-		},
-		list2: &list{
-			id:     zone.NewPrefix(),
-			height: 8,
-			title:  "Actual Lip Gloss Vendors",
-			items: []listItem{
-				{name: "Glossier", done: true},
-				{name: "Claire's Boutique", done: true},
-				{name: "Nyx", done: false},
-				{name: "Mac", done: false},
-				{name: "Milk", done: false},
-			},
-		},
-		history: &history{
-			id: zone.NewPrefix(),
-			items: []string{
-				"The Romans learned from the Greeks that quinces slowly cooked with honey would “set” when cool. The Apicius gives a recipe for preserving whole quinces, stems and leaves attached, in a bath of honey diluted with defrutum: Roman marmalade. Preserves of quince and lemon appear (along with rose, apple, plum and pear) in the Book of ceremonies of the Byzantine Emperor Constantine VII Porphyrogennetos.",
-				"Medieval quince preserves, which went by the French name cotignac, produced in a clear version and a fruit pulp version, began to lose their medieval seasoning of spices in the 16th century. In the 17th century, La Varenne provided recipes for both thick and clear cotignac.",
-				"In 1524, Henry VIII, King of England, received a “box of marmalade” from Mr. Hull of Exeter. This was probably marmelada, a solid quince paste from Portugal, still made and sold in southern Europe today. It became a favourite treat of Anne Boleyn and her ladies in waiting.",
-			},
-		},
+		tabs:   newTabs("Lip Gloss", "Blush", "Eye Shadow", "Mascara", "Foundation"),
+		dialog: newDialog("Are you sure you want to eat marmalade?"),
+		list1: newList(
+			"Citrus Fruits to Try",
+			listItem{name: "Grapefruit", done: true},
+			listItem{name: "Yuzu", done: false},
+			listItem{name: "Citron", done: false},
+			listItem{name: "Kumquat", done: true},
+			listItem{name: "Pomelo", done: false},
+		),
+		list2: newList(
+			"Actual Lip Gloss Vendors",
+			listItem{name: "Glossier", done: true},
+			listItem{name: "Claire's Boutique", done: true},
+			listItem{name: "Nyx", done: false},
+			listItem{name: "Mac", done: false},
+			listItem{name: "Milk", done: false},
+		),
+		history: newHistory(
+			"The Romans learned from the Greeks that quinces slowly cooked with honey would “set” when cool. The Apicius gives a recipe for preserving whole quinces, stems and leaves attached, in a bath of honey diluted with defrutum: Roman marmalade. Preserves of quince and lemon appear (along with rose, apple, plum and pear) in the Book of ceremonies of the Byzantine Emperor Constantine VII Porphyrogennetos.",
+			"Medieval quince preserves, which went by the French name cotignac, produced in a clear version and a fruit pulp version, began to lose their medieval seasoning of spices in the 16th century. In the 17th century, La Varenne provided recipes for both thick and clear cotignac.",
+			"In 1524, Henry VIII, King of England, received a “box of marmalade” from Mr. Hull of Exeter. This was probably marmelada, a solid quince paste from Portugal, still made and sold in southern Europe today. It became a favourite treat of Anne Boleyn and her ladies in waiting.",
+		),
 	}
+	m.setStyles()
 
 	p := tea.NewProgram(m, tea.WithAltScreen(), tea.WithMouseCellMotion())
 
-	if err := p.Start(); err != nil {
-		fmt.Println("Error running program:", err)
+	if _, err := p.Run(); err != nil {
+		fmt.Println("error running program:", err) //nolint:forbidigo
 		os.Exit(1)
 	}
 }
