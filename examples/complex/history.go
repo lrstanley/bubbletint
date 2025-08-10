@@ -12,13 +12,38 @@ import (
 )
 
 type history struct {
+	// Core state.
 	id     string
 	height int
 	width  int
-	dark   bool
-
 	active string
 	items  []string
+
+	// Styles.
+	historyStyle       lipgloss.Style
+	activeHistoryStyle lipgloss.Style
+}
+
+func newHistory(items ...string) *history {
+	m := &history{
+		id:    zone.NewPrefix(),
+		items: items,
+	}
+	m.setStyles()
+	return m
+}
+
+func (m *history) setStyles() {
+	m.historyStyle = lipgloss.NewStyle().
+		Align(lipgloss.Left).
+		Background(adaptBright(tint.Current().Bg, 0.15)).
+		Foreground(adaptBright(tint.Current().Fg, 0.15)).
+		Margin(0, 1).
+		Padding(1, 2)
+
+	m.activeHistoryStyle = m.historyStyle.
+		Background(adaptBright(tint.Current().Bg, 0.35)).
+		Foreground(adaptBright(tint.Current().Fg, 0.25))
 }
 
 func (m *history) Init() tea.Cmd {
@@ -30,13 +55,12 @@ func (m *history) Update(msg tea.Msg) tea.Cmd { //nolint:unparam
 	case tea.WindowSizeMsg:
 		m.height = msg.Height
 		m.width = msg.Width
-	case tea.BackgroundColorMsg:
-		m.dark = msg.IsDark()
+	case ThemeChangedMsg:
+		m.setStyles()
 	case tea.MouseReleaseMsg:
 		if msg.Button != tea.MouseLeft {
 			return nil
 		}
-
 		for _, item := range m.items {
 			// Check each item to see if it's in bounds.
 			if zone.Get(m.id + item).InBounds(msg) {
@@ -49,12 +73,12 @@ func (m *history) Update(msg tea.Msg) tea.Cmd { //nolint:unparam
 }
 
 func (m *history) View() string {
-	historyStyle := lipgloss.NewStyle().
-		Align(lipgloss.Left).
-		Foreground(tint.Current().Fg).
-		Background(tint.Darken(tint.Current().Bg, 25)).
-		Margin(0, 1).
-		Padding(1, 2).
+	history := m.historyStyle.
+		Width((m.width / len(m.items)) - 2).
+		Height(m.height).
+		MaxHeight(m.height)
+
+	active := m.activeHistoryStyle.
 		Width((m.width / len(m.items)) - 2).
 		Height(m.height).
 		MaxHeight(m.height)
@@ -66,14 +90,11 @@ func (m *history) View() string {
 			// Customize the active item.
 			out = append(out, zone.Mark(
 				m.id+item,
-				historyStyle.
-					Background(tint.Lighten(tint.Current().Bg, 25)).
-					Foreground(tint.Lighten(tint.Current().Fg, 25)).
-					Render(item),
+				active.Render(item),
 			))
 		} else {
 			// Make sure to mark all zones.
-			out = append(out, zone.Mark(m.id+item, historyStyle.Render(item)))
+			out = append(out, zone.Mark(m.id+item, history.Render(item)))
 		}
 	}
 

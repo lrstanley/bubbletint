@@ -19,23 +19,30 @@ import (
 // resizing, and clickable models (tabs, lists, dialogs, etc).
 // 	https://github.com/charmbracelet/lipgloss/blob/master/example
 
-type AdaptiveColor struct {
-	Light color.Color
-	Dark  color.Color
+func adapt(light, dark color.Color) color.Color {
+	if tint.Current().Dark {
+		return dark
+	}
+	return light
 }
 
-func (c AdaptiveColor) Adapt(dark bool) color.Color {
-	if dark {
-		return c.Dark
+func adaptBright(c color.Color, amount float64) color.Color {
+	if tint.Current().Dark {
+		return tint.Lighten(c, amount)
 	}
-	return c.Light
+	return tint.Darken(c, amount)
 }
+
+type ThemeChangedMsg struct{}
 
 type model struct {
 	height int
 	width  int
-	dark   bool
 
+	// Styles.
+	themeTitleStyle lipgloss.Style
+
+	// Child components.
 	tabs    *tabs
 	dialog  *dialog
 	list1   *list
@@ -44,17 +51,21 @@ type model struct {
 }
 
 func (m model) Init() tea.Cmd {
-	return tea.RequestBackgroundColor
+	return nil
 }
 
 func (m model) isInitialized() bool {
 	return m.height != 0 && m.width != 0
 }
 
+func (m *model) setStyles() {
+	m.themeTitleStyle = lipgloss.NewStyle().
+		Foreground(tint.Current().Fg).
+		Padding(0, 1)
+}
+
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
-	case tea.BackgroundColorMsg:
-		m.dark = msg.IsDark()
 	case tea.KeyMsg:
 		if msg.String() == "ctrl+e" {
 			zone.SetEnabled(!zone.Enabled())
@@ -63,14 +74,22 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		if msg.String() == "left" {
 			tint.PreviousTint()
+			m.setStyles()
 
-			return m, nil
+			return m, tea.Sequence(
+				tea.SetBackgroundColor(tint.Current().Bg),
+				func() tea.Msg { return ThemeChangedMsg{} },
+			)
 		}
 
 		if msg.String() == "right" {
 			tint.NextTint()
+			m.setStyles()
 
-			return m, nil
+			return m, tea.Sequence(
+				tea.SetBackgroundColor(tint.Current().Bg),
+				func() tea.Msg { return ThemeChangedMsg{} },
+			)
 		}
 
 		if msg.String() == "ctrl+c" {
@@ -109,24 +128,17 @@ func (m model) View() string {
 		return ""
 	}
 
-	themeTitle := lipgloss.NewStyle().
-		Background(tint.Current().Bg).
-		Foreground(tint.Current().Fg).
-		Padding(0, 1)
-
 	s := lipgloss.NewStyle().MaxHeight(m.height).MaxWidth(m.width)
 
 	return zone.Scan(s.Render(
 		lipgloss.JoinVertical(lipgloss.Top,
 			lipgloss.JoinHorizontal(
 				lipgloss.Left,
-				themeTitle.Render("theme"),
-				" ",
-				tint.Current().ID,
+				m.themeTitleStyle.Render("theme "+tint.Current().ID),
 				lipgloss.PlaceHorizontal(
 					m.width-len(tint.Current().ID)-5-5, // 5 = theme, 5 = padding
 					lipgloss.Right,
-					themeTitle.Render("[←left / right→] to change theme"),
+					m.themeTitleStyle.Render("[←left / right→] to change theme"),
 					lipgloss.WithWhitespaceChars(" "),
 				),
 			),
@@ -154,47 +166,31 @@ func main() {
 	tint.SetTint(tint.TintDraculaPlus)
 
 	m := &model{
-		tabs: &tabs{
-			id:     zone.NewPrefix(), // Give each type an ID, so no zones will conflict.
-			active: "Lip Gloss",
-			items:  []string{"Lip Gloss", "Blush", "Eye Shadow", "Mascara", "Foundation"},
-		},
-		dialog: &dialog{
-			id:       zone.NewPrefix(),
-			active:   "confirm",
-			question: "Are you sure you want to eat marmalade?",
-		},
-		list1: &list{
-			id:    zone.NewPrefix(),
-			title: "Citrus Fruits to Try",
-			items: []listItem{
-				{name: "Grapefruit", done: true},
-				{name: "Yuzu", done: false},
-				{name: "Citron", done: false},
-				{name: "Kumquat", done: true},
-				{name: "Pomelo", done: false},
-			},
-		},
-		list2: &list{
-			id:    zone.NewPrefix(),
-			title: "Actual Lip Gloss Vendors",
-			items: []listItem{
-				{name: "Glossier", done: true},
-				{name: "Claire's Boutique", done: true},
-				{name: "Nyx", done: false},
-				{name: "Mac", done: false},
-				{name: "Milk", done: false},
-			},
-		},
-		history: &history{
-			id: zone.NewPrefix(),
-			items: []string{
-				"The Romans learned from the Greeks that quinces slowly cooked with honey would “set” when cool. The Apicius gives a recipe for preserving whole quinces, stems and leaves attached, in a bath of honey diluted with defrutum: Roman marmalade. Preserves of quince and lemon appear (along with rose, apple, plum and pear) in the Book of ceremonies of the Byzantine Emperor Constantine VII Porphyrogennetos.",
-				"Medieval quince preserves, which went by the French name cotignac, produced in a clear version and a fruit pulp version, began to lose their medieval seasoning of spices in the 16th century. In the 17th century, La Varenne provided recipes for both thick and clear cotignac.",
-				"In 1524, Henry VIII, King of England, received a “box of marmalade” from Mr. Hull of Exeter. This was probably marmelada, a solid quince paste from Portugal, still made and sold in southern Europe today. It became a favourite treat of Anne Boleyn and her ladies in waiting.",
-			},
-		},
+		tabs:   newTabs("Lip Gloss", "Blush", "Eye Shadow", "Mascara", "Foundation"),
+		dialog: newDialog("Are you sure you want to eat marmalade?"),
+		list1: newList(
+			"Citrus Fruits to Try",
+			listItem{name: "Grapefruit", done: true},
+			listItem{name: "Yuzu", done: false},
+			listItem{name: "Citron", done: false},
+			listItem{name: "Kumquat", done: true},
+			listItem{name: "Pomelo", done: false},
+		),
+		list2: newList(
+			"Actual Lip Gloss Vendors",
+			listItem{name: "Glossier", done: true},
+			listItem{name: "Claire's Boutique", done: true},
+			listItem{name: "Nyx", done: false},
+			listItem{name: "Mac", done: false},
+			listItem{name: "Milk", done: false},
+		),
+		history: newHistory(
+			"The Romans learned from the Greeks that quinces slowly cooked with honey would “set” when cool. The Apicius gives a recipe for preserving whole quinces, stems and leaves attached, in a bath of honey diluted with defrutum: Roman marmalade. Preserves of quince and lemon appear (along with rose, apple, plum and pear) in the Book of ceremonies of the Byzantine Emperor Constantine VII Porphyrogennetos.",
+			"Medieval quince preserves, which went by the French name cotignac, produced in a clear version and a fruit pulp version, began to lose their medieval seasoning of spices in the 16th century. In the 17th century, La Varenne provided recipes for both thick and clear cotignac.",
+			"In 1524, Henry VIII, King of England, received a “box of marmalade” from Mr. Hull of Exeter. This was probably marmelada, a solid quince paste from Portugal, still made and sold in southern Europe today. It became a favourite treat of Anne Boleyn and her ladies in waiting.",
+		),
 	}
+	m.setStyles()
 
 	p := tea.NewProgram(m, tea.WithAltScreen(), tea.WithMouseCellMotion())
 

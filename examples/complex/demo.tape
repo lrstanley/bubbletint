@@ -12,9 +12,11 @@ Set MarginFill "#674EFF"
 Set BorderRadius 14
 Env PS1 "$ "
 
+Hide
 Type "go run *.go"
 Sleep 500ms
 Enter
+Show
 Sleep 1s
-Right@400ms 217
+Right@600ms 90
 Sleep 1s

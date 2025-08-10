@@ -17,10 +17,55 @@ type listItem struct {
 }
 
 type list struct {
+	// Core state.
 	id    string
-	dark  bool
 	title string
 	items []listItem
+
+	// Styles.
+	listStyle       lipgloss.Style
+	listHeaderStyle lipgloss.Style
+	listItemStyle   lipgloss.Style
+	checkMarkStyle  lipgloss.Style
+	listDoneStyle   lipgloss.Style
+}
+
+func newList(title string, items ...listItem) *list {
+	m := &list{
+		id:    zone.NewPrefix(),
+		title: title,
+		items: items,
+	}
+	m.setStyles()
+	return m
+}
+
+func (m *list) setStyles() {
+	m.listStyle = lipgloss.NewStyle().
+		Border(lipgloss.NormalBorder(), false, true, false, false).
+		BorderForeground(tint.Current().Fg).
+		Foreground(tint.Current().Fg).
+		MarginRight(2)
+
+	m.listHeaderStyle = lipgloss.NewStyle().
+		BorderStyle(lipgloss.NormalBorder()).
+		BorderBottom(true).
+		BorderForeground(tint.Current().Fg).
+		Foreground(tint.Current().Fg).
+		MarginRight(2)
+
+	m.listItemStyle = lipgloss.NewStyle().
+		Foreground(tint.Current().Fg).
+		PaddingLeft(2)
+
+	m.checkMarkStyle = lipgloss.NewStyle().
+		Foreground(tint.Current().BrightGreen).
+		SetString("✓").
+		PaddingRight(1)
+
+	m.listDoneStyle = lipgloss.NewStyle().
+		Strikethrough(true).
+		Foreground(tint.Current().BrightGreen)
 }
 
 func (m *list) Init() tea.Cmd {
@@ -33,13 +78,12 @@ func (m *list) GetHeight() int {
 
 func (m *list) Update(msg tea.Msg) tea.Cmd { //nolint:unparam
 	switch msg := msg.(type) {
-	case tea.BackgroundColorMsg:
-		m.dark = msg.IsDark()
+	case ThemeChangedMsg:
+		m.setStyles()
 	case tea.MouseReleaseMsg:
 		if msg.Button != tea.MouseLeft {
 			return nil
 		}
-
 		for i, item := range m.items {
 			// Check each item to see if it's in bounds.
 			if zone.Get(m.id + item.name).InBounds(msg) {
@@ -47,52 +91,27 @@ func (m *list) Update(msg tea.Msg) tea.Cmd { //nolint:unparam
 				break
 			}
 		}
-
-		return nil
 	}
 	return nil
 }
 
 func (m *list) View() string {
-	listStyle := lipgloss.NewStyle().
-		Border(lipgloss.NormalBorder(), false, true, false, false).
-		BorderForeground(tint.Current().Fg).
-		MarginRight(2)
-
-	listHeader := lipgloss.NewStyle().
-		BorderStyle(lipgloss.NormalBorder()).
-		BorderBottom(true).
-		BorderForeground(tint.Current().Fg).
-		MarginRight(2)
-
-	listItemStyle := lipgloss.NewStyle().
-		PaddingLeft(2)
-
-	checkMark := lipgloss.NewStyle().
-		Foreground(tint.Current().BrightGreen).
-		SetString("✓").
-		PaddingRight(1)
-
-	listDoneStyle := lipgloss.NewStyle().
-		Strikethrough(true).
-		Foreground(tint.Current().BrightGreen)
-
-	out := []string{listHeader.Render(m.title)}
+	out := []string{m.listHeaderStyle.Render(m.title)}
 
 	for _, item := range m.items {
 		if item.done {
 			out = append(out, zone.Mark(
 				m.id+item.name,
-				checkMark.String()+
-					listDoneStyle.Render(item.name),
+				m.checkMarkStyle.String()+
+					m.listDoneStyle.Render(item.name),
 			))
 			continue
 		}
 
-		out = append(out, zone.Mark(m.id+item.name, listItemStyle.Render(item.name)))
+		out = append(out, zone.Mark(m.id+item.name, m.listItemStyle.Render(item.name)))
 	}
 
-	return listStyle.Render(
+	return m.listStyle.Render(
 		lipgloss.JoinVertical(lipgloss.Left, out...),
 	)
 }

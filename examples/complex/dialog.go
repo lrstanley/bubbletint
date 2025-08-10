@@ -12,9 +12,46 @@ import (
 )
 
 type dialog struct {
+	// Core state.
 	id       string
 	active   string
 	question string
+
+	// Styles.
+	dialogBoxStyle    lipgloss.Style
+	buttonStyle       lipgloss.Style
+	activeButtonStyle lipgloss.Style
+}
+
+func newDialog(question string) *dialog {
+	m := &dialog{
+		id:       zone.NewPrefix(),
+		question: question,
+		active:   "confirm",
+	}
+	m.setStyles()
+	return m
+}
+
+func (m *dialog) setStyles() {
+	m.dialogBoxStyle = lipgloss.NewStyle().
+		Border(lipgloss.RoundedBorder(), true).
+		BorderForeground(tint.Current().BrightPurple).
+		Foreground(tint.Current().Fg).
+		Padding(1, 0)
+
+	m.buttonStyle = lipgloss.NewStyle().
+		Foreground(tint.Current().Fg).
+		Background(adaptBright(tint.Current().Bg, 0.25)).
+		Padding(0, 3).
+		MarginTop(1).
+		MarginRight(2)
+
+	m.activeButtonStyle = m.buttonStyle.
+		Foreground(tint.Darken(tint.Current().Black, 0.25)).
+		Background(tint.Current().BrightPurple).
+		MarginRight(2).
+		Underline(true)
 }
 
 func (m *dialog) Init() tea.Cmd {
@@ -27,49 +64,30 @@ func (m *dialog) GetHeight() int {
 
 func (m *dialog) Update(msg tea.Msg) tea.Cmd { //nolint:unparam
 	switch msg := msg.(type) {
+	case ThemeChangedMsg:
+		m.setStyles()
 	case tea.MouseReleaseMsg:
 		if msg.Button != tea.MouseLeft {
 			return nil
 		}
-
 		if zone.Get(m.id + "confirm").InBounds(msg) {
 			m.active = "confirm"
 		} else if zone.Get(m.id + "cancel").InBounds(msg) {
 			m.active = "cancel"
 		}
-
-		return nil
 	}
 	return nil
 }
 
 func (m *dialog) View() string {
-	dialogBoxStyle := lipgloss.NewStyle().
-		Border(lipgloss.RoundedBorder(), true).
-		BorderForeground(tint.Current().BrightPurple).
-		Padding(1, 0)
-
-	buttonStyle := lipgloss.NewStyle().
-		Foreground(tint.Current().Fg).
-		Background(tint.Current().BrightBlack).
-		Padding(0, 3).
-		MarginTop(1).
-		MarginRight(2)
-
-	activeButtonStyle := buttonStyle.
-		Foreground(tint.Darken(tint.Current().Black, 25)).
-		Background(tint.Current().BrightPurple).
-		MarginRight(2).
-		Underline(true)
-
 	var okButton, cancelButton string
 
 	if m.active == "confirm" {
-		okButton = activeButtonStyle.Render("Yes")
-		cancelButton = buttonStyle.Render("Maybe")
+		okButton = m.activeButtonStyle.Render("Yes")
+		cancelButton = m.buttonStyle.Render("Maybe")
 	} else {
-		okButton = buttonStyle.Render("Yes")
-		cancelButton = activeButtonStyle.Render("Maybe")
+		okButton = m.buttonStyle.Render("Yes")
+		cancelButton = m.activeButtonStyle.Render("Maybe")
 	}
 
 	question := lipgloss.NewStyle().Width(27).Align(lipgloss.Center).Render(m.question)
@@ -78,5 +96,5 @@ func (m *dialog) View() string {
 		zone.Mark(m.id+"confirm", okButton),
 		zone.Mark(m.id+"cancel", cancelButton),
 	)
-	return dialogBoxStyle.Render(lipgloss.JoinVertical(lipgloss.Center, question, buttons))
+	return m.dialogBoxStyle.Render(lipgloss.JoinVertical(lipgloss.Center, question, buttons))
 }
