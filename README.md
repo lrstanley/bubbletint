@@ -71,17 +71,16 @@
 
 ## :sparkles: Features
 
-- :heavy_check_mark: Utilize 280+ built-in tints. [Check them all out here!](https://lrstanley.github.io/bubbletint/)
+- :heavy_check_mark: Utilize 340+ built-in tints. [Check them all out here!](https://lrstanley.github.io/bubbletint/)
   We're taking advantage of the great work others have done
-  with [Windows Terminal Themes](https://windowsterminalthemes.dev/)
-  and [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes),
+  with [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes),
   and making them more accessible in a programmatic fashion.
 - :heavy_check_mark: Support for dynamically changing tints at runtime, to give
   immediate feedback on which tints might look the best for your application and
   terminal setup.
 - :heavy_check_mark: Piecemeal support for specific tints. Really like one specific
   tint, and want to use that as the standard for your TUI? No problem!
-- :heavy_check_mark: Extendible with your own custom tints, in addition to marhsalling
+- :heavy_check_mark: Extendible with your own custom tints, in addition to marshalling
   and unmarshalling from JSON, if you wanted to support reading/writing tints to
   and from a file.
 - :heavy_check_mark: Works with `lipgloss` and similar tools which support the
@@ -109,7 +108,7 @@ package main
 
 import (
 	// [...]
-	tint "github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint/v2"
 )
 
 
@@ -133,7 +132,7 @@ package main
 
 import (
 	// [...]
-	tint "github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint/v2"
 )
 
 
@@ -170,7 +169,7 @@ package main
 
 import (
 	// [...]
-	tint "github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint/v2"
 )
 
 var (
@@ -189,34 +188,6 @@ var (
 ```
 
 ... and that's it!
-
-### Gradients, Lighten and Darken
-
-We also support gradients, in addition to lightening and darkening a tint very easily.
-
-- Gradients can add a nice touch to your application by making it stand out.
-  - For quality blending of colors, the users terminal would need to support 256bit/true color
-    support. If this is not available, gradients will only have so many individual color stops.
-- Lighten and Darken are useful for making colors:
-  - Stand out better between foreground and background.
-  - Making things more "subtle" or "muted" in appearance.
-
-Using `Gradient()`:
-
-```go
-theme := tint.TintDraculaPlus
-tint.Gradient(10, theme.BrightRed, theme.BrightPurple, theme.BrightGreen) // returns []color.Color
-```
-
-Using `Lighten()` and `Darken()`:
-
-```go
-theme := tint.TintDraculaPlus
-tint.Lighten(theme, 50) // Lightens the color by 50%, returning a new color.Color.
-tint.Darken(theme, 50) // Darkens the color by 50%, returning a new color.Color.
-```
-
----
 
 ## :clap: Examples
 
