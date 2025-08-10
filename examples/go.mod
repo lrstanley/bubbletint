@@ -13,7 +13,7 @@ require (
 	github.com/charmbracelet/bubbletea/v2 v2.0.0-beta.4
 	github.com/charmbracelet/lipgloss/v2 v2.0.0-beta.3
 	github.com/lrstanley/bubbletint/chromatint/v2 v2.0.0-00010101000000-000000000000
-	github.com/lrstanley/bubbletint/v2 v2.0.0-alpha.5
+	github.com/lrstanley/bubbletint/v2 v2.0.0-alpha.7
 	github.com/lrstanley/bubblezone/v2 v2.0.0-alpha.2
 )
 
