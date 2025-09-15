@@ -7,7 +7,7 @@ toolchain go1.24.4
 require (
 	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/iancoleman/strcase v0.3.0
-	github.com/lucasb-eyer/go-colorful v1.2.0
+	github.com/lucasb-eyer/go-colorful v1.3.0
 )
 
 require (
