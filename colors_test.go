@@ -10,15 +10,6 @@ import (
 	"testing"
 )
 
-// hex converts a color to a hex string or panics if invalid.
-func hex(hex string) color.Color {
-	cf := FromHex(hex)
-	if cf == nil {
-		panic(fmt.Errorf("invalid hex: %s", hex))
-	}
-	return cf
-}
-
 func expectColorMatches(t *testing.T, got, want color.Color) {
 	t.Helper()
 
