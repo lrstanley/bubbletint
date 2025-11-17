@@ -9,9 +9,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/charmbracelet/bubbles/v2/textarea"
-	tea "github.com/charmbracelet/bubbletea/v2"
-	"github.com/charmbracelet/lipgloss/v2"
+	"charm.land/bubbles/v2/textarea"
+	tea "charm.land/bubbletea/v2"
+	"charm.land/lipgloss/v2"
 	tint "github.com/lrstanley/bubbletint/v2"
 )
 
@@ -60,7 +60,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, taCmd
 }
 
-func (m model) View() string {
+func (m model) View() tea.View {
 	app := m.styles.app.
 		Height(m.height).
 		Width(m.width)
@@ -75,7 +75,9 @@ func (m model) View() string {
 	palette := m.renderColorPalette(ew)
 
 	m.textarea.SetWidth(ew - 2) // -2=border
-	m.textarea.Styles.Focused.Base.Background(m.styles.tint.Bg)
+	textareaStyles := textarea.DefaultStyles(true)
+	textareaStyles.Focused.Base.Background(m.styles.tint.Bg)
+	m.textarea.SetStyles(textareaStyles)
 	ta := m.textarea.View()
 	ta = lipgloss.NewStyle().
 		Border(lipgloss.RoundedBorder()).
@@ -100,7 +102,10 @@ func (m model) View() string {
 		help,
 	)
 
-	return m.styles.app.Render(content)
+	var view tea.View
+	view.AltScreen = true
+	view.SetContent(m.styles.app.Render(content))
+	return view
 }
 
 func (m model) renderColorPalette(w int) string {
@@ -143,7 +148,7 @@ func main() {
 		log.Fatalf("Failed to load theme: %v", err)
 	}
 
-	p := tea.NewProgram(initialModel(theme), tea.WithAltScreen())
+	p := tea.NewProgram(initialModel(theme))
 	_, err = p.Run()
 	if err != nil {
 		log.Fatalf("Error running program: %v", err)

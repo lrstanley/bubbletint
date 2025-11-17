@@ -5,8 +5,8 @@
 package main
 
 import (
-	tea "github.com/charmbracelet/bubbletea/v2"
-	"github.com/charmbracelet/lipgloss/v2"
+	tea "charm.land/bubbletea/v2"
+	"charm.land/lipgloss/v2"
 	tint "github.com/lrstanley/bubbletint/v2"
 	zone "github.com/lrstanley/bubblezone/v2"
 )
@@ -48,7 +48,7 @@ func (m *dialog) setStyles() {
 		MarginRight(2)
 
 	m.activeButtonStyle = m.buttonStyle.
-		Foreground(tint.Darken(tint.Current().Black, 0.25)).
+		Foreground(lipgloss.Darken(tint.Current().Black, 0.25)).
 		Background(tint.Current().BrightPurple).
 		MarginRight(2).
 		Underline(true)

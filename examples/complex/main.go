@@ -9,8 +9,8 @@ import (
 	"image/color"
 	"os"
 
-	tea "github.com/charmbracelet/bubbletea/v2"
-	"github.com/charmbracelet/lipgloss/v2"
+	tea "charm.land/bubbletea/v2"
+	"charm.land/lipgloss/v2"
 	tint "github.com/lrstanley/bubbletint/v2"
 	zone "github.com/lrstanley/bubblezone/v2"
 )
@@ -28,9 +28,9 @@ func adapt(light, dark color.Color) color.Color {
 
 func adaptBright(c color.Color, amount float64) color.Color {
 	if tint.Current().Dark {
-		return tint.Lighten(c, amount)
+		return lipgloss.Lighten(c, amount)
 	}
-	return tint.Darken(c, amount)
+	return lipgloss.Darken(c, amount)
 }
 
 type ThemeChangedMsg struct{}
@@ -76,20 +76,14 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			tint.PreviousTint()
 			m.setStyles()
 
-			return m, tea.Sequence(
-				tea.SetBackgroundColor(tint.Current().Bg),
-				func() tea.Msg { return ThemeChangedMsg{} },
-			)
+			return m, func() tea.Msg { return ThemeChangedMsg{} }
 		}
 
 		if msg.String() == "right" {
 			tint.NextTint()
 			m.setStyles()
 
-			return m, tea.Sequence(
-				tea.SetBackgroundColor(tint.Current().Bg),
-				func() tea.Msg { return ThemeChangedMsg{} },
-			)
+			return m, func() tea.Msg { return ThemeChangedMsg{} }
 		}
 
 		if msg.String() == "ctrl+c" {
@@ -123,14 +117,20 @@ func (m model) propagate(msg tea.Msg) tea.Cmd {
 	return tea.Batch(append(cmds, m.history.Update(msg))...)
 }
 
-func (m model) View() string {
+func (m model) View() tea.View {
+	var view tea.View
+	view.AltScreen = true
+	view.MouseMode = tea.MouseModeCellMotion
+	view.BackgroundColor = tint.Current().Bg
+	view.ForegroundColor = tint.Current().Fg
+
 	if !m.isInitialized() {
-		return ""
+		return view
 	}
 
 	s := lipgloss.NewStyle().MaxHeight(m.height).MaxWidth(m.width)
 
-	return zone.Scan(s.Render(
+	view.SetContent(zone.Scan(s.Render(
 		lipgloss.JoinVertical(lipgloss.Top,
 			lipgloss.JoinHorizontal(
 				lipgloss.Left,
@@ -153,7 +153,9 @@ func (m model) View() string {
 			),
 			lipgloss.NewStyle().MarginTop(1).Render(m.history.View()),
 		),
-	))
+	)))
+
+	return view
 }
 
 func main() {
@@ -192,7 +194,7 @@ func main() {
 	}
 	m.setStyles()
 
-	p := tea.NewProgram(m, tea.WithAltScreen(), tea.WithMouseCellMotion())
+	p := tea.NewProgram(m)
 
 	if _, err := p.Run(); err != nil {
 		fmt.Println("error running program:", err) //nolint:forbidigo

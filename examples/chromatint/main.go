@@ -9,12 +9,12 @@ import (
 	"fmt"
 	"os"
 
+	"charm.land/bubbles/v2/viewport"
+	tea "charm.land/bubbletea/v2"
+	"charm.land/lipgloss/v2"
 	"github.com/alecthomas/chroma/v2"
 	"github.com/alecthomas/chroma/v2/formatters"
 	"github.com/alecthomas/chroma/v2/lexers"
-	"github.com/charmbracelet/bubbles/v2/viewport"
-	tea "github.com/charmbracelet/bubbletea/v2"
-	"github.com/charmbracelet/lipgloss/v2"
 	"github.com/lrstanley/bubbletint/chromatint/v2"
 	tint "github.com/lrstanley/bubbletint/v2"
 )
@@ -110,7 +110,7 @@ func (m *model) setContent() {
 }
 
 func (m model) Init() tea.Cmd {
-	return tea.SetBackgroundColor(m.theme.Current().Bg)
+	return nil
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -129,12 +129,12 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.theme.PreviousTint()
 			m.setStyles()
 			m.setContent()
-			return m, tea.SetBackgroundColor(m.theme.Current().Bg)
+			return m, nil
 		case "right":
 			m.theme.NextTint()
 			m.setStyles()
 			m.setContent()
-			return m, tea.SetBackgroundColor(m.theme.Current().Bg)
+			return m, nil
 		default:
 			var cmd tea.Cmd
 			m.viewport, cmd = m.viewport.Update(msg)
@@ -145,8 +145,13 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	}
 }
 
-func (m model) View() string {
-	return m.viewport.View() + m.helpView()
+func (m model) View() tea.View {
+	var view tea.View
+	view.AltScreen = true
+	view.BackgroundColor = m.theme.Current().Bg
+	view.ForegroundColor = m.theme.Current().Fg
+	view.SetContent(m.viewport.View() + m.helpView())
+	return view
 }
 
 func (m model) helpView() string {
@@ -154,7 +159,7 @@ func (m model) helpView() string {
 }
 
 func main() {
-	_, err := tea.NewProgram(newModel(), tea.WithAltScreen()).Run()
+	_, err := tea.NewProgram(newModel()).Run()
 	if err != nil {
 		fmt.Println("Bummer, there's been an error:", err) //nolint:forbidigo
 		os.Exit(1)

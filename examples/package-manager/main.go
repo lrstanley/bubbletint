@@ -3,7 +3,7 @@
 // the LICENSE file.
 //
 // Example modified from the following:
-//  * https://github.com/charmbracelet/bubbletea/blob/test/examples/package-manager/main.go
+//  * https://charm.land/bubbletea/blob/test/examples/package-manager/main.go
 
 package main
 
@@ -15,10 +15,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/charmbracelet/bubbles/v2/progress"
-	"github.com/charmbracelet/bubbles/v2/spinner"
-	tea "github.com/charmbracelet/bubbletea/v2"
-	"github.com/charmbracelet/lipgloss/v2"
+	"charm.land/bubbles/v2/progress"
+	"charm.land/bubbles/v2/spinner"
+	tea "charm.land/bubbletea/v2"
+	"charm.land/lipgloss/v2"
 	tint "github.com/lrstanley/bubbletint/v2"
 )
 
@@ -36,7 +36,7 @@ type model struct {
 
 func newModel() model {
 	p := progress.New(
-		progress.WithScaledGradient(theme.BrightPurple.Hex(), theme.BrightBlue.Hex()),
+		progress.WithColors(theme.BrightPurple, theme.BrightBlue),
 		progress.WithWidth(40),
 		progress.WithoutPercentage(),
 	)
@@ -93,7 +93,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-func (m model) View() string {
+func (m model) View() tea.View {
 	currentPkgNameStyle := lipgloss.NewStyle().Foreground(theme.BrightPurple)
 	doneStyle := lipgloss.NewStyle().Margin(1, 2)
 
@@ -101,7 +101,7 @@ func (m model) View() string {
 	w := lipgloss.Width(strconv.Itoa(n))
 
 	if m.done {
-		return doneStyle.Render(fmt.Sprintf("Done! Installed %d packages.\n", n))
+		return tea.NewView(doneStyle.Render(fmt.Sprintf("Done! Installed %d packages.\n", n)))
 	}
 
 	pkgCount := fmt.Sprintf(" %*d/%*d", w, m.index, w, n-1)
@@ -116,7 +116,7 @@ func (m model) View() string {
 	cellsRemaining := max(0, m.width-lipgloss.Width(spin+info+prog+pkgCount))
 	gap := strings.Repeat(" ", cellsRemaining)
 
-	return spin + info + gap + prog + pkgCount
+	return tea.NewView(spin + info + gap + prog + pkgCount)
 }
 
 type installedPkgMsg string
