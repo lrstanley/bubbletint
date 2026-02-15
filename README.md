@@ -3,7 +3,7 @@
   "nodescription": true
 }
 -->
-<img title="Logo" src="./examples/_images/logo.png" width="961">
+<img title="Logo" src="./_examples/_images/logo.png" width="961">
 
 <!-- template:begin:header -->
 <!-- do not edit anything in this "template" block, its auto-generated -->
@@ -194,18 +194,18 @@ var (
 ### Package manager example
 
 - Uses a static theme with a specific palette for the entire application.
-- [Example source](./examples/package-manager/main.go)
+- [Example source](./_examples/package-manager/main.go)
 
-![package-manager example](./examples/package-manager/demo.gif)
+![package-manager example](./_examples/package-manager/demo.gif)
 
 ### Complex example
 
 - Uses the default registry (with all tints), and has keybinds to paginate through each tint.
 - Note that only a portion of this example is styled (e.g. not a full background color, which
   may make sense for some of the provided tints).
-- [Example source](./examples/complex).
+- [Example source](./_examples/complex).
 
-![complex example](./examples/complex/demo.gif)
+![complex example](./_examples/complex/demo.gif)
 
 ### Loading tints from a file
 
@@ -216,9 +216,9 @@ var (
 - Marshalling supports RGBA. This is to ensure that we don't lose the alpha channel
   of the color when marshalling to JSON. Alpha channels default to `255` with all
   of the default tints, but if you use custom tints, this will help keep that info.
-- [Example source](./examples/load-from-file).
+- [Example source](./_examples/load-from-file).
 
-![load-from-file example](./examples/load-from-file/demo.gif)
+![load-from-file example](./_examples/load-from-file/demo.gif)
 
 ---
 
