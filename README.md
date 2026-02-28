@@ -3,7 +3,7 @@
   "nodescription": true
 }
 -->
-<img title="Logo" src="./examples/_images/logo.png" width="961">
+<img title="Logo" src="./_examples/_images/logo.png" width="961">
 
 <!-- template:begin:header -->
 <!-- do not edit anything in this "template" block, its auto-generated -->
@@ -71,17 +71,18 @@
 
 ## :sparkles: Features
 
-- :heavy_check_mark: Utilize 280+ built-in tints. [Check them all out here!](./DEFAULT_TINTS.md)
+- :heavy_check_mark: Utilize 340+ built-in tints. [Check them all out here!](https://lrstanley.github.io/bubbletint/)
   We're taking advantage of the great work others have done
-  with [Windows Terminal Themes](https://windowsterminalthemes.dev/)
-  and [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes),
+  with [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes),
   and making them more accessible in a programmatic fashion.
 - :heavy_check_mark: Support for dynamically changing tints at runtime, to give
   immediate feedback on which tints might look the best for your application and
   terminal setup.
 - :heavy_check_mark: Piecemeal support for specific tints. Really like one specific
   tint, and want to use that as the standard for your TUI? No problem!
-- :heavy_check_mark: Extendible via interfaces. Easily create custom tints.
+- :heavy_check_mark: Extendible with your own custom tints, in addition to marshalling
+  and unmarshalling from JSON, if you wanted to support reading/writing tints to
+  and from a file.
 - :heavy_check_mark: Works with `lipgloss` and similar tools which support the
   `color.Color` interface from **stdlib**!
 
@@ -89,14 +90,11 @@
 
 ## :gear: Usage
 
-<!-- template:begin:goget -->
-<!-- do not edit anything in this "template" block, its auto-generated -->
 ```console
-go get -u github.com/lrstanley/bubbletint@latest
+go get -u github.com/lrstanley/bubbletint/v2@latest
 ```
-<!-- template:end:goget -->
 
-[Take a look at all tints here](./DEFAULT_TINTS.md).
+[Take a look at all tints here](https://lrstanley.github.io/bubbletint/).
 
 BubbleTint supports three different modes of usage, as shown below:
 
@@ -107,7 +105,7 @@ package main
 
 import (
 	// [...]
-	tint "github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint/v2"
 )
 
 
@@ -115,10 +113,12 @@ func main() {
 	// [...]
 	tint.NewDefaultRegistry()
 	tint.SetTint(tint.TintDraculaPlus) // Set a specific tint.
-	tint.SetTintID("dracula_plus") // Or by ID (this aligns with a Tint's ID() method).
+	tint.SetTintID("dracula_plus") // Or by ID (this aligns with a Tint's ID field).
 
-	// You can now use methods like tint.Bg(), tint.Fg(), tint.BrightGreen(), etc.
-	style := lipgloss.NewStyle().SetForeground(tint.Fg()).Background(tint.BrightGreen())
+	// You can now use the current tint from the registry:
+	style := lipgloss.NewStyle().
+		SetForeground(tint.Current().Fg).
+		Background(tint.Current().BrightGreen)
 }
 ```
 
@@ -129,17 +129,21 @@ package main
 
 import (
 	// [...]
-	tint "github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint/v2"
 )
 
 
 func main() {
 	// [...]
 	theme := tint.NewRegistry(
-		tint.TintDraculaPlus, // Set default/current tint.
-		tint.TintGithub,
-		tint.TintTomorrow,
-		tint.TintTokyoNight,
+		// Default tint.
+		tint.TintDraculaPlus,
+		// All others you want to register.
+		tint.TintCatppuccinFrappe,
+		tint.TintCatppuccinMocha,
+		tint.TintDraculaPlus,
+		tint.TintMonokaiPro,
+		tint.TintTinaciousDesignDark,
 	}
 
 	theme.Register(tint.TintNord) // Register additional tints on the custom registry.
@@ -148,8 +152,10 @@ func main() {
 	// Can also paginate through tints, using PreviousTint/NextTint
 	theme.NextTint()
 
-	// You can now use methods like theme.Bg(), theme.Fg(), theme.BrightGreen(), etc.
-	style := lipgloss.NewStyle().SetForeground(theme.Fg()).Background(theme.BrightGreen())
+	// You can now use the current tint from the registry:
+	style := lipgloss.NewStyle().
+		SetForeground(theme.Current().Fg).
+		Background(theme.Current().BrightGreen)
 }
 ```
 
@@ -160,43 +166,158 @@ package main
 
 import (
 	// [...]
-	tint "github.com/lrstanley/bubbletint"
+	tint "github.com/lrstanley/bubbletint/v2"
 )
 
 var (
 	statusbarStyle = lipgloss.NewStyle().
-		SetForeground(tint.TintDraculaPlus.Fg()).
-		Background(tint.TintDraculaPlus.BrightGreen())
+		SetForeground(tint.TintDraculaPlus.Fg).
+		Background(tint.TintDraculaPlus.BrightGreen)
 )
 
 // Or:
 var (
 	theme = tint.TintDraculaPlus
-	statusbarStyle = lipgloss.NewStyle().SetForeground(theme.Fg()).Background(theme.BrightGreen())
+	statusbarStyle = lipgloss.NewStyle().
+		SetForeground(theme.Fg).
+		Background(theme.BrightGreen)
 )
 ```
 
 ... and that's it!
-
----
 
 ## :clap: Examples
 
 ### Package manager example
 
 - Uses a static theme with a specific palette for the entire application.
-- [Example source](./examples/package-manager/main.go).
+- [Example source](./_examples/package-manager/main.go)
 
-![package-manager example](https://cdn.liam.sh/share/2022/11/WindowsTerminal_atWQHluo9n.gif)
+![package-manager example](./_examples/package-manager/demo.gif)
 
 ### Complex example
 
 - Uses the default registry (with all tints), and has keybinds to paginate through each tint.
 - Note that only a portion of this example is styled (e.g. not a full background color, which
   may make sense for some of the provided tints).
-- [Example source](./examples/complex).
+- [Example source](./_examples/complex).
 
-![complex example](https://cdn.liam.sh/share/2022/11/WindowsTerminal_kBG3oPPSrH.gif)
+![complex example](./_examples/complex/demo.gif)
+
+### Loading tints from a file
+
+- Uses the `json` package to load a tint from a file.
+- Unmarshalling supports both `RGBA` objects and hex strings.
+  - Example: `{"r": 255, "g": 0, "b": 0, "a": 255}` or `"#ff0000"`
+  - Hex strings would be easier for end users in most cases.
+- Marshalling supports RGBA. This is to ensure that we don't lose the alpha channel
+  of the color when marshalling to JSON. Alpha channels default to `255` with all
+  of the default tints, but if you use custom tints, this will help keep that info.
+- [Example source](./_examples/load-from-file).
+
+![load-from-file example](./_examples/load-from-file/demo.gif)
+
+### Chroma Support
+
+- Uses the `chromatint` sub-package to render a code example as a `chroma.StyleEntries`,
+  using the specified tint.
+- [Example source](./_examples/chromatint).
+
+![chromatint example](./_examples/chromatint/demo.gif)
+
+---
+
+## :rocket: Changes in v2
+
+> [!CAUTION]
+> At a high-level, **there are more breaking changes with v2 of bubbletint, than
+> not**. You will want to review the new API.
+
+### Remove Reliance on Lipgloss for `color.Color`
+
+Refactored the library as a whole to support the `color.Color` interface directly,
+without relying on lipgloss, for more agnostic usage. It should now be possible to
+use it with many other libraries without pulling in lipgloss (and other associated
+dependencies), though you may still need down-sampling if you're not using
+bubbletea/lipgloss, to support non-true-color (or 256bit) terminals.
+
+- This also makes it easier to use with lipgloss v2, as less conversions need to happen now. Example:
+
+  ```go
+  theme := tint.TintDraculaPlus
+  s := lipgloss.NewStyle().Foreground(theme.Fg)
+  ```
+
+- This should make things more performant.
+- Should make hex codes more consistent (some themes from our datasources had **4**
+  length hex colors, in addition to **7** length, but that should now be normalized as **7** length.
+- **Reduces total external dependencies for the main library down to 1**.
+
+### No More Bloated Interfaces
+
+Removed the tint interface with a huge list of both global functions, as well as
+methods for querying colors, and have instead opted for a more straightforward
+struct for storing color values.
+
+- This has lowered the overall amount of code generated.
+- Callers of the library can still implement their own interfaces.
+- The global registry still works the same as before, so you don't have to manage
+  passing the theme state across many different components.
+- Rather than `Registry.Blue()`, you'd do one of:
+
+  ```go
+  // Using custom registry. Done during initialization.
+  registry := tint.NewRegistry(
+      // Default tint.
+      tint.TintDraculaPlus,
+      // All others you want to register.
+      tint.TintCatppuccinFrappe,
+      tint.TintCatppuccinMocha,
+      tint.TintDraculaPlus,
+      tint.TintMonokaiPro,
+      tint.TintTinaciousDesignDark,
+  )
+
+  // Use it.
+  s := lipgloss.NewStyle().
+      Foreground(registry.Current().BrightBlue)
+  ```
+
+  ```go
+  // Using global registry. Done during initialization.
+  tint.SetTint(tint.TintDraculaPlus)
+
+  // Use it.
+  s := lipgloss.NewStyle().
+      Foreground(tint.Current().BrightBlue)
+  ```
+
+  ```go
+  // Pick a specific tint:
+  theme := tint.TintDraculaPlus // Set globally somewhere.
+
+  // Use it.
+  s := lipgloss.NewStyle().
+      Foreground(theme.BrightBlue)
+  ```
+
+### Chroma Support
+
+We now natively support [github.com/alecthomas/chroma](https://github.com/alecthomas/chroma),
+through a new sub-package, `github.com/lrstanley/bubbletint/chromatint/v2`. See
+[_examples/chromatint](_examples/chromatint). This allows natively mapping bubbletint's
+tints to rendered versions of various programming/markup languages.
+
+### JSON Serializable
+
+Tints are now fully JSON serializable.
+
+- When marshalled, they will be stored as RGBA (to not lose the alpha value, if your tints support that).
+- When unmarshalled, we support both RGBA (`{"r": 255, "g": 0, "b": 0, "a": 255}`), in addition to hex strings (`"#ff0000"`), which makes it easier for end users to add their own tints.
+
+### `panic()`'s OH MY!
+
+The code now has more resilient fallbacks, reducing the potential chance that developer-error results in a panic.
 
 ---
 

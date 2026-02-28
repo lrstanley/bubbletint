@@ -4,49 +4,58 @@
 
 package tint
 
-import (
-	"github.com/charmbracelet/lipgloss"
-)
+type CreditSource struct {
+	// Name is the name of the credit source.
+	Name string `json:"name,omitempty"`
 
-// Tint is an interface that represents each tint in this package.
-type Tint interface {
+	// Link is the link to the credit source.
+	Link string `json:"link,omitempty"`
+}
+
+// Tint is a struct that represents each tint in this package.
+type Tint struct {
 	// DisplayName returns the display name of the tint.
-	DisplayName() string
+	DisplayName string `json:"display_name,omitempty"`
 
 	// ID returns the name of the tint (normalized, snakecase style).
-	ID() string
+	ID string `json:"id,omitempty"`
 
-	// About returns information about the tint (and if we have credit for who
-	// assisted with/created it).
-	About() string
+	// CreditSources returns the credit sources for the tint.
+	CreditSources []*CreditSource `json:"credit_sources,omitempty"`
+
+	// Dark returns whether the tint is dark (background color has a luminosity
+	// less than 0.5).
+	Dark bool `json:"dark,omitempty"`
 
 	// Fg returns the recommended default foreground color for this tint.
-	Fg() lipgloss.TerminalColor
+	Fg *Color `json:"fg,omitempty"`
 
 	// Bg returns the recommended default background color for this tint.
-	Bg() lipgloss.TerminalColor
+	Bg *Color `json:"bg,omitempty"`
 
-	// SelectionBg returns the recommended background color for selected text.
-	SelectionBg() lipgloss.TerminalColor
+	// SelectionBg returns the recommended background color for selected text. Note that this
+	// is missing from most themes.
+	SelectionBg *Color `json:"selection_bg,omitempty"`
 
-	// Cursor returns the recommended color for the cursor.
-	Cursor() lipgloss.TerminalColor
+	// Cursor returns the recommended color for the cursor. Note that this is missing from
+	// most themes.
+	Cursor *Color `json:"cursor,omitempty"`
 
-	BrightBlack() lipgloss.TerminalColor
-	BrightBlue() lipgloss.TerminalColor
-	BrightCyan() lipgloss.TerminalColor
-	BrightGreen() lipgloss.TerminalColor
-	BrightPurple() lipgloss.TerminalColor
-	BrightRed() lipgloss.TerminalColor
-	BrightWhite() lipgloss.TerminalColor
-	BrightYellow() lipgloss.TerminalColor
+	BrightBlack  *Color `json:"bright_black,omitempty"`
+	BrightBlue   *Color `json:"bright_blue,omitempty"`
+	BrightCyan   *Color `json:"bright_cyan,omitempty"`
+	BrightGreen  *Color `json:"bright_green,omitempty"`
+	BrightPurple *Color `json:"bright_purple,omitempty"`
+	BrightRed    *Color `json:"bright_red,omitempty"`
+	BrightWhite  *Color `json:"bright_white,omitempty"`
+	BrightYellow *Color `json:"bright_yellow,omitempty"`
 
-	Black() lipgloss.TerminalColor
-	Blue() lipgloss.TerminalColor
-	Cyan() lipgloss.TerminalColor
-	Green() lipgloss.TerminalColor
-	Purple() lipgloss.TerminalColor
-	Red() lipgloss.TerminalColor
-	White() lipgloss.TerminalColor
-	Yellow() lipgloss.TerminalColor
+	Black  *Color `json:"black,omitempty"`
+	Blue   *Color `json:"blue,omitempty"`
+	Cyan   *Color `json:"cyan,omitempty"`
+	Green  *Color `json:"green,omitempty"`
+	Purple *Color `json:"purple,omitempty"`
+	Red    *Color `json:"red,omitempty"`
+	White  *Color `json:"white,omitempty"`
+	Yellow *Color `json:"yellow,omitempty"`
 }
