@@ -2,7 +2,7 @@ name: deploy-pages
 
 on:
   push:
-    branches: [v2-exp]
+    branches: [master]
 
 permissions:
   contents: read
