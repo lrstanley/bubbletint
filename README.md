@@ -90,12 +90,9 @@
 
 ## :gear: Usage
 
-<!-- template:begin:goget -->
-<!-- do not edit anything in this "template" block, its auto-generated -->
 ```console
 go get -u github.com/lrstanley/bubbletint/v2@latest
 ```
-<!-- template:end:goget -->
 
 [Take a look at all tints here](https://lrstanley.github.io/bubbletint/).
 
@@ -220,11 +217,107 @@ var (
 
 ![load-from-file example](./_examples/load-from-file/demo.gif)
 
+### Chroma Support
+
+- Uses the `chromatint` sub-package to render a code example as a `chroma.StyleEntries`,
+  using the specified tint.
+- [Example source](./_examples/chromatint).
+
+![chromatint example](./_examples/chromatint/demo.gif)
+
 ---
 
-## Breaking Changes from v1 to v2
+## :rocket: Changes in v2
 
-TODO
+> [!CAUTION]
+> At a high-level, **there are more breaking changes with v2 of bubbletint, than
+> not**. You will want to review the new API.
+
+### Remove Reliance on Lipgloss for `color.Color`
+
+Refactored the library as a whole to support the `color.Color` interface directly,
+without relying on lipgloss, for more agnostic usage. It should now be possible to
+use it with many other libraries without pulling in lipgloss (and other associated
+dependencies), though you may still need down-sampling if you're not using
+bubbletea/lipgloss, to support non-true-color (or 256bit) terminals.
+
+- This also makes it easier to use with lipgloss v2, as less conversions need to happen now. Example:
+
+  ```go
+  theme := tint.TintDraculaPlus
+  s := lipgloss.NewStyle().Foreground(theme.Fg)
+  ```
+
+- This should make things more performant.
+- Should make hex codes more consistent (some themes from our datasources had **4**
+  length hex colors, in addition to **7** length, but that should now be normalized as **7** length.
+- **Reduces total external dependencies for the main library down to 1**.
+
+### No More Bloated Interfaces
+
+Removed the tint interface with a huge list of both global functions, as well as
+methods for querying colors, and have instead opted for a more straightforward
+struct for storing color values.
+
+- This has lowered the overall amount of code generated.
+- Callers of the library can still implement their own interfaces.
+- The global registry still works the same as before, so you don't have to manage
+  passing the theme state across many different components.
+- Rather than `Registry.Blue()`, you'd do one of:
+
+  ```go
+  // Using custom registry. Done during initialization.
+  registry := tint.NewRegistry(
+      // Default tint.
+      tint.TintDraculaPlus,
+      // All others you want to register.
+      tint.TintCatppuccinFrappe,
+      tint.TintCatppuccinMocha,
+      tint.TintDraculaPlus,
+      tint.TintMonokaiPro,
+      tint.TintTinaciousDesignDark,
+  )
+
+  // Use it.
+  s := lipgloss.NewStyle().
+      Foreground(registry.Current().BrightBlue)
+  ```
+
+  ```go
+  // Using global registry. Done during initialization.
+  tint.SetTint(tint.TintDraculaPlus)
+
+  // Use it.
+  s := lipgloss.NewStyle().
+      Foreground(tint.Current().BrightBlue)
+  ```
+
+  ```go
+  // Pick a specific tint:
+  theme := tint.TintDraculaPlus // Set globally somewhere.
+
+  // Use it.
+  s := lipgloss.NewStyle().
+      Foreground(theme.BrightBlue)
+  ```
+
+### Chroma Support
+
+We now natively support [github.com/alecthomas/chroma](https://github.com/alecthomas/chroma),
+through a new sub-package, `github.com/lrstanley/bubbletint/chromatint/v2`. See
+[_examples/chromatint](_examples/chromatint). This allows natively mapping bubbletint's
+tints to rendered versions of various programming/markup languages.
+
+### JSON Serializable
+
+Tints are now fully JSON serializable.
+
+- When marshalled, they will be stored as RGBA (to not lose the alpha value, if your tints support that).
+- When unmarshalled, we support both RGBA (`{"r": 255, "g": 0, "b": 0, "a": 255}`), in addition to hex strings (`"#ff0000"`), which makes it easier for end users to add their own tints.
+
+### `panic()`'s OH MY!
+
+The code now has more resilient fallbacks, reducing the potential chance that developer-error results in a panic.
 
 ---
 
