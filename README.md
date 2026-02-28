@@ -24,15 +24,16 @@
   </a>
 
 
+
   <a href="https://codecov.io/gh/lrstanley/bubbletint">
     <img title="Code Coverage" src="https://img.shields.io/codecov/c/github/lrstanley/bubbletint/master?style=flat-square">
   </a>
 
-  <a href="https://pkg.go.dev/github.com/lrstanley/bubbletint">
-    <img title="Go Documentation" src="https://pkg.go.dev/badge/github.com/lrstanley/bubbletint?style=flat-square">
+  <a href="https://pkg.go.dev/github.com/lrstanley/bubbletint/v2">
+    <img title="Go Documentation" src="https://pkg.go.dev/badge/github.com/lrstanley/bubbletint/v2?style=flat-square">
   </a>
-  <a href="https://goreportcard.com/report/github.com/lrstanley/bubbletint">
-    <img title="Go Report Card" src="https://goreportcard.com/badge/github.com/lrstanley/bubbletint?style=flat-square">
+  <a href="https://goreportcard.com/report/github.com/lrstanley/bubbletint/v2">
+    <img title="Go Report Card" src="https://goreportcard.com/badge/github.com/lrstanley/bubbletint/v2?style=flat-square">
   </a>
 </p>
 <p align="center">
@@ -64,6 +65,12 @@
   - [Examples](#clap-examples)
     - [Package manager example](#package-manager-example)
     - [Complex example](#complex-example)
+    - [Loading tints from a file](#loading-tints-from-a-file)
+    - [Chroma Support](#chroma-support)
+  - [Changes in v2](#rocket-changes-in-v2)
+    - [No More Bloated Interfaces](#no-more-bloated-interfaces)
+    - [Chroma Support](#chroma-support-1)
+    - [JSON Serializable](#json-serializable)
   - [Support &amp; Assistance](#raising_hand_man-support--assistance)
   - [Contributing](#handshake-contributing)
   - [License](#balance_scale-license)
