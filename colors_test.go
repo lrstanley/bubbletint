@@ -5,6 +5,7 @@
 package tint
 
 import (
+	"encoding/json"
 	"fmt"
 	"image/color"
 	"testing"
@@ -95,5 +96,201 @@ func TestParseHex(t *testing.T) {
 				expectColorMatches(t, result, tt.expected)
 			}
 		})
+	}
+}
+
+func TestColorMarshalJSON(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name     string
+		color    Color
+		expected string
+	}{
+		{
+			name:     "red",
+			color:    Color{R: 0xff, G: 0x00, B: 0x00, A: 0xff},
+			expected: `{"a":255,"b":0,"g":0,"r":255}`,
+		},
+		{
+			name:     "green",
+			color:    Color{R: 0x00, G: 0xff, B: 0x00, A: 0xff},
+			expected: `{"a":255,"b":0,"g":255,"r":0}`,
+		},
+		{
+			name:     "blue-with-alpha",
+			color:    Color{R: 0x00, G: 0x00, B: 0xff, A: 0x80},
+			expected: `{"a":128,"b":255,"g":0,"r":0}`,
+		},
+		{
+			name:     "black",
+			color:    Color{R: 0x00, G: 0x00, B: 0x00, A: 0xff},
+			expected: `{"a":255,"b":0,"g":0,"r":0}`,
+		},
+		{
+			name:     "white",
+			color:    Color{R: 0xff, G: 0xff, B: 0xff, A: 0xff},
+			expected: `{"a":255,"b":255,"g":255,"r":255}`,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+
+			got, err := json.Marshal(tt.color)
+			if err != nil {
+				t.Fatalf("MarshalJSON() error = %v", err)
+			}
+			if string(got) != tt.expected {
+				t.Errorf("MarshalJSON() = %s, want %s", got, tt.expected)
+			}
+		})
+	}
+}
+
+func TestColorUnmarshalJSON(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name     string
+		input    string
+		expected *Color
+		wantErr  bool
+	}{
+		{
+			name:     "rgba-object-red",
+			input:    `{"r":255,"g":0,"b":0,"a":255}`,
+			expected: &Color{R: 0xff, G: 0x00, B: 0x00, A: 0xff},
+		},
+		{
+			name:     "rgba-object-green",
+			input:    `{"r":0,"g":255,"b":0,"a":255}`,
+			expected: &Color{R: 0x00, G: 0xff, B: 0x00, A: 0xff},
+		},
+		{
+			name:     "rgba-object-blue-with-alpha",
+			input:    `{"r":0,"g":0,"b":255,"a":128}`,
+			expected: &Color{R: 0x00, G: 0x00, B: 0xff, A: 0x80},
+		},
+		{
+			name:     "hex-string-red",
+			input:    `"#ff0000"`,
+			expected: &Color{R: 0xff, G: 0x00, B: 0x00, A: 0xff},
+		},
+		{
+			name:     "hex-string-uppercase",
+			input:    `"#FF0000"`,
+			expected: &Color{R: 0xff, G: 0x00, B: 0x00, A: 0xff},
+		},
+		{
+			name:     "hex-string-short",
+			input:    `"#f00"`,
+			expected: &Color{R: 0xff, G: 0x00, B: 0x00, A: 0xff},
+		},
+		{
+			name:     "hex-string-gray",
+			input:    `"#808080"`,
+			expected: &Color{R: 0x80, G: 0x80, B: 0x80, A: 0xff},
+		},
+		{
+			name:    "invalid-hex",
+			input:   `"#fg0000"`,
+			wantErr: true,
+		},
+		{
+			name:    "invalid-hex-empty",
+			input:   `""`,
+			wantErr: true,
+		},
+		{
+			name:    "invalid-object-missing-fields",
+			input:   `{"r":255,"g":0}`,
+			wantErr: true,
+		},
+		{
+			name:    "invalid-not-color",
+			input:   `"not a color"`,
+			wantErr: true,
+		},
+		{
+			name:    "invalid-type-array",
+			input:   `[255,0,0,255]`,
+			wantErr: true,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+
+			var c Color
+			err := json.Unmarshal([]byte(tt.input), &c)
+
+			if tt.wantErr {
+				if err == nil {
+					t.Errorf("UnmarshalJSON() expected error for input %q", tt.input)
+				}
+				return
+			}
+
+			if err != nil {
+				t.Fatalf("UnmarshalJSON() error = %v for input %q", err, tt.input)
+			}
+
+			if tt.expected != nil {
+				expectColorMatches(t, &c, tt.expected)
+			}
+		})
+	}
+}
+
+func TestColorMarshalUnmarshalRoundTrip(t *testing.T) {
+	tests := []struct {
+		name  string
+		color Color
+	}{
+		{name: "red", color: Color{R: 0xff, G: 0x00, B: 0x00, A: 0xff}},
+		{name: "green", color: Color{R: 0x00, G: 0xff, B: 0x00, A: 0xff}},
+		{name: "blue", color: Color{R: 0x00, G: 0x00, B: 0xff, A: 0xff}},
+		{name: "gray-with-alpha", color: Color{R: 0x80, G: 0x80, B: 0x80, A: 0x80}},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+
+			data, err := json.Marshal(tt.color)
+			if err != nil {
+				t.Fatalf("MarshalJSON() error = %v", err)
+			}
+
+			var c Color
+			if err := json.Unmarshal(data, &c); err != nil {
+				t.Fatalf("UnmarshalJSON() error = %v for marshalled data %s", err, data)
+			}
+
+			expectColorMatches(t, &c, &tt.color)
+		})
+	}
+}
+
+func TestColorUnmarshalJSONHexRoundTrip(t *testing.T) {
+	// Unmarshal hex string then marshal back - output should be RGBA object
+	hexInput := `"#ff0000"`
+	var c Color
+	if err := json.Unmarshal([]byte(hexInput), &c); err != nil {
+		t.Fatalf("UnmarshalJSON() error = %v", err)
+	}
+
+	data, err := json.Marshal(c)
+	if err != nil {
+		t.Fatalf("MarshalJSON() error = %v", err)
+	}
+
+	// Marshal always produces RGBA object, not hex (keys sorted alphabetically)
+	expected := `{"a":255,"b":0,"g":0,"r":255}`
+	if string(data) != expected {
+		t.Errorf("MarshalJSON() after hex unmarshal = %s, want %s", data, expected)
 	}
 }

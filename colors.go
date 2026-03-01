@@ -13,6 +13,22 @@ import (
 
 var _ color.Color = &Color{} // Ensure that Color implements the [color.Color] interface.
 
+// toUint8 converts a JSON number (float64 or int) to uint8. Returns false if the
+// value is missing, wrong type, or out of range.
+func toUint8(v any) (uint8, bool) {
+	switch n := v.(type) {
+	case float64:
+		if n >= 0 && n <= 255 {
+			return uint8(n), true
+		}
+	case int:
+		if n >= 0 && n <= 255 {
+			return uint8(n), true
+		}
+	}
+	return 0, false
+}
+
 // Color implements the [color.Color] interface, in addition to adding a hex field. It
 // can be used anywhere a [color.Color] is expected.
 type Color struct { //nolint:recvcheck
@@ -63,17 +79,21 @@ func (c *Color) UnmarshalJSON(data []byte) error {
 	var m map[string]any
 	err := json.Unmarshal(data, &m)
 	if err == nil {
-		r, rok := m["r"].(int)
-		g, gok := m["g"].(int)
-		b, bok := m["b"].(int)
-		a, aok := m["a"].(int)
-		if rok && gok && bok && aok {
-			c.R = uint8(r) //nolint:gosec
-			c.G = uint8(g) //nolint:gosec
-			c.B = uint8(b) //nolint:gosec
-			c.A = uint8(a) //nolint:gosec
-			return nil
+		var ok bool
+		c.R, ok = toUint8(m["r"])
+		if ok {
+			c.G, ok = toUint8(m["g"])
 		}
+		if ok {
+			c.B, ok = toUint8(m["b"])
+		}
+		if ok {
+			c.A, ok = toUint8(m["a"])
+		}
+		if !ok {
+			return fmt.Errorf("invalid color values: %v", m)
+		}
+		return nil
 	}
 
 	// Try and parse the hex value, if one exists.
@@ -85,6 +105,9 @@ func (c *Color) UnmarshalJSON(data []byte) error {
 	}
 
 	hexColor := FromHex(hex)
+	if hexColor == nil {
+		return fmt.Errorf("invalid hex color %q (expected #RRGGBB or #RGB format)", hex)
+	}
 	c.R = hexColor.R
 	c.G = hexColor.G
 	c.B = hexColor.B
