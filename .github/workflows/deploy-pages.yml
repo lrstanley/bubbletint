@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-go@v5
         with: { go-version: "stable" }
       - run: make generate
-      - uses: actions/configure-pages@v4
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v3
         with: { path: "./public" }
   deploy:
