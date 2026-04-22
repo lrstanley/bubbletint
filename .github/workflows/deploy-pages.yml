@@ -22,7 +22,7 @@ jobs:
         with: { go-version: "stable" }
       - run: make generate
       - uses: actions/configure-pages@v4
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with: { path: "./public" }
   deploy:
     environment:
