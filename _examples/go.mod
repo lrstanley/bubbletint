@@ -12,8 +12,8 @@ require (
 	charm.land/bubbletea/v2 v2.0.6
 	charm.land/lipgloss/v2 v2.0.3
 	github.com/alecthomas/chroma/v2 v2.24.1
-	github.com/lrstanley/bubbletint/chromatint/v2 v2.0.1
-	github.com/lrstanley/bubbletint/v2 v2.0.1
+	github.com/lrstanley/bubbletint/chromatint/v2 v2.0.2
+	github.com/lrstanley/bubbletint/v2 v2.0.2
 	github.com/lrstanley/bubblezone/v2 v2.0.0
 )
 
