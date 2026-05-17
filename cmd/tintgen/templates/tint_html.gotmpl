@@ -3,347 +3,838 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Default Tints - Bubbletint</title>
+    <title>Builtin Tints · BubbleTint</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background: #1a1a1a;
-            color: #e0e0e0;
+        :root {
+            --bg-base: #08090a;
+            --bg-elevated: #0e0f11;
+            --bg-subtle: #13151a;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-strong: rgba(255, 255, 255, 0.1);
+            --text: #ececee;
+            --text-muted: #8b8c96;
+            --text-faint: #5c5d67;
+            --accent: #6e79d6;
+            --accent-soft: rgba(110, 121, 214, 0.14);
+            --accent-hover: #818cf8;
+            --success: #3dd68c;
+            --success-bg: rgba(61, 214, 140, 0.12);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --shadow-sm: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 32px rgba(0, 0, 0, 0.35);
+            --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+            --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+            --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-spring: cubic-bezier(0.34, 1.2, 0.64, 1);
+            --title-action-height: 38px;
         }
+
+        .hidden {
+            display: none !important;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.55;
+            letter-spacing: -0.015em;
+            margin: 0;
+            padding: clamp(18px, 4vw, 40px);
+            min-height: 100vh;
+            color: var(--text);
+            background-color: var(--bg-base);
+            background-image:
+                radial-gradient(1200px 600px at 12% -8%, rgba(110, 121, 214, 0.09), transparent 55%),
+                radial-gradient(900px 500px at 88% 0%, rgba(99, 102, 241, 0.06), transparent 50%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 120px);
+        }
+
         .container {
             max-width: 1500px;
             margin: 0 auto;
-            background: #2d2d2d;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: var(--bg-elevated);
+            padding: clamp(22px, 3vw, 36px);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            animation: fade-up 0.55s var(--ease) both;
         }
+
         .title-container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid #4a9eff;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: #ffffff;
-            margin: 0;
-        }
-        .github-link {
-            color: #4a9eff;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 16px;
-            border: 2px solid #4a9eff;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .github-link:hover {
-            background: #4a9eff;
-            color: #ffffff;
-            text-decoration: none;
-        }
-        h2 {
-            color: #4a9eff;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            padding: 10px 0;
-            border-bottom: 1px solid #444;
-        }
-        .filter-controls {
-            background: #3a3a3a;
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 30px;
-            border-left: 4px solid #4a9eff;
-        }
-        .filter-controls h3 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-        .filter-options {
-            display: flex;
+            align-items: flex-start;
             gap: 20px;
+            flex-wrap: wrap;
+            padding-bottom: clamp(18px, 2.5vw, 26px);
+            margin-bottom: clamp(22px, 3vw, 32px);
+            border-bottom: 1px solid var(--border);
+            animation: fade-up 0.55s var(--ease) 0.05s both;
+        }
+
+        .title-block {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: clamp(12px, 2vw, 18px);
+            min-width: 0;
+        }
+
+        .title-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .title-mark {
+            /* sized to roughly match headline cap-height so the stack feels balanced */
+            font-size: clamp(1.6rem, 2.85vw, 2.05rem);
+            line-height: 1;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            translate: 0 -0.06em;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-faint);
+        }
+
+        .title-copy h1 {
+            color: var(--text);
+            margin: 0;
+            font-size: clamp(1.55rem, 2.8vw, 2rem);
+            font-weight: 600;
+            letter-spacing: -0.035em;
+            line-height: 1.15;
+            display: inline-flex;
             align-items: center;
             flex-wrap: wrap;
+            gap: 0 0.58em;
         }
-        .filter-option {
-            display: flex;
+
+        .title-copy .title-brand {
+            flex-shrink: 0;
+        }
+
+        .title-copy .title-divider {
+            flex-shrink: 0;
+            width: 1px;
+            height: 1.18em;
+            border-radius: 1px;
+            background-color: var(--border-strong);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .title-copy .title-sub {
+            flex-shrink: 0;
+            font-weight: 600;
+            letter-spacing: inherit;
+            color: var(--text);
+        }
+
+        .intro-section {
+            box-sizing: border-box;
+            width: 100%;
+            margin-bottom: clamp(22px, 3vw, 28px);
+            padding: clamp(16px, 2vw, 20px) clamp(18px, 2.5vw, 22px);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            animation: fade-up 0.55s var(--ease) 0.08s both;
+        }
+
+        .intro-layout {
+            display: grid;
+            gap: 14px;
+        }
+
+        .intro-heading {
+            margin: 0;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-faint);
+        }
+
+        @media (min-width: 960px) {
+            .intro-section .intro-layout {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                column-gap: clamp(28px, 4vw, 52px);
+                row-gap: 16px;
+                align-items: start;
+            }
+
+            .intro-section .intro-heading {
+                grid-column: 1 / -1;
+            }
+
+            .intro-section .intro-lead {
+                padding-right: clamp(12px, 2vw, 28px);
+                border-right: 1px solid var(--border);
+            }
+        }
+
+        .intro-section .intro-lead,
+        .intro-section .intro-detail {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.56;
+            font-weight: 450;
+            color: var(--text-muted);
+            letter-spacing: -0.013em;
+        }
+
+        .intro-section .intro-lead strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .intro-section a {
+            color: var(--accent-hover);
+            text-decoration: none;
+            transition: opacity 0.15s var(--ease);
+        }
+
+        .intro-section a:hover {
+            opacity: 0.85;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .intro-section code {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 450;
+            color: var(--text);
+        }
+
+        .github-link {
+            box-sizing: border-box;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            height: var(--title-action-height);
+            padding: 0 14px;
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-sm);
+            transition: border-color 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease-spring);
+            display: inline-flex;
             align-items: center;
             gap: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            flex-shrink: 0;
+            line-height: 1;
         }
+
+        .github-link:hover {
+            border-color: var(--border-strong);
+            background: var(--accent-soft);
+            color: var(--text);
+            transform: translateY(-1px);
+        }
+
+        .github-link svg {
+            opacity: 0.85;
+        }
+
+        .title-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .tint-search {
+            box-sizing: border-box;
+            width: min(220px, 42vw);
+            height: var(--title-action-height);
+            padding: 0 12px;
+            margin: 0;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-strong);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease);
+            flex-shrink: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            vertical-align: top;
+        }
+
+        .tint-search::placeholder {
+            color: var(--text-faint);
+        }
+
+        .tint-search:hover {
+            border-color: var(--border-strong);
+            background: rgba(255, 255, 255, 0.035);
+        }
+
+        .tint-search:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        h2 {
+            color: var(--text);
+            margin-top: 0;
+            margin-bottom: 14px;
+            padding: 0 0 12px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-controls {
+            background: var(--bg-subtle);
+            padding: clamp(14px, 2vw, 18px);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            animation: fade-up 0.55s var(--ease) 0.1s both;
+        }
+
+        .filter-controls h3 {
+            margin: 0 0 14px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-faint);
+        }
+
+        .filter-options {
+            display: inline-flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            padding: 4px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, 0.22);
+        }
+
+        .filter-option {
+            position: relative;
+        }
+
         .filter-option input[type="radio"] {
-            accent-color: #4a9eff;
+            position: absolute;
+            opacity: 0;
+            inset: 0;
+            cursor: pointer;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
+
         .filter-option label {
             cursor: pointer;
             font-weight: 500;
+            font-size: 13px;
+            color: var(--text-muted);
+            padding: 7px 14px;
+            border-radius: calc(var(--radius-sm) - 2px);
+            display: inline-block;
+            transition: background 0.18s var(--ease), color 0.18s var(--ease);
+            position: relative;
+            border: 1px solid transparent;
         }
+
         .filter-option label:hover {
-            color: #4a9eff;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.04);
         }
+
+        .filter-option input[type="radio"]:focus-visible + label {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .filter-option input[type="radio"]:checked + label {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+            border-color: var(--border-strong);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+        }
+
         .tint-info {
-            background: #3a3a3a;
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border-left: 4px solid #4a9eff;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 14px;
+            border: 1px solid var(--border);
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
-            font-size: 14px;
+            font-size: 13px;
         }
+
         .tint-info ul {
             margin: 0;
             padding: 0;
             list-style: none;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 14px 18px;
             align-items: center;
         }
+
         .tint-info li {
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            color: var(--text-muted);
         }
+
+        .tint-info li strong {
+            color: var(--text-faint);
+            font-weight: 500;
+        }
+
         .tint-info code {
-            background: #555;
-            color: #e0e0e0;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.35);
+            color: var(--text);
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 450;
+            border: 1px solid var(--border);
         }
+
         .tint-info a {
-            color: #4a9eff;
+            color: var(--accent-hover);
             text-decoration: none;
+            transition: opacity 0.15s var(--ease);
         }
+
         .tint-info a:hover {
+            opacity: 0.82;
             text-decoration: underline;
+            text-underline-offset: 3px;
         }
+
         .color-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
         }
+
         .color-table th {
-            background: #333;
-            color: white;
+            background: var(--bg-subtle);
+            color: var(--text-muted);
             padding: 8px;
             text-align: center;
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 13px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
         }
+
         .color-table td {
             padding: 8px;
             text-align: center;
-            font-size: 14px;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: var(--font-mono);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
-        .color-table tr:last-child td:first-child {
-            border-bottom-left-radius: 8px;
-        }
-        .color-table tr:last-child td:last-child {
-            border-bottom-right-radius: 8px;
-        }
+
         .nav-toc {
-            background: #3a3a3a;
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 30px;
+            background: var(--bg-subtle);
+            padding: clamp(16px, 2vw, 22px);
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            animation: fade-up 0.55s var(--ease) 0.14s both;
         }
+
         .nav-toc h3 {
-            margin-top: 0;
-            color: #ffffff;
+            margin: 0 0 14px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-faint);
         }
+
         .nav-toc ul {
             columns: 3;
-            column-gap: 30px;
+            column-gap: 28px;
             margin: 0;
-            padding-left: 20px;
+            padding: 0 0 0 18px;
         }
+
         .nav-toc li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             break-inside: avoid;
+            color: var(--text-muted);
         }
+
+        .nav-toc li::marker {
+            color: var(--text-faint);
+        }
+
         .nav-toc a {
-            color: #4a9eff;
+            color: var(--text-muted);
             text-decoration: none;
+            font-size: 13px;
+            transition: color 0.15s var(--ease);
         }
+
         .nav-toc a:hover {
-            text-decoration: underline;
+            color: var(--accent-hover);
         }
+
         @media (max-width: 768px) {
+            .title-actions {
+                width: 100%;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+            }
+
+            .tint-search {
+                width: 100%;
+                min-width: 0;
+                order: -1;
+            }
+
             .nav-toc ul {
                 columns: 1;
             }
-            .container {
-                padding: 15px;
-            }
             .filter-options {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+                display: flex;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .filter-option {
+                flex: 1;
+                min-width: 0;
+            }
+            .filter-option label {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
             }
         }
 
         .tints-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 30px;
+            gap: clamp(18px, 2.5vw, 26px);
+            margin-top: 8px;
         }
 
         .tint-item {
-            border: 1px solid #555;
-            border-radius: 12px;
-            padding: 10px;
-            background: #2d2d2d;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: clamp(14px, 2vw, 18px);
+            background: rgba(255, 255, 255, 0.015);
+            transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), border-color 0.2s var(--ease), box-shadow 0.25s var(--ease);
+            animation: fade-up 0.6s var(--ease) both;
         }
 
-        .tint-item.hidden {
-            display: none;
+        .tint-item:nth-child(1) { animation-delay: 0.18s; }
+        .tint-item:nth-child(2) { animation-delay: 0.22s; }
+        .tint-item:nth-child(3) { animation-delay: 0.26s; }
+        .tint-item:nth-child(4) { animation-delay: 0.3s; }
+        .tint-item:nth-child(5) { animation-delay: 0.34s; }
+        .tint-item:nth-child(6) { animation-delay: 0.38s; }
+        .tint-item:nth-child(7) { animation-delay: 0.42s; }
+        .tint-item:nth-child(8) { animation-delay: 0.46s; }
+        .tint-item:nth-child(9) { animation-delay: 0.5s; }
+        .tint-item:nth-child(10) { animation-delay: 0.54s; }
+        .tint-item:nth-child(n+11) { animation-delay: 0.58s; }
+
+        .tint-item:hover:not(.hidden) {
+            border-color: var(--border-strong);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+            transform: translateY(-2px);
         }
 
         .tint-item h2 {
             margin-top: 0;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #4a9eff;
+            margin-bottom: 14px;
             padding-top: 0;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tint-item h2 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.15s var(--ease);
+        }
+
+        .tint-item h2 a:hover {
+            color: var(--accent-hover);
         }
 
         .tint-item .tint-info {
-            margin: 15px 0;
+            margin: 12px 0;
         }
 
         .tint-item .svg-container {
-            margin: 15px 0 0 0;
+            margin: 14px 0 0;
             width: 100%;
             position: relative;
+            /* matches tint_svg.gotmpl viewBox 961×504 — single reserve to avoid CLS */
+            aspect-ratio: 961 / 504;
+        }
+
+        .svg-container img {
+            display: block;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: var(--radius-sm) !important;
+            border: 1px solid var(--border);
+            box-sizing: border-box;
+        }
+
+        .loading-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            border: 1px solid var(--border) !important;
+            background: var(--bg-subtle) !important;
+            border-radius: var(--radius-sm) !important;
+        }
+
+        .loading-placeholder .loading-inner {
+            color: var(--text-muted) !important;
+        }
+
+        .loading-placeholder .loading-shimmer {
+            width: 48px;
+            height: 3px;
+            border-radius: 2px;
+            margin: 0 auto 12px;
+            background: linear-gradient(90deg, var(--accent-soft), rgba(129, 140, 248, 0.35), var(--accent-soft));
+            background-size: 200% 100%;
+            animation: shimmer 1.8s linear infinite;
         }
 
         @media (max-width: 1300px) {
             .tints-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 18px;
             }
+        }
+
+        .token-copied {
+            color: var(--success) !important;
+            background: var(--success-bg) !important;
+            border-color: rgba(61, 214, 140, 0.25) !important;
+        }
+
+        .tints-empty {
+            text-align: center;
+            padding: clamp(28px, 4vw, 44px) 22px;
+            margin-bottom: 24px;
+            border-radius: var(--radius-md);
+            border: 1px dashed var(--border-strong);
+            background: rgba(255, 255, 255, 0.02);
+            animation: fade-up 0.55s var(--ease) both;
+        }
+
+        .tints-empty p {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: -0.02em;
+        }
+
+        .tints-empty .tints-empty-hint {
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 450;
+            color: var(--text-faint);
         }
     </style>
     <script>
-        // Copy to clipboard function
         function copyToClipboard(text, element) {
             navigator.clipboard.writeText(text).then(function() {
-                // Show a brief visual feedback
                 const originalText = element.textContent;
-                const originalColor = element.style.color;
-                const originalBackground = element.style.backgroundColor;
-
-                element.textContent = 'Copied!';
-                element.style.color = '#ffffff';
-                element.style.backgroundColor = '#28a745';
-                element.style.padding = '2px 6px';
-                element.style.borderRadius = '3px';
-
+                element.textContent = 'copied';
+                element.classList.add('token-copied');
                 setTimeout(() => {
                     element.textContent = originalText;
-                    element.style.color = originalColor;
-                    element.style.backgroundColor = originalBackground;
-                    element.style.padding = '';
-                    element.style.borderRadius = '';
+                    element.classList.remove('token-copied');
                 }, 1000);
             }).catch(function(err) {
-                console.error('Could not copy text: ', err);
+                console.error('could not copy text: ', err);
             });
         }
 
-        // Filter function
-        function filterTints(filterType) {
+        function currentTintFilterType() {
+            const checked = document.querySelector('input[name="tint-filter"]:checked');
+            return checked ? checked.value : 'all';
+        }
+
+        function tintSearchQuery() {
+            const input = document.getElementById('tint-search');
+            return input ? input.value.trim().toLowerCase() : '';
+        }
+
+        function filterTints() {
+            const filterType = currentTintFilterType();
+            const query = tintSearchQuery();
             const tintItems = document.querySelectorAll('.tint-item');
             const tocLinks = document.querySelectorAll('.nav-toc a');
+            let visibleCount = 0;
 
             tintItems.forEach(item => {
                 const isDark = item.getAttribute('data-tint-type') === 'dark';
                 const itemId = item.querySelector('h2').getAttribute('id');
+                const label = (item.getAttribute('data-tint-label') || '').toLowerCase();
 
-                switch(filterType) {
-                    case 'all':
-                        item.classList.remove('hidden');
-                        break;
-                    case 'dark':
-                        item.classList.toggle('hidden', !isDark);
-                        break;
-                    case 'light':
-                        item.classList.toggle('hidden', isDark);
-                        break;
+                let passesKind = filterType === 'all' ||
+                    (filterType === 'dark' && isDark) ||
+                    (filterType === 'light' && !isDark);
+                let passesSearch = query === '' || label.includes(query);
+                let visible = passesKind && passesSearch;
+
+                if (visible) {
+                    visibleCount++;
                 }
 
-                // Filter table of contents links
+                item.classList.toggle('hidden', !visible);
+
                 tocLinks.forEach(link => {
                     if (link.getAttribute('href') === '#' + itemId) {
-                        const shouldShow = filterType === 'all' ||
-                            (filterType === 'dark' && isDark) ||
-                            (filterType === 'light' && !isDark);
-                        link.parentElement.style.display = shouldShow ? 'block' : 'none';
+                        link.parentElement.style.display = visible ? '' : 'none';
                     }
                 });
             });
+
+            const emptyEl = document.getElementById('tints-empty-state');
+            const navToc = document.querySelector('.nav-toc');
+            const gridEl = document.querySelector('.tints-grid');
+
+            if (emptyEl) {
+                emptyEl.classList.toggle('hidden', visibleCount > 0);
+            }
+            if (navToc) {
+                navToc.classList.toggle('hidden', visibleCount === 0);
+            }
+            if (gridEl) {
+                gridEl.classList.toggle('hidden', visibleCount === 0);
+            }
         }
 
         // Initialize filter on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Set default filter to 'all'
             document.getElementById('filter-all').checked = true;
+            filterTints();
         });
     </script>
 </head>
 <body>
     <div class="container">
         <div class="title-container">
-            <h1>🌈 BubbleTint &middot; Default Tints</h1>
-            <a href="https://github.com/lrstanley/bubbletint" class="github-link" target="_blank" rel="noopener noreferrer">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-                GitHub
-            </a>
+            <div class="title-block">
+                <span class="title-mark" aria-hidden="true">🌈</span>
+                <div class="title-copy">
+                    <span class="eyebrow">Go terminal palettes for any stack</span>
+                    <h1><span class="title-brand">BubbleTint</span><span class="title-divider" aria-hidden="true"></span><span class="title-sub">builtin tints</span></h1>
+                </div>
+            </div>
+            <div class="title-actions">
+                <a href="https://github.com/lrstanley/bubbletint" class="github-link" target="_blank" rel="noopener noreferrer">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    lrstanley/bubbletint
+                </a>
+                <input type="search" id="tint-search" class="tint-search" placeholder="Search tints…" autocomplete="off" aria-label="Search tints by name" inputmode="search" oninput="filterTints()">
+            </div>
         </div>
 
+        <section class="intro-section" aria-labelledby="intro-heading">
+            <div class="intro-layout">
+                <h2 id="intro-heading" class="intro-heading">About BubbleTint</h2>
+                <p class="intro-lead"><strong>BubbleTint</strong> maps each tint onto Go's standard <code>color.Color</code> fields so named terminal colors stay consistent across your code. It pairs naturally with <a href="https://github.com/charmbracelet/bubbletea" target="_blank" rel="noopener noreferrer">Bubble Tea</a> and <a href="https://github.com/charmbracelet/lipgloss" target="_blank" rel="noopener noreferrer">Lip Gloss</a>, but those are examples—not requirements. Anything that accepts Go colors (another styling library, ANSI helpers, plain terminal drawing, tests, CLIs) can use the same palette.</p>
+                <p class="intro-detail">The built-in tints below mirror hundreds of community themes (many aligned with <a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="noopener noreferrer">iTerm2 color schemes</a>). Each tint maps to standard library <code>color.Color</code> fields you can use anywhere that accepts them. Swap themes at runtime, register custom palettes, or load JSON.</p>
+            </div>
+        </section>
+
         <div class="filter-controls">
-            <h3>Filter Tints</h3>
+            <h3>filter</h3>
             <div class="filter-options">
                 <div class="filter-option">
-                    <input type="radio" id="filter-all" name="tint-filter" value="all" onchange="filterTints('all')">
-                    <label for="filter-all">All Tints</label>
+                    <input type="radio" id="filter-all" name="tint-filter" value="all" onchange="filterTints()">
+                    <label for="filter-all">All</label>
                 </div>
                 <div class="filter-option">
-                    <input type="radio" id="filter-dark" name="tint-filter" value="dark" onchange="filterTints('dark')">
-                    <label for="filter-dark">Dark Tints</label>
+                    <input type="radio" id="filter-dark" name="tint-filter" value="dark" onchange="filterTints()">
+                    <label for="filter-dark">Dark</label>
                 </div>
                 <div class="filter-option">
-                    <input type="radio" id="filter-light" name="tint-filter" value="light" onchange="filterTints('light')">
-                    <label for="filter-light">Light Tints</label>
+                    <input type="radio" id="filter-light" name="tint-filter" value="light" onchange="filterTints()">
+                    <label for="filter-light">Light</label>
                 </div>
             </div>
         </div>
 
         <div class="nav-toc">
-            <h3>Table of Contents</h3>
+            <h3>on this page</h3>
             <ul>
               {{- range $i, $tint := .Tints }}
                 <li><a href="#{{ .StructName }}">{{ .Tint.Name }}</a></li>
@@ -351,10 +842,15 @@
             </ul>
         </div>
 
+        <div id="tints-empty-state" class="tints-empty hidden" role="status" aria-live="polite">
+            <p>No tints match your search or filter.</p>
+            <p class="tints-empty-hint">Try another name or switch All / Dark / Light.</p>
+        </div>
+
         <div class="tints-grid">
         {{- range $i, $tint := .Tints }}
-        <div class="tint-item" data-tint-type="{{ if $tint.Tint.IsDark }}dark{{ else }}light{{ end }}">
-            <h2 id="{{ .StructName }}"><a href="#{{ .StructName }}" style="text-decoration: none; color: inherit;">{{ .Tint.Name }}</a></h2>
+        <div class="tint-item" data-tint-type="{{ if $tint.Tint.IsDark }}dark{{ else }}light{{ end }}" data-tint-label="{{ .Tint.Name }}">
+            <h2 id="{{ .StructName }}"><a href="#{{ .StructName }}">{{ .Tint.Name }}</a></h2>
 
             <div class="tint-info">
                 <ul>
@@ -370,13 +866,12 @@
                 <img src="./{{ .StructName }}.svg"
                      alt="{{ .StructName }} color table"
                      loading="lazy"
-                     style="width: 100%; height: auto; border-radius: 8px;"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                      onload="this.nextElementSibling.style.display='none';">
-                <div class="loading-placeholder" style="display: flex; align-items: center; justify-content: center; height: 300px; background: #3a3a3a; border-radius: 8px;">
-                    <div style="text-align: center; color: #aaa;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">🎨</div>
-                        <div>Loading {{ .StructName }} color table...</div>
+                <div class="loading-placeholder">
+                    <div class="loading-inner" style="text-align: center;">
+                        <div class="loading-shimmer" aria-hidden="true"></div>
+                        <div style="font-size: 13px;">loading {{ .StructName }}</div>
                     </div>
                 </div>
             </div>

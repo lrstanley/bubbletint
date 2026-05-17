@@ -5,6 +5,7 @@
 package main
 
 import (
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -111,6 +112,9 @@ var (
 	)
 )
 
+//go:embed templates/favicon.svg
+var faviconSVG []byte
+
 func main() {
 	if len(os.Args) != 2 {
 		logger.Error("usage", "error", "output_dir is required") //nolint:all
@@ -171,6 +175,13 @@ func main() {
 	generateFile(filepath.Join(publicDir, "index.html"), tintHTMLTmpl, map[string]any{
 		"Tints": tints,
 	})
+
+	faviconPath := filepath.Join(publicDir, "favicon.svg")
+	err = os.WriteFile(faviconPath, faviconSVG, 0o644)
+	if err != nil {
+		log.Fatalf("failed to write favicon: %v", err)
+	}
+	logger.Info("generated file", "file", faviconPath)
 
 	generateFile(filepath.Join(os.Args[1], "tints.gen.go"), tintsTmpl, tints)
 	generateFile(filepath.Join(os.Args[1], "default_registry.gen.go"), registryTmpl, tints)
