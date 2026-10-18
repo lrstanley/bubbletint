@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: updater-iterm-schemes
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch: {}
+
+jobs:
+  iterm-schemes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: lrstanley/.github/composite/go-versions@master
+        id: goversion
+      - name: install-go
+        uses: lrstanley/.github/composite/install-go@master
+        with:
+          version: "${{ steps.goversion.outputs.version }}"
+      - id: release
+        uses: lrstanley/.github/composite/get-release-version@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repo: mbadolato/iTerm2-Color-Schemes
+      - id: version
+        run: |
+          version="${{ steps.release.outputs.version }}"
+          if [[ -z "${version}" || "${version}" == "null" ]]; then
+            echo "failed to resolve iterm schemes release" >&2
+            exit 1
+          fi
+
+          echo "previous_version=$(sed -rn 's/export ITERM_SCHEMES_VERSION := (.+)/\1/p' Makefile)" >> "$GITHUB_OUTPUT"
+          sed -ri "s/ITERM_SCHEMES_VERSION := .+/ITERM_SCHEMES_VERSION := ${version}/g" Makefile
+
+          make generate
+
+          # A new upstream release that does not change generated Go files
+          # should not open a pull request for the Makefile pin alone.
+          if git diff --quiet HEAD -- . ':(exclude)Makefile' && [[ -z "$(git ls-files --others --exclude-standard -- . ':(exclude)Makefile')" ]]; then
+            echo "meaningful=false" >> "$GITHUB_OUTPUT"
+            echo "generated files unchanged, skipping pull request"
+          else
+            echo "meaningful=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: lrstanley/.github/composite/pr-version-updater@master
+        if: steps.version.outputs.meaningful == 'true'
+        with:
+          token: ${{ secrets.USER_PAT }}
+          tool: iterm-schemes
+          chore: deps
+          version: ${{ steps.release.outputs.version }}
+          previous_version: ${{ steps.version.outputs.previous_version }}
+          paths: |
+            Makefile
+            *.gen.go
+          repo: ${{ steps.release.outputs.repo }}

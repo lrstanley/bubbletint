@@ -5,14 +5,12 @@
 package main
 
 import (
+	"context"
 	_ "embed"
-	"encoding/json"
 	"fmt"
-	"io"
-	"log"
 	"log/slog"
-	"net/http"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"reflect"
 	"sort"
@@ -29,7 +27,6 @@ var logger = slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
 }))
 
 var (
-	TintUrl         = "https://github.com/charmbracelet/vhs/raw/refs/heads/main/themes.json"
 	ColorMapSpecial = []string{
 		"SelectionBg", "Cursor",
 	}
@@ -62,6 +59,10 @@ var (
 				return "rgba(0, 0, 0, 0.0)"
 			}
 			return fmt.Sprintf("rgba(%d, %d, %d, 1)", int(c.R*255), int(c.G*255), int(c.B*255))
+		},
+		"hashex": func(hex string) bool {
+			_, err := colorful.Hex(hex)
+			return err == nil
 		},
 		"rgba_go": func(hex string) string {
 			// colorfuls library handles 4-length hex colors, in addition to 7-length (accounting for "#").
@@ -121,7 +122,19 @@ func main() {
 		os.Exit(1)
 	}
 
-	rawTints := fetchTints()
+	tag := os.Getenv("ITERM_SCHEMES_VERSION")
+	if tag == "" {
+		logger.Error("schemes version is required", "env", "ITERM_SCHEMES_VERSION") //nolint:all
+		os.Exit(1)
+	}
+
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	rawTints, err := loadSchemes(ctx, tag)
+	stop()
+	if err != nil {
+		logger.Error("failed to load schemes", "error", err) //nolint:all
+		os.Exit(1)
+	}
 
 	sort.SliceStable(rawTints, func(i, j int) bool {
 		return rawTints[i].Name < rawTints[j].Name
@@ -157,9 +170,10 @@ func main() {
 
 	// Create public directory.
 	publicDir := filepath.Join(os.Args[1], "public")
-	err := os.MkdirAll(publicDir, 0o750)
+	err = os.MkdirAll(publicDir, 0o750) //nolint:gosec // Output directory is the tintgen argument.
 	if err != nil {
-		log.Fatalf("failed to create public directory: %v", err)
+		logger.Error("failed to create public directory", "error", err) //nolint:all
+		os.Exit(1)
 	}
 
 	// Generate individual SVG files for each tint.
@@ -177,9 +191,10 @@ func main() {
 	})
 
 	faviconPath := filepath.Join(publicDir, "favicon.svg")
-	err = os.WriteFile(faviconPath, faviconSVG, 0o644)
+	err = os.WriteFile(faviconPath, faviconSVG, 0o644) //nolint:gosec // Public site asset is world-readable.
 	if err != nil {
-		log.Fatalf("failed to write favicon: %v", err)
+		logger.Error("failed to write favicon", "error", err) //nolint:all
+		os.Exit(1)
 	}
 	logger.Info("generated file", "file", faviconPath)
 
@@ -187,40 +202,8 @@ func main() {
 	generateFile(filepath.Join(os.Args[1], "default_registry.gen.go"), registryTmpl, tints)
 }
 
-func fetchTints() (tints []Tint) {
-	logger.Info("fetching tint data", "url", TintUrl) //nolint:all
-	resp, err := http.Get(TintUrl)                    //nolint:gosec,noctx
-	if err != nil {
-		panic(err)
-	}
-
-	b, err := io.ReadAll(resp.Body)
-	if err != nil {
-		panic(err)
-	}
-	_ = resp.Body.Close()
-
-	var rawTints []Tint
-	err = json.Unmarshal(b, &rawTints)
-	if err != nil {
-		panic(err)
-	}
-
-	for _, tint := range rawTints {
-		err = val.Struct(tint)
-		if err != nil {
-			logger.Error("invalid tint", "error", err) //nolint:all
-			continue
-		}
-
-		tints = append(tints, tint)
-	}
-
-	return tints
-}
-
 func generateFile(path string, tmpl *template.Template, data any) {
-	f, err := os.Create(path)
+	f, err := os.Create(path) //nolint:gosec // Output path is the tintgen argument.
 	if err != nil {
 		panic(err)
 	}

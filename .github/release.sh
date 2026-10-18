@@ -74,27 +74,42 @@ if ! git diff --cached --quiet >/dev/null; then
     git push origin
 fi
 
-for BASE in ${MODULES}; do
-    if grep -q "_examples" <<<"${BASE}"; then
+# submodule tags only for paths in bump_requires_extra (not every nested go.mod dir)
+_repo_pkg_root="${BASE_MODULE%/*}"
+
+for MOD in "${BUMP_REQUIRES_EXTRA[@]}"; do
+    rel="${MOD#${_repo_pkg_root}/}"
+
+    case "${MOD}" in
+        "${_repo_pkg_root}"/*) ;;
+        *)
+            echo "!!> bump module ${MOD} is not under ${_repo_pkg_root}; skip tagging"
+            continue
+            ;;
+    esac
+
+
+    if [[ "${rel}" =~ ^(.+)/v[0-9]+$ ]]; then
+        tag_prefix="${BASH_REMATCH[1]}"
+    else
+        tag_prefix="${rel}"
+    fi
+
+    tag_name="${tag_prefix}/${NEXT}"
+    submodule_root="${PWD}/${tag_prefix}"
+
+    if [ ! -f "${submodule_root}/go.mod" ]; then
+        echo "!!> no go.mod at ${tag_prefix}; skip tagging ${tag_name}"
         continue
     fi
 
-    MODULE_NAME="$(basename "${BASE}")"
-    TAG_NAME="${MODULE_NAME}/${NEXT}"
+    echo "--> tagging ${tag_name}"
 
-    # go requires tags like cmd/tintgen/v… for submodule paths under cmd/
-    if [[ ${BASE} =~ /cmd/[^/]+$ ]]; then
-        CMD_PARENT="$(basename "$(dirname "${BASE}")")"
-        TAG_NAME="${CMD_PARENT}/${MODULE_NAME}/${NEXT}"
-    fi
-
-    echo "--> tagging ${TAG_NAME}"
-
-    if git ls-remote --tags origin | grep -q "/${TAG_NAME}$"; then
-        echo "!!> ${TAG_NAME} already tagged on origin"
+    if git ls-remote --tags origin | grep -q "/${tag_name}$"; then
+        echo "!!> ${tag_name} already tagged on origin"
         continue
     fi
-    git tag -m "${TAG_NAME}" "${TAG_NAME}" || exit 1
+    git tag -m "${tag_name}" "${tag_name}" || exit 1
 done
 
 git push origin --tags

@@ -1,5 +1,7 @@
 .DEFAULT_GOAL := generate
 
+export ITERM_SCHEMES_VERSION := release-20261012-151317-d3e95e4
+
 license:
 	curl -sL https://liam.sh/-/gh/g/license-header.sh | bash -s
 
@@ -19,6 +21,7 @@ commit: generate
 
 generate: license prepare
 	rm -rf ./public
+	cd ./cmd/tintgen && go test ./...
 	cd ./cmd/tintgen && go run . ../../
 	gofmt -e -s -w *.go
 	go vet *.go

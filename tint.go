@@ -4,11 +4,16 @@
 
 package tint
 
+// CreditSource is an author or project credited with a tint.
 type CreditSource struct {
-	// Name is the name of the credit source.
+	// Name is the author credit. Theme data stores the full author text here,
+	// which may include a URL.
 	Name string `json:"name,omitempty"`
 
-	// Link is the link to the credit source.
+	// Link is a URL for the credit source.
+	//
+	// Deprecated: theme data does not include a separate link. Any URL is part
+	// of Name.
 	Link string `json:"link,omitempty"`
 }
 
@@ -20,11 +25,17 @@ type Tint struct {
 	// ID returns the name of the tint (normalized, snakecase style).
 	ID string `json:"id,omitempty"`
 
-	// CreditSources returns the credit sources for the tint.
+	// Author is the theme author's credit line, when the YAML source provides one.
+	Author string `json:"author,omitempty"`
+
+	// CreditSources lists author credits for this tint. Built-in tints set Name
+	// from Author when the YAML source provides one.
 	CreditSources []*CreditSource `json:"credit_sources,omitempty"`
 
-	// Dark returns whether the tint is dark (background color has a luminosity
-	// less than 0.5).
+	// Dark reports whether the tint is a dark theme. Built-in tints use the
+	// variant provided by the theme author when it is present. When the author
+	// did not provide one, Dark is calculated from the background color's
+	// luminosity (dark when it is below 0.5).
 	Dark bool `json:"dark,omitempty"`
 
 	// Fg returns the recommended default foreground color for this tint.
@@ -37,9 +48,20 @@ type Tint struct {
 	// is missing from most themes.
 	SelectionBg *Color `json:"selection_bg,omitempty"`
 
+	// SelectionText is the foreground color for selected text, when the theme
+	// author set one.
+	SelectionText *Color `json:"selection_text,omitempty"`
+
+	// Bold is the color for bold text, when the theme author set one.
+	Bold *Color `json:"bold,omitempty"`
+
 	// Cursor returns the recommended color for the cursor. Note that this is missing from
 	// most themes.
 	Cursor *Color `json:"cursor,omitempty"`
+
+	// CursorText is the color for text drawn on the cursor, when the theme
+	// author set one.
+	CursorText *Color `json:"cursor_text,omitempty"`
 
 	BrightBlack  *Color `json:"bright_black,omitempty"`
 	BrightBlue   *Color `json:"bright_blue,omitempty"`

@@ -78,7 +78,7 @@
 
 ## :sparkles: Features
 
-- :heavy_check_mark: Utilize 340+ built-in tints. [Check them all out here!](https://lrstanley.github.io/bubbletint/)
+- :heavy_check_mark: Utilize 770+ built-in tints. [Check them all out here!](https://lrstanley.github.io/bubbletint/)
   We're taking advantage of the great work others have done
   with [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes),
   and making them more accessible in a programmatic fashion.

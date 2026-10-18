@@ -131,7 +131,8 @@ func (m model) View() tea.View {
 	s := lipgloss.NewStyle().MaxHeight(m.height).MaxWidth(m.width)
 
 	view.SetContent(zone.Scan(s.Render(
-		lipgloss.JoinVertical(lipgloss.Top,
+		lipgloss.JoinVertical(
+			lipgloss.Top,
 			lipgloss.JoinHorizontal(
 				lipgloss.Left,
 				m.themeTitleStyle.Render("theme "+tint.Current().ID),

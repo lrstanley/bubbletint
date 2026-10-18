@@ -4,34 +4,47 @@
 //  * https://lrstanley.github.io/bubbletint/
 //
 // Generated using tints/themes from:
-//  * https://github.com/charmbracelet/vhs/raw/refs/heads/main/themes.json (originally from: https://github.com/mbadolato/iTerm2-Color-Schemes)
+//  * https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/vhs
+//  * https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/yaml
 
 package tint
 
 {{- range $index, $tint := . }}
-    // Tint{{ .StructName }} ({{ .Tint.Name }}) is a collection of lipgloss styles.
+    // Tint{{ .StructName }} ({{ .Tint.Name }}) is a collection of styles.
     //
     // Reference: https://lrstanley.github.io/bubbletint/#{{ .StructName }}
-    {{- if gt (len $tint.Tint.Meta.Credits) 0 }}
+    {{- if ne .Tint.Author "" }}
     //
     // Credit to:
-    {{- range $tint.Tint.Meta.Credits }}
-    //  * {{ .Name }} ({{ .Link }})
-    {{- end }}
+    //  * {{ .Tint.Author }}
     {{- end }}
     var Tint{{ .StructName }} = &Tint{
         DisplayName: {{ .Tint.Name | quote }},
         ID: {{ .NameNormalized | quote }},
+        {{- if ne .Tint.Author "" }}
+        Author: {{ .Tint.Author | quote }},
         CreditSources: []*CreditSource{
-        {{- range $tint.Tint.Meta.Credits }}
-            { Name: {{ .Name | quote }}, Link: {{ .Link | quote }}},
-        {{- end }}
+            {Name: {{ .Tint.Author | quote }}},
         },
+        {{- end }}
         Dark: {{ .Tint.IsDark }},
         Fg: {{ .Tint.Fg | rgba_go }},
         Bg: {{ .Tint.Bg | rgba_go }},
+        {{- if hashex .Tint.SelectionBg }}
         SelectionBg: {{ .Tint.SelectionBg | rgba_go }},
+        {{- end }}
+        {{- if hashex .Tint.SelectionText }}
+        SelectionText: {{ .Tint.SelectionText | rgba_go }},
+        {{- end }}
+        {{- if hashex .Tint.Bold }}
+        Bold: {{ .Tint.Bold | rgba_go }},
+        {{- end }}
+        {{- if hashex .Tint.Cursor }}
         Cursor: {{ .Tint.Cursor | rgba_go }},
+        {{- end }}
+        {{- if hashex .Tint.CursorText }}
+        CursorText: {{ .Tint.CursorText | rgba_go }},
+        {{- end }}
         BrightBlack: {{ .Tint.BrightBlack | rgba_go }},
         BrightBlue: {{ .Tint.BrightBlue | rgba_go }},
         BrightCyan: {{ .Tint.BrightCyan | rgba_go }},
