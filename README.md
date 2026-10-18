@@ -69,6 +69,7 @@
     - [Complex example](#complex-example)
     - [Loading tints from a file](#loading-tints-from-a-file)
     - [Chroma Support](#chroma-support)
+    - [Glamour Support](#glamour-support)
   - [Changes in v2](#rocket-changes-in-v2)
     - [No More Bloated Interfaces](#no-more-bloated-interfaces)
     - [Chroma Support](#chroma-support-1)
@@ -96,6 +97,8 @@
   and from a file.
 - :heavy_check_mark: Works with `lipgloss` and similar tools which support the
   `color.Color` interface from **stdlib**!
+- :heavy_check_mark: Map a tint onto a [Glamour](https://github.com/charmbracelet/glamour)
+  stylesheet through the `glamourtint` sub-package.
 
 ---
 
@@ -261,6 +264,25 @@ var (
 - [Example source](./_examples/chromatint).
 
 ![chromatint example](./_examples/chromatint/demo.gif)
+
+### Glamour Support
+
+- Uses the `glamourtint` sub-package to build a Glamour stylesheet from the current tint.
+- Fenced code blocks use the same palette roles as `chromatint`.
+- [Example source](./_examples/glamourtint).
+
+```go
+import (
+	"charm.land/glamour/v2"
+	"github.com/lrstanley/bubbletint/glamourtint/v2"
+	tint "github.com/lrstanley/bubbletint/v2"
+)
+
+renderer, err := glamour.NewTermRenderer(
+	glamour.WithStyles(glamourtint.StyleConfig(tint.Current())),
+	glamour.WithWordWrap(80),
+)
+```
 
 ---
 

@@ -5,6 +5,7 @@
 package tint
 
 import (
+	"cmp"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -53,6 +54,28 @@ func (c Color) RGBA() (r, g, b, a uint32) {
 // Hex returns the hex value of the color.
 func (c Color) Hex() string {
 	return fmt.Sprintf("#%02x%02x%02x", c.R, c.G, c.B)
+}
+
+// Darken makes a color darker by a specific percentage (0-1, clamped).
+func (c Color) Darken(percent float64) Color {
+	mult := 1.0 - clamp(percent, 0, 1)
+	return Color{
+		R: uint8(float64(c.R) * mult),
+		G: uint8(float64(c.G) * mult),
+		B: uint8(float64(c.B) * mult),
+		A: c.A,
+	}
+}
+
+// Lighten makes a color lighter by a specific percentage (0-1, clamped).
+func (c Color) Lighten(percent float64) Color {
+	add := 255 * clamp(percent, 0, 1)
+	return Color{
+		R: uint8(min(255, float64(c.R)+add)),
+		G: uint8(min(255, float64(c.G)+add)),
+		B: uint8(min(255, float64(c.B)+add)),
+		A: c.A,
+	}
 }
 
 // MarshalJSON implements the [encoding/json.Marshaler] interface.
@@ -155,4 +178,45 @@ func FromHex(s string) *Color {
 		return nil
 	}
 	return c
+}
+
+// Darken takes a color and makes it darker by a specific percentage (0-1, clamped).
+func Darken(c color.Color, percent float64) color.Color {
+	if c == nil {
+		return nil
+	}
+
+	mult := 1.0 - clamp(percent, 0, 1)
+
+	r, g, b, a := c.RGBA()
+	return color.RGBA{
+		R: uint8(float64(r>>8) * mult),
+		G: uint8(float64(g>>8) * mult),
+		B: uint8(float64(b>>8) * mult),
+		A: uint8(min(255, float64(a>>8))),
+	}
+}
+
+// Lighten makes a color lighter by a specific percentage (0-1, clamped).
+func Lighten(c color.Color, percent float64) color.Color {
+	if c == nil {
+		return nil
+	}
+
+	add := 255 * clamp(percent, 0, 1)
+
+	r, g, b, a := c.RGBA()
+	return color.RGBA{
+		R: uint8(min(255, float64(r>>8)+add)),
+		G: uint8(min(255, float64(g>>8)+add)),
+		B: uint8(min(255, float64(b>>8)+add)),
+		A: uint8(min(255, float64(a>>8))),
+	}
+}
+
+func clamp[T cmp.Ordered](v, low, high T) T {
+	if high < low {
+		high, low = low, high
+	}
+	return min(high, max(low, v))
 }

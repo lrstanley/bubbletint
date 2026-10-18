@@ -7,6 +7,7 @@ export BASE_MODULE="github.com/lrstanley/bubbletint/v2"
 # optional nested-module paths bumped to ${NEXT} when found in submodule go.mod
 BUMP_REQUIRES_EXTRA=(
     "github.com/lrstanley/bubbletint/chromatint/v2"
+    "github.com/lrstanley/bubbletint/glamourtint/v2"
 )
 
 if ! command -v svu >/dev/null 2>&1; then

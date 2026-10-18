@@ -7,11 +7,13 @@ license:
 
 up:
 	cd ./cmd/tintgen && go get -u -t ./... && go mod tidy
+	cd ./glamourtint && go get -u -t ./... && go mod tidy
 	cd ./_examples && go get -u -t ./... && go mod tidy
 	go get -u -t ./... && go mod tidy
 
 prepare:
 	cd ./cmd/tintgen && go mod tidy
+	cd ./glamourtint && go mod tidy
 	cd ./_examples && go mod tidy
 	go mod tidy
 
@@ -22,3 +24,4 @@ generate: license prepare
 	gofmt -e -s -w *.go
 	go vet *.go
 	go test -v ./...
+	cd ./glamourtint && go test ./...
