@@ -19,12 +19,22 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/iancoleman/strcase"
+	"github.com/lrstanley/clix/v2"
 	"github.com/lucasb-eyer/go-colorful"
 )
 
-var logger = slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
-	Level: slog.LevelDebug,
-}))
+// Flags are the tintgen arguments. The OpenRouter token is optional: without
+// it, hues are still computed and cached tones are kept.
+type Flags struct {
+	SchemesVersion  string `name:"schemes-version" env:"ITERM_SCHEMES_VERSION" required:"" help:"Pinned iTerm2-Color-Schemes release tag."`
+	OpenRouterToken string `name:"openrouter-token" env:"OPENROUTER_API_KEY" help:"OpenRouter API token used to classify new themes."`
+	Reclassify      bool   `name:"reclassify" help:"Ignore cached tones and classify every theme."`
+	OutputDir       string `arg:"" required:"" type:"path" help:"Directory to write generated files into."`
+}
+
+// logger is replaced in main with the clix logger. Tests keep this discard
+// logger so scheme loading can report invalid files without a parsed CLI.
+var logger = slog.New(slog.DiscardHandler)
 
 var (
 	ColorMapSpecial = []string{
@@ -78,6 +88,14 @@ var (
 		"quote": func(s string) string {
 			return fmt.Sprintf("%q", s)
 		},
+		"ident": strcase.ToCamel,
+		"label": func(name string) string {
+			name = strings.ReplaceAll(name, "-", " ")
+			if name == "" {
+				return ""
+			}
+			return strings.ToUpper(name[:1]) + name[1:]
+		},
 	}
 	tintsTmpl = template.Must(
 		template.New("tints.gotmpl").
@@ -117,49 +135,75 @@ var (
 var faviconSVG []byte
 
 func main() {
-	if len(os.Args) != 2 {
-		logger.Error("usage", "error", "output_dir is required") //nolint:all
-		os.Exit(1)
-	}
-
-	tag := os.Getenv("ITERM_SCHEMES_VERSION")
-	if tag == "" {
-		logger.Error("schemes version is required", "env", "ITERM_SCHEMES_VERSION") //nolint:all
-		os.Exit(1)
-	}
+	cli := clix.NewWithDefaults[Flags]()
+	logger = cli.GetLogger() //nolint:reassign // clix owns the process logger
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
-	rawTints, err := loadSchemes(ctx, tag)
+	err := generate(ctx, cli.Flags)
 	stop()
 	if err != nil {
-		logger.Error("failed to load schemes", "error", err) //nolint:all
+		logger.ErrorContext(ctx, "generate failed", "error", err)
 		os.Exit(1)
 	}
+}
 
+func generate(ctx context.Context, flags *Flags) error {
+	rawTints, err := loadSchemes(ctx, flags.SchemesVersion)
+	if err != nil {
+		return fmt.Errorf("load schemes: %w", err)
+	}
+
+	tints := uniqueTints(rawTints)
+	for i := range tints {
+		tints[i].Hue = classifyHue(tints[i].Tint)
+	}
+
+	themes := make([]Tint, len(tints))
+	for i := range tints {
+		themes[i] = tints[i].Tint
+	}
+	tones, toneErr := classifyTones(
+		ctx,
+		themes,
+		filepath.Join(flags.OutputDir, categoriesFileName),
+		flags.OpenRouterToken,
+		flags.Reclassify,
+	)
+	if toneErr != nil && tones == nil {
+		return toneErr
+	}
+	for i := range tints {
+		tints[i].Tone = tones[tints[i].Tint.Name]
+	}
+
+	if writeErr := writeGenerated(flags.OutputDir, tints); writeErr != nil {
+		return writeErr
+	}
+	return toneErr
+}
+
+func uniqueTints(rawTints []Tint) []TintTemplate {
 	sort.SliceStable(rawTints, func(i, j int) bool {
 		return rawTints[i].Name < rawTints[j].Name
 	})
 
 	tintNames := []string{}
 	tints := []TintTemplate{}
-	for _, tint := range rawTints { //nolint:all
-		name := tintReplacer.Replace(tint.Name)
-
+	for i := range rawTints {
+		name := tintReplacer.Replace(rawTints[i].Name)
 		t := TintTemplate{
 			StructName:     strcase.ToCamel(name),
 			NameNormalized: strcase.ToSnake(name),
-			Tint:           tint,
+			Tint:           rawTints[i],
 		}
 
 		var exists bool
-		for _, name := range tintNames {
-			if name == t.NameNormalized || name == t.StructName {
+		for _, seen := range tintNames {
+			if seen == t.NameNormalized || seen == t.StructName {
 				exists = true
 				break
 			}
 		}
-
-		// If the tint name already exists, skip it.
 		if exists {
 			continue
 		}
@@ -167,16 +211,15 @@ func main() {
 		tintNames = append(tintNames, t.NameNormalized, t.StructName)
 		tints = append(tints, t)
 	}
+	return tints
+}
 
-	// Create public directory.
-	publicDir := filepath.Join(os.Args[1], "public")
-	err = os.MkdirAll(publicDir, 0o750) //nolint:gosec // Output directory is the tintgen argument.
-	if err != nil {
-		logger.Error("failed to create public directory", "error", err) //nolint:all
-		os.Exit(1)
+func writeGenerated(outputDir string, tints []TintTemplate) error {
+	publicDir := filepath.Join(outputDir, "public")
+	if err := os.MkdirAll(publicDir, 0o750); err != nil { //nolint:gosec // Output directory is the tintgen argument.
+		return fmt.Errorf("create public directory: %w", err)
 	}
 
-	// Generate individual SVG files for each tint.
 	for _, tint := range tints {
 		svgFilename := filepath.Join(publicDir, fmt.Sprintf("%s.svg", tint.StructName))
 		generateFile(svgFilename, svgTmpl, map[string]any{
@@ -185,21 +228,21 @@ func main() {
 		})
 	}
 
-	// Generate HTML file that references the SVG files.
 	generateFile(filepath.Join(publicDir, "index.html"), tintHTMLTmpl, map[string]any{
 		"Tints": tints,
+		"Hues":  hueNames(),
+		"Tones": append(toneNames(), toneUncategorized),
 	})
 
 	faviconPath := filepath.Join(publicDir, "favicon.svg")
-	err = os.WriteFile(faviconPath, faviconSVG, 0o644) //nolint:gosec // Public site asset is world-readable.
-	if err != nil {
-		logger.Error("failed to write favicon", "error", err) //nolint:all
-		os.Exit(1)
+	if err := os.WriteFile(faviconPath, faviconSVG, 0o644); err != nil { //nolint:gosec // Public site asset is world-readable.
+		return fmt.Errorf("write favicon: %w", err)
 	}
 	logger.Info("generated file", "file", faviconPath)
 
-	generateFile(filepath.Join(os.Args[1], "tints.gen.go"), tintsTmpl, tints)
-	generateFile(filepath.Join(os.Args[1], "default_registry.gen.go"), registryTmpl, tints)
+	generateFile(filepath.Join(outputDir, "tints.gen.go"), tintsTmpl, tints)
+	generateFile(filepath.Join(outputDir, "default_registry.gen.go"), registryTmpl, tints)
+	return writeCategorySources(outputDir)
 }
 
 func generateFile(path string, tmpl *template.Template, data any) {

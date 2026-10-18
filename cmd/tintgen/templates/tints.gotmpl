@@ -28,6 +28,10 @@ package tint
         },
         {{- end }}
         Dark: {{ .Tint.IsDark }},
+        Hue: Hue{{ .Hue | ident }},
+        {{- if ne .Tone "" }}
+        Tone: Tone{{ .Tone | ident }},
+        {{- end }}
         Fg: {{ .Tint.Fg | rgba_go }},
         Bg: {{ .Tint.Bg | rgba_go }},
         {{- if hashex .Tint.SelectionBg }}

@@ -10,15 +10,23 @@ import (
 )
 
 // NewRegistry returns a new registry, with the provided tints registered.
+// When tints is empty, the built-in catalog is registered. When defaultTint
+// is nil, the first registered tint becomes current.
 func NewRegistry(defaultTint *Tint, tints ...*Tint) *Registry {
 	r := &Registry{
 		tints: make(map[string]*Tint),
+	}
+
+	if len(tints) == 0 {
+		tints = DefaultTints()
 	}
 
 	r.Register(tints...)
 
 	if defaultTint != nil {
 		r.SetTint(defaultTint)
+	} else {
+		r.SetTint(tints[0])
 	}
 
 	return r
@@ -69,11 +77,36 @@ func (r *Registry) UnregisterAll() {
 
 // Tints returns a list of all registered tints, sorted alphabetically by their ID.
 func (r *Registry) Tints() []*Tint {
+	return r.list(func(*Tint) bool { return true })
+}
+
+// TintsByHue returns registered tints whose Hue equals hue, sorted by ID.
+// An empty hue matches tints that did not set one.
+func (r *Registry) TintsByHue(hue Hue) []*Tint {
+	return r.list(func(t *Tint) bool { return t.Hue == hue })
+}
+
+// TintsByTone returns registered tints whose Tone equals tone, sorted by ID.
+// An empty tone matches tints with no tone.
+func (r *Registry) TintsByTone(tone Tone) []*Tint {
+	return r.list(func(t *Tint) bool { return t.Tone == tone })
+}
+
+// TintsByHueAndTone returns registered tints matching both hue and tone, sorted
+// by ID. An empty hue or tone matches only tints that did not set that field.
+func (r *Registry) TintsByHueAndTone(hue Hue, tone Tone) []*Tint {
+	return r.list(func(t *Tint) bool { return t.Hue == hue && t.Tone == tone })
+}
+
+// list returns registered tints for which match reports true, sorted by ID.
+func (r *Registry) list(match func(*Tint) bool) []*Tint {
 	v := []*Tint{}
 
 	r.mu.RLock()
 	for _, tint := range r.tints {
-		v = append(v, tint)
+		if match(tint) {
+			v = append(v, tint)
+		}
 	}
 	r.mu.RUnlock()
 

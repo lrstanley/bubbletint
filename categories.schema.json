@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lrstanley/bubbletint/raw/master/categories.schema.json",
+  "title": "Bubbletint tone cache",
+  "description": "Cached aesthetic tone for each built-in tint.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "tone"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "tone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "muted",
+        "pastel",
+        "vivid",
+        "neon",
+        "retro",
+        "monochrome",
+        "high-contrast",
+        "uncategorized"
+      ],
+      "properties": {
+        "muted": { "$ref": "#/$defs/names" },
+        "pastel": { "$ref": "#/$defs/names" },
+        "vivid": { "$ref": "#/$defs/names" },
+        "neon": { "$ref": "#/$defs/names" },
+        "retro": { "$ref": "#/$defs/names" },
+        "monochrome": { "$ref": "#/$defs/names" },
+        "high-contrast": { "$ref": "#/$defs/names" },
+        "uncategorized": { "$ref": "#/$defs/names" }
+      }
+    }
+  },
+  "$defs": {
+    "names": {
+      "description": "Upstream theme display names, sorted.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}

@@ -4,6 +4,26 @@
 
 package tint
 
+import (
+	"iter"
+	"slices"
+)
+
+// TintsByFunc iterates built-in tints for which match reports true, in
+// DefaultTints order.
+func TintsByFunc(match func(*Tint) bool) iter.Seq[*Tint] {
+	return func(yield func(*Tint) bool) {
+		for _, tint := range DefaultTints() {
+			if !match(tint) {
+				continue
+			}
+			if !yield(tint) {
+				return
+			}
+		}
+	}
+}
+
 // Register registers one or more tints, using the default registry. It does not
 // change to the provided tint.
 func Register(tint ...*Tint) {
@@ -30,6 +50,27 @@ func UnregisterAll() {
 // using the default registry.
 func Tints() []*Tint {
 	return DefaultRegistry.Tints()
+}
+
+// TintsByHue returns built-in tints whose Hue equals hue, in DefaultTints order.
+// An empty hue matches tints that did not set one.
+func TintsByHue(hue Hue) []*Tint {
+	return slices.Collect(TintsByFunc(func(t *Tint) bool { return t.Hue == hue }))
+}
+
+// TintsByTone returns built-in tints whose Tone equals tone, in DefaultTints order.
+// An empty tone matches tints with no tone.
+func TintsByTone(tone Tone) []*Tint {
+	return slices.Collect(TintsByFunc(func(t *Tint) bool { return t.Tone == tone }))
+}
+
+// TintsByHueAndTone returns built-in tints matching both hue and tone, in
+// DefaultTints order. An empty hue or tone matches only tints that did not set
+// that field.
+func TintsByHueAndTone(hue Hue, tone Tone) []*Tint {
+	return slices.Collect(TintsByFunc(func(t *Tint) bool {
+		return t.Hue == hue && t.Tone == tone
+	}))
 }
 
 // TintIDs returns a list of all registered tint IDs, sorted alphabetically by their

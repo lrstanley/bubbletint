@@ -23,7 +23,7 @@ func TestNewRegistry(t *testing.T) {
 			name: "no default",
 			args: args{defaultTint: nil, tints: []*Tint{TintDraculaPlus}},
 			want: &Registry{
-				currentTint: "",
+				currentTint: TintDraculaPlus.ID,
 				tints: map[string]*Tint{
 					TintDraculaPlus.ID: TintDraculaPlus,
 				},
@@ -33,8 +33,8 @@ func TestNewRegistry(t *testing.T) {
 			name: "no default and no tints",
 			args: args{defaultTint: nil, tints: nil},
 			want: &Registry{
-				currentTint: "",
-				tints:       map[string]*Tint{},
+				currentTint: DefaultTints()[0].ID,
+				tints:       builtinTints(),
 			},
 		},
 		{
@@ -53,9 +53,7 @@ func TestNewRegistry(t *testing.T) {
 			args: args{defaultTint: Tint3024Day, tints: nil},
 			want: &Registry{
 				currentTint: Tint3024Day.ID,
-				tints: map[string]*Tint{
-					Tint3024Day.ID: Tint3024Day,
-				},
+				tints:       builtinTints(),
 			},
 		},
 	}
@@ -66,6 +64,14 @@ func TestNewRegistry(t *testing.T) {
 			}
 		})
 	}
+}
+
+func builtinTints() map[string]*Tint {
+	tints := make(map[string]*Tint, len(DefaultTints()))
+	for _, tint := range DefaultTints() {
+		tints[tint.ID] = tint
+	}
+	return tints
 }
 
 func TestRegistry_Unregister(t *testing.T) {
@@ -165,12 +171,13 @@ func TestRegistry_PreviousNextTint(t *testing.T) {
 		t.Errorf("expected %v, got %v", Tint3024Day, reg.Current())
 	}
 
-	// If there currently isn't a default, then the first tint in the list is used.
+	// No explicit default selects the first tint passed in, then NextTint
+	// advances through the sorted IDs.
 	reg = NewRegistry(nil, TintDraculaPlus, Tint3024Day, TintSynthwave)
 	reg.NextTint()
 
-	if reg.Current().ID != Tint3024Day.ID {
-		t.Errorf("expected %v, got %v", Tint3024Day, reg.Current())
+	if reg.Current().ID != TintSynthwave.ID {
+		t.Errorf("expected %v, got %v", TintSynthwave, reg.Current())
 	}
 
 	reg = NewRegistry(nil, TintDraculaPlus, Tint3024Day, TintSynthwave)

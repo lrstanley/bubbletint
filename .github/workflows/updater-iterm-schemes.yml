@@ -23,6 +23,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repo: mbadolato/iTerm2-Color-Schemes
       - id: version
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           version="${{ steps.release.outputs.version }}"
           if [[ -z "${version}" || "${version}" == "null" ]]; then
@@ -54,4 +56,5 @@ jobs:
           paths: |
             Makefile
             *.gen.go
+            categories.json
           repo: ${{ steps.release.outputs.repo }}

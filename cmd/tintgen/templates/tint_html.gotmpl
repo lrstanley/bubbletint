@@ -338,12 +338,16 @@
         }
 
         .filter-controls h3 {
-            margin: 0 0 14px;
+            margin: 0 0 8px;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--text-faint);
+        }
+
+        .filter-group + .filter-group {
+            margin-top: 16px;
         }
 
         .filter-options {
@@ -497,13 +501,39 @@
             animation: fade-up 0.55s var(--ease) 0.14s both;
         }
 
-        .nav-toc h3 {
-            margin: 0 0 14px;
+        .nav-toc summary {
+            margin: 0;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--text-faint);
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .nav-toc summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .nav-toc summary::before {
+            content: "▸";
+            display: inline-block;
+            margin-right: 8px;
+            color: var(--text-faint);
+        }
+
+        .nav-toc[open] summary {
+            margin-bottom: 14px;
+        }
+
+        .nav-toc[open] summary::before {
+            content: "▾";
+        }
+
+        .nav-toc summary:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
         }
 
         .nav-toc ul {
@@ -555,11 +585,11 @@
                 width: 100%;
                 box-sizing: border-box;
             }
-            .filter-option {
+            .filter-options-kind .filter-option {
                 flex: 1;
                 min-width: 0;
             }
-            .filter-option label {
+            .filter-options-kind .filter-option label {
                 display: flex;
                 justify-content: center;
                 width: 100%;
@@ -723,9 +753,9 @@
             });
         }
 
-        function currentTintFilterType() {
-            const checked = document.querySelector('input[name="tint-filter"]:checked');
-            return checked ? checked.value : 'all';
+        function checkedFilter(name, fallback) {
+            const checked = document.querySelector('input[name="' + name + '"]:checked');
+            return checked ? checked.value : fallback;
         }
 
         function tintSearchQuery() {
@@ -734,7 +764,9 @@
         }
 
         function filterTints() {
-            const filterType = currentTintFilterType();
+            const filterType = checkedFilter('tint-filter', 'all');
+            const hue = checkedFilter('hue-filter', 'all');
+            const tone = checkedFilter('tone-filter', 'all');
             const query = tintSearchQuery();
             const tintItems = document.querySelectorAll('.tint-item');
             const tocLinks = document.querySelectorAll('.nav-toc a');
@@ -742,14 +774,18 @@
 
             tintItems.forEach(item => {
                 const isDark = item.getAttribute('data-tint-type') === 'dark';
+                const itemHue = item.getAttribute('data-hue') || '';
+                const itemTone = item.getAttribute('data-tone') || '';
                 const itemId = item.querySelector('h2').getAttribute('id');
                 const label = (item.getAttribute('data-tint-label') || '').toLowerCase();
 
                 let passesKind = filterType === 'all' ||
                     (filterType === 'dark' && isDark) ||
                     (filterType === 'light' && !isDark);
+                let passesHue = hue === 'all' || itemHue === hue;
+                let passesTone = tone === 'all' || itemTone === tone;
                 let passesSearch = query === '' || label.includes(query);
-                let visible = passesKind && passesSearch;
+                let visible = passesKind && passesHue && passesTone && passesSearch;
 
                 if (visible) {
                     visibleCount++;
@@ -782,6 +818,8 @@
         // Initialize filter on page load
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('filter-all').checked = true;
+            document.getElementById('filter-hue-all').checked = true;
+            document.getElementById('filter-tone-all').checked = true;
             filterTints();
         });
     </script>
@@ -816,45 +854,81 @@
         </section>
 
         <div class="filter-controls">
-            <h3>filter</h3>
-            <div class="filter-options">
-                <div class="filter-option">
-                    <input type="radio" id="filter-all" name="tint-filter" value="all" onchange="filterTints()">
-                    <label for="filter-all">All</label>
+            <div class="filter-group">
+                <h3>appearance</h3>
+                <div class="filter-options filter-options-kind">
+                    <div class="filter-option">
+                        <input type="radio" id="filter-all" name="tint-filter" value="all" onchange="filterTints()">
+                        <label for="filter-all">All</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="radio" id="filter-dark" name="tint-filter" value="dark" onchange="filterTints()">
+                        <label for="filter-dark">Dark</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="radio" id="filter-light" name="tint-filter" value="light" onchange="filterTints()">
+                        <label for="filter-light">Light</label>
+                    </div>
                 </div>
-                <div class="filter-option">
-                    <input type="radio" id="filter-dark" name="tint-filter" value="dark" onchange="filterTints()">
-                    <label for="filter-dark">Dark</label>
+            </div>
+            <div class="filter-group">
+                <h3>hue</h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="radio" id="filter-hue-all" name="hue-filter" value="all" onchange="filterTints()">
+                        <label for="filter-hue-all">All</label>
+                    </div>
+                    {{- range .Hues }}
+                    <div class="filter-option">
+                        <input type="radio" id="filter-hue-{{ . }}" name="hue-filter" value="{{ . }}" onchange="filterTints()">
+                        <label for="filter-hue-{{ . }}">{{ . | label }}</label>
+                    </div>
+                    {{- end }}
                 </div>
-                <div class="filter-option">
-                    <input type="radio" id="filter-light" name="tint-filter" value="light" onchange="filterTints()">
-                    <label for="filter-light">Light</label>
+            </div>
+            <div class="filter-group">
+                <h3>tone</h3>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="radio" id="filter-tone-all" name="tone-filter" value="all" onchange="filterTints()">
+                        <label for="filter-tone-all">All</label>
+                    </div>
+                    {{- range .Tones }}
+                    <div class="filter-option">
+                        <input type="radio" id="filter-tone-{{ . }}" name="tone-filter" value="{{ . }}" onchange="filterTints()">
+                        <label for="filter-tone-{{ . }}">{{ . | label }}</label>
+                    </div>
+                    {{- end }}
                 </div>
             </div>
         </div>
 
-        <div class="nav-toc">
-            <h3>on this page</h3>
+        <details class="nav-toc">
+            <summary>on this page</summary>
             <ul>
               {{- range $i, $tint := .Tints }}
                 <li><a href="#{{ .StructName }}">{{ .Tint.Name }}</a></li>
               {{- end }}
             </ul>
-        </div>
+        </details>
 
         <div id="tints-empty-state" class="tints-empty hidden" role="status" aria-live="polite">
             <p>No tints match your search or filter.</p>
-            <p class="tints-empty-hint">Try another name or switch All / Dark / Light.</p>
+            <p class="tints-empty-hint">Try another name, or switch appearance, hue, or tone.</p>
         </div>
 
         <div class="tints-grid">
         {{- range $i, $tint := .Tints }}
-        <div class="tint-item" data-tint-type="{{ if $tint.Tint.IsDark }}dark{{ else }}light{{ end }}" data-tint-label="{{ .Tint.Name }}">
+        <div class="tint-item" data-tint-type="{{ if $tint.Tint.IsDark }}dark{{ else }}light{{ end }}" data-hue="{{ .Hue }}" data-tone="{{ .Tone }}" data-tint-label="{{ .Tint.Name }}">
             <h2 id="{{ .StructName }}"><a href="#{{ .StructName }}">{{ .Tint.Name }}</a></h2>
 
             <div class="tint-info">
                 <ul>
                     <li><strong>ID:</strong> <code style="cursor: pointer;" onclick="copyToClipboard('{{ .NameNormalized }}', this)" title="Click to copy ID">{{ .NameNormalized }}</code></li>
+                    <li><strong>Hue:</strong> <code>{{ .Hue | label }}</code></li>
+                    {{- if ne .Tone "" }}
+                    <li><strong>Tone:</strong> <code>{{ .Tone | label }}</code></li>
+                    {{- end }}
                     <li><strong>Usage:</strong> <code style="cursor: pointer;" onclick="copyToClipboard('tint.Tint{{ .StructName }}', this)" title="Click to copy usage">tint.Tint{{ .StructName }}</code></li>
                     {{- if ne .Tint.Author "" }}
                     <li><strong>Credit:</strong> {{ .Tint.Author }}</li>

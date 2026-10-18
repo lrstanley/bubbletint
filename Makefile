@@ -15,10 +15,6 @@ prepare:
 	cd ./_examples && go mod tidy
 	go mod tidy
 
-commit: generate
-	git add --all defaulttints/* *.gen.go
-	git commit -m "chore(tints): generate updated tints"
-
 generate: license prepare
 	rm -rf ./public
 	cd ./cmd/tintgen && go test ./...

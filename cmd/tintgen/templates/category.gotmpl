@@ -1,0 +1,37 @@
+{{ .Header }}
+
+package tint
+
+// Hue buckets. HueNeutral means no chromatic ANSI color qualified.
+// HueMixed means no single chromatic bucket was dominant.
+const (
+{{- range .Hues }}
+	Hue{{ .Func }} Hue = {{ printf "%q" .Name }}
+{{- end }}
+)
+
+// Tone buckets. An empty Tone is not a bucket: it means uncategorized or not
+// yet classified.
+const (
+{{- range .Tones }}
+	Tone{{ .Func }} Tone = {{ printf "%q" .Name }}
+{{- end }}
+)
+
+// AllHues returns every hue bucket. The zero Hue is not included.
+func AllHues() []Hue {
+	return []Hue{
+	{{- range .Hues }}
+		Hue{{ .Func }},
+	{{- end }}
+	}
+}
+
+// AllTones returns every tone bucket. The zero Tone is not included.
+func AllTones() []Tone {
+	return []Tone{
+	{{- range .Tones }}
+		Tone{{ .Func }},
+	{{- end }}
+	}
+}

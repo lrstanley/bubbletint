@@ -11,6 +11,8 @@ import (
 type TintTemplate struct {
 	StructName     string
 	NameNormalized string
+	Hue            string
+	Tone           string
 
 	Tint Tint
 }

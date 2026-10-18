@@ -38,6 +38,14 @@ type Tint struct {
 	// luminosity (dark when it is below 0.5).
 	Dark bool `json:"dark,omitempty"`
 
+	// Hue is the dominant chromatic family of this tint's ANSI palette.
+	// Built-in tints always set one. The zero value means it was not set.
+	Hue Hue `json:"hue,omitempty"`
+
+	// Tone is an aesthetic label such as muted or retro.
+	// The zero value means uncategorized or not yet classified.
+	Tone Tone `json:"tone,omitempty"`
+
 	// Fg returns the recommended default foreground color for this tint.
 	Fg *Color `json:"fg,omitempty"`
 

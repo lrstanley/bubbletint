@@ -61,6 +61,7 @@
   - [Usage](#gear-usage)
     - [Global registry](#global-registry)
     - [Custom Registry](#custom-registry)
+    - [Filter by hue and tone](#filter-by-hue-and-tone)
     - [Use specific tints](#use-specific-tints)
   - [Examples](#clap-examples)
     - [Package manager example](#package-manager-example)
@@ -87,6 +88,8 @@
   terminal setup.
 - :heavy_check_mark: Piecemeal support for specific tints. Really like one specific
   tint, and want to use that as the standard for your TUI? No problem!
+- :heavy_check_mark: Filter built-in tints by hue (red, blue, and the rest of the
+  spectrum) and tone (muted, retro, and the other aesthetic labels).
 - :heavy_check_mark: Extendible with your own custom tints, in addition to marshalling
   and unmarshalling from JSON, if you wanted to support reading/writing tints to
   and from a file.
@@ -163,6 +166,32 @@ func main() {
 	style := lipgloss.NewStyle().
 		SetForeground(theme.Current().Fg).
 		Background(theme.Current().BrightGreen)
+}
+```
+
+### Filter by hue and tone
+
+Each built-in tint has a hue computed from its ANSI palette, and may have a
+tone such as muted or retro. An empty tone means the tint is uncategorized or
+has not been classified yet.
+
+```go
+package main
+
+import (
+	"fmt"
+
+	tint "github.com/lrstanley/bubbletint/v2"
+)
+
+func main() {
+	// A registry of one hue.
+	blues := tint.NewRegistry(nil, tint.TintsByHue(tint.HueBlue)...)
+
+	// Filter that registry by tone.
+	for _, theme := range blues.TintsByTone(tint.ToneMuted) {
+		fmt.Println(theme.DisplayName)
+	}
 }
 ```
 
