@@ -5,9 +5,10 @@
 // Package glamourtint builds a Glamour stylesheet from a bubbletint palette.
 //
 // The layout matches Glamour's built-in dark style: an H1 banner, markdown
-// prefixes on the remaining heading levels, and fenced-code colors taken from
-// the same palette roles as chromatint. The document background is left unset
-// so the host application can paint its own.
+// prefixes on the remaining heading levels, and a brightness ramp so those
+// levels step away from the body color. Fenced-code colors use the same
+// palette roles as chromatint. The document background is left unset so the
+// host application can paint its own.
 package glamourtint
 
 import (
@@ -30,6 +31,20 @@ const (
 	headingPrefixH5 = "##### "
 	headingPrefixH6 = "###### "
 
+	// Heading levels below H1 step away from the body color. Lower levels fade
+	// more, toward black on a dark tint and toward white on a light tint.
+	h2Fade = 0.06
+	h3Fade = 0.12
+	h4Fade = 0.18
+	h5Fade = 0.26
+	h6Fade = 0.36
+
+	// Inline code sits on a chip stepped off the background.
+	codeChipDark  = 0.08
+	codeChipLight = -0.06
+
+	codePad = "\u00a0"
+
 	taskTicked      = "[✓] "
 	taskUnticked    = "[ ] "
 	imageFormat     = "Image: {{.text}} →"
@@ -38,7 +53,6 @@ const (
 	quoteToken      = "│ "
 	itemPrefix      = "• "
 	enumPrefix      = ". "
-	codePad         = "\u00a0"
 )
 
 // themeMu serializes writes to the chroma style registry. Chroma's registry is a
@@ -70,6 +84,19 @@ func StyleConfig(t *tint.Tint) ansi.StyleConfig {
 	h1Bg := pick(t.Dark, t.BrightBlue, t.Blue)
 	if h1Bg == nil {
 		h1Bg = firstColor(t.Purple, t.Fg)
+	}
+
+	body := firstColor(t.Fg, t.White)
+	level := func(amount float64) *string {
+		if t.Dark {
+			amount = -amount
+		}
+		return colorPtr(step(body, nil, amount))
+	}
+
+	chip := codeChipLight
+	if t.Dark {
+		chip = codeChipDark
 	}
 
 	linkText := pick(t.Dark, t.Cyan, t.BrightCyan)
@@ -110,21 +137,33 @@ func StyleConfig(t *tint.Tint) ansi.StyleConfig {
 			},
 		},
 		H2: ansi.StyleBlock{
-			StylePrimitive: ansi.StylePrimitive{Prefix: headingPrefixH2},
+			StylePrimitive: ansi.StylePrimitive{
+				Prefix: headingPrefixH2,
+				Color:  level(h2Fade),
+			},
 		},
 		H3: ansi.StyleBlock{
-			StylePrimitive: ansi.StylePrimitive{Prefix: headingPrefixH3},
+			StylePrimitive: ansi.StylePrimitive{
+				Prefix: headingPrefixH3,
+				Color:  level(h3Fade),
+			},
 		},
 		H4: ansi.StyleBlock{
-			StylePrimitive: ansi.StylePrimitive{Prefix: headingPrefixH4},
+			StylePrimitive: ansi.StylePrimitive{
+				Prefix: headingPrefixH4,
+				Color:  level(h4Fade),
+			},
 		},
 		H5: ansi.StyleBlock{
-			StylePrimitive: ansi.StylePrimitive{Prefix: headingPrefixH5},
+			StylePrimitive: ansi.StylePrimitive{
+				Prefix: headingPrefixH5,
+				Color:  level(h5Fade),
+			},
 		},
 		H6: ansi.StyleBlock{
 			StylePrimitive: ansi.StylePrimitive{
 				Prefix: headingPrefixH6,
-				Color:  colorPtr(firstColor(t.Purple, t.Fg)),
+				Color:  level(h6Fade),
 				Bold:   new(false),
 			},
 		},
@@ -162,7 +201,7 @@ func StyleConfig(t *tint.Tint) ansi.StyleConfig {
 				Prefix:          codePad,
 				Suffix:          codePad,
 				Color:           colorPtr(firstColor(t.Red, t.Fg)),
-				BackgroundColor: colorPtr(codeChip(t.Dark, t.Bg, t.BrightBlack)),
+				BackgroundColor: colorPtr(step(t.Bg, t.BrightBlack, chip)),
 			},
 		},
 		CodeBlock: ansi.StyleCodeBlock{

@@ -7,6 +7,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"charm.land/bubbles/v2/viewport"
 	tea "charm.land/bubbletea/v2"
@@ -44,6 +45,7 @@ type model struct { //nolint:recvcheck
 	theme     *tint.Registry
 	viewport  viewport.Model
 	helpStyle lipgloss.Style
+	help      string
 	formatter string
 }
 
@@ -57,7 +59,6 @@ func newModel() *model {
 		),
 	}
 	m.setStyles()
-	m.setContent()
 	return m
 }
 
@@ -72,11 +73,19 @@ func (m *model) setStyles() {
 		Faint(true)
 }
 
-func (m *model) contentWidth() int {
-	width := m.width
-	if width == 0 {
-		return 80
+func (m *model) resize() {
+	if m.width <= 0 || m.height <= 0 {
+		return
 	}
+
+	m.help = m.helpStyle.Width(m.width).Render("←/→: " + m.theme.Current().DisplayName + " • ↑/↓: scroll • q: quit")
+	m.viewport.SetWidth(m.width)
+	m.viewport.SetHeight(max(1, m.height-max(1, lipgloss.Height(m.help))))
+	m.setContent()
+}
+
+func (m *model) contentWidth() int {
+	width := m.viewport.Width()
 	frame := m.viewport.Style.GetHorizontalFrameSize()
 	if width > frame {
 		return width - frame
@@ -100,7 +109,7 @@ func (m *model) setContent() {
 		m.viewport.SetContent(err.Error())
 		return
 	}
-	m.viewport.SetContent(out)
+	m.viewport.SetContent(strings.ReplaceAll(out, "\t", "    "))
 }
 
 func formatterFor(profile colorprofile.Profile) string {
@@ -125,9 +134,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.WindowSizeMsg:
 		m.height = msg.Height
 		m.width = msg.Width
-		m.viewport.SetWidth(msg.Width)
-		m.viewport.SetHeight(msg.Height - 1)
-		m.setContent()
+		m.resize()
 		return m, nil
 	case tea.ColorProfileMsg:
 		next := formatterFor(msg.Profile)
@@ -135,7 +142,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, nil
 		}
 		m.formatter = next
-		m.setContent()
+		m.resize()
 		return m, nil
 	case tea.KeyPressMsg:
 		switch msg.String() {
@@ -144,12 +151,12 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "left":
 			m.theme.PreviousTint()
 			m.setStyles()
-			m.setContent()
+			m.resize()
 			return m, nil
 		case "right":
 			m.theme.NextTint()
 			m.setStyles()
-			m.setContent()
+			m.resize()
 			return m, nil
 		default:
 			var cmd tea.Cmd
@@ -166,12 +173,8 @@ func (m model) View() tea.View {
 	view.AltScreen = true
 	view.BackgroundColor = m.theme.Current().Bg
 	view.ForegroundColor = m.theme.Current().Fg
-	view.SetContent(m.viewport.View() + m.helpView())
+	view.SetContent(m.viewport.View() + "\n" + m.help)
 	return view
-}
-
-func (m model) helpView() string {
-	return m.helpStyle.Render("\n ←/→: Change Tint (current: " + m.theme.Current().DisplayName + ") • ↑/↓: Navigate • q: Quit\n")
 }
 
 func main() {

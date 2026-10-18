@@ -44,6 +44,9 @@ func TestStyleConfigSparse(t *testing.T) {
 	if cfg.H2.Prefix != headingPrefixH2 {
 		t.Fatalf("H2 prefix = %q", cfg.H2.Prefix)
 	}
+	if cfg.Document.Margin == nil || *cfg.Document.Margin != defaultMargin {
+		t.Fatal("document margin should be the default")
+	}
 	if cfg.H1.Bold == nil || !*cfg.H1.Bold {
 		t.Fatal("H1 bold should be set")
 	}
@@ -98,26 +101,37 @@ func TestStyleConfig(t *testing.T) {
 			if got := deref(cfg.H1.BackgroundColor); got != tt.h1Bg {
 				t.Fatalf("h1 background = %s, want %s", got, tt.h1Bg)
 			}
-			if cfg.H2.Color != nil {
-				t.Fatalf("h2 color = %s, want inherited", deref(cfg.H2.Color))
+			shift := func(amount float64) string {
+				if tt.tint.Dark {
+					amount = -amount
+				}
+				return toHex(step(tt.tint.Fg, nil, amount))
+			}
+			wantH2 := shift(h2Fade)
+			if got := deref(cfg.H2.Color); got != wantH2 {
+				t.Fatalf("h2 color = %s, want %s", got, wantH2)
 			}
 			if cfg.H2.Prefix != headingPrefixH2 {
 				t.Fatalf("h2 prefix = %q", cfg.H2.Prefix)
 			}
-			if got := deref(cfg.H6.Color); got != tt.tint.Purple.Hex() {
-				t.Fatalf("h6 color = %s, want %s", got, tt.tint.Purple.Hex())
+			wantH6 := shift(h6Fade)
+			if got := deref(cfg.H6.Color); got != wantH6 || got == wantH2 {
+				t.Fatalf("h6 color = %s, want %s distinct from h2", got, wantH6)
 			}
 			if cfg.H6.Bold == nil || *cfg.H6.Bold {
 				t.Fatal("h6 bold should be false")
+			}
+			if cfg.Document.Margin == nil || *cfg.Document.Margin != defaultMargin {
+				t.Fatal("document margin should be the default")
+			}
+			if got := deref(cfg.Code.BackgroundColor); got == "" || got == tt.tint.Bg.Hex() {
+				t.Fatalf("inline code background = %q", got)
 			}
 			if cfg.Link.Underline == nil || !*cfg.Link.Underline {
 				t.Fatal("link should be underlined")
 			}
 			if got := deref(cfg.LinkText.Color); got != tt.linkText {
 				t.Fatalf("link text = %s, want %s", got, tt.linkText)
-			}
-			if got := deref(cfg.Code.BackgroundColor); got == "" || got == tt.tint.Bg.Hex() {
-				t.Fatalf("inline code background = %q", got)
 			}
 			if cfg.CodeBlock.Chroma != nil {
 				t.Fatal("code block chroma should be unset so glamour uses Theme")

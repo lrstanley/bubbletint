@@ -6,3 +6,5 @@ bin/*
 *.log
 .env
 public
+go.work
+go.work.sum

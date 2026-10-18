@@ -5,7 +5,6 @@
 package glamourtint
 
 import (
-	"cmp"
 	"fmt"
 	"image/color"
 
@@ -58,56 +57,21 @@ func firstColor(colors ...*tint.Color) *tint.Color {
 	return nil
 }
 
-// codeChip is a background a step away from the tint background, so inline
-// code reads as a chip on both dark and light themes.
-func codeChip(isDark bool, bg, fallback *tint.Color) color.Color {
-	if bg == nil {
-		if fallback == nil {
+// step moves c by amount. Positive amounts lighten, negative amounts darken.
+// A missing color returns fallback.
+func step(c, fallback color.Color, amount float64) color.Color {
+	if !hasColor(c) {
+		if !hasColor(fallback) {
 			return nil
 		}
 		return fallback
 	}
-	if isDark {
-		return lighten(bg, 0.08)
+	switch {
+	case amount > 0:
+		return tint.Lighten(c, amount)
+	case amount < 0:
+		return tint.Darken(c, -amount)
+	default:
+		return c
 	}
-	return darken(bg, 0.06)
-}
-
-func darken(c color.Color, percent float64) color.Color {
-	if !hasColor(c) {
-		return nil
-	}
-
-	mult := 1.0 - clamp(percent, 0, 1)
-
-	r, g, b, a := c.RGBA()
-	return color.RGBA{
-		R: uint8(float64(r>>8) * mult),
-		G: uint8(float64(g>>8) * mult),
-		B: uint8(float64(b>>8) * mult),
-		A: uint8(min(255, float64(a>>8))),
-	}
-}
-
-func lighten(c color.Color, percent float64) color.Color {
-	if !hasColor(c) {
-		return nil
-	}
-
-	add := 255 * clamp(percent, 0, 1)
-
-	r, g, b, a := c.RGBA()
-	return color.RGBA{
-		R: uint8(min(255, float64(r>>8)+add)),
-		G: uint8(min(255, float64(g>>8)+add)),
-		B: uint8(min(255, float64(b>>8)+add)),
-		A: uint8(min(255, float64(a>>8))),
-	}
-}
-
-func clamp[T cmp.Ordered](v, low, high T) T {
-	if high < low {
-		high, low = low, high
-	}
-	return min(high, max(low, v))
 }
