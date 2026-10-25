@@ -171,6 +171,40 @@ var Tint3024Night = &Tint{
 	Yellow:       &Color{R: 253, G: 237, B: 2, A: 255},
 }
 
+// Tint5150Mode (5150 Mode) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#5150Mode
+var Tint5150Mode = &Tint{
+	DisplayName:   "5150 Mode",
+	ID:            "5150_mode",
+	Dark:          true,
+	Hue:           HueGreen,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 236, G: 243, B: 219, A: 255},
+	Bg:            &Color{R: 8, G: 40, B: 32, A: 255},
+	SelectionBg:   &Color{R: 36, G: 84, B: 68, A: 255},
+	SelectionText: &Color{R: 255, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 255, G: 255, B: 255, A: 255},
+	Cursor:        &Color{R: 213, G: 232, B: 117, A: 255},
+	CursorText:    &Color{R: 8, G: 40, B: 32, A: 255},
+	BrightBlack:   &Color{R: 168, G: 197, B: 185, A: 255},
+	BrightBlue:    &Color{R: 155, G: 200, B: 181, A: 255},
+	BrightCyan:    &Color{R: 125, G: 219, B: 194, A: 255},
+	BrightGreen:   &Color{R: 142, G: 214, B: 154, A: 255},
+	BrightPurple:  &Color{R: 190, G: 199, B: 160, A: 255},
+	BrightRed:     &Color{R: 232, G: 171, B: 131, A: 255},
+	BrightWhite:   &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow:  &Color{R: 227, G: 220, B: 139, A: 255},
+	Black:         &Color{R: 140, G: 169, B: 159, A: 255},
+	Blue:          &Color{R: 128, G: 179, B: 160, A: 255},
+	Cyan:          &Color{R: 97, G: 197, B: 172, A: 255},
+	Green:         &Color{R: 112, G: 189, B: 131, A: 255},
+	Purple:        &Color{R: 168, G: 179, B: 138, A: 255},
+	Red:           &Color{R: 213, G: 154, B: 113, A: 255},
+	White:         &Color{R: 229, G: 237, B: 219, A: 255},
+	Yellow:        &Color{R: 210, G: 202, B: 113, A: 255},
+}
+
 // TintAardvarkBlue (Aardvark Blue) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#AardvarkBlue
@@ -772,6 +806,73 @@ var TintAmberCrtRetro = &Tint{
 	Red:          &Color{R: 255, G: 105, B: 0, A: 255},
 	White:        &Color{R: 255, G: 217, B: 160, A: 255},
 	Yellow:       &Color{R: 255, G: 199, B: 65, A: 255},
+}
+
+// TintAnalyzedDark (Analyzed Dark) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#AnalyzedDark
+var TintAnalyzedDark = &Tint{
+	DisplayName:   "Analyzed Dark",
+	ID:            "analyzed_dark",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 231, G: 239, B: 248, A: 255},
+	Bg:            &Color{R: 11, G: 18, B: 32, A: 255},
+	SelectionBg:   &Color{R: 52, G: 75, B: 100, A: 255},
+	SelectionText: &Color{R: 255, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 255, G: 255, B: 255, A: 255},
+	Cursor:        &Color{R: 93, G: 213, B: 217, A: 255},
+	CursorText:    &Color{R: 11, G: 18, B: 32, A: 255},
+	BrightBlack:   &Color{R: 154, G: 175, B: 197, A: 255},
+	BrightBlue:    &Color{R: 161, G: 206, B: 255, A: 255},
+	BrightCyan:    &Color{R: 138, G: 240, B: 238, A: 255},
+	BrightGreen:   &Color{R: 138, G: 235, B: 197, A: 255},
+	BrightPurple:  &Color{R: 217, G: 189, B: 255, A: 255},
+	BrightRed:     &Color{R: 255, G: 155, B: 171, A: 255},
+	BrightWhite:   &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow:  &Color{R: 255, G: 224, B: 157, A: 255},
+	Black:         &Color{R: 131, G: 149, B: 169, A: 255},
+	Blue:          &Color{R: 119, G: 185, B: 248, A: 255},
+	Cyan:          &Color{R: 93, G: 213, B: 217, A: 255},
+	Green:         &Color{R: 101, G: 213, B: 174, A: 255},
+	Purple:        &Color{R: 194, G: 163, B: 250, A: 255},
+	Red:           &Color{R: 240, G: 120, B: 138, A: 255},
+	White:         &Color{R: 231, G: 239, B: 248, A: 255},
+	Yellow:        &Color{R: 242, G: 195, B: 119, A: 255},
+}
+
+// TintAnalyzedLight (Analyzed Light) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#AnalyzedLight
+var TintAnalyzedLight = &Tint{
+	DisplayName:   "Analyzed Light",
+	ID:            "analyzed_light",
+	Dark:          false,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 36, G: 52, B: 73, A: 255},
+	Bg:            &Color{R: 246, G: 245, B: 240, A: 255},
+	SelectionBg:   &Color{R: 213, G: 230, B: 239, A: 255},
+	SelectionText: &Color{R: 36, G: 52, B: 73, A: 255},
+	Bold:          &Color{R: 23, G: 39, B: 60, A: 255},
+	Cursor:        &Color{R: 32, G: 94, B: 168, A: 255},
+	CursorText:    &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightBlack:   &Color{R: 72, G: 87, B: 109, A: 255},
+	BrightBlue:    &Color{R: 27, G: 83, B: 150, A: 255},
+	BrightCyan:    &Color{R: 6, G: 102, B: 111, A: 255},
+	BrightGreen:   &Color{R: 13, G: 103, B: 79, A: 255},
+	BrightPurple:  &Color{R: 103, G: 56, B: 145, A: 255},
+	BrightRed:     &Color{R: 157, G: 47, B: 73, A: 255},
+	BrightWhite:   &Color{R: 23, G: 39, B: 60, A: 255},
+	BrightYellow:  &Color{R: 120, G: 80, B: 11, A: 255},
+	Black:         &Color{R: 83, G: 97, B: 119, A: 255},
+	Blue:          &Color{R: 32, G: 94, B: 168, A: 255},
+	Cyan:          &Color{R: 8, G: 117, B: 126, A: 255},
+	Green:         &Color{R: 22, G: 118, B: 92, A: 255},
+	Purple:        &Color{R: 116, G: 68, B: 160, A: 255},
+	Red:           &Color{R: 177, G: 62, B: 85, A: 255},
+	White:         &Color{R: 36, G: 52, B: 73, A: 255},
+	Yellow:        &Color{R: 138, G: 89, B: 12, A: 255},
 }
 
 // TintAndromeda (Andromeda) is a collection of styles.
@@ -3109,6 +3210,86 @@ var TintCaliche = &Tint{
 	Yellow:        &Color{R: 223, G: 191, B: 104, A: 255},
 }
 
+// TintCallie (Callie) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#Callie
+//
+// Credit to:
+//  * Greylock Labs (https://github.com/greylocklabs/themes)
+var TintCallie = &Tint{
+	DisplayName: "Callie",
+	ID:          "callie",
+	Author:      "Greylock Labs (https://github.com/greylocklabs/themes)",
+	CreditSources: []*CreditSource{
+		{Name: "Greylock Labs (https://github.com/greylocklabs/themes)"},
+	},
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          TonePastel,
+	Fg:            &Color{R: 224, G: 211, B: 223, A: 255},
+	Bg:            &Color{R: 28, G: 18, B: 32, A: 255},
+	SelectionBg:   &Color{R: 60, G: 44, B: 65, A: 255},
+	SelectionText: &Color{R: 224, G: 211, B: 223, A: 255},
+	Cursor:        &Color{R: 240, G: 143, B: 184, A: 255},
+	CursorText:    &Color{R: 46, G: 15, B: 32, A: 255},
+	BrightBlack:   &Color{R: 154, G: 135, B: 151, A: 255},
+	BrightBlue:    &Color{R: 191, G: 213, B: 253, A: 255},
+	BrightCyan:    &Color{R: 166, G: 225, B: 225, A: 255},
+	BrightGreen:   &Color{R: 186, G: 224, B: 190, A: 255},
+	BrightPurple:  &Color{R: 245, G: 197, B: 215, A: 255},
+	BrightRed:     &Color{R: 250, G: 197, B: 194, A: 255},
+	BrightWhite:   &Color{R: 246, G: 238, B: 245, A: 255},
+	BrightYellow:  &Color{R: 232, G: 209, B: 168, A: 255},
+	Black:         &Color{R: 51, G: 36, B: 58, A: 255},
+	Blue:          &Color{R: 163, G: 190, B: 239, A: 255},
+	Cyan:          &Color{R: 130, G: 205, B: 205, A: 255},
+	Green:         &Color{R: 157, G: 204, B: 163, A: 255},
+	Purple:        &Color{R: 229, G: 170, B: 193, A: 255},
+	Red:           &Color{R: 234, G: 171, B: 168, A: 255},
+	White:         &Color{R: 201, G: 183, B: 198, A: 255},
+	Yellow:        &Color{R: 214, G: 186, B: 134, A: 255},
+}
+
+// TintCallieLight (Callie Light) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#CallieLight
+//
+// Credit to:
+//  * Greylock Labs (https://github.com/greylocklabs/themes)
+var TintCallieLight = &Tint{
+	DisplayName: "Callie Light",
+	ID:          "callie_light",
+	Author:      "Greylock Labs (https://github.com/greylocklabs/themes)",
+	CreditSources: []*CreditSource{
+		{Name: "Greylock Labs (https://github.com/greylocklabs/themes)"},
+	},
+	Dark:          false,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 85, G: 65, B: 78, A: 255},
+	Bg:            &Color{R: 251, G: 245, B: 248, A: 255},
+	SelectionBg:   &Color{R: 224, G: 204, B: 215, A: 255},
+	SelectionText: &Color{R: 85, G: 65, B: 78, A: 255},
+	Cursor:        &Color{R: 227, G: 95, B: 151, A: 255},
+	CursorText:    &Color{R: 46, G: 15, B: 32, A: 255},
+	BrightBlack:   &Color{R: 107, G: 85, B: 97, A: 255},
+	BrightBlue:    &Color{R: 59, G: 89, B: 147, A: 255},
+	BrightCyan:    &Color{R: 0, G: 104, B: 105, A: 255},
+	BrightGreen:   &Color{R: 44, G: 105, B: 56, A: 255},
+	BrightPurple:  &Color{R: 133, G: 65, B: 95, A: 255},
+	BrightRed:     &Color{R: 138, G: 65, B: 64, A: 255},
+	BrightWhite:   &Color{R: 220, G: 200, B: 211, A: 255},
+	BrightYellow:  &Color{R: 117, G: 84, B: 2, A: 255},
+	Black:         &Color{R: 43, G: 26, B: 38, A: 255},
+	Blue:          &Color{R: 75, G: 107, B: 166, A: 255},
+	Cyan:          &Color{R: 2, G: 124, B: 125, A: 255},
+	Green:         &Color{R: 63, G: 123, B: 73, A: 255},
+	Purple:        &Color{R: 152, G: 81, B: 112, A: 255},
+	Red:           &Color{R: 158, G: 81, B: 81, A: 255},
+	White:         &Color{R: 143, G: 121, B: 135, A: 255},
+	Yellow:        &Color{R: 136, G: 101, B: 24, A: 255},
+}
+
 // TintCandlelight (Candlelight) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Candlelight
@@ -4021,6 +4202,38 @@ var TintClockworkGold = &Tint{
 	Red:           &Color{R: 233, G: 75, B: 73, A: 255},
 	White:         &Color{R: 169, G: 166, B: 157, A: 255},
 	Yellow:        &Color{R: 255, G: 204, B: 0, A: 255},
+}
+
+// TintClu (Clu) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#Clu
+var TintClu = &Tint{
+	DisplayName:   "Clu",
+	ID:            "clu",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 253, G: 211, B: 141, A: 255},
+	Bg:            &Color{R: 0, G: 13, B: 21, A: 255},
+	SelectionBg:   &Color{R: 60, G: 0, B: 0, A: 255},
+	SelectionText: &Color{R: 253, G: 211, B: 141, A: 255},
+	Cursor:        &Color{R: 0, G: 181, B: 227, A: 255},
+	CursorText:    &Color{R: 0, G: 13, B: 21, A: 255},
+	BrightBlack:   &Color{R: 101, G: 51, B: 51, A: 255},
+	BrightBlue:    &Color{R: 0, G: 181, B: 227, A: 255},
+	BrightCyan:    &Color{R: 246, G: 0, B: 4, A: 255},
+	BrightGreen:   &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightPurple:  &Color{R: 246, G: 0, B: 4, A: 255},
+	BrightRed:     &Color{R: 246, G: 0, B: 4, A: 255},
+	BrightWhite:   &Color{R: 233, G: 103, B: 0, A: 255},
+	BrightYellow:  &Color{R: 255, G: 255, B: 255, A: 255},
+	Black:         &Color{R: 32, G: 23, B: 12, A: 255},
+	Blue:          &Color{R: 233, G: 103, B: 0, A: 255},
+	Cyan:          &Color{R: 255, G: 255, B: 255, A: 255},
+	Green:         &Color{R: 0, G: 181, B: 227, A: 255},
+	Purple:        &Color{R: 233, G: 103, B: 0, A: 255},
+	Red:           &Color{R: 246, G: 0, B: 4, A: 255},
+	White:         &Color{R: 0, G: 181, B: 227, A: 255},
+	Yellow:        &Color{R: 255, G: 255, B: 15, A: 255},
 }
 
 // TintCobaltNeon (Cobalt Neon) is a collection of styles.
@@ -5367,6 +5580,40 @@ var TintDesertThunder = &Tint{
 	Yellow:        &Color{R: 238, G: 211, B: 125, A: 255},
 }
 
+// TintDetroitAfterDark (Detroit After Dark) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#DetroitAfterDark
+var TintDetroitAfterDark = &Tint{
+	DisplayName:   "Detroit After Dark",
+	ID:            "detroit_after_dark",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 247, G: 230, B: 215, A: 255},
+	Bg:            &Color{R: 36, G: 20, B: 27, A: 255},
+	SelectionBg:   &Color{R: 76, G: 52, B: 63, A: 255},
+	SelectionText: &Color{R: 247, G: 230, B: 215, A: 255},
+	Bold:          &Color{R: 249, G: 235, B: 223, A: 255},
+	Cursor:        &Color{R: 236, G: 197, B: 120, A: 255},
+	CursorText:    &Color{R: 36, G: 20, B: 27, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 154, G: 188, B: 222, A: 255},
+	BrightCyan:    &Color{R: 147, G: 207, B: 209, A: 255},
+	BrightGreen:   &Color{R: 169, G: 201, B: 156, A: 255},
+	BrightPurple:  &Color{R: 207, G: 167, B: 217, A: 255},
+	BrightRed:     &Color{R: 233, G: 127, B: 117, A: 255},
+	BrightWhite:   &Color{R: 249, G: 235, B: 223, A: 255},
+	BrightYellow:  &Color{R: 236, G: 197, B: 120, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 140, G: 179, B: 217, A: 255},
+	Cyan:          &Color{R: 131, G: 201, B: 203, A: 255},
+	Green:         &Color{R: 157, G: 194, B: 142, A: 255},
+	Purple:        &Color{R: 200, G: 155, B: 211, A: 255},
+	Red:           &Color{R: 230, G: 110, B: 97, A: 255},
+	White:         &Color{R: 247, G: 230, B: 215, A: 255},
+	Yellow:        &Color{R: 233, G: 189, B: 102, A: 255},
+}
+
 // TintDetuned (Detuned) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Detuned
@@ -5395,6 +5642,39 @@ var TintDetuned = &Tint{
 	Red:          &Color{R: 254, G: 67, B: 134, A: 255},
 	White:        &Color{R: 199, G: 199, B: 199, A: 255},
 	Yellow:       &Color{R: 230, G: 218, B: 115, A: 255},
+}
+
+// TintDiaryOfALunatic (Diary of a Lunatic) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#DiaryOfALunatic
+var TintDiaryOfALunatic = &Tint{
+	DisplayName:   "Diary of a Lunatic",
+	ID:            "diary_of_a_lunatic",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 216, G: 245, B: 247, A: 255},
+	Bg:            &Color{R: 4, G: 38, B: 48, A: 255},
+	SelectionBg:   &Color{R: 35, G: 76, B: 100, A: 255},
+	SelectionText: &Color{R: 241, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 234, G: 193, B: 105, A: 255},
+	Cursor:        &Color{R: 234, G: 193, B: 105, A: 255},
+	CursorText:    &Color{R: 4, G: 38, B: 48, A: 255},
+	BrightBlack:   &Color{R: 185, G: 211, B: 218, A: 255},
+	BrightBlue:    &Color{R: 160, G: 209, B: 240, A: 255},
+	BrightCyan:    &Color{R: 150, G: 234, B: 241, A: 255},
+	BrightGreen:   &Color{R: 176, G: 226, B: 193, A: 255},
+	BrightPurple:  &Color{R: 204, G: 179, B: 245, A: 255},
+	BrightRed:     &Color{R: 241, G: 163, B: 170, A: 255},
+	BrightWhite:   &Color{R: 243, G: 255, B: 255, A: 255},
+	BrightYellow:  &Color{R: 242, G: 211, B: 139, A: 255},
+	Black:         &Color{R: 158, G: 189, B: 199, A: 255},
+	Blue:          &Color{R: 131, G: 188, B: 231, A: 255},
+	Cyan:          &Color{R: 113, G: 215, B: 227, A: 255},
+	Green:         &Color{R: 147, G: 207, B: 172, A: 255},
+	Purple:        &Color{R: 181, G: 155, B: 232, A: 255},
+	Red:           &Color{R: 229, G: 140, B: 145, A: 255},
+	White:         &Color{R: 216, G: 245, B: 247, A: 255},
+	Yellow:        &Color{R: 227, G: 187, B: 105, A: 255},
 }
 
 // TintDimidium (Dimidium) is a collection of styles.
@@ -5773,6 +6053,40 @@ var TintDraculaPlusHighContrast = &Tint{
 	Yellow:        &Color{R: 255, G: 203, B: 107, A: 255},
 }
 
+// TintDreamOnward (Dream Onward) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#DreamOnward
+var TintDreamOnward = &Tint{
+	DisplayName:   "Dream Onward",
+	ID:            "dream_onward",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 247, G: 231, B: 206, A: 255},
+	Bg:            &Color{R: 25, G: 18, B: 15, A: 255},
+	SelectionBg:   &Color{R: 73, G: 56, B: 48, A: 255},
+	SelectionText: &Color{R: 255, G: 248, B: 238, A: 255},
+	Bold:          &Color{R: 255, G: 249, B: 238, A: 255},
+	Cursor:        &Color{R: 227, G: 182, B: 91, A: 255},
+	CursorText:    &Color{R: 25, G: 18, B: 15, A: 255},
+	BrightBlack:   &Color{R: 195, G: 199, B: 200, A: 255},
+	BrightBlue:    &Color{R: 147, G: 183, B: 209, A: 255},
+	BrightCyan:    &Color{R: 146, G: 200, B: 195, A: 255},
+	BrightGreen:   &Color{R: 163, G: 195, B: 158, A: 255},
+	BrightPurple:  &Color{R: 195, G: 170, B: 219, A: 255},
+	BrightRed:     &Color{R: 226, G: 142, B: 123, A: 255},
+	BrightWhite:   &Color{R: 255, G: 249, B: 238, A: 255},
+	BrightYellow:  &Color{R: 231, G: 194, B: 117, A: 255},
+	Black:         &Color{R: 166, G: 167, B: 166, A: 255},
+	Blue:          &Color{R: 127, G: 169, B: 200, A: 255},
+	Cyan:          &Color{R: 125, G: 190, B: 185, A: 255},
+	Green:         &Color{R: 145, G: 184, B: 140, A: 255},
+	Purple:        &Color{R: 185, G: 154, B: 211, A: 255},
+	Red:           &Color{R: 220, G: 120, B: 97, A: 255},
+	White:         &Color{R: 247, G: 231, B: 206, A: 255},
+	Yellow:        &Color{R: 227, G: 182, B: 91, A: 255},
+}
+
 // TintDriftwood (Driftwood) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Driftwood
@@ -6080,6 +6394,73 @@ var TintEctoplasm = &Tint{
 	Red:           &Color{R: 241, G: 155, B: 141, A: 255},
 	White:         &Color{R: 239, G: 255, B: 251, A: 255},
 	Yellow:        &Color{R: 215, G: 221, B: 94, A: 255},
+}
+
+// TintEightHundred (Eight Hundred) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#EightHundred
+var TintEightHundred = &Tint{
+	DisplayName:   "Eight Hundred",
+	ID:            "eight_hundred",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 233, G: 230, B: 217, A: 255},
+	Bg:            &Color{R: 16, G: 28, B: 40, A: 255},
+	SelectionBg:   &Color{R: 56, G: 84, B: 104, A: 255},
+	SelectionText: &Color{R: 255, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 255, G: 255, B: 255, A: 255},
+	Cursor:        &Color{R: 243, G: 199, B: 108, A: 255},
+	CursorText:    &Color{R: 16, G: 28, B: 40, A: 255},
+	BrightBlack:   &Color{R: 209, G: 217, B: 222, A: 255},
+	BrightBlue:    &Color{R: 170, G: 205, B: 243, A: 255},
+	BrightCyan:    &Color{R: 145, G: 232, B: 221, A: 255},
+	BrightGreen:   &Color{R: 169, G: 224, B: 185, A: 255},
+	BrightPurple:  &Color{R: 216, G: 188, B: 238, A: 255},
+	BrightRed:     &Color{R: 255, G: 166, B: 155, A: 255},
+	BrightWhite:   &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow:  &Color{R: 255, G: 224, B: 154, A: 255},
+	Black:         &Color{R: 178, G: 192, B: 201, A: 255},
+	Blue:          &Color{R: 139, G: 185, B: 234, A: 255},
+	Cyan:          &Color{R: 105, G: 217, B: 203, A: 255},
+	Green:         &Color{R: 142, G: 209, B: 163, A: 255},
+	Purple:        &Color{R: 195, G: 162, B: 230, A: 255},
+	Red:           &Color{R: 240, G: 139, B: 129, A: 255},
+	White:         &Color{R: 233, G: 230, B: 217, A: 255},
+	Yellow:        &Color{R: 243, G: 199, B: 108, A: 255},
+}
+
+// TintElectricVoodoo (Electric Voodoo) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#ElectricVoodoo
+var TintElectricVoodoo = &Tint{
+	DisplayName:   "Electric Voodoo",
+	ID:            "electric_voodoo",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 250, G: 230, B: 206, A: 255},
+	Bg:            &Color{R: 64, G: 32, B: 60, A: 255},
+	SelectionBg:   &Color{R: 96, G: 60, B: 86, A: 255},
+	SelectionText: &Color{R: 250, G: 230, B: 206, A: 255},
+	Bold:          &Color{R: 251, G: 235, B: 216, A: 255},
+	Cursor:        &Color{R: 239, G: 200, B: 135, A: 255},
+	CursorText:    &Color{R: 64, G: 32, B: 60, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 159, G: 194, B: 227, A: 255},
+	BrightCyan:    &Color{R: 153, G: 215, B: 207, A: 255},
+	BrightGreen:   &Color{R: 179, G: 208, B: 151, A: 255},
+	BrightPurple:  &Color{R: 222, G: 171, B: 231, A: 255},
+	BrightRed:     &Color{R: 242, G: 153, B: 134, A: 255},
+	BrightWhite:   &Color{R: 251, G: 235, B: 216, A: 255},
+	BrightYellow:  &Color{R: 239, G: 200, B: 135, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 146, G: 186, B: 224, A: 255},
+	Cyan:          &Color{R: 139, G: 209, B: 201, A: 255},
+	Green:         &Color{R: 169, G: 202, B: 137, A: 255},
+	Purple:        &Color{R: 217, G: 159, B: 227, A: 255},
+	Red:           &Color{R: 240, G: 139, B: 118, A: 255},
+	White:         &Color{R: 250, G: 230, B: 206, A: 255},
+	Yellow:        &Color{R: 237, G: 192, B: 119, A: 255},
 }
 
 // TintElectronHighlighter (Electron Highlighter) is a collection of styles.
@@ -7272,6 +7653,40 @@ var TintForgeEmber = &Tint{
 	Yellow:       &Color{R: 255, G: 179, B: 71, A: 255},
 }
 
+// TintForgedInSteel (Forged in Steel) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#ForgedInSteel
+var TintForgedInSteel = &Tint{
+	DisplayName:   "Forged in Steel",
+	ID:            "forged_in_steel",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 232, G: 241, B: 245, A: 255},
+	Bg:            &Color{R: 20, G: 35, B: 47, A: 255},
+	SelectionBg:   &Color{R: 52, G: 75, B: 89, A: 255},
+	SelectionText: &Color{R: 255, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 255, G: 255, B: 255, A: 255},
+	Cursor:        &Color{R: 200, G: 220, B: 232, A: 255},
+	CursorText:    &Color{R: 20, G: 35, B: 47, A: 255},
+	BrightBlack:   &Color{R: 183, G: 198, B: 208, A: 255},
+	BrightBlue:    &Color{R: 160, G: 203, B: 234, A: 255},
+	BrightCyan:    &Color{R: 154, G: 217, B: 224, A: 255},
+	BrightGreen:   &Color{R: 169, G: 201, B: 195, A: 255},
+	BrightPurple:  &Color{R: 192, G: 200, B: 217, A: 255},
+	BrightRed:     &Color{R: 239, G: 133, B: 131, A: 255},
+	BrightWhite:   &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow:  &Color{R: 210, G: 207, B: 183, A: 255},
+	Black:         &Color{R: 157, G: 174, B: 188, A: 255},
+	Blue:          &Color{R: 131, G: 184, B: 218, A: 255},
+	Cyan:          &Color{R: 129, G: 200, B: 211, A: 255},
+	Green:         &Color{R: 149, G: 185, B: 183, A: 255},
+	Purple:        &Color{R: 168, G: 178, B: 201, A: 255},
+	Red:           &Color{R: 219, G: 119, B: 121, A: 255},
+	White:         &Color{R: 219, G: 232, B: 238, A: 255},
+	Yellow:        &Color{R: 188, G: 185, B: 161, A: 255},
+}
+
 // TintFramer (Framer) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Framer
@@ -7550,6 +7965,39 @@ var TintGhosttyDefaultStyleDark = &Tint{
 	Red:          &Color{R: 204, G: 101, B: 102, A: 255},
 	White:        &Color{R: 195, G: 200, B: 198, A: 255},
 	Yellow:       &Color{R: 240, G: 198, B: 116, A: 255},
+}
+
+// TintGildedForestDark (Gilded-Forest-Dark) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#GildedForestDark
+var TintGildedForestDark = &Tint{
+	DisplayName:   "Gilded-Forest-Dark",
+	ID:            "gilded_forest_dark",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 247, G: 210, B: 125, A: 255},
+	Bg:            &Color{R: 13, G: 21, B: 5, A: 255},
+	SelectionBg:   &Color{R: 40, G: 42, B: 115, A: 255},
+	SelectionText: &Color{R: 247, G: 210, B: 125, A: 255},
+	Bold:          &Color{R: 247, G: 210, B: 125, A: 255},
+	Cursor:        &Color{R: 247, G: 210, B: 125, A: 255},
+	CursorText:    &Color{R: 13, G: 21, B: 5, A: 255},
+	BrightBlack:   &Color{R: 101, G: 86, B: 86, A: 255},
+	BrightBlue:    &Color{R: 78, G: 173, B: 189, A: 255},
+	BrightCyan:    &Color{R: 84, G: 173, B: 189, A: 255},
+	BrightGreen:   &Color{R: 157, G: 206, B: 97, A: 255},
+	BrightPurple:  &Color{R: 117, G: 28, B: 108, A: 255},
+	BrightRed:     &Color{R: 179, G: 101, B: 97, A: 255},
+	BrightWhite:   &Color{R: 254, G: 255, B: 255, A: 255},
+	BrightYellow:  &Color{R: 221, G: 208, B: 68, A: 255},
+	Black:         &Color{R: 0, G: 0, B: 0, A: 255},
+	Blue:          &Color{R: 101, G: 140, B: 247, A: 255},
+	Cyan:          &Color{R: 113, G: 190, B: 249, A: 255},
+	Green:         &Color{R: 165, G: 252, B: 175, A: 255},
+	Purple:        &Color{R: 174, G: 123, B: 255, A: 255},
+	Red:           &Color{R: 236, G: 108, B: 139, A: 255},
+	White:         &Color{R: 252, G: 254, B: 249, A: 255},
+	Yellow:        &Color{R: 243, G: 179, B: 109, A: 255},
 }
 
 // TintGitHub (GitHub) is a collection of styles.
@@ -8003,6 +8451,40 @@ var TintGleamClassic = &Tint{
 	Red:          &Color{R: 243, G: 71, B: 71, A: 255},
 	White:        &Color{R: 247, G: 247, B: 247, A: 255},
 	Yellow:       &Color{R: 255, G: 213, B: 150, A: 255},
+}
+
+// TintGoldenMischief (Golden Mischief) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#GoldenMischief
+var TintGoldenMischief = &Tint{
+	DisplayName:   "Golden Mischief",
+	ID:            "golden_mischief",
+	Dark:          false,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 48, G: 35, B: 60, A: 255},
+	Bg:            &Color{R: 215, G: 179, B: 121, A: 255},
+	SelectionBg:   &Color{R: 86, G: 60, B: 112, A: 255},
+	SelectionText: &Color{R: 255, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 36, G: 24, B: 44, A: 255},
+	Cursor:        &Color{R: 99, G: 43, B: 133, A: 255},
+	CursorText:    &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightBlack:   &Color{R: 78, G: 59, B: 84, A: 255},
+	BrightBlue:    &Color{R: 44, G: 69, B: 131, A: 255},
+	BrightCyan:    &Color{R: 0, G: 80, B: 89, A: 255},
+	BrightGreen:   &Color{R: 25, G: 81, B: 51, A: 255},
+	BrightPurple:  &Color{R: 103, G: 44, B: 136, A: 255},
+	BrightRed:     &Color{R: 136, G: 30, B: 58, A: 255},
+	BrightWhite:   &Color{R: 73, G: 55, B: 39, A: 255},
+	BrightYellow:  &Color{R: 96, G: 67, B: 0, A: 255},
+	Black:         &Color{R: 48, G: 35, B: 60, A: 255},
+	Blue:          &Color{R: 35, G: 63, B: 136, A: 255},
+	Cyan:          &Color{R: 0, G: 80, B: 88, A: 255},
+	Green:         &Color{R: 20, G: 81, B: 50, A: 255},
+	Purple:        &Color{R: 99, G: 43, B: 133, A: 255},
+	Red:           &Color{R: 139, G: 24, B: 56, A: 255},
+	White:         &Color{R: 56, G: 43, B: 27, A: 255},
+	Yellow:        &Color{R: 95, G: 67, B: 0, A: 255},
 }
 
 // TintGoldenRetrieverCream (Golden Retriever Cream) is a collection of styles.
@@ -8702,6 +9184,72 @@ var TintGuezwhoz = &Tint{
 	Yellow:        &Color{R: 183, G: 208, B: 116, A: 255},
 }
 
+// TintHnAfterDark (HN After Dark) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#HnAfterDark
+var TintHnAfterDark = &Tint{
+	DisplayName:   "HN After Dark",
+	ID:            "hn_after_dark",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 246, G: 246, B: 239, A: 255},
+	Bg:            &Color{R: 24, G: 24, B: 24, A: 255},
+	SelectionBg:   &Color{R: 69, G: 69, B: 69, A: 255},
+	SelectionText: &Color{R: 255, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 246, G: 246, B: 239, A: 255},
+	Cursor:        &Color{R: 255, G: 102, B: 0, A: 255},
+	CursorText:    &Color{R: 24, G: 24, B: 24, A: 255},
+	BrightBlack:   &Color{R: 146, G: 146, B: 146, A: 255},
+	BrightBlue:    &Color{R: 131, G: 183, B: 255, A: 255},
+	BrightCyan:    &Color{R: 120, G: 219, B: 238, A: 255},
+	BrightGreen:   &Color{R: 133, G: 220, B: 147, A: 255},
+	BrightPurple:  &Color{R: 216, G: 156, B: 224, A: 255},
+	BrightRed:     &Color{R: 255, G: 145, B: 111, A: 255},
+	BrightWhite:   &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow:  &Color{R: 242, G: 209, B: 123, A: 255},
+	Black:         &Color{R: 133, G: 133, B: 133, A: 255},
+	Blue:          &Color{R: 85, G: 153, B: 255, A: 255},
+	Cyan:          &Color{R: 83, G: 197, B: 232, A: 255},
+	Green:         &Color{R: 101, G: 200, B: 120, A: 255},
+	Purple:        &Color{R: 194, G: 121, B: 203, A: 255},
+	Red:           &Color{R: 255, G: 118, B: 92, A: 255},
+	White:         &Color{R: 221, G: 221, B: 221, A: 255},
+	Yellow:        &Color{R: 229, G: 185, B: 77, A: 255},
+}
+
+// TintHnClassic (HN Classic) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#HnClassic
+var TintHnClassic = &Tint{
+	DisplayName:   "HN Classic",
+	ID:            "hn_classic",
+	Dark:          false,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 36, G: 36, B: 36, A: 255},
+	Bg:            &Color{R: 246, G: 246, B: 239, A: 255},
+	SelectionBg:   &Color{R: 249, G: 213, B: 181, A: 255},
+	SelectionText: &Color{R: 36, G: 36, B: 36, A: 255},
+	Bold:          &Color{R: 36, G: 36, B: 36, A: 255},
+	Cursor:        &Color{R: 255, G: 102, B: 0, A: 255},
+	CursorText:    &Color{R: 246, G: 246, B: 239, A: 255},
+	BrightBlack:   &Color{R: 87, G: 87, B: 87, A: 255},
+	BrightBlue:    &Color{R: 18, G: 99, B: 191, A: 255},
+	BrightCyan:    &Color{R: 0, G: 121, B: 143, A: 255},
+	BrightGreen:   &Color{R: 43, G: 128, B: 68, A: 255},
+	BrightPurple:  &Color{R: 146, G: 80, B: 169, A: 255},
+	BrightRed:     &Color{R: 200, G: 51, B: 35, A: 255},
+	BrightWhite:   &Color{R: 56, G: 56, B: 56, A: 255},
+	BrightYellow:  &Color{R: 144, G: 96, B: 0, A: 255},
+	Black:         &Color{R: 36, G: 36, B: 36, A: 255},
+	Blue:          &Color{R: 7, G: 89, B: 184, A: 255},
+	Cyan:          &Color{R: 0, G: 118, B: 136, A: 255},
+	Green:         &Color{R: 35, G: 121, B: 60, A: 255},
+	Purple:        &Color{R: 135, G: 71, B: 165, A: 255},
+	Red:           &Color{R: 197, G: 46, B: 39, A: 255},
+	White:         &Color{R: 109, G: 109, B: 105, A: 255},
+	Yellow:        &Color{R: 149, G: 99, B: 0, A: 255},
+}
+
 // TintHaX0RBlue (HaX0R Blue) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#HaX0RBlue
@@ -9110,6 +9658,40 @@ var TintHighDesertSnow = &Tint{
 	Red:           &Color{R: 220, G: 38, B: 38, A: 255},
 	White:         &Color{R: 71, G: 85, B: 105, A: 255},
 	Yellow:        &Color{R: 202, G: 138, B: 4, A: 255},
+}
+
+// TintHighVoltageHighway (High Voltage Highway) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#HighVoltageHighway
+var TintHighVoltageHighway = &Tint{
+	DisplayName:   "High Voltage Highway",
+	ID:            "high_voltage_highway",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 241, G: 236, B: 227, A: 255},
+	Bg:            &Color{R: 21, G: 22, B: 25, A: 255},
+	SelectionBg:   &Color{R: 65, G: 54, B: 62, A: 255},
+	SelectionText: &Color{R: 241, G: 236, B: 227, A: 255},
+	Bold:          &Color{R: 243, G: 240, B: 233, A: 255},
+	Cursor:        &Color{R: 233, G: 201, B: 135, A: 255},
+	CursorText:    &Color{R: 21, G: 22, B: 25, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 153, G: 193, B: 217, A: 255},
+	BrightCyan:    &Color{R: 150, G: 214, B: 209, A: 255},
+	BrightGreen:   &Color{R: 170, G: 203, B: 166, A: 255},
+	BrightPurple:  &Color{R: 208, G: 175, B: 218, A: 255},
+	BrightRed:     &Color{R: 229, G: 138, B: 119, A: 255},
+	BrightWhite:   &Color{R: 243, G: 240, B: 233, A: 255},
+	BrightYellow:  &Color{R: 233, G: 201, B: 135, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 139, G: 184, B: 211, A: 255},
+	Cyan:          &Color{R: 136, G: 208, B: 203, A: 255},
+	Green:         &Color{R: 158, G: 195, B: 154, A: 255},
+	Purple:        &Color{R: 202, G: 163, B: 213, A: 255},
+	Red:           &Color{R: 225, G: 121, B: 100, A: 255},
+	White:         &Color{R: 241, G: 236, B: 227, A: 255},
+	Yellow:        &Color{R: 230, G: 194, B: 119, A: 255},
 }
 
 // TintHighway (Highway) is a collection of styles.
@@ -9596,6 +10178,39 @@ var TintHyper = &Tint{
 	Red:           &Color{R: 197, G: 30, B: 20, A: 255},
 	White:         &Color{R: 199, G: 199, B: 199, A: 255},
 	Yellow:        &Color{R: 199, G: 195, B: 40, A: 255},
+}
+
+// TintHystericalFrequency (Hysterical Frequency) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#HystericalFrequency
+var TintHystericalFrequency = &Tint{
+	DisplayName:   "Hysterical Frequency",
+	ID:            "hysterical_frequency",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 241, G: 235, B: 250, A: 255},
+	Bg:            &Color{R: 32, G: 36, B: 68, A: 255},
+	SelectionBg:   &Color{R: 73, G: 63, B: 92, A: 255},
+	SelectionText: &Color{R: 241, G: 235, B: 250, A: 255},
+	Bold:          &Color{R: 243, G: 239, B: 251, A: 255},
+	Cursor:        &Color{R: 239, G: 207, B: 127, A: 255},
+	CursorText:    &Color{R: 32, G: 36, B: 68, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 145, G: 194, B: 242, A: 255},
+	BrightCyan:    &Color{R: 139, G: 215, B: 223, A: 255},
+	BrightGreen:   &Color{R: 155, G: 207, B: 171, A: 255},
+	BrightPurple:  &Color{R: 215, G: 172, B: 237, A: 255},
+	BrightRed:     &Color{R: 234, G: 139, B: 168, A: 255},
+	BrightWhite:   &Color{R: 243, G: 239, B: 251, A: 255},
+	BrightYellow:  &Color{R: 239, G: 207, B: 127, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 130, G: 186, B: 240, A: 255},
+	Cyan:          &Color{R: 123, G: 209, B: 219, A: 255},
+	Green:         &Color{R: 141, G: 200, B: 160, A: 255},
+	Purple:        &Color{R: 209, G: 161, B: 235, A: 255},
+	Red:           &Color{R: 231, G: 123, B: 156, A: 255},
+	White:         &Color{R: 241, G: 235, B: 250, A: 255},
+	Yellow:        &Color{R: 237, G: 200, B: 110, A: 255},
 }
 
 // TintIbm5153Cga (IBM 5153 CGA) is a collection of styles.
@@ -10308,6 +10923,39 @@ var TintJubi = &Tint{
 	Yellow:       &Color{R: 110, G: 191, B: 192, A: 255},
 }
 
+// TintJumpStart (Jump Start) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#JumpStart
+var TintJumpStart = &Tint{
+	DisplayName:   "Jump Start",
+	ID:            "jump_start",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 232, G: 241, B: 250, A: 255},
+	Bg:            &Color{R: 7, G: 30, B: 52, A: 255},
+	SelectionBg:   &Color{R: 56, G: 59, B: 81, A: 255},
+	SelectionText: &Color{R: 232, G: 241, B: 250, A: 255},
+	Bold:          &Color{R: 237, G: 243, B: 251, A: 255},
+	Cursor:        &Color{R: 243, G: 207, B: 125, A: 255},
+	CursorText:    &Color{R: 7, G: 30, B: 52, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 144, G: 193, B: 243, A: 255},
+	BrightCyan:    &Color{R: 137, G: 214, B: 227, A: 255},
+	BrightGreen:   &Color{R: 146, G: 206, B: 174, A: 255},
+	BrightPurple:  &Color{R: 217, G: 170, B: 232, A: 255},
+	BrightRed:     &Color{R: 240, G: 137, B: 152, A: 255},
+	BrightWhite:   &Color{R: 237, G: 243, B: 251, A: 255},
+	BrightYellow:  &Color{R: 243, G: 207, B: 125, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 129, G: 185, B: 242, A: 255},
+	Cyan:          &Color{R: 121, G: 208, B: 224, A: 255},
+	Green:         &Color{R: 131, G: 199, B: 163, A: 255},
+	Purple:        &Color{R: 211, G: 158, B: 229, A: 255},
+	Red:           &Color{R: 238, G: 121, B: 138, A: 255},
+	White:         &Color{R: 232, G: 241, B: 250, A: 255},
+	Yellow:        &Color{R: 241, G: 200, B: 107, A: 255},
+}
+
 // TintJuteEspresso (Jute Espresso) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#JuteEspresso
@@ -10831,6 +11479,40 @@ var TintKarmaLightHc = &Tint{
 	Red:          &Color{R: 192, G: 22, B: 80, A: 255},
 	White:        &Color{R: 46, G: 44, B: 48, A: 255},
 	Yellow:       &Color{R: 156, G: 104, B: 0, A: 255},
+}
+
+// TintKashmirNights (Kashmir Nights) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#KashmirNights
+var TintKashmirNights = &Tint{
+	DisplayName:   "Kashmir Nights",
+	ID:            "kashmir_nights",
+	Dark:          true,
+	Hue:           HueOrange,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 243, G: 223, B: 201, A: 255},
+	Bg:            &Color{R: 40, G: 23, B: 20, A: 255},
+	SelectionBg:   &Color{R: 96, G: 65, B: 54, A: 255},
+	SelectionText: &Color{R: 255, G: 249, B: 237, A: 255},
+	Bold:          &Color{R: 255, G: 245, B: 230, A: 255},
+	Cursor:        &Color{R: 241, G: 187, B: 113, A: 255},
+	CursorText:    &Color{R: 40, G: 23, B: 20, A: 255},
+	BrightBlack:   &Color{R: 201, G: 184, B: 169, A: 255},
+	BrightBlue:    &Color{R: 181, G: 194, B: 210, A: 255},
+	BrightCyan:    &Color{R: 188, G: 209, B: 193, A: 255},
+	BrightGreen:   &Color{R: 203, G: 197, B: 157, A: 255},
+	BrightPurple:  &Color{R: 206, G: 181, B: 208, A: 255},
+	BrightRed:     &Color{R: 240, G: 155, B: 113, A: 255},
+	BrightWhite:   &Color{R: 255, G: 240, B: 221, A: 255},
+	BrightYellow:  &Color{R: 247, G: 204, B: 130, A: 255},
+	Black:         &Color{R: 179, G: 162, B: 154, A: 255},
+	Blue:          &Color{R: 156, G: 172, B: 193, A: 255},
+	Cyan:          &Color{R: 166, G: 182, B: 173, A: 255},
+	Green:         &Color{R: 182, G: 177, B: 138, A: 255},
+	Purple:        &Color{R: 181, G: 160, B: 183, A: 255},
+	Red:           &Color{R: 220, G: 128, B: 94, A: 255},
+	White:         &Color{R: 243, G: 223, B: 201, A: 255},
+	Yellow:        &Color{R: 230, G: 179, B: 105, A: 255},
 }
 
 // TintKeysOceanSunset (Keys Ocean Sunset) is a collection of styles.
@@ -12565,6 +13247,74 @@ var TintMidnightInMojave = &Tint{
 	Yellow:       &Color{R: 255, G: 214, B: 10, A: 255},
 }
 
+// TintMidnightRambler (Midnight Rambler) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#MidnightRambler
+var TintMidnightRambler = &Tint{
+	DisplayName:   "Midnight Rambler",
+	ID:            "midnight_rambler",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 230, G: 240, B: 250, A: 255},
+	Bg:            &Color{R: 8, G: 26, B: 48, A: 255},
+	SelectionBg:   &Color{R: 56, G: 70, B: 83, A: 255},
+	SelectionText: &Color{R: 255, G: 248, B: 238, A: 255},
+	Bold:          &Color{R: 255, G: 249, B: 238, A: 255},
+	Cursor:        &Color{R: 227, G: 194, B: 116, A: 255},
+	CursorText:    &Color{R: 8, G: 26, B: 48, A: 255},
+	BrightBlack:   &Color{R: 195, G: 199, B: 200, A: 255},
+	BrightBlue:    &Color{R: 141, G: 195, B: 242, A: 255},
+	BrightCyan:    &Color{R: 137, G: 218, B: 227, A: 255},
+	BrightGreen:   &Color{R: 143, G: 210, B: 185, A: 255},
+	BrightPurple:  &Color{R: 203, G: 158, B: 237, A: 255},
+	BrightRed:     &Color{R: 240, G: 138, B: 159, A: 255},
+	BrightWhite:   &Color{R: 255, G: 249, B: 238, A: 255},
+	BrightYellow:  &Color{R: 232, G: 204, B: 138, A: 255},
+	Black:         &Color{R: 166, G: 167, B: 166, A: 255},
+	Blue:          &Color{R: 119, G: 184, B: 240, A: 255},
+	Cyan:          &Color{R: 115, G: 211, B: 223, A: 255},
+	Green:         &Color{R: 121, G: 201, B: 172, A: 255},
+	Purple:        &Color{R: 193, G: 139, B: 233, A: 255},
+	Red:           &Color{R: 237, G: 116, B: 141, A: 255},
+	White:         &Color{R: 230, G: 240, B: 250, A: 255},
+	Yellow:        &Color{R: 227, G: 194, B: 116, A: 255},
+}
+
+// TintMindcrime (Mindcrime) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#Mindcrime
+var TintMindcrime = &Tint{
+	DisplayName:   "Mindcrime",
+	ID:            "mindcrime",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 238, G: 230, B: 221, A: 255},
+	Bg:            &Color{R: 25, G: 25, B: 28, A: 255},
+	SelectionBg:   &Color{R: 81, G: 65, B: 62, A: 255},
+	SelectionText: &Color{R: 255, G: 249, B: 237, A: 255},
+	Bold:          &Color{R: 255, G: 245, B: 230, A: 255},
+	Cursor:        &Color{R: 232, G: 110, B: 97, A: 255},
+	CursorText:    &Color{R: 25, G: 25, B: 28, A: 255},
+	BrightBlack:   &Color{R: 181, G: 189, B: 187, A: 255},
+	BrightBlue:    &Color{R: 168, G: 195, B: 207, A: 255},
+	BrightCyan:    &Color{R: 163, G: 209, B: 202, A: 255},
+	BrightGreen:   &Color{R: 155, G: 201, B: 169, A: 255},
+	BrightPurple:  &Color{R: 209, G: 179, B: 194, A: 255},
+	BrightRed:     &Color{R: 250, G: 129, B: 118, A: 255},
+	BrightWhite:   &Color{R: 255, G: 243, B: 232, A: 255},
+	BrightYellow:  &Color{R: 235, G: 193, B: 139, A: 255},
+	Black:         &Color{R: 157, G: 172, B: 174, A: 255},
+	Blue:          &Color{R: 141, G: 174, B: 188, A: 255},
+	Cyan:          &Color{R: 140, G: 186, B: 183, A: 255},
+	Green:         &Color{R: 130, G: 186, B: 160, A: 255},
+	Purple:        &Color{R: 185, G: 163, B: 175, A: 255},
+	Red:           &Color{R: 229, G: 97, B: 89, A: 255},
+	White:         &Color{R: 230, G: 223, B: 214, A: 255},
+	Yellow:        &Color{R: 211, G: 170, B: 119, A: 255},
+}
+
 // TintMirage (Mirage) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Mirage
@@ -13615,6 +14365,40 @@ var TintMotelVacancy = &Tint{
 	Red:           &Color{R: 243, G: 131, B: 142, A: 255},
 	White:         &Color{R: 248, G: 237, B: 243, A: 255},
 	Yellow:        &Color{R: 235, G: 202, B: 105, A: 255},
+}
+
+// TintMovingSignals (Moving Signals) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#MovingSignals
+var TintMovingSignals = &Tint{
+	DisplayName:   "Moving Signals",
+	ID:            "moving_signals",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 246, G: 233, B: 220, A: 255},
+	Bg:            &Color{R: 40, G: 20, B: 27, A: 255},
+	SelectionBg:   &Color{R: 88, G: 48, B: 59, A: 255},
+	SelectionText: &Color{R: 255, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 255, G: 255, B: 255, A: 255},
+	Cursor:        &Color{R: 230, G: 192, B: 119, A: 255},
+	CursorText:    &Color{R: 40, G: 20, B: 27, A: 255},
+	BrightBlack:   &Color{R: 194, G: 178, B: 178, A: 255},
+	BrightBlue:    &Color{R: 162, G: 191, B: 209, A: 255},
+	BrightCyan:    &Color{R: 167, G: 204, B: 197, A: 255},
+	BrightGreen:   &Color{R: 175, G: 203, B: 178, A: 255},
+	BrightPurple:  &Color{R: 205, G: 178, B: 200, A: 255},
+	BrightRed:     &Color{R: 238, G: 131, B: 130, A: 255},
+	BrightWhite:   &Color{R: 255, G: 243, B: 232, A: 255},
+	BrightYellow:  &Color{R: 237, G: 195, B: 133, A: 255},
+	Black:         &Color{R: 169, G: 155, B: 157, A: 255},
+	Blue:          &Color{R: 139, G: 170, B: 192, A: 255},
+	Cyan:          &Color{R: 145, G: 181, B: 178, A: 255},
+	Green:         &Color{R: 156, G: 182, B: 162, A: 255},
+	Purple:        &Color{R: 185, G: 160, B: 183, A: 255},
+	Red:           &Color{R: 213, G: 107, B: 112, A: 255},
+	White:         &Color{R: 239, G: 225, B: 211, A: 255},
+	Yellow:        &Color{R: 215, G: 169, B: 108, A: 255},
 }
 
 // TintN0Tch2K (N0Tch2K) is a collection of styles.
@@ -15839,6 +16623,40 @@ var TintParaisoDark = &Tint{
 	Yellow:       &Color{R: 254, G: 195, B: 24, A: 255},
 }
 
+// TintParanoidCircuit (Paranoid Circuit) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#ParanoidCircuit
+var TintParanoidCircuit = &Tint{
+	DisplayName:   "Paranoid Circuit",
+	ID:            "paranoid_circuit",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 242, G: 233, B: 211, A: 255},
+	Bg:            &Color{R: 39, G: 50, B: 43, A: 255},
+	SelectionBg:   &Color{R: 75, G: 73, B: 59, A: 255},
+	SelectionText: &Color{R: 255, G: 255, B: 255, A: 255},
+	Bold:          &Color{R: 255, G: 255, B: 255, A: 255},
+	Cursor:        &Color{R: 237, G: 193, B: 121, A: 255},
+	CursorText:    &Color{R: 39, G: 50, B: 43, A: 255},
+	BrightBlack:   &Color{R: 195, G: 192, B: 179, A: 255},
+	BrightBlue:    &Color{R: 174, G: 200, B: 198, A: 255},
+	BrightCyan:    &Color{R: 175, G: 216, B: 193, A: 255},
+	BrightGreen:   &Color{R: 188, G: 217, B: 146, A: 255},
+	BrightPurple:  &Color{R: 215, G: 178, B: 220, A: 255},
+	BrightRed:     &Color{R: 233, G: 170, B: 130, A: 255},
+	BrightWhite:   &Color{R: 255, G: 243, B: 223, A: 255},
+	BrightYellow:  &Color{R: 232, G: 208, B: 131, A: 255},
+	Black:         &Color{R: 170, G: 169, B: 161, A: 255},
+	Blue:          &Color{R: 156, G: 179, B: 181, A: 255},
+	Cyan:          &Color{R: 154, G: 199, B: 174, A: 255},
+	Green:         &Color{R: 167, G: 198, B: 124, A: 255},
+	Purple:        &Color{R: 198, G: 156, B: 206, A: 255},
+	Red:           &Color{R: 220, G: 151, B: 113, A: 255},
+	White:         &Color{R: 238, G: 227, B: 205, A: 255},
+	Yellow:        &Color{R: 213, G: 189, B: 110, A: 255},
+}
+
 // TintParchment (Parchment) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Parchment
@@ -16275,6 +17093,40 @@ var TintPhalaGreenDark = &Tint{
 	Red:          &Color{R: 171, G: 21, B: 0, A: 255},
 	White:        &Color{R: 203, G: 203, B: 203, A: 255},
 	Yellow:       &Color{R: 169, G: 167, B: 0, A: 255},
+}
+
+// TintPharaohsVoltage (Pharaoh's Voltage) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#PharaohsVoltage
+var TintPharaohsVoltage = &Tint{
+	DisplayName:   "Pharaoh's Voltage",
+	ID:            "pharaoh's_voltage",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 248, G: 233, B: 202, A: 255},
+	Bg:            &Color{R: 16, G: 44, B: 60, A: 255},
+	SelectionBg:   &Color{R: 62, G: 69, B: 86, A: 255},
+	SelectionText: &Color{R: 248, G: 233, B: 202, A: 255},
+	Bold:          &Color{R: 249, G: 237, B: 213, A: 255},
+	Cursor:        &Color{R: 236, G: 202, B: 120, A: 255},
+	CursorText:    &Color{R: 16, G: 44, B: 60, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 136, G: 193, B: 235, A: 255},
+	BrightCyan:    &Color{R: 133, G: 218, B: 219, A: 255},
+	BrightGreen:   &Color{R: 153, G: 203, B: 168, A: 255},
+	BrightPurple:  &Color{R: 206, G: 168, B: 222, A: 255},
+	BrightRed:     &Color{R: 237, G: 158, B: 120, A: 255},
+	BrightWhite:   &Color{R: 249, G: 237, B: 213, A: 255},
+	BrightYellow:  &Color{R: 236, G: 202, B: 120, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 120, G: 185, B: 232, A: 255},
+	Cyan:          &Color{R: 116, G: 213, B: 214, A: 255},
+	Green:         &Color{R: 139, G: 195, B: 156, A: 255},
+	Purple:        &Color{R: 199, G: 156, B: 218, A: 255},
+	Red:           &Color{R: 234, G: 145, B: 102, A: 255},
+	White:         &Color{R: 248, G: 233, B: 202, A: 255},
+	Yellow:        &Color{R: 233, G: 195, B: 102, A: 255},
 }
 
 // TintPiattoLight (Piatto Light) is a collection of styles.
@@ -16834,6 +17686,39 @@ var TintPrimary = &Tint{
 	Yellow:       &Color{R: 243, G: 179, B: 0, A: 255},
 }
 
+// TintPrinceOfBarkness (Prince of Barkness) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#PrinceOfBarkness
+var TintPrinceOfBarkness = &Tint{
+	DisplayName:   "Prince of Barkness",
+	ID:            "prince_of_barkness",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 241, G: 223, B: 191, A: 255},
+	Bg:            &Color{R: 16, G: 14, B: 23, A: 255},
+	SelectionBg:   &Color{R: 76, G: 55, B: 105, A: 255},
+	SelectionText: &Color{R: 255, G: 243, B: 222, A: 255},
+	Bold:          &Color{R: 255, G: 243, B: 222, A: 255},
+	Cursor:        &Color{R: 246, G: 200, B: 89, A: 255},
+	CursorText:    &Color{R: 16, G: 14, B: 23, A: 255},
+	BrightBlack:   &Color{R: 129, G: 121, B: 143, A: 255},
+	BrightBlue:    &Color{R: 183, G: 200, B: 255, A: 255},
+	BrightCyan:    &Color{R: 147, G: 238, B: 240, A: 255},
+	BrightGreen:   &Color{R: 146, G: 242, B: 184, A: 255},
+	BrightPurple:  &Color{R: 231, G: 184, B: 255, A: 255},
+	BrightRed:     &Color{R: 255, G: 142, B: 153, A: 255},
+	BrightWhite:   &Color{R: 255, G: 243, B: 222, A: 255},
+	BrightYellow:  &Color{R: 255, G: 224, B: 139, A: 255},
+	Black:         &Color{R: 125, G: 123, B: 134, A: 255},
+	Blue:          &Color{R: 142, G: 174, B: 255, A: 255},
+	Cyan:          &Color{R: 105, G: 219, B: 226, A: 255},
+	Green:         &Color{R: 111, G: 224, B: 162, A: 255},
+	Purple:        &Color{R: 213, G: 160, B: 245, A: 255},
+	Red:           &Color{R: 241, G: 107, B: 119, A: 255},
+	White:         &Color{R: 241, G: 223, B: 191, A: 255},
+	Yellow:        &Color{R: 246, G: 200, B: 89, A: 255},
+}
+
 // TintPrinceOfDarkness (Prince of Darkness) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#PrinceOfDarkness
@@ -16896,6 +17781,40 @@ var TintPrism = &Tint{
 	Red:          &Color{R: 255, G: 113, B: 146, A: 255},
 	White:        &Color{R: 182, G: 195, B: 220, A: 255},
 	Yellow:       &Color{R: 250, G: 215, B: 124, A: 255},
+}
+
+// TintPrismatica (Prismatica) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#Prismatica
+var TintPrismatica = &Tint{
+	DisplayName:   "Prismatica",
+	ID:            "prismatica",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 237, G: 240, B: 243, A: 255},
+	Bg:            &Color{R: 16, G: 21, B: 30, A: 255},
+	SelectionBg:   &Color{R: 62, G: 52, B: 65, A: 255},
+	SelectionText: &Color{R: 237, G: 240, B: 243, A: 255},
+	Bold:          &Color{R: 241, G: 243, B: 246, A: 255},
+	Cursor:        &Color{R: 237, G: 207, B: 125, A: 255},
+	CursorText:    &Color{R: 16, G: 21, B: 30, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 147, G: 190, B: 239, A: 255},
+	BrightCyan:    &Color{R: 137, G: 215, B: 215, A: 255},
+	BrightGreen:   &Color{R: 149, G: 206, B: 168, A: 255},
+	BrightPurple:  &Color{R: 219, G: 170, B: 224, A: 255},
+	BrightRed:     &Color{R: 241, G: 134, B: 141, A: 255},
+	BrightWhite:   &Color{R: 241, G: 243, B: 246, A: 255},
+	BrightYellow:  &Color{R: 237, G: 207, B: 125, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 131, G: 181, B: 237, A: 255},
+	Cyan:          &Color{R: 121, G: 210, B: 210, A: 255},
+	Green:         &Color{R: 135, G: 199, B: 156, A: 255},
+	Purple:        &Color{R: 214, G: 158, B: 220, A: 255},
+	Red:           &Color{R: 239, G: 118, B: 125, A: 255},
+	White:         &Color{R: 237, G: 240, B: 243, A: 255},
+	Yellow:        &Color{R: 235, G: 200, B: 107, A: 255},
 }
 
 // TintPro (Pro) is a collection of styles.
@@ -17057,6 +17976,40 @@ var TintPumpkinSpice = &Tint{
 	Red:           &Color{R: 219, G: 209, B: 206, A: 255},
 	White:         &Color{R: 255, G: 240, B: 216, A: 255},
 	Yellow:        &Color{R: 217, G: 211, B: 200, A: 255},
+}
+
+// TintPuppetsMaster (Puppet's Master) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#PuppetsMaster
+var TintPuppetsMaster = &Tint{
+	DisplayName:   "Puppet's Master",
+	ID:            "puppet's_master",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 245, G: 230, B: 213, A: 255},
+	Bg:            &Color{R: 36, G: 21, B: 14, A: 255},
+	SelectionBg:   &Color{R: 88, G: 48, B: 34, A: 255},
+	SelectionText: &Color{R: 255, G: 246, B: 231, A: 255},
+	Bold:          &Color{R: 255, G: 246, B: 231, A: 255},
+	Cursor:        &Color{R: 241, G: 121, B: 56, A: 255},
+	CursorText:    &Color{R: 36, G: 21, B: 14, A: 255},
+	BrightBlack:   &Color{R: 209, G: 194, B: 182, A: 255},
+	BrightBlue:    &Color{R: 169, G: 195, B: 233, A: 255},
+	BrightCyan:    &Color{R: 155, G: 219, B: 211, A: 255},
+	BrightGreen:   &Color{R: 190, G: 208, B: 142, A: 255},
+	BrightPurple:  &Color{R: 215, G: 179, B: 221, A: 255},
+	BrightRed:     &Color{R: 245, G: 149, B: 115, A: 255},
+	BrightWhite:   &Color{R: 255, G: 243, B: 232, A: 255},
+	BrightYellow:  &Color{R: 243, G: 203, B: 119, A: 255},
+	Black:         &Color{R: 181, G: 166, B: 154, A: 255},
+	Blue:          &Color{R: 141, G: 174, B: 224, A: 255},
+	Cyan:          &Color{R: 126, G: 201, B: 195, A: 255},
+	Green:         &Color{R: 163, G: 188, B: 117, A: 255},
+	Purple:        &Color{R: 195, G: 156, B: 206, A: 255},
+	Red:           &Color{R: 233, G: 120, B: 94, A: 255},
+	White:         &Color{R: 245, G: 230, B: 213, A: 255},
+	Yellow:        &Color{R: 229, G: 182, B: 92, A: 255},
 }
 
 // TintPurplePortal (Purple Portal) is a collection of styles.
@@ -17792,6 +18745,72 @@ var TintRhoadsRrBlack = &Tint{
 	Yellow:        &Color{R: 211, G: 175, B: 55, A: 255},
 }
 
+// TintRhoadsTribute (Rhoads Tribute) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#RhoadsTribute
+var TintRhoadsTribute = &Tint{
+	DisplayName:   "Rhoads Tribute",
+	ID:            "rhoads_tribute",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 255, G: 240, B: 210, A: 255},
+	Bg:            &Color{R: 40, G: 32, B: 47, A: 255},
+	SelectionBg:   &Color{R: 86, G: 58, B: 96, A: 255},
+	SelectionText: &Color{R: 255, G: 248, B: 233, A: 255},
+	Bold:          &Color{R: 239, G: 198, B: 109, A: 255},
+	Cursor:        &Color{R: 242, G: 195, B: 105, A: 255},
+	CursorText:    &Color{R: 40, G: 32, B: 47, A: 255},
+	BrightBlack:   &Color{R: 211, G: 200, B: 208, A: 255},
+	BrightBlue:    &Color{R: 184, G: 203, B: 239, A: 255},
+	BrightCyan:    &Color{R: 166, G: 223, B: 225, A: 255},
+	BrightGreen:   &Color{R: 193, G: 221, B: 167, A: 255},
+	BrightPurple:  &Color{R: 216, G: 185, B: 239, A: 255},
+	BrightRed:     &Color{R: 246, G: 163, B: 162, A: 255},
+	BrightWhite:   &Color{R: 255, G: 249, B: 236, A: 255},
+	BrightYellow:  &Color{R: 245, G: 211, B: 138, A: 255},
+	Black:         &Color{R: 185, G: 173, B: 185, A: 255},
+	Blue:          &Color{R: 163, G: 185, B: 227, A: 255},
+	Cyan:          &Color{R: 139, G: 205, B: 209, A: 255},
+	Green:         &Color{R: 169, G: 203, B: 146, A: 255},
+	Purple:        &Color{R: 195, G: 160, B: 229, A: 255},
+	Red:           &Color{R: 237, G: 139, B: 142, A: 255},
+	White:         &Color{R: 255, G: 240, B: 210, A: 255},
+	Yellow:        &Color{R: 234, G: 192, B: 105, A: 255},
+}
+
+// TintRideTheCurrent (Ride the Current) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#RideTheCurrent
+var TintRideTheCurrent = &Tint{
+	DisplayName:   "Ride the Current",
+	ID:            "ride_the_current",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 224, G: 242, B: 252, A: 255},
+	Bg:            &Color{R: 4, G: 27, B: 48, A: 255},
+	SelectionBg:   &Color{R: 23, G: 62, B: 103, A: 255},
+	SelectionText: &Color{R: 241, G: 250, B: 255, A: 255},
+	Bold:          &Color{R: 241, G: 250, B: 255, A: 255},
+	Cursor:        &Color{R: 88, G: 170, B: 255, A: 255},
+	CursorText:    &Color{R: 4, G: 27, B: 48, A: 255},
+	BrightBlack:   &Color{R: 182, G: 200, B: 210, A: 255},
+	BrightBlue:    &Color{R: 160, G: 204, B: 255, A: 255},
+	BrightCyan:    &Color{R: 144, G: 225, B: 235, A: 255},
+	BrightGreen:   &Color{R: 158, G: 216, B: 186, A: 255},
+	BrightPurple:  &Color{R: 208, G: 179, B: 250, A: 255},
+	BrightRed:     &Color{R: 243, G: 147, B: 155, A: 255},
+	BrightWhite:   &Color{R: 245, G: 252, B: 255, A: 255},
+	BrightYellow:  &Color{R: 242, G: 213, B: 144, A: 255},
+	Black:         &Color{R: 154, G: 175, B: 189, A: 255},
+	Blue:          &Color{R: 121, G: 179, B: 255, A: 255},
+	Cyan:          &Color{R: 108, G: 206, B: 224, A: 255},
+	Green:         &Color{R: 125, G: 197, B: 166, A: 255},
+	Purple:        &Color{R: 186, G: 152, B: 243, A: 255},
+	Red:           &Color{R: 231, G: 120, B: 123, A: 255},
+	White:         &Color{R: 224, G: 242, B: 252, A: 255},
+	Yellow:        &Color{R: 227, G: 195, B: 118, A: 255},
+}
+
 // TintRippedcasts (Rippedcasts) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Rippedcasts
@@ -17976,6 +18995,40 @@ var TintRoyal = &Tint{
 	Yellow:       &Color{R: 179, G: 157, B: 39, A: 255},
 }
 
+// TintRoyalRhapsody (Royal Rhapsody) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#RoyalRhapsody
+var TintRoyalRhapsody = &Tint{
+	DisplayName:   "Royal Rhapsody",
+	ID:            "royal_rhapsody",
+	Dark:          false,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 44, G: 43, B: 59, A: 255},
+	Bg:            &Color{R: 240, G: 230, B: 216, A: 255},
+	SelectionBg:   &Color{R: 219, G: 199, B: 195, A: 255},
+	SelectionText: &Color{R: 44, G: 43, B: 59, A: 255},
+	Bold:          &Color{R: 36, G: 34, B: 47, A: 255},
+	Cursor:        &Color{R: 101, G: 73, B: 20, A: 255},
+	CursorText:    &Color{R: 240, G: 230, B: 216, A: 255},
+	BrightBlack:   &Color{R: 83, G: 73, B: 71, A: 255},
+	BrightBlue:    &Color{R: 38, G: 73, B: 108, A: 255},
+	BrightCyan:    &Color{R: 36, G: 92, B: 95, A: 255},
+	BrightGreen:   &Color{R: 48, G: 97, B: 75, A: 255},
+	BrightPurple:  &Color{R: 96, G: 60, B: 97, A: 255},
+	BrightRed:     &Color{R: 116, G: 44, B: 60, A: 255},
+	BrightWhite:   &Color{R: 36, G: 34, B: 47, A: 255},
+	BrightYellow:  &Color{R: 101, G: 73, B: 20, A: 255},
+	Black:         &Color{R: 104, G: 92, B: 89, A: 255},
+	Blue:          &Color{R: 43, G: 83, B: 123, A: 255},
+	Cyan:          &Color{R: 40, G: 104, B: 108, A: 255},
+	Green:         &Color{R: 56, G: 111, B: 85, A: 255},
+	Purple:        &Color{R: 109, G: 68, B: 111, A: 255},
+	Red:           &Color{R: 131, G: 51, B: 68, A: 255},
+	White:         &Color{R: 44, G: 43, B: 59, A: 255},
+	Yellow:        &Color{R: 115, G: 84, B: 23, A: 255},
+}
+
 // TintRyuuko (Ryuuko) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Ryuuko
@@ -18005,6 +19058,40 @@ var TintRyuuko = &Tint{
 	Red:          &Color{R: 134, G: 95, B: 91, A: 255},
 	White:        &Color{R: 236, G: 236, B: 236, A: 255},
 	Yellow:       &Color{R: 177, G: 169, B: 144, A: 255},
+}
+
+// TintSlomp (SLOMP) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#Slomp
+var TintSlomp = &Tint{
+	DisplayName:   "SLOMP",
+	ID:            "slomp",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 211, G: 211, B: 211, A: 255},
+	Bg:            &Color{R: 30, G: 30, B: 30, A: 255},
+	SelectionBg:   &Color{R: 12, G: 54, B: 63, A: 255},
+	SelectionText: &Color{R: 211, G: 211, B: 211, A: 255},
+	Bold:          &Color{R: 211, G: 211, B: 211, A: 255},
+	Cursor:        &Color{R: 200, G: 110, B: 173, A: 255},
+	CursorText:    &Color{R: 30, G: 30, B: 30, A: 255},
+	BrightBlack:   &Color{R: 128, G: 128, B: 128, A: 255},
+	BrightBlue:    &Color{R: 163, G: 30, B: 105, A: 255},
+	BrightCyan:    &Color{R: 108, G: 175, B: 189, A: 255},
+	BrightGreen:   &Color{R: 189, G: 154, B: 110, A: 255},
+	BrightPurple:  &Color{R: 200, G: 110, B: 173, A: 255},
+	BrightRed:     &Color{R: 214, G: 89, B: 119, A: 255},
+	BrightWhite:   &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow:  &Color{R: 189, G: 154, B: 110, A: 255},
+	Black:         &Color{R: 30, G: 30, B: 30, A: 255},
+	Blue:          &Color{R: 103, G: 116, B: 175, A: 255},
+	Cyan:          &Color{R: 108, G: 175, B: 189, A: 255},
+	Green:         &Color{R: 189, G: 154, B: 110, A: 255},
+	Purple:        &Color{R: 200, G: 110, B: 173, A: 255},
+	Red:           &Color{R: 214, G: 89, B: 119, A: 255},
+	White:         &Color{R: 211, G: 211, B: 211, A: 255},
+	Yellow:        &Color{R: 202, G: 155, B: 188, A: 255},
 }
 
 // TintSafetyGlass (Safety Glass) is a collection of styles.
@@ -19653,6 +20740,40 @@ var TintSignalGhost = &Tint{
 	Yellow:        &Color{R: 230, G: 195, B: 92, A: 255},
 }
 
+// TintSilentEmpire (Silent Empire) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#SilentEmpire
+var TintSilentEmpire = &Tint{
+	DisplayName:   "Silent Empire",
+	ID:            "silent_empire",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 227, G: 243, B: 245, A: 255},
+	Bg:            &Color{R: 7, G: 30, B: 40, A: 255},
+	SelectionBg:   &Color{R: 56, G: 70, B: 83, A: 255},
+	SelectionText: &Color{R: 255, G: 248, B: 238, A: 255},
+	Bold:          &Color{R: 255, G: 249, B: 238, A: 255},
+	Cursor:        &Color{R: 230, G: 197, B: 121, A: 255},
+	CursorText:    &Color{R: 7, G: 30, B: 40, A: 255},
+	BrightBlack:   &Color{R: 195, G: 199, B: 200, A: 255},
+	BrightBlue:    &Color{R: 143, G: 195, B: 239, A: 255},
+	BrightCyan:    &Color{R: 136, G: 221, B: 227, A: 255},
+	BrightGreen:   &Color{R: 153, G: 206, B: 179, A: 255},
+	BrightPurple:  &Color{R: 191, G: 169, B: 237, A: 255},
+	BrightRed:     &Color{R: 227, G: 149, B: 142, A: 255},
+	BrightWhite:   &Color{R: 255, G: 249, B: 238, A: 255},
+	BrightYellow:  &Color{R: 234, G: 206, B: 142, A: 255},
+	Black:         &Color{R: 166, G: 167, B: 166, A: 255},
+	Blue:          &Color{R: 121, G: 184, B: 236, A: 255},
+	Cyan:          &Color{R: 113, G: 214, B: 222, A: 255},
+	Green:         &Color{R: 134, G: 197, B: 163, A: 255},
+	Purple:        &Color{R: 179, G: 153, B: 233, A: 255},
+	Red:           &Color{R: 223, G: 129, B: 121, A: 255},
+	White:         &Color{R: 227, G: 243, B: 245, A: 255},
+	Yellow:        &Color{R: 230, G: 197, B: 121, A: 255},
+}
+
 // TintSilkCircuitDawn (SilkCircuit Dawn) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#SilkCircuitDawn
@@ -19910,6 +21031,40 @@ var TintSleepyHollow = &Tint{
 	Red:          &Color{R: 186, G: 56, B: 52, A: 255},
 	White:        &Color{R: 175, G: 154, B: 145, A: 255},
 	Yellow:       &Color{R: 181, G: 86, B: 0, A: 255},
+}
+
+// TintSmokeOnTheTerminal (Smoke on the Terminal) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#SmokeOnTheTerminal
+var TintSmokeOnTheTerminal = &Tint{
+	DisplayName:   "Smoke on the Terminal",
+	ID:            "smoke_on_the_terminal",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          TonePastel,
+	Fg:            &Color{R: 245, G: 232, B: 243, A: 255},
+	Bg:            &Color{R: 48, G: 36, B: 58, A: 255},
+	SelectionBg:   &Color{R: 85, G: 63, B: 85, A: 255},
+	SelectionText: &Color{R: 245, G: 232, B: 243, A: 255},
+	Bold:          &Color{R: 247, G: 237, B: 246, A: 255},
+	Cursor:        &Color{R: 231, G: 198, B: 146, A: 255},
+	CursorText:    &Color{R: 48, G: 36, B: 58, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 175, G: 190, B: 229, A: 255},
+	BrightCyan:    &Color{R: 156, G: 209, B: 215, A: 255},
+	BrightGreen:   &Color{R: 178, G: 207, B: 163, A: 255},
+	BrightPurple:  &Color{R: 213, G: 167, B: 229, A: 255},
+	BrightRed:     &Color{R: 227, G: 155, B: 143, A: 255},
+	BrightWhite:   &Color{R: 247, G: 237, B: 246, A: 255},
+	BrightYellow:  &Color{R: 231, G: 198, B: 146, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 163, G: 181, B: 226, A: 255},
+	Cyan:          &Color{R: 143, G: 203, B: 210, A: 255},
+	Green:         &Color{R: 167, G: 201, B: 150, A: 255},
+	Purple:        &Color{R: 207, G: 155, B: 226, A: 255},
+	Red:           &Color{R: 223, G: 141, B: 128, A: 255},
+	White:         &Color{R: 245, G: 232, B: 243, A: 255},
+	Yellow:        &Color{R: 227, G: 190, B: 131, A: 255},
 }
 
 // TintSmyck (Smyck) is a collection of styles.
@@ -20661,6 +21816,74 @@ var TintSrcery = &Tint{
 	Yellow:       &Color{R: 251, G: 184, B: 40, A: 255},
 }
 
+// TintStairwaySkies (Stairway Skies) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#StairwaySkies
+var TintStairwaySkies = &Tint{
+	DisplayName:   "Stairway Skies",
+	ID:            "stairway_skies",
+	Dark:          true,
+	Hue:           HueOrange,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 247, G: 233, B: 202, A: 255},
+	Bg:            &Color{R: 32, G: 26, B: 16, A: 255},
+	SelectionBg:   &Color{R: 73, G: 56, B: 48, A: 255},
+	SelectionText: &Color{R: 255, G: 248, B: 238, A: 255},
+	Bold:          &Color{R: 255, G: 249, B: 238, A: 255},
+	Cursor:        &Color{R: 231, G: 198, B: 110, A: 255},
+	CursorText:    &Color{R: 32, G: 26, B: 16, A: 255},
+	BrightBlack:   &Color{R: 195, G: 199, B: 200, A: 255},
+	BrightBlue:    &Color{R: 157, G: 187, B: 216, A: 255},
+	BrightCyan:    &Color{R: 158, G: 210, B: 204, A: 255},
+	BrightGreen:   &Color{R: 179, G: 200, B: 150, A: 255},
+	BrightPurple:  &Color{R: 203, G: 178, B: 216, A: 255},
+	BrightRed:     &Color{R: 220, G: 170, B: 131, A: 255},
+	BrightWhite:   &Color{R: 255, G: 249, B: 238, A: 255},
+	BrightYellow:  &Color{R: 235, G: 207, B: 133, A: 255},
+	Black:         &Color{R: 166, G: 167, B: 166, A: 255},
+	Blue:          &Color{R: 138, G: 174, B: 208, A: 255},
+	Cyan:          &Color{R: 139, G: 201, B: 194, A: 255},
+	Green:         &Color{R: 166, G: 190, B: 130, A: 255},
+	Purple:        &Color{R: 193, G: 163, B: 209, A: 255},
+	Red:           &Color{R: 213, G: 154, B: 107, A: 255},
+	White:         &Color{R: 247, G: 233, B: 202, A: 255},
+	Yellow:        &Color{R: 231, G: 198, B: 110, A: 255},
+}
+
+// TintStardustVoltage (Stardust Voltage) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#StardustVoltage
+var TintStardustVoltage = &Tint{
+	DisplayName:   "Stardust Voltage",
+	ID:            "stardust_voltage",
+	Dark:          false,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 39, G: 52, B: 78, A: 255},
+	Bg:            &Color{R: 240, G: 229, B: 217, A: 255},
+	SelectionBg:   &Color{R: 219, G: 198, B: 195, A: 255},
+	SelectionText: &Color{R: 39, G: 52, B: 78, A: 255},
+	Bold:          &Color{R: 31, G: 42, B: 62, A: 255},
+	Cursor:        &Color{R: 102, G: 73, B: 21, A: 255},
+	CursorText:    &Color{R: 240, G: 229, B: 217, A: 255},
+	BrightBlack:   &Color{R: 83, G: 73, B: 71, A: 255},
+	BrightBlue:    &Color{R: 34, G: 64, B: 120, A: 255},
+	BrightCyan:    &Color{R: 38, G: 89, B: 97, A: 255},
+	BrightGreen:   &Color{R: 46, G: 95, B: 71, A: 255},
+	BrightPurple:  &Color{R: 92, G: 59, B: 104, A: 255},
+	BrightRed:     &Color{R: 121, G: 39, B: 55, A: 255},
+	BrightWhite:   &Color{R: 31, G: 42, B: 62, A: 255},
+	BrightYellow:  &Color{R: 102, G: 73, B: 21, A: 255},
+	Black:         &Color{R: 104, G: 92, B: 89, A: 255},
+	Blue:          &Color{R: 39, G: 73, B: 136, A: 255},
+	Cyan:          &Color{R: 43, G: 102, B: 111, A: 255},
+	Green:         &Color{R: 52, G: 108, B: 81, A: 255},
+	Purple:        &Color{R: 104, G: 67, B: 118, A: 255},
+	Red:           &Color{R: 137, G: 44, B: 62, A: 255},
+	White:         &Color{R: 39, G: 52, B: 78, A: 255},
+	Yellow:        &Color{R: 116, G: 84, B: 24, A: 255},
+}
+
 // TintStarlight (Starlight) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Starlight
@@ -20963,6 +22186,39 @@ var TintSundried = &Tint{
 	Yellow:       &Color{R: 157, G: 96, B: 42, A: 255},
 }
 
+// TintSunsetCopperRelay (Sunset Copper Relay) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#SunsetCopperRelay
+var TintSunsetCopperRelay = &Tint{
+	DisplayName:  "Sunset Copper Relay",
+	ID:           "sunset_copper_relay",
+	Dark:         true,
+	Hue:          HueMixed,
+	Tone:         ToneMuted,
+	Fg:           &Color{R: 233, G: 221, B: 207, A: 255},
+	Bg:           &Color{R: 32, G: 28, B: 27, A: 255},
+	SelectionBg:  &Color{R: 233, G: 221, B: 207, A: 255},
+	Bold:         &Color{R: 233, G: 221, B: 207, A: 255},
+	Cursor:       &Color{R: 246, G: 214, B: 155, A: 255},
+	CursorText:   &Color{R: 32, G: 28, B: 27, A: 255},
+	BrightBlack:  &Color{R: 118, G: 97, B: 93, A: 255},
+	BrightBlue:   &Color{R: 178, G: 213, B: 237, A: 255},
+	BrightCyan:   &Color{R: 167, G: 230, B: 218, A: 255},
+	BrightGreen:  &Color{R: 195, G: 221, B: 168, A: 255},
+	BrightPurple: &Color{R: 225, G: 195, B: 237, A: 255},
+	BrightRed:    &Color{R: 255, G: 174, B: 157, A: 255},
+	BrightWhite:  &Color{R: 255, G: 243, B: 229, A: 255},
+	BrightYellow: &Color{R: 246, G: 214, B: 155, A: 255},
+	Black:        &Color{R: 32, G: 28, B: 27, A: 255},
+	Blue:         &Color{R: 145, G: 187, B: 217, A: 255},
+	Cyan:         &Color{R: 134, G: 203, B: 192, A: 255},
+	Green:        &Color{R: 165, G: 201, B: 147, A: 255},
+	Purple:       &Color{R: 200, G: 167, B: 220, A: 255},
+	Red:          &Color{R: 231, G: 140, B: 128, A: 255},
+	White:        &Color{R: 233, G: 221, B: 207, A: 255},
+	Yellow:       &Color{R: 232, G: 192, B: 124, A: 255},
+}
+
 // TintSunsetDrive (Sunset Drive) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#SunsetDrive
@@ -20992,6 +22248,72 @@ var TintSunsetDrive = &Tint{
 	Red:          &Color{R: 255, G: 0, B: 99, A: 255},
 	White:        &Color{R: 237, G: 237, B: 255, A: 255},
 	Yellow:       &Color{R: 255, G: 233, B: 0, A: 255},
+}
+
+// TintSunsetStrip (Sunset Strip) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#SunsetStrip
+var TintSunsetStrip = &Tint{
+	DisplayName:   "Sunset Strip",
+	ID:            "sunset_strip",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 252, G: 233, B: 221, A: 255},
+	Bg:            &Color{R: 28, G: 24, B: 50, A: 255},
+	SelectionBg:   &Color{R: 71, G: 55, B: 79, A: 255},
+	SelectionText: &Color{R: 252, G: 233, B: 221, A: 255},
+	Bold:          &Color{R: 253, G: 237, B: 227, A: 255},
+	Cursor:        &Color{R: 246, G: 203, B: 126, A: 255},
+	CursorText:    &Color{R: 28, G: 24, B: 50, A: 255},
+	BrightBlack:   &Color{R: 185, G: 193, B: 198, A: 255},
+	BrightBlue:    &Color{R: 146, G: 192, B: 234, A: 255},
+	BrightCyan:    &Color{R: 139, G: 215, B: 220, A: 255},
+	BrightGreen:   &Color{R: 156, G: 207, B: 171, A: 255},
+	BrightPurple:  &Color{R: 232, G: 156, B: 209, A: 255},
+	BrightRed:     &Color{R: 242, G: 136, B: 143, A: 255},
+	BrightWhite:   &Color{R: 253, G: 237, B: 227, A: 255},
+	BrightYellow:  &Color{R: 246, G: 203, B: 126, A: 255},
+	Black:         &Color{R: 168, G: 178, B: 184, A: 255},
+	Blue:          &Color{R: 131, G: 183, B: 231, A: 255},
+	Cyan:          &Color{R: 123, G: 210, B: 215, A: 255},
+	Green:         &Color{R: 142, G: 201, B: 160, A: 255},
+	Purple:        &Color{R: 229, G: 142, B: 203, A: 255},
+	Red:           &Color{R: 240, G: 120, B: 128, A: 255},
+	White:         &Color{R: 252, G: 233, B: 221, A: 255},
+	Yellow:        &Color{R: 245, G: 195, B: 108, A: 255},
+}
+
+// TintSweetEmotion (Sweet Emotion) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#SweetEmotion
+var TintSweetEmotion = &Tint{
+	DisplayName:   "Sweet Emotion",
+	ID:            "sweet_emotion",
+	Dark:          true,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 249, G: 229, B: 243, A: 255},
+	Bg:            &Color{R: 32, G: 16, B: 39, A: 255},
+	SelectionBg:   &Color{R: 73, G: 52, B: 60, A: 255},
+	SelectionText: &Color{R: 255, G: 248, B: 238, A: 255},
+	Bold:          &Color{R: 255, G: 249, B: 238, A: 255},
+	Cursor:        &Color{R: 230, G: 184, B: 107, A: 255},
+	CursorText:    &Color{R: 32, G: 16, B: 39, A: 255},
+	BrightBlack:   &Color{R: 195, G: 199, B: 200, A: 255},
+	BrightBlue:    &Color{R: 156, G: 182, B: 241, A: 255},
+	BrightCyan:    &Color{R: 139, G: 211, B: 221, A: 255},
+	BrightGreen:   &Color{R: 142, G: 207, B: 179, A: 255},
+	BrightPurple:  &Color{R: 205, G: 158, B: 239, A: 255},
+	BrightRed:     &Color{R: 241, G: 139, B: 182, A: 255},
+	BrightWhite:   &Color{R: 255, G: 249, B: 238, A: 255},
+	BrightYellow:  &Color{R: 234, G: 195, B: 131, A: 255},
+	Black:         &Color{R: 166, G: 167, B: 166, A: 255},
+	Blue:          &Color{R: 137, G: 168, B: 238, A: 255},
+	Cyan:          &Color{R: 117, G: 203, B: 214, A: 255},
+	Green:         &Color{R: 120, G: 198, B: 166, A: 255},
+	Purple:        &Color{R: 195, G: 139, B: 236, A: 255},
+	Red:           &Color{R: 238, G: 117, B: 168, A: 255},
+	White:         &Color{R: 249, G: 229, B: 243, A: 255},
+	Yellow:        &Color{R: 230, G: 184, B: 107, A: 255},
 }
 
 // TintSymfonic (Symfonic) is a collection of styles.
@@ -22221,6 +23543,40 @@ var TintTrickOrTreat = &Tint{
 	Yellow:        &Color{R: 248, G: 201, B: 78, A: 255},
 }
 
+// TintTumblingStones (Tumbling Stones) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#TumblingStones
+var TintTumblingStones = &Tint{
+	DisplayName:   "Tumbling Stones",
+	ID:            "tumbling_stones",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 241, G: 233, B: 226, A: 255},
+	Bg:            &Color{R: 20, G: 18, B: 18, A: 255},
+	SelectionBg:   &Color{R: 85, G: 51, B: 55, A: 255},
+	SelectionText: &Color{R: 255, G: 249, B: 237, A: 255},
+	Bold:          &Color{R: 255, G: 245, B: 230, A: 255},
+	Cursor:        &Color{R: 240, G: 91, B: 84, A: 255},
+	CursorText:    &Color{R: 20, G: 18, B: 18, A: 255},
+	BrightBlack:   &Color{R: 194, G: 191, B: 187, A: 255},
+	BrightBlue:    &Color{R: 162, G: 195, B: 207, A: 255},
+	BrightCyan:    &Color{R: 169, G: 208, B: 210, A: 255},
+	BrightGreen:   &Color{R: 182, G: 201, B: 184, A: 255},
+	BrightPurple:  &Color{R: 208, G: 184, B: 197, A: 255},
+	BrightRed:     &Color{R: 250, G: 129, B: 119, A: 255},
+	BrightWhite:   &Color{R: 255, G: 248, B: 240, A: 255},
+	BrightYellow:  &Color{R: 235, G: 202, B: 187, A: 255},
+	Black:         &Color{R: 165, G: 163, B: 162, A: 255},
+	Blue:          &Color{R: 137, G: 174, B: 188, A: 255},
+	Cyan:          &Color{R: 143, G: 186, B: 192, A: 255},
+	Green:         &Color{R: 159, G: 181, B: 165, A: 255},
+	Purple:        &Color{R: 182, G: 163, B: 178, A: 255},
+	Red:           &Color{R: 235, G: 101, B: 95, A: 255},
+	White:         &Color{R: 241, G: 233, B: 226, A: 255},
+	Yellow:        &Color{R: 214, G: 181, B: 161, A: 255},
+}
+
 // TintTurquoiseTrail (Turquoise Trail) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#TurquoiseTrail
@@ -22376,6 +23732,40 @@ var TintUltraViolent = &Tint{
 	Red:          &Color{R: 255, G: 0, B: 144, A: 255},
 	White:        &Color{R: 225, G: 225, B: 225, A: 255},
 	Yellow:       &Color{R: 255, G: 247, B: 39, A: 255},
+}
+
+// TintUnaliveEmAll (Unalive 'Em All) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#UnaliveEmAll
+var TintUnaliveEmAll = &Tint{
+	DisplayName:   "Unalive 'Em All",
+	ID:            "unalive_'em_all",
+	Dark:          true,
+	Hue:           HueMixed,
+	Tone:          ToneMuted,
+	Fg:            &Color{R: 238, G: 227, B: 221, A: 255},
+	Bg:            &Color{R: 17, G: 12, B: 11, A: 255},
+	SelectionBg:   &Color{R: 63, G: 34, B: 35, A: 255},
+	SelectionText: &Color{R: 255, G: 243, B: 232, A: 255},
+	Bold:          &Color{R: 255, G: 243, B: 232, A: 255},
+	Cursor:        &Color{R: 255, G: 69, B: 65, A: 255},
+	CursorText:    &Color{R: 17, G: 12, B: 11, A: 255},
+	BrightBlack:   &Color{R: 198, G: 190, B: 186, A: 255},
+	BrightBlue:    &Color{R: 150, G: 195, B: 250, A: 255},
+	BrightCyan:    &Color{R: 135, G: 219, B: 217, A: 255},
+	BrightGreen:   &Color{R: 161, G: 211, B: 145, A: 255},
+	BrightPurple:  &Color{R: 219, G: 168, B: 233, A: 255},
+	BrightRed:     &Color{R: 255, G: 121, B: 113, A: 255},
+	BrightWhite:   &Color{R: 255, G: 245, B: 237, A: 255},
+	BrightYellow:  &Color{R: 245, G: 206, B: 119, A: 255},
+	Black:         &Color{R: 170, G: 162, B: 158, A: 255},
+	Blue:          &Color{R: 120, G: 174, B: 240, A: 255},
+	Cyan:          &Color{R: 104, G: 199, B: 199, A: 255},
+	Green:         &Color{R: 129, G: 187, B: 121, A: 255},
+	Purple:        &Color{R: 198, G: 139, B: 216, A: 255},
+	Red:           &Color{R: 236, G: 81, B: 73, A: 255},
+	White:         &Color{R: 238, G: 227, B: 221, A: 255},
+	Yellow:        &Color{R: 231, G: 183, B: 93, A: 255},
 }
 
 // TintUndead (Undead) is a collection of styles.
@@ -23890,6 +25280,161 @@ var TintY2KChrome = &Tint{
 	Yellow:       &Color{R: 8, G: 145, B: 178, A: 255},
 }
 
+// TintYngwiesStrat (Yngwie's Strat) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#YngwiesStrat
+var TintYngwiesStrat = &Tint{
+	DisplayName:   "Yngwie's Strat",
+	ID:            "yngwie's_strat",
+	Dark:          false,
+	Hue:           HueMixed,
+	Fg:            &Color{R: 36, G: 35, B: 31, A: 255},
+	Bg:            &Color{R: 251, G: 230, B: 139, A: 255},
+	SelectionBg:   &Color{R: 182, G: 162, B: 81, A: 255},
+	SelectionText: &Color{R: 32, G: 30, B: 25, A: 255},
+	Bold:          &Color{R: 40, G: 36, B: 29, A: 255},
+	Cursor:        &Color{R: 156, G: 40, B: 34, A: 255},
+	CursorText:    &Color{R: 255, G: 242, B: 189, A: 255},
+	BrightBlack:   &Color{R: 81, G: 70, B: 59, A: 255},
+	BrightBlue:    &Color{R: 48, G: 94, B: 156, A: 255},
+	BrightCyan:    &Color{R: 32, G: 111, B: 121, A: 255},
+	BrightGreen:   &Color{R: 59, G: 109, B: 69, A: 255},
+	BrightPurple:  &Color{R: 121, G: 80, B: 128, A: 255},
+	BrightRed:     &Color{R: 176, G: 56, B: 43, A: 255},
+	BrightWhite:   &Color{R: 39, G: 36, B: 34, A: 255},
+	BrightYellow:  &Color{R: 131, G: 91, B: 22, A: 255},
+	Black:         &Color{R: 52, G: 44, B: 39, A: 255},
+	Blue:          &Color{R: 36, G: 79, B: 133, A: 255},
+	Cyan:          &Color{R: 23, G: 97, B: 107, A: 255},
+	Green:         &Color{R: 55, G: 102, B: 62, A: 255},
+	Purple:        &Color{R: 103, G: 65, B: 108, A: 255},
+	Red:           &Color{R: 156, G: 40, B: 34, A: 255},
+	White:         &Color{R: 62, G: 55, B: 48, A: 255},
+	Yellow:        &Color{R: 120, G: 80, B: 21, A: 255},
+}
+
+// TintZacessCream (Zacess Cream) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#ZacessCream
+var TintZacessCream = &Tint{
+	DisplayName:  "Zacess Cream",
+	ID:           "zacess_cream",
+	Dark:         false,
+	Hue:          HueMixed,
+	Tone:         ToneMuted,
+	Fg:           &Color{R: 0, G: 0, B: 0, A: 255},
+	Bg:           &Color{R: 253, G: 246, B: 227, A: 255},
+	SelectionBg:  &Color{R: 249, G: 231, B: 154, A: 255},
+	Cursor:       &Color{R: 0, G: 0, B: 0, A: 255},
+	BrightBlack:  &Color{R: 72, G: 72, B: 72, A: 255},
+	BrightBlue:   &Color{R: 0, G: 63, B: 142, A: 255},
+	BrightCyan:   &Color{R: 0, G: 75, B: 75, A: 255},
+	BrightGreen:  &Color{R: 0, G: 79, B: 16, A: 255},
+	BrightPurple: &Color{R: 123, G: 0, B: 119, A: 255},
+	BrightRed:    &Color{R: 139, G: 0, B: 6, A: 255},
+	BrightWhite:  &Color{R: 0, G: 0, B: 0, A: 255},
+	BrightYellow: &Color{R: 92, G: 60, B: 0, A: 255},
+	Black:        &Color{R: 0, G: 0, B: 0, A: 255},
+	Blue:         &Color{R: 0, G: 39, B: 92, A: 255},
+	Cyan:         &Color{R: 0, G: 47, B: 47, A: 255},
+	Green:        &Color{R: 0, G: 48, B: 7, A: 255},
+	Purple:       &Color{R: 79, G: 0, B: 77, A: 255},
+	Red:          &Color{R: 91, G: 0, B: 2, A: 255},
+	White:        &Color{R: 67, G: 67, B: 67, A: 255},
+	Yellow:       &Color{R: 59, G: 36, B: 0, A: 255},
+}
+
+// TintZacessDark (Zacess Dark) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#ZacessDark
+var TintZacessDark = &Tint{
+	DisplayName:  "Zacess Dark",
+	ID:           "zacess_dark",
+	Dark:         true,
+	Hue:          HueMixed,
+	Tone:         TonePastel,
+	Fg:           &Color{R: 245, G: 245, B: 245, A: 255},
+	Bg:           &Color{R: 18, G: 18, B: 18, A: 255},
+	SelectionBg:  &Color{R: 26, G: 36, B: 54, A: 255},
+	Cursor:       &Color{R: 255, G: 211, B: 0, A: 255},
+	BrightBlack:  &Color{R: 200, G: 200, B: 200, A: 255},
+	BrightBlue:   &Color{R: 201, G: 224, B: 255, A: 255},
+	BrightCyan:   &Color{R: 118, G: 241, B: 240, A: 255},
+	BrightGreen:  &Color{R: 172, G: 238, B: 173, A: 255},
+	BrightPurple: &Color{R: 255, G: 208, B: 250, A: 255},
+	BrightRed:    &Color{R: 255, G: 213, B: 206, A: 255},
+	BrightWhite:  &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow: &Color{R: 255, G: 218, B: 138, A: 255},
+	Black:        &Color{R: 163, G: 163, B: 163, A: 255},
+	Blue:         &Color{R: 144, G: 193, B: 255, A: 255},
+	Cyan:         &Color{R: 81, G: 208, B: 207, A: 255},
+	Green:        &Color{R: 141, G: 205, B: 142, A: 255},
+	Purple:       &Color{R: 235, G: 168, B: 227, A: 255},
+	Red:          &Color{R: 255, G: 167, B: 155, A: 255},
+	White:        &Color{R: 230, G: 230, B: 230, A: 255},
+	Yellow:       &Color{R: 222, G: 185, B: 103, A: 255},
+}
+
+// TintZacessLight (Zacess Light) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#ZacessLight
+var TintZacessLight = &Tint{
+	DisplayName:  "Zacess Light",
+	ID:           "zacess_light",
+	Dark:         false,
+	Hue:          HueMixed,
+	Fg:           &Color{R: 17, G: 17, B: 17, A: 255},
+	Bg:           &Color{R: 255, G: 255, B: 255, A: 255},
+	SelectionBg:  &Color{R: 255, G: 241, B: 168, A: 255},
+	Cursor:       &Color{R: 17, G: 17, B: 17, A: 255},
+	BrightBlack:  &Color{R: 77, G: 77, B: 77, A: 255},
+	BrightBlue:   &Color{R: 0, G: 68, B: 152, A: 255},
+	BrightCyan:   &Color{R: 0, G: 81, B: 81, A: 255},
+	BrightGreen:  &Color{R: 0, G: 85, B: 18, A: 255},
+	BrightPurple: &Color{R: 131, G: 0, B: 127, A: 255},
+	BrightRed:    &Color{R: 149, G: 0, B: 7, A: 255},
+	BrightWhite:  &Color{R: 17, G: 17, B: 17, A: 255},
+	BrightYellow: &Color{R: 99, G: 65, B: 0, A: 255},
+	Black:        &Color{R: 17, G: 17, B: 17, A: 255},
+	Blue:         &Color{R: 0, G: 44, B: 102, A: 255},
+	Cyan:         &Color{R: 0, G: 52, B: 52, A: 255},
+	Green:        &Color{R: 0, G: 55, B: 8, A: 255},
+	Purple:       &Color{R: 88, G: 0, B: 85, A: 255},
+	Red:          &Color{R: 100, G: 0, B: 3, A: 255},
+	White:        &Color{R: 72, G: 72, B: 72, A: 255},
+	Yellow:       &Color{R: 65, G: 40, B: 0, A: 255},
+}
+
+// TintZacessYellowOnBlack (Zacess Yellow on Black) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#ZacessYellowOnBlack
+var TintZacessYellowOnBlack = &Tint{
+	DisplayName:  "Zacess Yellow on Black",
+	ID:           "zacess_yellow_on_black",
+	Dark:         true,
+	Hue:          HueMixed,
+	Fg:           &Color{R: 255, G: 255, B: 255, A: 255},
+	Bg:           &Color{R: 0, G: 0, B: 0, A: 255},
+	SelectionBg:  &Color{R: 10, G: 34, B: 87, A: 255},
+	Cursor:       &Color{R: 255, G: 235, B: 59, A: 255},
+	BrightBlack:  &Color{R: 200, G: 200, B: 200, A: 255},
+	BrightBlue:   &Color{R: 201, G: 224, B: 255, A: 255},
+	BrightCyan:   &Color{R: 85, G: 243, B: 243, A: 255},
+	BrightGreen:  &Color{R: 162, G: 241, B: 163, A: 255},
+	BrightPurple: &Color{R: 255, G: 208, B: 250, A: 255},
+	BrightRed:    &Color{R: 255, G: 213, B: 206, A: 255},
+	BrightWhite:  &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow: &Color{R: 255, G: 218, B: 138, A: 255},
+	Black:        &Color{R: 163, G: 163, B: 163, A: 255},
+	Blue:         &Color{R: 144, G: 193, B: 255, A: 255},
+	Cyan:         &Color{R: 31, G: 211, B: 211, A: 255},
+	Green:        &Color{R: 130, G: 208, B: 133, A: 255},
+	Purple:       &Color{R: 242, G: 163, B: 235, A: 255},
+	Red:          &Color{R: 255, G: 167, B: 155, A: 255},
+	White:        &Color{R: 217, G: 217, B: 217, A: 255},
+	Yellow:       &Color{R: 229, G: 184, B: 81, A: 255},
+}
+
 // TintZenbones (Zenbones) is a collection of styles.
 //
 // Reference: https://lrstanley.github.io/bubbletint/#Zenbones
@@ -24574,6 +26119,67 @@ var TintITerm2TangoLight = &Tint{
 	Red:          &Color{R: 216, G: 30, B: 0, A: 255},
 	White:        &Color{R: 193, G: 195, B: 190, A: 255},
 	Yellow:       &Color{R: 207, G: 174, B: 0, A: 255},
+}
+
+// TintIglassDark (iglass Dark) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#IglassDark
+var TintIglassDark = &Tint{
+	DisplayName:  "iglass Dark",
+	ID:           "iglass_dark",
+	Dark:         true,
+	Hue:          HueMixed,
+	Tone:         ToneVivid,
+	Fg:           &Color{R: 247, G: 248, B: 253, A: 255},
+	Bg:           &Color{R: 23, G: 24, B: 28, A: 255},
+	SelectionBg:  &Color{R: 18, G: 65, B: 113, A: 255},
+	Cursor:       &Color{R: 97, G: 167, B: 255, A: 255},
+	BrightBlack:  &Color{R: 163, G: 165, B: 170, A: 255},
+	BrightBlue:   &Color{R: 163, G: 205, B: 255, A: 255},
+	BrightCyan:   &Color{R: 149, G: 224, B: 255, A: 255},
+	BrightGreen:  &Color{R: 68, G: 233, B: 104, A: 255},
+	BrightPurple: &Color{R: 231, G: 185, B: 255, A: 255},
+	BrightRed:    &Color{R: 255, G: 184, B: 176, A: 255},
+	BrightWhite:  &Color{R: 255, G: 255, B: 255, A: 255},
+	BrightYellow: &Color{R: 255, G: 234, B: 163, A: 255},
+	Black:        &Color{R: 44, G: 44, B: 46, A: 255},
+	Blue:         &Color{R: 97, G: 167, B: 255, A: 255},
+	Cyan:         &Color{R: 100, G: 210, B: 255, A: 255},
+	Green:        &Color{R: 50, G: 215, B: 75, A: 255},
+	Purple:       &Color{R: 211, G: 131, B: 255, A: 255},
+	Red:          &Color{R: 255, G: 127, B: 112, A: 255},
+	White:        &Color{R: 209, G: 209, B: 214, A: 255},
+	Yellow:       &Color{R: 255, G: 214, B: 10, A: 255},
+}
+
+// TintIglassLight (iglass Light) is a collection of styles.
+//
+// Reference: https://lrstanley.github.io/bubbletint/#IglassLight
+var TintIglassLight = &Tint{
+	DisplayName:  "iglass Light",
+	ID:           "iglass_light",
+	Dark:         false,
+	Hue:          HueMixed,
+	Fg:           &Color{R: 29, G: 29, B: 31, A: 255},
+	Bg:           &Color{R: 245, G: 245, B: 247, A: 255},
+	SelectionBg:  &Color{R: 186, G: 215, B: 249, A: 255},
+	Cursor:       &Color{R: 0, G: 92, B: 197, A: 255},
+	BrightBlack:  &Color{R: 96, G: 95, B: 100, A: 255},
+	BrightBlue:   &Color{R: 0, G: 92, B: 197, A: 255},
+	BrightCyan:   &Color{R: 0, G: 103, B: 141, A: 255},
+	BrightGreen:  &Color{R: 0, G: 112, B: 25, A: 255},
+	BrightPurple: &Color{R: 144, G: 47, B: 189, A: 255},
+	BrightRed:    &Color{R: 195, G: 0, B: 6, A: 255},
+	BrightWhite:  &Color{R: 229, G: 229, B: 234, A: 255},
+	BrightYellow: &Color{R: 118, G: 93, B: 0, A: 255},
+	Black:        &Color{R: 29, G: 29, B: 31, A: 255},
+	Blue:         &Color{R: 0, G: 52, B: 187, A: 255},
+	Cyan:         &Color{R: 0, G: 73, B: 110, A: 255},
+	Green:        &Color{R: 0, G: 81, B: 27, A: 255},
+	Purple:       &Color{R: 105, G: 35, B: 138, A: 255},
+	Red:          &Color{R: 146, G: 0, B: 11, A: 255},
+	White:        &Color{R: 186, G: 186, B: 191, A: 255},
+	Yellow:       &Color{R: 118, G: 50, B: 0, A: 255},
 }
 
 // TintNovmbr (novmbr) is a collection of styles.
