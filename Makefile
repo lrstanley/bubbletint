@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := generate
 
-export ITERM_SCHEMES_VERSION := release-20261012-151317-d3e95e4
+export ITERM_SCHEMES_VERSION := release-20261019-151001-86a776d
 
 license:
 	curl -sL https://liam.sh/-/gh/g/license-header.sh | bash -s
