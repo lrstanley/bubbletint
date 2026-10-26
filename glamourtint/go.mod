@@ -5,8 +5,8 @@ go 1.26.0
 require (
 	charm.land/glamour/v2 v2.0.1
 	github.com/alecthomas/chroma/v2 v2.27.0
-	github.com/lrstanley/bubbletint/chromatint/v2 v2.0.4
-	github.com/lrstanley/bubbletint/v2 v2.0.4
+	github.com/lrstanley/bubbletint/chromatint/v2 v2.1.0-beta.0
+	github.com/lrstanley/bubbletint/v2 v2.1.0-beta.0
 )
 
 require (
