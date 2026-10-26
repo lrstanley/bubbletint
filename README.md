@@ -64,12 +64,15 @@
     - [Custom Registry](#custom-registry)
     - [Filter by hue and tone](#filter-by-hue-and-tone)
     - [Use specific tints](#use-specific-tints)
+    - [React to changes](#react-to-changes)
+    - [Follow the terminal's theme](#follow-the-terminals-theme)
   - [Examples](#clap-examples)
     - [Package manager example](#package-manager-example)
     - [Complex example](#complex-example)
     - [Loading tints from a file](#loading-tints-from-a-file)
     - [Chroma Support](#chroma-support)
     - [Glamour Support](#glamour-support)
+    - [Follow the terminal](#follow-the-terminal)
   - [Changes in v2](#rocket-changes-in-v2)
     - [No More Bloated Interfaces](#no-more-bloated-interfaces)
     - [Chroma Support](#chroma-support-1)
@@ -99,6 +102,11 @@
   `color.Color` interface from **stdlib**!
 - :heavy_check_mark: Map a tint onto a [Glamour](https://github.com/charmbracelet/glamour)
   stylesheet through the `glamourtint` sub-package.
+- :heavy_check_mark: Get notified when tints are added, replaced, removed, or when the
+  current tint changes, with `Subscribe`.
+- :heavy_check_mark: Follow the theme of the terminal your app runs in (kitty, Ghostty,
+  Alacritty, foot, Windows Terminal, X resources, and iTerm2 color presets), on Linux,
+  macOS and Windows, through the opt-in `sources` sub-package.
 
 ---
 
@@ -224,6 +232,73 @@ var (
 )
 ```
 
+### React to changes
+
+`Subscribe` calls your function whenever a registry changes: a tint being added,
+replaced or removed, or the current tint changing. `CurrentChanged` is the one to
+listen for if all you need to know is when to rebuild your styles. It is also sent
+when the current tint is replaced in-place, and when the current tint is removed
+and the registry falls back to another tint.
+
+```go
+cancel := tint.Subscribe(func(ev tint.Event) {
+	if ev.Kind == tint.CurrentChanged {
+		p.Send(rebuildStylesMsg{}) // Forward it to your Bubble Tea program.
+	}
+})
+defer cancel()
+```
+
+Your function is called synchronously, on the goroutine that made the change, after
+the registry's lock is released: it can safely call back into the registry, but it
+should return quickly. Subscriptions belong to the registry they were made on, so if
+you replace `tint.DefaultRegistry` after subscribing, subscribe again on the new one.
+
+### Follow the terminal's theme
+
+Tints can also come from outside of bubbletint, through a `tint.Source`, which is added
+to a registry with `Attach`. Sources are opt-in, and live in their own module, so the
+core stays free of dependencies:
+
+```go
+import (
+	"github.com/lrstanley/bubbletint/sources/v2/terminal"
+	tint "github.com/lrstanley/bubbletint/v2"
+)
+
+src, err := terminal.Detect() // The source for the terminal we're running in.
+if err == nil {
+	detach, err := tint.Attach(ctx, src)
+	// [...]
+}
+```
+
+- The source's tints are registered with their ID prefixed by the source's name, e.g.
+  `kitty:current`, so they never collide with your own tints.
+- By default the registry follows the source: `kitty:current` becomes the current tint,
+  and stays up to date as the user changes their terminal's theme (subscribers are told
+  about it). Use `tint.WithFollow(false)` to only register the tints.
+- Check for `tint.ErrNotFound` (with `errors.Is`) to handle terminals that aren't
+  supported, or have no config.
+
+| Package                                   | Reads                                                                 | Platforms                       |
+| ----------------------------------------- | --------------------------------------------------------------------- | ------------------------------- |
+| `sources/kitty`                           | `kitty.conf` and its includes (e.g. `current-theme.conf`)             | Linux, macOS, BSDs              |
+| `sources/ghostty`                         | `config`, its `config-file` includes, and the `theme` it names        | Linux, macOS                    |
+| `sources/alacritty`                       | `alacritty.toml` and its `import`s                                    | Linux, macOS, Windows, BSDs     |
+| `sources/foot`                            | `foot.ini` and its `include`s                                         | Linux, BSDs                     |
+| `sources/windowsterminal`                 | `settings.json` color schemes, and the active profile's scheme        | Windows (and WSL)               |
+| `sources/xresources`                      | `~/.Xresources` (xterm, urxvt, st, ...)                               | Linux, BSDs                     |
+| `sources/itermcolors`                     | `.itermcolors` files, or a directory of them                          | Anywhere (path must be given)   |
+| `sources/terminal`                        | Picks one of the above, from the environment                          | Anywhere                        |
+
+Config files are polled (once a second by default, see `sources.WithPollInterval`)
+rather than watched with filesystem notifications, so watching behaves the same on every
+platform, and keeps working with editors that replace files and with symlinked dotfiles.
+Use `sources.WithPath` to read a config from somewhere other than the default locations.
+Writing your own source only takes implementing `Name()` and `Load()` (and `Watch()`,
+if it can tell when it changes).
+
 ... and that's it!
 
 ## :clap: Examples
@@ -285,6 +360,12 @@ renderer, err := glamour.NewTermRenderer(
 ```
 
 ---
+
+### Follow the terminal
+
+- Uses the `sources/terminal` sub-package to follow the theme of the terminal it runs in,
+  and `Subscribe` to be told when it changes. Change your terminal's theme while it runs.
+- [Example source](./_examples/follow-terminal).
 
 ## :rocket: Changes in v2
 

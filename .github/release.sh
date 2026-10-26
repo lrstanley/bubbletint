@@ -17,6 +17,7 @@ BASE_MODULE="github.com/lrstanley/bubbletint/v2"
 DOWNSTREAM=(
 	chromatint
 	glamourtint
+	sources
 )
 
 if ! command -v svu >/dev/null 2>&1; then
@@ -67,6 +68,9 @@ deps_for() {
 		printf '%s\n' \
 			"$BASE_MODULE" \
 			"github.com/lrstanley/bubbletint/chromatint/v2"
+		;;
+	sources)
+		printf '%s\n' "$BASE_MODULE"
 		;;
 	*)
 		echo "unknown downstream module ${1}" >&2

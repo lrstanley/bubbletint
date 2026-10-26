@@ -5,6 +5,7 @@
 package tint
 
 import (
+	"context"
 	"iter"
 	"slices"
 )
@@ -122,4 +123,22 @@ func NextTint() {
 // to.
 func Current() (tint *Tint) {
 	return DefaultRegistry.Current()
+}
+
+// Subscribe registers fn to be called for every change to the default registry,
+// and returns a function that removes the subscription. See [Registry.Subscribe].
+//
+// Subscriptions belong to the registry that was [DefaultRegistry] when Subscribe
+// was called. If DefaultRegistry is later replaced with a different registry,
+// those subscriptions stay with the old one and will not be called for changes
+// made to the new one.
+func Subscribe(fn func(Event)) (cancel func()) {
+	return DefaultRegistry.Subscribe(fn)
+}
+
+// Attach loads the provided source into the default registry. See
+// [Registry.Attach]. As with [Subscribe], the attachment belongs to the registry
+// that was [DefaultRegistry] when Attach was called.
+func Attach(ctx context.Context, source Source, opts ...AttachOption) (detach func(), err error) {
+	return DefaultRegistry.Attach(ctx, source, opts...)
 }

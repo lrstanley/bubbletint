@@ -5,6 +5,7 @@
 package tint
 
 import (
+	"slices"
 	"sort"
 	"sync"
 )
@@ -32,47 +33,159 @@ func NewRegistry(defaultTint *Tint, tints ...*Tint) *Registry {
 	return r
 }
 
+// Registry holds a set of tints, and tracks which one is current. Changes to it
+// can be observed with [Registry.Subscribe]. A Registry is safe for concurrent
+// use.
 type Registry struct {
 	mu          sync.RWMutex
 	currentTint string
 	tints       map[string]*Tint
+	origins     map[string]string // Tint ID -> name of the [Source] that registered it.
+	attached    map[string]*attachment
+	subs        subscribers
 }
 
 // Register registers one or more tints within the registry. It does not change
-// to the provided tint.
+// to the provided tint. Registering a tint with an ID that is already registered
+// replaces the previous tint.
 func (r *Registry) Register(tint ...*Tint) {
+	var events []Event
+
 	r.mu.Lock()
 	for _, t := range tint {
-		r.tints[t.ID] = t
+		events = append(events, r.registerLocked("", t)...)
 	}
 	r.mu.Unlock()
+
+	r.subs.emit(events)
 }
 
-// Unregister unregisters one or more provided tints from the registry.
-func (r *Registry) Unregister(tint ...*Tint) {
-	r.mu.Lock()
-	for _, t := range tint {
-		delete(r.tints, t.ID)
+// registerLocked registers t, returning the events that resulted. r.mu must be
+// held for writing.
+func (r *Registry) registerLocked(source string, t *Tint) (events []Event) {
+	previous, exists := r.tints[t.ID]
+	if exists && previous == t {
+		return nil
 	}
-	r.mu.Unlock()
+
+	r.tints[t.ID] = t
+
+	if source == "" {
+		delete(r.origins, t.ID)
+	} else {
+		if r.origins == nil {
+			r.origins = make(map[string]string)
+		}
+		r.origins[t.ID] = source
+	}
+
+	if !exists {
+		return []Event{{Kind: TintAdded, Tint: t, Source: source}}
+	}
+
+	events = append(events, Event{Kind: TintUpdated, Tint: t, Previous: previous, Source: source})
+	if r.currentTint == t.ID {
+		events = append(events, Event{Kind: CurrentChanged, Tint: t, Previous: previous, Source: source})
+	}
+	return events
+}
+
+// idsFromLocked returns the sorted IDs of the tints registered by source. r.mu
+// must be held.
+func (r *Registry) idsFromLocked(source string) []string {
+	var ids []string
+	for id, origin := range r.origins {
+		if origin == source {
+			ids = append(ids, id)
+		}
+	}
+	sort.Strings(ids)
+	return ids
+}
+
+// Unregister unregisters one or more provided tints from the registry. If the
+// current tint is unregistered, the registry falls back to the next tint (by
+// sorted ID), or the previous one if there is no next tint, so [Registry.Current]
+// never returns nil unless the registry is empty.
+func (r *Registry) Unregister(tint ...*Tint) {
+	ids := make([]string, 0, len(tint))
+	for _, t := range tint {
+		ids = append(ids, t.ID)
+	}
+	r.UnregisterIDs(ids...)
 }
 
 // UnregisterIDs unregisters the tints with the provided ID(s) from the registry.
+// See [Registry.Unregister] for how the current tint is handled.
 func (r *Registry) UnregisterIDs(id ...string) {
 	r.mu.Lock()
-	for _, t := range id {
-		delete(r.tints, t)
-	}
+	events := r.unregisterLocked(id...)
 	r.mu.Unlock()
+
+	r.subs.emit(events)
 }
 
-// UnregisterAll unregisters all tints from the registry.
+// UnregisterAll unregisters all tints from the registry. As there is nothing to
+// fall back to, [Registry.Current] panics until a tint is registered.
 func (r *Registry) UnregisterAll() {
 	r.mu.Lock()
+	ids := make([]string, 0, len(r.tints))
 	for id := range r.tints {
-		delete(r.tints, id)
+		ids = append(ids, id)
 	}
+	events := r.unregisterLocked(ids...)
 	r.mu.Unlock()
+
+	r.subs.emit(events)
+}
+
+// unregisterLocked removes the provided IDs, returning the events that resulted.
+// r.mu must be held for writing.
+func (r *Registry) unregisterLocked(ids ...string) (events []Event) {
+	previous := r.tints[r.currentTint]
+	removedCurrent := false
+
+	for _, id := range ids {
+		t, ok := r.tints[id]
+		if !ok {
+			continue
+		}
+
+		delete(r.tints, id)
+		events = append(events, Event{Kind: TintRemoved, Tint: t, Source: r.origins[id]})
+		delete(r.origins, id)
+
+		if id == r.currentTint {
+			removedCurrent = true
+		}
+	}
+
+	if !removedCurrent {
+		return events
+	}
+
+	// The current tint is gone. Fall back to its sorted neighbour: the next tint,
+	// or the last one if the removed tint sorted after all of the remaining ones.
+	removedID := r.currentTint
+	r.currentTint = ""
+
+	remaining := make([]string, 0, len(r.tints))
+	for id := range r.tints {
+		remaining = append(remaining, id)
+	}
+	sort.Strings(remaining)
+
+	var next *Tint
+	if len(remaining) > 0 {
+		i, _ := slices.BinarySearch(remaining, removedID)
+		if i >= len(remaining) {
+			i = len(remaining) - 1
+		}
+		next = r.tints[remaining[i]]
+		r.currentTint = next.ID
+	}
+
+	return append(events, Event{Kind: CurrentChanged, Tint: next, Previous: previous})
 }
 
 // Tints returns a list of all registered tints, sorted alphabetically by their ID.
@@ -144,25 +257,37 @@ func (r *Registry) SetTint(tint *Tint) {
 		panic("tint is nil") //nolint:panic
 	}
 
-	r.Register(tint) // Register if not already done.
-	id := tint.ID
-
 	r.mu.Lock()
-	r.currentTint = id
+	previousID := r.currentTint
+	previous := r.tints[previousID]
+
+	events := r.registerLocked("", tint)
+	if previousID != tint.ID {
+		r.currentTint = tint.ID
+		events = append(events, Event{Kind: CurrentChanged, Tint: tint, Previous: previous})
+	}
 	r.mu.Unlock()
+
+	r.subs.emit(events)
 }
 
 // SetTintID sets the current tint to the provided tint ID.
 func (r *Registry) SetTintID(id string) (ok bool) {
-	_, ok = r.GetTint(id)
+	r.mu.Lock()
+	tint, ok := r.tints[id]
 	if !ok {
-		return ok
+		r.mu.Unlock()
+		return false
 	}
 
-	r.mu.Lock()
-	r.currentTint = id
+	var events []Event
+	if r.currentTint != id {
+		events = []Event{{Kind: CurrentChanged, Tint: tint, Previous: r.tints[r.currentTint]}}
+		r.currentTint = id
+	}
 	r.mu.Unlock()
 
+	r.subs.emit(events)
 	return true
 }
 
@@ -236,21 +361,23 @@ func (r *Registry) NextTint() {
 	r.SetTintID(tints[nextI])
 }
 
-// Current returns the current tint. Panics if no tint has been set yet, and the
-// registry has no tints registered that it can fall back to.
+// Current returns the current tint. If no tint has been set yet, it falls back
+// to (and sets) the first registered tint. Panics if no tints are registered.
 func (r *Registry) Current() (tint *Tint) {
-	current := r.getCurrentTintID()
-	if current == "" {
-		// Attempt to recover by returning the first tint.
-		tints := r.Tints()
-		if len(tints) == 0 {
-			panic("no tint set, and no tints registered to fall back to")
-		}
-		r.SetTint(tint)
-		return tints[0]
+	r.mu.RLock()
+	tint = r.tints[r.currentTint]
+	r.mu.RUnlock()
+
+	if tint != nil {
+		return tint
 	}
-	tint, _ = r.GetTint(current)
-	return tint
+
+	tints := r.Tints()
+	if len(tints) == 0 {
+		panic("no tint set, and no tints registered to fall back to") //nolint:panic
+	}
+	r.SetTint(tints[0])
+	return tints[0]
 }
 
 func (r *Registry) getCurrentTintID() (id string) {
