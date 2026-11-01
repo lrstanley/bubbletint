@@ -7,7 +7,7 @@ require (
 	github.com/go-playground/validator/v10 v10.30.5
 	github.com/goccy/go-yaml v1.19.2
 	github.com/iancoleman/strcase v0.3.0
-	github.com/lrstanley/clix/v2 v2.0.5
+	github.com/lrstanley/clix/v2 v2.0.7
 	github.com/lucasb-eyer/go-colorful v1.4.1
 )
 
