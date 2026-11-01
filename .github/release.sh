@@ -90,9 +90,9 @@ bump_module() {
 	fi
 
 	while IFS= read -r mod; do
-		# require lines are indented. the module line is not, so a module
-		# path is not treated as a requirement of itself.
-		if ! grep -F "${mod} " "$gomod" | grep -Eq '^[[:space:]]'; then
+		# Requirements can be indented in a block or start with require.
+		# Exclude the module directive so it cannot match itself.
+		if ! grep -F "${mod} " "$gomod" | grep -Eq '^(require[[:space:]]+|[[:space:]]+)'; then
 			echo "${dir} does not require ${mod}" >&2
 			return 1
 		fi
