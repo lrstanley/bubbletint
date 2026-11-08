@@ -45,7 +45,11 @@ func DefaultTints() []*Tint {
 		TintAizenLight,
 		TintAlabaster,
 		TintAlienBlood,
+		TintAlxProDark,
+		TintAlxProLight,
 		TintAmberCrtRetro,
+		TintAnalogHeartbeat,
+		TintAnalogHeartbeatPhosphor,
 		TintAnalyzedDark,
 		TintAnalyzedLight,
 		TintAndromeda,
@@ -73,8 +77,13 @@ func DefaultTints() []*Tint {
 		TintAyuMirage,
 		TintAztecSunset,
 		TintBananaBlueberry,
+		TintBarbenheimerBunker,
+		TintBarbenheimerDreamhouse,
+		TintBarbenheimerNuclearSunrise,
 		TintBarrelCactus,
 		TintBatman,
+		TintBauhausDark,
+		TintBauhausLight,
 		TintBelafonteDay,
 		TintBelafonteNight,
 		TintBelfry,
@@ -157,6 +166,8 @@ func DefaultTints() []*Tint {
 		TintCobaltNextMinimal,
 		TintCobalt2,
 		TintCobweb,
+		TintCode2026Dark,
+		TintCode2026Light,
 		TintCoffeeTheme,
 		TintColdStorage,
 		TintCoolNight,
@@ -314,6 +325,7 @@ func DefaultTints() []*Tint {
 		TintHaX0RGr33N,
 		TintHaX0RR3D,
 		TintHacktober,
+		TintHadalBloom,
 		TintHardcore,
 		TintHarper,
 		TintHarvestMoon,
@@ -409,6 +421,38 @@ func DefaultTints() []*Tint {
 		TintLondonEmbankmentDusk,
 		TintLondonSohoNight,
 		TintLovelace,
+		TintLuminaAuroraDark,
+		TintLuminaAuroraLight,
+		TintLuminaCanopyDark,
+		TintLuminaCanopyLight,
+		TintLuminaCherenkovDark,
+		TintLuminaCherenkovLight,
+		TintLuminaDuskDark,
+		TintLuminaDuskLight,
+		TintLuminaEmberDark,
+		TintLuminaEmberLight,
+		TintLuminaEspressoDark,
+		TintLuminaEspressoLight,
+		TintLuminaHarborDark,
+		TintLuminaHarborLight,
+		TintLuminaLagoonDark,
+		TintLuminaLagoonLight,
+		TintLuminaNebulaDark,
+		TintLuminaNebulaLight,
+		TintLuminaOliveDark,
+		TintLuminaOliveLight,
+		TintLuminaOxbloodDark,
+		TintLuminaOxbloodLight,
+		TintLuminaParchmentDark,
+		TintLuminaParchmentLight,
+		TintLuminaPolaireDark,
+		TintLuminaPolaireLight,
+		TintLuminaQuartzDark,
+		TintLuminaQuartzLight,
+		TintLuminaRayleighDark,
+		TintLuminaRayleighLight,
+		TintLuminaVitrailDark,
+		TintLuminaVitrailLight,
 		TintLunarDust,
 		TintMadmansDiary,
 		TintManPage,
@@ -468,6 +512,7 @@ func DefaultTints() []*Tint {
 		TintMonsterMash,
 		TintMoonfly,
 		TintMoonwalk,
+		TintMossEmber,
 		TintMotelVacancy,
 		TintMovingSignals,
 		TintN0Tch2K,
@@ -478,7 +523,12 @@ func DefaultTints() []*Tint {
 		TintNeon,
 		TintNeonAnalog,
 		TintNeonPurple,
+		TintNeonRaincheck,
+		TintNeonRaincheckAfterHours,
 		TintNeopolitan,
+		TintNephriteForest,
+		TintNephriteJade,
+		TintNephriteMint,
 		TintNeutron,
 		TintNightLionV1,
 		TintNightLionV2,
@@ -536,6 +586,8 @@ func DefaultTints() []*Tint {
 		TintPaintedDesert,
 		TintPaleNightHc,
 		TintPandora,
+		TintPaperCrane,
+		TintPaperCraneMidnightInk,
 		TintPaperTiger,
 		TintParaisoDark,
 		TintParanoidCircuit,
@@ -587,6 +639,16 @@ func DefaultTints() []*Tint {
 		TintPyrokai,
 		TintPyrokaiLight,
 		TintRadicalReborn,
+		TintRainbowsAndUnicorns,
+		TintRainbowsAndUnicornsArcade,
+		TintRainbowsAndUnicornsDen,
+		TintRainbowsAndUnicornsEga85,
+		TintRainbowsAndUnicornsMane,
+		TintRainbowsAndUnicornsMiami,
+		TintRainbowsAndUnicornsPaperWhite,
+		TintRainbowsAndUnicornsSorbet,
+		TintRainbowsAndUnicornsVhs,
+		TintRainbowsAndUnicornsWorkbench,
 		TintRapture,
 		TintRaycastDark,
 		TintRaycastLight,
@@ -683,6 +745,8 @@ func DefaultTints() []*Tint {
 		TintSolarizedDarkPatched,
 		TintSolarizedOsakaNight,
 		TintSonokai,
+		TintSonoranAfterglow,
+		TintSonoranBlueHour,
 		TintSonoranDusk,
 		TintSpacedust,
 		TintSpacegray,
@@ -732,6 +796,7 @@ func DefaultTints() []*Tint {
 		TintTheHulk,
 		TintThermalReceipt,
 		TintThirteen,
+		TintThisOneGoesTo11,
 		TintTinaciousDesignDark,
 		TintTinaciousDesignLight,
 		TintTokenDark,
@@ -768,6 +833,7 @@ func DefaultTints() []*Tint {
 		TintVaughn,
 		TintVelvetCourt,
 		TintVercel,
+		TintVercelLight,
 		TintVerdigris,
 		TintVesper,
 		TintVibrantInk,
@@ -809,6 +875,10 @@ func DefaultTints() []*Tint {
 		TintYngwiesStrat,
 		TintZacessCream,
 		TintZacessDark,
+		TintZacessDeepContrastDark,
+		TintZacessDeepContrastLight,
+		TintZacessHighContrastDark,
+		TintZacessHighContrastLight,
 		TintZacessLight,
 		TintZacessYellowOnBlack,
 		TintZenbones,
@@ -823,6 +893,7 @@ func DefaultTints() []*Tint {
 		TintCyberpunkIcy,
 		TintDatumDark,
 		TintDatumLight,
+		TintEverslate,
 		TintEyesclosed,
 		TintITerm2DarkBackground,
 		TintITerm2Default,
@@ -864,7 +935,10 @@ func DefaultDarkTints() []*Tint {
 		TintAgaveDusk,
 		TintAizenDark,
 		TintAlienBlood,
+		TintAlxProDark,
 		TintAmberCrtRetro,
+		TintAnalogHeartbeat,
+		TintAnalogHeartbeatPhosphor,
 		TintAnalyzedDark,
 		TintAndromeda,
 		TintAppleClassic,
@@ -887,8 +961,11 @@ func DefaultDarkTints() []*Tint {
 		TintAyuMirage,
 		TintAztecSunset,
 		TintBananaBlueberry,
+		TintBarbenheimerBunker,
+		TintBarbenheimerNuclearSunrise,
 		TintBarrelCactus,
 		TintBatman,
+		TintBauhausDark,
 		TintBelafonteNight,
 		TintBelfry,
 		TintBirdsOfParadise,
@@ -954,6 +1031,7 @@ func DefaultDarkTints() []*Tint {
 		TintCobaltNextMinimal,
 		TintCobalt2,
 		TintCobweb,
+		TintCode2026Dark,
 		TintCoolNight,
 		TintCopperCanyon,
 		TintCountTerminal,
@@ -1079,6 +1157,7 @@ func DefaultDarkTints() []*Tint {
 		TintHaX0RGr33N,
 		TintHaX0RR3D,
 		TintHacktober,
+		TintHadalBloom,
 		TintHardcore,
 		TintHarper,
 		TintHarvestMoon,
@@ -1154,6 +1233,22 @@ func DefaultDarkTints() []*Tint {
 		TintLondonEmbankmentDusk,
 		TintLondonSohoNight,
 		TintLovelace,
+		TintLuminaAuroraDark,
+		TintLuminaCanopyDark,
+		TintLuminaCherenkovDark,
+		TintLuminaDuskDark,
+		TintLuminaEmberDark,
+		TintLuminaEspressoDark,
+		TintLuminaHarborDark,
+		TintLuminaLagoonDark,
+		TintLuminaNebulaDark,
+		TintLuminaOliveDark,
+		TintLuminaOxbloodDark,
+		TintLuminaParchmentDark,
+		TintLuminaPolaireDark,
+		TintLuminaQuartzDark,
+		TintLuminaRayleighDark,
+		TintLuminaVitrailDark,
 		TintMadmansDiary,
 		TintMapleJute,
 		TintMariana,
@@ -1200,6 +1295,7 @@ func DefaultDarkTints() []*Tint {
 		TintMonsoonMesa,
 		TintMonsterMash,
 		TintMoonfly,
+		TintMossEmber,
 		TintMotelVacancy,
 		TintMovingSignals,
 		TintN0Tch2K,
@@ -1209,7 +1305,11 @@ func DefaultDarkTints() []*Tint {
 		TintNeon,
 		TintNeonAnalog,
 		TintNeonPurple,
+		TintNeonRaincheck,
+		TintNeonRaincheckAfterHours,
 		TintNeopolitan,
+		TintNephriteForest,
+		TintNephriteJade,
 		TintNeutron,
 		TintNightLionV1,
 		TintNightLionV2,
@@ -1256,6 +1356,7 @@ func DefaultDarkTints() []*Tint {
 		TintPaintedDesert,
 		TintPaleNightHc,
 		TintPandora,
+		TintPaperCraneMidnightInk,
 		TintParaisoDark,
 		TintParanoidCircuit,
 		TintPatina,
@@ -1294,6 +1395,15 @@ func DefaultDarkTints() []*Tint {
 		TintPurplepeter,
 		TintPyrokai,
 		TintRadicalReborn,
+		TintRainbowsAndUnicorns,
+		TintRainbowsAndUnicornsArcade,
+		TintRainbowsAndUnicornsDen,
+		TintRainbowsAndUnicornsEga85,
+		TintRainbowsAndUnicornsMane,
+		TintRainbowsAndUnicornsMiami,
+		TintRainbowsAndUnicornsSorbet,
+		TintRainbowsAndUnicornsVhs,
+		TintRainbowsAndUnicornsWorkbench,
 		TintRapture,
 		TintRaycastDark,
 		TintRebecca,
@@ -1365,6 +1475,8 @@ func DefaultDarkTints() []*Tint {
 		TintSolarizedDarkPatched,
 		TintSolarizedOsakaNight,
 		TintSonokai,
+		TintSonoranAfterglow,
+		TintSonoranBlueHour,
 		TintSonoranDusk,
 		TintSpacedust,
 		TintSpacegray,
@@ -1401,6 +1513,7 @@ func DefaultDarkTints() []*Tint {
 		TintTheFog,
 		TintTheHulk,
 		TintThirteen,
+		TintThisOneGoesTo11,
 		TintTinaciousDesignDark,
 		TintTokenDark,
 		TintTokyoNight,
@@ -1460,6 +1573,8 @@ func DefaultDarkTints() []*Tint {
 		TintXcodeDarkHc,
 		TintXcodeWwdc,
 		TintZacessDark,
+		TintZacessDeepContrastDark,
+		TintZacessHighContrastDark,
 		TintZacessYellowOnBlack,
 		TintZenbonesDark,
 		TintZenburn,
@@ -1469,6 +1584,7 @@ func DefaultDarkTints() []*Tint {
 		TintBranch,
 		TintCyberpunkIcy,
 		TintDatumDark,
+		TintEverslate,
 		TintEyesclosed,
 		TintITerm2DarkBackground,
 		TintITerm2Default,
@@ -1492,11 +1608,14 @@ func DefaultLightTints() []*Tint {
 		TintAfterimage,
 		TintAizenLight,
 		TintAlabaster,
+		TintAlxProLight,
 		TintAnalyzedLight,
 		TintAppleSystemColorsLight,
 		TintAtomOneLight,
 		TintAubade,
 		TintAyuLight,
+		TintBarbenheimerDreamhouse,
+		TintBauhausLight,
 		TintBelafonteDay,
 		TintBlueprint,
 		TintBlulocoLight,
@@ -1514,6 +1633,7 @@ func DefaultLightTints() []*Tint {
 		TintClaude,
 		TintClaudeLight,
 		TintClearLight,
+		TintCode2026Light,
 		TintCoffeeTheme,
 		TintColdStorage,
 		TintCursorLight,
@@ -1566,6 +1686,22 @@ func DefaultLightTints() []*Tint {
 		TintLightOwl,
 		TintLitCellLight,
 		TintLondonColumbiaRoad,
+		TintLuminaAuroraLight,
+		TintLuminaCanopyLight,
+		TintLuminaCherenkovLight,
+		TintLuminaDuskLight,
+		TintLuminaEmberLight,
+		TintLuminaEspressoLight,
+		TintLuminaHarborLight,
+		TintLuminaLagoonLight,
+		TintLuminaNebulaLight,
+		TintLuminaOliveLight,
+		TintLuminaOxbloodLight,
+		TintLuminaParchmentLight,
+		TintLuminaPolaireLight,
+		TintLuminaQuartzLight,
+		TintLuminaRayleighLight,
+		TintLuminaVitrailLight,
 		TintLunarDust,
 		TintManPage,
 		TintMatchaZen,
@@ -1580,6 +1716,7 @@ func DefaultLightTints() []*Tint {
 		TintMonospaceLight,
 		TintMoonwalk,
 		TintNeobonesLight,
+		TintNephriteMint,
 		TintNightOwlishLight,
 		TintNoClownFiestaLight,
 		TintNoctisHibernus,
@@ -1591,6 +1728,7 @@ func DefaultLightTints() []*Tint {
 		TintOneDoubleLight,
 		TintOneHalfLight,
 		TintOnenordLight,
+		TintPaperCrane,
 		TintPaperTiger,
 		TintParchment,
 		TintPatinaLichen,
@@ -1604,6 +1742,7 @@ func DefaultLightTints() []*Tint {
 		TintPrimary,
 		TintProLight,
 		TintPyrokaiLight,
+		TintRainbowsAndUnicornsPaperWhite,
 		TintRaycastLight,
 		TintRedacted,
 		TintRhoadsConcord,
@@ -1647,6 +1786,7 @@ func DefaultLightTints() []*Tint {
 		TintTokyoNightDay,
 		TintTomorrow,
 		TintUnikitty,
+		TintVercelLight,
 		TintVimbones,
 		TintVioletLight,
 		TintWarmBurnoutLight,
@@ -1660,6 +1800,8 @@ func DefaultLightTints() []*Tint {
 		TintY2KChrome,
 		TintYngwiesStrat,
 		TintZacessCream,
+		TintZacessDeepContrastLight,
+		TintZacessHighContrastLight,
 		TintZacessLight,
 		TintZenbones,
 		TintZenbonesLight,
@@ -1724,8 +1866,16 @@ func DefaultTintsByID(id string) *Tint {
 		return TintAlabaster
 	case "alien_blood":
 		return TintAlienBlood
+	case "alx_pro_dark":
+		return TintAlxProDark
+	case "alx_pro_light":
+		return TintAlxProLight
 	case "amber_crt_retro":
 		return TintAmberCrtRetro
+	case "analog_heartbeat":
+		return TintAnalogHeartbeat
+	case "analog_heartbeat:_phosphor":
+		return TintAnalogHeartbeatPhosphor
 	case "analyzed_dark":
 		return TintAnalyzedDark
 	case "analyzed_light":
@@ -1780,10 +1930,20 @@ func DefaultTintsByID(id string) *Tint {
 		return TintAztecSunset
 	case "banana_blueberry":
 		return TintBananaBlueberry
+	case "barbenheimer_bunker":
+		return TintBarbenheimerBunker
+	case "barbenheimer_dreamhouse":
+		return TintBarbenheimerDreamhouse
+	case "barbenheimer_nuclear_sunrise":
+		return TintBarbenheimerNuclearSunrise
 	case "barrel_cactus":
 		return TintBarrelCactus
 	case "batman":
 		return TintBatman
+	case "bauhaus_dark":
+		return TintBauhausDark
+	case "bauhaus_light":
+		return TintBauhausLight
 	case "belafonte_day":
 		return TintBelafonteDay
 	case "belafonte_night":
@@ -1948,6 +2108,10 @@ func DefaultTintsByID(id string) *Tint {
 		return TintCobalt2
 	case "cobweb":
 		return TintCobweb
+	case "code_2026_dark":
+		return TintCode2026Dark
+	case "code_2026_light":
+		return TintCode2026Light
 	case "coffee_theme":
 		return TintCoffeeTheme
 	case "cold_storage":
@@ -2262,6 +2426,8 @@ func DefaultTintsByID(id string) *Tint {
 		return TintHaX0RR3D
 	case "hacktober":
 		return TintHacktober
+	case "hadal_bloom":
+		return TintHadalBloom
 	case "hardcore":
 		return TintHardcore
 	case "harper":
@@ -2452,6 +2618,70 @@ func DefaultTintsByID(id string) *Tint {
 		return TintLondonSohoNight
 	case "lovelace":
 		return TintLovelace
+	case "lumina_aurora_dark":
+		return TintLuminaAuroraDark
+	case "lumina_aurora_light":
+		return TintLuminaAuroraLight
+	case "lumina_canopy_dark":
+		return TintLuminaCanopyDark
+	case "lumina_canopy_light":
+		return TintLuminaCanopyLight
+	case "lumina_cherenkov_dark":
+		return TintLuminaCherenkovDark
+	case "lumina_cherenkov_light":
+		return TintLuminaCherenkovLight
+	case "lumina_dusk_dark":
+		return TintLuminaDuskDark
+	case "lumina_dusk_light":
+		return TintLuminaDuskLight
+	case "lumina_ember_dark":
+		return TintLuminaEmberDark
+	case "lumina_ember_light":
+		return TintLuminaEmberLight
+	case "lumina_espresso_dark":
+		return TintLuminaEspressoDark
+	case "lumina_espresso_light":
+		return TintLuminaEspressoLight
+	case "lumina_harbor_dark":
+		return TintLuminaHarborDark
+	case "lumina_harbor_light":
+		return TintLuminaHarborLight
+	case "lumina_lagoon_dark":
+		return TintLuminaLagoonDark
+	case "lumina_lagoon_light":
+		return TintLuminaLagoonLight
+	case "lumina_nebula_dark":
+		return TintLuminaNebulaDark
+	case "lumina_nebula_light":
+		return TintLuminaNebulaLight
+	case "lumina_olive_dark":
+		return TintLuminaOliveDark
+	case "lumina_olive_light":
+		return TintLuminaOliveLight
+	case "lumina_oxblood_dark":
+		return TintLuminaOxbloodDark
+	case "lumina_oxblood_light":
+		return TintLuminaOxbloodLight
+	case "lumina_parchment_dark":
+		return TintLuminaParchmentDark
+	case "lumina_parchment_light":
+		return TintLuminaParchmentLight
+	case "lumina_polaire_dark":
+		return TintLuminaPolaireDark
+	case "lumina_polaire_light":
+		return TintLuminaPolaireLight
+	case "lumina_quartz_dark":
+		return TintLuminaQuartzDark
+	case "lumina_quartz_light":
+		return TintLuminaQuartzLight
+	case "lumina_rayleigh_dark":
+		return TintLuminaRayleighDark
+	case "lumina_rayleigh_light":
+		return TintLuminaRayleighLight
+	case "lumina_vitrail_dark":
+		return TintLuminaVitrailDark
+	case "lumina_vitrail_light":
+		return TintLuminaVitrailLight
 	case "lunar_dust":
 		return TintLunarDust
 	case "madman's_diary":
@@ -2570,6 +2800,8 @@ func DefaultTintsByID(id string) *Tint {
 		return TintMoonfly
 	case "moonwalk":
 		return TintMoonwalk
+	case "moss_&_ember":
+		return TintMossEmber
 	case "motel_vacancy":
 		return TintMotelVacancy
 	case "moving_signals":
@@ -2590,8 +2822,18 @@ func DefaultTintsByID(id string) *Tint {
 		return TintNeonAnalog
 	case "neon_purple":
 		return TintNeonPurple
+	case "neon_raincheck":
+		return TintNeonRaincheck
+	case "neon_raincheck:_after_hours":
+		return TintNeonRaincheckAfterHours
 	case "neopolitan":
 		return TintNeopolitan
+	case "nephrite_forest":
+		return TintNephriteForest
+	case "nephrite_jade":
+		return TintNephriteJade
+	case "nephrite_mint":
+		return TintNephriteMint
 	case "neutron":
 		return TintNeutron
 	case "night_lion_v_1":
@@ -2706,6 +2948,10 @@ func DefaultTintsByID(id string) *Tint {
 		return TintPaleNightHc
 	case "pandora":
 		return TintPandora
+	case "paper_crane":
+		return TintPaperCrane
+	case "paper_crane:_midnight_ink":
+		return TintPaperCraneMidnightInk
 	case "paper_tiger":
 		return TintPaperTiger
 	case "paraiso_dark":
@@ -2808,6 +3054,26 @@ func DefaultTintsByID(id string) *Tint {
 		return TintPyrokaiLight
 	case "radical_reborn":
 		return TintRadicalReborn
+	case "rainbows_and_unicorns":
+		return TintRainbowsAndUnicorns
+	case "rainbows_and_unicorns_arcade":
+		return TintRainbowsAndUnicornsArcade
+	case "rainbows_and_unicorns_den":
+		return TintRainbowsAndUnicornsDen
+	case "rainbows_and_unicorns_ega_85":
+		return TintRainbowsAndUnicornsEga85
+	case "rainbows_and_unicorns_mane":
+		return TintRainbowsAndUnicornsMane
+	case "rainbows_and_unicorns_miami":
+		return TintRainbowsAndUnicornsMiami
+	case "rainbows_and_unicorns_paper_white":
+		return TintRainbowsAndUnicornsPaperWhite
+	case "rainbows_and_unicorns_sorbet":
+		return TintRainbowsAndUnicornsSorbet
+	case "rainbows_and_unicorns_vhs":
+		return TintRainbowsAndUnicornsVhs
+	case "rainbows_and_unicorns_workbench":
+		return TintRainbowsAndUnicornsWorkbench
 	case "rapture":
 		return TintRapture
 	case "raycast_dark":
@@ -3000,6 +3266,10 @@ func DefaultTintsByID(id string) *Tint {
 		return TintSolarizedOsakaNight
 	case "sonokai":
 		return TintSonokai
+	case "sonoran_afterglow":
+		return TintSonoranAfterglow
+	case "sonoran_blue_hour":
+		return TintSonoranBlueHour
 	case "sonoran_dusk":
 		return TintSonoranDusk
 	case "spacedust":
@@ -3098,6 +3368,8 @@ func DefaultTintsByID(id string) *Tint {
 		return TintThermalReceipt
 	case "thirteen":
 		return TintThirteen
+	case "this_one_goes_to_11":
+		return TintThisOneGoesTo11
 	case "tinacious_design_dark":
 		return TintTinaciousDesignDark
 	case "tinacious_design_light":
@@ -3170,6 +3442,8 @@ func DefaultTintsByID(id string) *Tint {
 		return TintVelvetCourt
 	case "vercel":
 		return TintVercel
+	case "vercel_light":
+		return TintVercelLight
 	case "verdigris":
 		return TintVerdigris
 	case "vesper":
@@ -3252,6 +3526,14 @@ func DefaultTintsByID(id string) *Tint {
 		return TintZacessCream
 	case "zacess_dark":
 		return TintZacessDark
+	case "zacess_deep_contrast_dark":
+		return TintZacessDeepContrastDark
+	case "zacess_deep_contrast_light":
+		return TintZacessDeepContrastLight
+	case "zacess_high_contrast_dark":
+		return TintZacessHighContrastDark
+	case "zacess_high_contrast_light":
+		return TintZacessHighContrastLight
 	case "zacess_light":
 		return TintZacessLight
 	case "zacess_yellow_on_black":
@@ -3280,6 +3562,8 @@ func DefaultTintsByID(id string) *Tint {
 		return TintDatumDark
 	case "datum_light":
 		return TintDatumLight
+	case "everslate":
+		return TintEverslate
 	case "eyesclosed":
 		return TintEyesclosed
 	case "i_term_2_dark_background":
@@ -3344,7 +3628,11 @@ func DefaultTintIDs() []string {
 		"aizen_light",
 		"alabaster",
 		"alien_blood",
+		"alx_pro_dark",
+		"alx_pro_light",
 		"amber_crt_retro",
+		"analog_heartbeat",
+		"analog_heartbeat:_phosphor",
 		"analyzed_dark",
 		"analyzed_light",
 		"andromeda",
@@ -3372,8 +3660,13 @@ func DefaultTintIDs() []string {
 		"ayu_mirage",
 		"aztec_sunset",
 		"banana_blueberry",
+		"barbenheimer_bunker",
+		"barbenheimer_dreamhouse",
+		"barbenheimer_nuclear_sunrise",
 		"barrel_cactus",
 		"batman",
+		"bauhaus_dark",
+		"bauhaus_light",
 		"belafonte_day",
 		"belafonte_night",
 		"belfry",
@@ -3456,6 +3749,8 @@ func DefaultTintIDs() []string {
 		"cobalt_next_minimal",
 		"cobalt_2",
 		"cobweb",
+		"code_2026_dark",
+		"code_2026_light",
 		"coffee_theme",
 		"cold_storage",
 		"cool_night",
@@ -3613,6 +3908,7 @@ func DefaultTintIDs() []string {
 		"ha_x_0_r_gr_33_n",
 		"ha_x_0_r_r_3_d",
 		"hacktober",
+		"hadal_bloom",
 		"hardcore",
 		"harper",
 		"harvest_moon",
@@ -3708,6 +4004,38 @@ func DefaultTintIDs() []string {
 		"london_embankment_dusk",
 		"london_soho_night",
 		"lovelace",
+		"lumina_aurora_dark",
+		"lumina_aurora_light",
+		"lumina_canopy_dark",
+		"lumina_canopy_light",
+		"lumina_cherenkov_dark",
+		"lumina_cherenkov_light",
+		"lumina_dusk_dark",
+		"lumina_dusk_light",
+		"lumina_ember_dark",
+		"lumina_ember_light",
+		"lumina_espresso_dark",
+		"lumina_espresso_light",
+		"lumina_harbor_dark",
+		"lumina_harbor_light",
+		"lumina_lagoon_dark",
+		"lumina_lagoon_light",
+		"lumina_nebula_dark",
+		"lumina_nebula_light",
+		"lumina_olive_dark",
+		"lumina_olive_light",
+		"lumina_oxblood_dark",
+		"lumina_oxblood_light",
+		"lumina_parchment_dark",
+		"lumina_parchment_light",
+		"lumina_polaire_dark",
+		"lumina_polaire_light",
+		"lumina_quartz_dark",
+		"lumina_quartz_light",
+		"lumina_rayleigh_dark",
+		"lumina_rayleigh_light",
+		"lumina_vitrail_dark",
+		"lumina_vitrail_light",
 		"lunar_dust",
 		"madman's_diary",
 		"man_page",
@@ -3767,6 +4095,7 @@ func DefaultTintIDs() []string {
 		"monster_mash",
 		"moonfly",
 		"moonwalk",
+		"moss_&_ember",
 		"motel_vacancy",
 		"moving_signals",
 		"n_0_tch_2_k",
@@ -3777,7 +4106,12 @@ func DefaultTintIDs() []string {
 		"neon",
 		"neon_analog",
 		"neon_purple",
+		"neon_raincheck",
+		"neon_raincheck:_after_hours",
 		"neopolitan",
+		"nephrite_forest",
+		"nephrite_jade",
+		"nephrite_mint",
 		"neutron",
 		"night_lion_v_1",
 		"night_lion_v_2",
@@ -3835,6 +4169,8 @@ func DefaultTintIDs() []string {
 		"painted_desert",
 		"pale_night_hc",
 		"pandora",
+		"paper_crane",
+		"paper_crane:_midnight_ink",
 		"paper_tiger",
 		"paraiso_dark",
 		"paranoid_circuit",
@@ -3886,6 +4222,16 @@ func DefaultTintIDs() []string {
 		"pyrokai",
 		"pyrokai_light",
 		"radical_reborn",
+		"rainbows_and_unicorns",
+		"rainbows_and_unicorns_arcade",
+		"rainbows_and_unicorns_den",
+		"rainbows_and_unicorns_ega_85",
+		"rainbows_and_unicorns_mane",
+		"rainbows_and_unicorns_miami",
+		"rainbows_and_unicorns_paper_white",
+		"rainbows_and_unicorns_sorbet",
+		"rainbows_and_unicorns_vhs",
+		"rainbows_and_unicorns_workbench",
 		"rapture",
 		"raycast_dark",
 		"raycast_light",
@@ -3982,6 +4328,8 @@ func DefaultTintIDs() []string {
 		"solarized_dark_patched",
 		"solarized_osaka_night",
 		"sonokai",
+		"sonoran_afterglow",
+		"sonoran_blue_hour",
 		"sonoran_dusk",
 		"spacedust",
 		"spacegray",
@@ -4031,6 +4379,7 @@ func DefaultTintIDs() []string {
 		"the_hulk",
 		"thermal_receipt",
 		"thirteen",
+		"this_one_goes_to_11",
 		"tinacious_design_dark",
 		"tinacious_design_light",
 		"token_dark",
@@ -4067,6 +4416,7 @@ func DefaultTintIDs() []string {
 		"vaughn",
 		"velvet_court",
 		"vercel",
+		"vercel_light",
 		"verdigris",
 		"vesper",
 		"vibrant_ink",
@@ -4108,6 +4458,10 @@ func DefaultTintIDs() []string {
 		"yngwie's_strat",
 		"zacess_cream",
 		"zacess_dark",
+		"zacess_deep_contrast_dark",
+		"zacess_deep_contrast_light",
+		"zacess_high_contrast_dark",
+		"zacess_high_contrast_light",
 		"zacess_light",
 		"zacess_yellow_on_black",
 		"zenbones",
@@ -4122,6 +4476,7 @@ func DefaultTintIDs() []string {
 		"cyberpunk_icy",
 		"datum_dark",
 		"datum_light",
+		"everslate",
 		"eyesclosed",
 		"i_term_2_dark_background",
 		"i_term_2_default",
