@@ -4,6 +4,8 @@
 
 package tint
 
+import "strings"
+
 // CreditSource is an author or project credited with a tint.
 type CreditSource struct {
 	// Name is the author credit. Theme data stores the full author text here,
@@ -88,4 +90,60 @@ type Tint struct {
 	Red    *Color `json:"red,omitempty"`
 	White  *Color `json:"white,omitempty"`
 	Yellow *Color `json:"yellow,omitempty"`
+}
+
+// SearchTints returns tints whose ID or DisplayName contains query.
+func SearchTints(tints []*Tint, query string) []*Tint {
+	q := strings.ToLower(query)
+	var out []*Tint
+	for _, t := range tints {
+		if t == nil {
+			continue
+		}
+		if strings.Contains(strings.ToLower(t.ID), q) || strings.Contains(strings.ToLower(t.DisplayName), q) {
+			out = append(out, t)
+		}
+	}
+	return out
+}
+
+// ClosestTint returns the tint closest to query by edit distance.
+func ClosestTint(tints []*Tint, query string) *Tint {
+	var best *Tint
+	bestDist := -1
+	for _, t := range tints {
+		if t == nil {
+			continue
+		}
+		d := levenshtein(query, t.ID)
+		if dn := levenshtein(query, t.DisplayName); dn < d {
+			d = dn
+		}
+		if bestDist == -1 || d < bestDist {
+			best, bestDist = t, d
+		}
+	}
+	return best
+}
+
+func levenshtein(a, b string) int {
+	a, b = strings.ToLower(a), strings.ToLower(b)
+	ar, br := []rune(a), []rune(b)
+	prev := make([]int, len(br)+1)
+	curr := make([]int, len(br)+1)
+	for j := range prev {
+		prev[j] = j
+	}
+	for i := 1; i <= len(ar); i++ {
+		curr[0] = i
+		for j := 1; j <= len(br); j++ {
+			cost := 1
+			if ar[i-1] == br[j-1] {
+				cost = 0
+			}
+			curr[j] = min(prev[j]+1, curr[j-1]+1, prev[j-1]+cost)
+		}
+		prev, curr = curr, prev
+	}
+	return prev[len(br)]
 }
