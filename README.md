@@ -9,6 +9,9 @@
 <!-- do not edit anything in this "template" block, its auto-generated -->
 
 <p align="center">
+  <a href="https://github.com/lrstanley/bubbletint/releases">
+    <img title="Release Downloads" src="https://img.shields.io/github/downloads/lrstanley/bubbletint/total?style=flat-square">
+  </a>
   <a href="https://github.com/lrstanley/bubbletint/tags">
     <img title="Latest Semver Tag" src="https://img.shields.io/github/v/tag/lrstanley/bubbletint?style=flat-square">
   </a>
@@ -43,6 +46,10 @@
   </a>
   <a href="https://github.com/lrstanley/bubbletint/pulls">
     <img title="Open Pull Requests" src="https://img.shields.io/github/issues-pr/lrstanley/bubbletint?label=prs&style=flat-square">
+  </a>
+  <a href="https://github.com/lrstanley/bubbletint/releases">
+    <img title="Latest Semver Release" src="https://img.shields.io/github/v/release/lrstanley/bubbletint?style=flat-square">
+    <img title="Latest Release Date" src="https://img.shields.io/github/release-date/lrstanley/bubbletint?label=date&style=flat-square">
   </a>
   <a href="https://github.com/lrstanley/bubbletint/discussions/new?category=q-a">
     <img title="Ask a Question" src="https://img.shields.io/badge/support-ask_a_question!-blue?style=flat-square">
