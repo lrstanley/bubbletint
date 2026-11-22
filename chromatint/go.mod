@@ -7,4 +7,4 @@ require (
 	github.com/lrstanley/bubbletint/v2 v2.1.0-beta.1
 )
 
-require github.com/dlclark/regexp2/v2 v2.9.1 // indirect
+require github.com/dlclark/regexp2/v2 v2.13.2 // indirect

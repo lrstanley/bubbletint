@@ -5,6 +5,10 @@ bin/*
 *.txt
 *.log
 .env
+.env.local
 public
 go.work
 go.work.sum
+
+# task fingerprints
+.task/

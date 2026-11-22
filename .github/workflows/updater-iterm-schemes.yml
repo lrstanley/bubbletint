@@ -17,6 +17,7 @@ jobs:
         uses: lrstanley/.github/composite/install-go@master
         with:
           version: "${{ steps.goversion.outputs.version }}"
+      - uses: lrstanley/.github/composite/install-taskfile@master
       - id: release
         uses: lrstanley/.github/composite/get-release-version@master
         with:
@@ -32,14 +33,14 @@ jobs:
             exit 1
           fi
 
-          echo "previous_version=$(sed -rn 's/export ITERM_SCHEMES_VERSION := (.+)/\1/p' Makefile)" >> "$GITHUB_OUTPUT"
-          sed -ri "s/ITERM_SCHEMES_VERSION := .+/ITERM_SCHEMES_VERSION := ${version}/g" Makefile
+          echo "previous_version=$(sed -rn 's/^\s*ITERM_SCHEMES_VERSION: (.+)/\1/p' Taskfile.yaml)" >> "$GITHUB_OUTPUT"
+          sed -ri "s/^(\s*ITERM_SCHEMES_VERSION:) .+/\1 ${version}/" Taskfile.yaml
 
-          make generate
+          task generate test
 
           # A new upstream release that does not change generated Go files
-          # should not open a pull request for the Makefile pin alone.
-          if git diff --quiet HEAD -- . ':(exclude)Makefile' && [[ -z "$(git ls-files --others --exclude-standard -- . ':(exclude)Makefile')" ]]; then
+          # should not open a pull request for the Taskfile pin alone.
+          if git diff --quiet HEAD -- . ':(exclude)Taskfile.yaml' && [[ -z "$(git ls-files --others --exclude-standard -- . ':(exclude)Taskfile.yaml')" ]]; then
             echo "meaningful=false" >> "$GITHUB_OUTPUT"
             echo "generated files unchanged, skipping pull request"
           else
@@ -54,7 +55,7 @@ jobs:
           version: ${{ steps.release.outputs.version }}
           previous_version: ${{ steps.version.outputs.previous_version }}
           paths: |
-            Makefile
+            Taskfile.yaml
             *.gen.go
             categories.json
           repo: ${{ steps.release.outputs.repo }}

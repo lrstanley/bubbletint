@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+vars:
+  MODULES: [".", chromatint, glamourtint, sources, cmd/tintgen, _examples]
+  MODRELEASE: github.com/lrstanley/x/cmd/modrelease@latest
+
+env:
+  # the pinned iTerm2-Color-Schemes release tintgen generates from. updated by .github/workflows/updater-iterm-schemes.yml.
+  ITERM_SCHEMES_VERSION: release-20261116-150709-494b809
+
+# OPENROUTER_API_KEY, for tintgen to classify new themes, can go in either.
+dotenv: [.env.local, .env]
+
+method: timestamp
+set: [errexit, nounset, pipefail]
+
+tasks:
+  default:
+    desc: add license headers, tidy, regenerate the tints, and test all modules
+    cmds:
+      - task: license
+      - task: tidy
+      - task: generate
+      - task: test
+
+  # go tasks, run across every module.
+  license:
+    desc: add license headers
+    cmds:
+      - curl -sL https://liam.sh/-/gh/g/license-header.sh | bash -s
+  tidy:
+    desc: run go mod tidy
+    run: once
+    cmds:
+      - for: { var: MODULES, as: MODULE }
+        cmd: cd {{.MODULE}} && go mod tidy
+  up:
+    desc: upgrade all go dependencies
+    cmds:
+      - for: { var: MODULES, as: MODULE }
+        cmd: cd {{.MODULE}} && go get -u -t ./... && go mod tidy
+  # not named prepare, which the shared CI workflows run before testing: this downloads the pinned schemes.
+  generate:
+    desc: regenerate the tints, categories, and ./public from the pinned iTerm2-Color-Schemes release (--force to rerun)
+    sources:
+      - "cmd/tintgen/**/*"
+      - Taskfile.yaml
+    generates:
+      - tints.gen.go
+      - default_registry.gen.go
+      - category.gen.go
+      - categories.schema.json
+      - public/index.html
+    cmds:
+      - rm -rf ./public
+      - cd cmd/tintgen && go test ./...
+      - cd cmd/tintgen && go run . ../../
+      - gofmt -e -s -w *.gen.go
+      - go vet .
+  # CI runs this too, through lrstanley/.github's go test workflow.
+  test:
+    desc: run tests with the race detector, several times over
+    env:
+      GORACE: exitcode=1 halt_on_error=1
+    cmds:
+      - for: { var: MODULES, as: MODULE }
+        cmd: cd {{.MODULE}} && go test -race -timeout 3m -count 3 -cpu 1,4 {{default "./..." .CLI_ARGS}}
+  # every module is released at the same version, except cmd/tintgen, which is only used to generate the tints. glamourtint
+  # requires chromatint, and modrelease works that order out from each go.mod.
+  #
+  # run with --github-release and --highlights, so the GitHub release is created with notes. first run the plan, and
+  # read the changelog it prints. then write the highlights file, outside the repo so it isn't committed: a short
+  # summary of the notable changes. modrelease adds the changelog and the go get instructions itself, so don't repeat
+  # them. both the plan and --apply need a GH_TOKEN that can create releases. for example:
+  #   GH_TOKEN=$(gh auth token) task release -- minor --beta --github-release --highlights /tmp/highlights.md
+  #   GH_TOKEN=$(gh auth token) task release -- minor --beta --github-release --highlights /tmp/highlights.md --apply
+  release:
+    desc: release all modules at one version, printing the plan unless given --apply (task release -- <version> [--apply])
+    preconditions:
+      - sh: test -n {{shellQuote .CLI_ARGS}}
+        msg: "usage: task release -- <major|minor|patch|version> [--alpha|--beta|--rc] [--apply]"
+    cmds:
+      - go run {{.MODRELEASE}} --skip cmd/tintgen {{.CLI_ARGS}}
