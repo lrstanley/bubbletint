@@ -63,6 +63,9 @@ func TestLoad_BuiltinThemeFallback(t *testing.T) {
 	cfg := t.TempDir()
 	t.Setenv("XDG_CONFIG_HOME", cfg)
 	t.Setenv("GHOSTTY_RESOURCES_DIR", "")
+	orig := installThemeDirs
+	installThemeDirs = func() []string { return nil }
+	t.Cleanup(func() { installThemeDirs = orig })
 
 	// No theme file anywhere, so it falls back to bubbletint's tint of that name.
 	testutil.Write(t, filepath.Join(cfg, "ghostty", "config"), "theme = light:Dracula+,dark:Dracula+\nbackground = #000001\n")

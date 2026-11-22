@@ -68,18 +68,24 @@ func themeDirs() []string {
 	if dir := os.Getenv("GHOSTTY_RESOURCES_DIR"); dir != "" {
 		dirs = append(dirs, filepath.Join(sources.ExpandPath(dir), "themes"))
 	}
+	return append(dirs, installThemeDirs()...)
+}
 
+// installThemeDirs returns the theme directories of a Ghostty install. It's a
+// variable so tests can leave out whatever Ghostty the machine has installed.
+var installThemeDirs = func() []string {
 	switch runtime.GOOS {
 	case "darwin":
-		dirs = append(dirs, "/Applications/Ghostty.app/Contents/Resources/ghostty/themes")
+		return []string{"/Applications/Ghostty.app/Contents/Resources/ghostty/themes"}
 	case "windows":
+		return nil
 	default:
-		dirs = append(dirs, "/usr/share/ghostty/themes", "/usr/local/share/ghostty/themes")
+		dirs := []string{"/usr/share/ghostty/themes", "/usr/local/share/ghostty/themes"}
 		if home := sources.HomeDir(); home != "" {
 			dirs = append(dirs, filepath.Join(home, ".local", "share", "ghostty", "themes"))
 		}
+		return dirs
 	}
-	return dirs
 }
 
 // Load reads the Ghostty config at path, and returns its colors as a tint with
