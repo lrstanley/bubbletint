@@ -4,7 +4,7 @@ go 1.25
 
 require (
 	github.com/charmbracelet/x/ansi v0.11.10
-	github.com/lrstanley/bubbletint/v2 v2.1.0
+	github.com/lrstanley/bubbletint/v2 v2.2.0-alpha.0
 )
 
 require (
