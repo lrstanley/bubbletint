@@ -9,7 +9,7 @@ import (
 
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
-	tint "github.com/lrstanley/bubbletint/v2"
+	"github.com/lrstanley/bubbletint/roles/v2"
 	zone "github.com/lrstanley/bubblezone/v2"
 )
 
@@ -65,22 +65,22 @@ func newTabs(items ...string) *tabs {
 }
 
 func (m *tabs) setStyles() {
-	m.inactiveStyle = lipgloss.NewStyle().
+	m.inactiveStyle = f.Text(roles.Muted).
 		Border(tabBorder, true).
 		Padding(0, 1).
-		BorderForeground(tint.Current().BrightPurple).
-		Foreground(tint.Current().Fg)
+		BorderForeground(f.Color(roles.Accent))
 
-	m.activeStyle = m.inactiveStyle.
+	m.activeStyle = f.Text(roles.Accent).
 		Border(activeTabBorder, true).
-		Bold(true).
-		Foreground(adaptBright(tint.Current().BrightPurple, 0.25))
+		Padding(0, 1).
+		BorderForeground(f.Color(roles.Accent)).
+		Bold(true)
 
 	m.tabGapStyle = tab.
 		BorderTop(false).
 		BorderLeft(false).
 		BorderRight(false).
-		BorderForeground(tint.Current().BrightPurple)
+		BorderForeground(f.Color(roles.Accent))
 }
 
 func (m *tabs) Init() tea.Cmd {

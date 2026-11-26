@@ -10,43 +10,12 @@ import (
 	"math"
 	"slices"
 	"strings"
+	"sync"
 
+	"github.com/charmbracelet/colorprofile"
 	"github.com/charmbracelet/x/ansi"
 	tint "github.com/lrstanley/bubbletint/v2"
 )
-
-// Depth is how many colors the terminal can draw. Map whatever detects the
-// terminal's colors to it; with github.com/charmbracelet/colorprofile, for
-// example, TrueColor is [TrueColor], ANSI256 is [Colors256], ANSI is
-// [Colors16], and Ascii or NoTTY are [NoColor]. A larger Depth is fewer colors,
-// so max(detected, limit) caps a detected depth at a user's limit.
-type Depth uint8
-
-const (
-	// TrueColor draws every color as derived.
-	TrueColor Depth = iota
-	// Colors256 draws from the fixed part of the 256-color palette.
-	Colors256
-	// Colors16 draws with the terminal's 16 ANSI colors.
-	Colors16
-	// NoColor draws no color, only text attributes.
-	NoColor
-)
-
-// String returns the depth's name.
-func (d Depth) String() string {
-	switch d {
-	case TrueColor:
-		return "truecolor"
-	case Colors256:
-		return "256"
-	case Colors16:
-		return "16"
-	case NoColor:
-		return "none"
-	}
-	return "unknown"
-}
 
 // Attr is a set of text attributes, used where color can't carry a role: a
 // [Muted] hint is faint where no gray reads, and the [Selection] is reversed
@@ -81,8 +50,12 @@ func (a Attr) String() string {
 
 // Target is the terminal a palette is fitted to.
 type Target struct {
-	// Depth is how many colors the terminal can draw.
-	Depth Depth
+	// Profile is how many colors the terminal can draw, such as Bubble Tea
+	// detects and sends as a tea.ColorProfileMsg. Unknown is taken as
+	// TrueColor, and NoTTY as ASCII: no color, only attributes. A larger
+	// profile is more colors, so min(detected, limit) caps a detected profile
+	// at a user's limit.
+	Profile colorprofile.Profile
 	// ANSI is the terminal's 16 colors, where they're known, such as from an
 	// OSC 4 query. With 16 colors, roles are fitted to slots that read on this
 	// palette. nil assumes the terminal uses the tint's own colors.
@@ -108,6 +81,9 @@ type Fitted struct {
 	// ground, or the background, and whether it's filled.
 	under   tint.Color
 	painted bool
+
+	root *Fitted  // the palette On was called on first, or nil for this one
+	on   sync.Map // root's On, by surface
 }
 
 // Fit fits the palette to a terminal.
@@ -119,6 +95,12 @@ type Fitted struct {
 // (grays for muted text, red's two slots for danger) that reads on the
 // terminal's palette, or the terminal's default plus an [Attr].
 func (p *Palette) Fit(tg Target) *Fitted {
+	switch tg.Profile { //nolint:exhaustive // the rest are as given
+	case colorprofile.Unknown:
+		tg.Profile = colorprofile.TrueColor
+	case colorprofile.NoTTY:
+		tg.Profile = colorprofile.ASCII
+	}
 	f := &Fitted{
 		p:      p,
 		target: tg,
@@ -140,14 +122,14 @@ func (p *Palette) Fit(tg Target) *Fitted {
 			f.ansi[i] = *tint.FromColor(ansi.BasicColor(i)) //nolint:gosec // 0-15
 		}
 	}
-	switch tg.Depth {
-	case TrueColor:
+	switch tg.Profile { //nolint:exhaustive // Unknown and NoTTY are mapped above
+	case colorprofile.TrueColor:
 		for i, c := range p.colors {
 			f.colors[i] = c
 		}
-	case Colors256:
+	case colorprofile.ANSI256:
 		f.fit256()
-	case Colors16:
+	case colorprofile.ANSI:
 		// The ground first, against the background, before anything is
 		// drawn on it. Tones come before their on colors, which read them.
 		f.under = p.colors[Bg]
@@ -161,7 +143,7 @@ func (p *Palette) Fit(tg Target) *Fitted {
 				f.colors[i], f.attrs[i] = f.fit16(r)
 			}
 		}
-	case NoColor:
+	default:
 		for i := range p.colors {
 			f.attrs[i] = noColorAttr(Role(i)) //nolint:gosec // bounded by the number of roles
 		}
@@ -177,9 +159,10 @@ func (p *Palette) Fit(tg Target) *Fitted {
 
 // Color returns a role's color, fitted to the terminal: a [tint.Color], an
 // [ansi.IndexedColor] or [ansi.BasicColor], or nil for the terminal's
-// default. Renderers that know the ansi types, such as Lip Gloss and Bubble
-// Tea, draw them as palette indexes, so the terminal's own 16 colors show
-// through.
+// default. Renderers that know the ansi types, such as Lip Gloss, draw them
+// as palette indexes, so the terminal's own 16 colors show through. Add
+// [Fitted.Attr] where color can't carry the role, or use [Fitted.Text] and
+// [Fitted.Fill], which add it.
 func (f *Fitted) Color(r Role) color.Color {
 	if int(r) < len(f.colors) {
 		return f.colors[r]
@@ -201,10 +184,10 @@ func (f *Fitted) Attr(r Role) Attr {
 
 // fitLate fits a role defined after the palette was derived.
 func (f *Fitted) fitLate(r Role) (color.Color, Attr) {
-	switch f.target.Depth {
-	case TrueColor:
+	switch f.target.Profile { //nolint:exhaustive // Unknown and NoTTY are mapped by Fit
+	case colorprofile.TrueColor:
 		return f.p.Color(r), 0
-	case Colors256:
+	case colorprofile.ANSI256:
 		var taken []uint8
 		if s, ok := specOf(r); ok {
 			for _, o := range s.Distinct {
@@ -214,16 +197,38 @@ func (f *Fitted) fitLate(r Role) (color.Color, Attr) {
 			}
 		}
 		return ansi.IndexedColor(f.nearest(f.p.Color(r), r, taken)), 0
-	case Colors16:
+	case colorprofile.ANSI:
 		return f.fit16(r)
-	case NoColor:
 	}
 	return nil, noColorAttr(r)
 }
 
-// On returns the palette for drawing on surface, fitted to the same
-// terminal. See [Palette.On].
-func (f *Fitted) On(surface Role) *Fitted { return f.p.On(surface).Fit(f.target) }
+// On returns the palette for drawing on surface, fitted to the same terminal:
+// its text, lines and tones are kept readable on surface, and [Fitted.Text]
+// draws them on surface's color. See [Palette.On]. Text on a surface only
+// has to read on that surface, so On of a palette from On is the same as On
+// of the palette it came from. It's worked out once per surface, so it's
+// cheap to call while rendering.
+func (f *Fitted) On(surface Role) *Fitted {
+	root := f
+	if f.root != nil {
+		root = f.root
+	}
+	if surface == root.p.ground {
+		return root
+	}
+	// Only *Fitted is stored. A miss is fitted outside any lock, and the
+	// first to store it wins.
+	if v, ok := root.on.Load(surface); ok {
+		on, _ := v.(*Fitted)
+		return on
+	}
+	on := root.p.On(surface).Fit(root.target)
+	on.root = root
+	v, _ := root.on.LoadOrStore(surface, on)
+	on, _ = v.(*Fitted)
+	return on
+}
 
 // Fit fits a color that isn't a role, such as a gradient's step or a mix of
 // two roles, as if it were drawn like the role like. With 16 colors or none,
@@ -233,18 +238,14 @@ func (f *Fitted) Fit(c color.Color, like Role) color.Color {
 	if tc == nil {
 		return nil
 	}
-	switch f.target.Depth {
-	case TrueColor:
+	switch f.target.Profile { //nolint:exhaustive // the rest are like's color
+	case colorprofile.TrueColor:
 		return *tc
-	case Colors256:
+	case colorprofile.ANSI256:
 		return ansi.IndexedColor(f.nearest(*tc, like, nil))
-	case Colors16, NoColor:
 	}
 	return f.Color(like)
 }
-
-// Depth returns the depth the palette was fitted to.
-func (f *Fitted) Depth() Depth { return f.target.Depth }
 
 // Palette returns the palette that was fitted.
 func (f *Fitted) Palette() *Palette { return f.p }
@@ -487,9 +488,14 @@ func (f *Fitted) fit16(r Role) (color.Color, Attr) {
 	case r == Fg:
 	case r == Muted || r == Subtle:
 		// A gray that looks like body text wouldn't read as secondary; faint
-		// body text does.
+		// body text does. Body text is the terminal's default, or the slot
+		// it's drawn in on a filled ground. Fg is fitted before Muted.
+		body := p.termFg
+		if s, ok := f.colors[Fg].(ansi.BasicColor); ok {
+			body = f.ansi[s]
+		}
 		family, attr = slices.DeleteFunc(slices.Clone(grays), func(s tint.Slot) bool {
-			return f.ansi[s].Distance(p.colors[Fg]) < 0.04
+			return f.ansi[s].Distance(body) < 0.04
 		}), Faint
 	case r == Border || r == BorderStrong:
 		family, floor = grays, pickBool(p.guards, minBorder, 0)

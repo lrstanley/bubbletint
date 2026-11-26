@@ -339,26 +339,27 @@ go get -u github.com/lrstanley/bubbletint/roles/v2@latest
 ```
 
 ```go
-pal := roles.Derive(tint.Current())
-f := pal.Fit(roles.Target{Depth: roles.Colors256}) // from tea.ColorProfileMsg
+// For a detected color profile, such as Bubble Tea's tea.ColorProfileMsg.
+f := roles.Derive(tint.Current()).Fit(roles.Target{Profile: profile})
 
-dialog := lipgloss.NewStyle().Background(f.Color(roles.Raised))
-hint := lipgloss.NewStyle().Foreground(f.Color(roles.Subtle))
-pill := lipgloss.NewStyle().
-	Background(f.Color(roles.Danger)).
-	Foreground(f.Color(roles.Danger.On()))
+hint := f.Text(roles.Subtle)        // a Lip Gloss style, for text in a role's color
+pill := f.Fill(roles.Danger)        // a solid tone, with its on-danger text
+soft := f.Fill(roles.Danger.Soft()) // a faded tone, with the tone as text
 
-// Text on the selected row, kept readable on the highlight.
-row := f.On(roles.Selection)
-selectedHint := lipgloss.NewStyle().Foreground(row.Color(roles.Subtle))
+// On a surface, text is kept readable there and drawn on the surface's color.
+dialog := f.Fill(roles.Raised)
+note := f.On(roles.Raised).Text(roles.Muted)
+selectedHint := f.On(roles.Selection).Text(roles.Subtle)
 ```
 
 - Contrast guards keep text, marks and lines readable, moving a color's lightness but
   keeping its hue. They can be turned off with `roles.WithoutGuards()`.
 - With 256 colors, no two neighboring roles share an index, and the guards still hold.
 - With 16 colors, each role takes a slot from its family that reads on the terminal's
-  palette, or the terminal's default plus an attribute (`f.Attr(role)`), such as faint
-  for muted text. With no colors, only attributes are left.
+  palette, or the terminal's default plus an attribute, such as faint for muted text.
+  With no colors, only attributes are left. `f.Text` and `f.Fill` add them; for anything
+  that isn't Lip Gloss, `f.Color(role)` and `f.Attr(role)` are the color and what to add
+  to it.
 - Apps add their own roles with `roles.Define`, derived and fitted like the rest.
 - Role names and the API follow semver; the exact colors derived may be tuned in minor
   releases.

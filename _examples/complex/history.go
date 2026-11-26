@@ -7,7 +7,7 @@ package main
 import (
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
-	tint "github.com/lrstanley/bubbletint/v2"
+	"github.com/lrstanley/bubbletint/roles/v2"
 	zone "github.com/lrstanley/bubblezone/v2"
 )
 
@@ -34,16 +34,16 @@ func newHistory(items ...string) *history {
 }
 
 func (m *history) setStyles() {
-	m.historyStyle = lipgloss.NewStyle().
+	// Cards raised off the background, and the selected one highlighted.
+	m.historyStyle = f.Fill(roles.Raised).
 		Align(lipgloss.Left).
-		Background(adaptBright(tint.Current().Bg, 0.15)).
-		Foreground(adaptBright(tint.Current().Fg, 0.15)).
 		Margin(0, 1).
 		Padding(1, 2)
 
-	m.activeHistoryStyle = m.historyStyle.
-		Background(adaptBright(tint.Current().Bg, 0.35)).
-		Foreground(adaptBright(tint.Current().Fg, 0.25))
+	m.activeHistoryStyle = f.Fill(roles.Selection).
+		Align(lipgloss.Left).
+		Margin(0, 1).
+		Padding(1, 2)
 }
 
 func (m *history) Init() tea.Cmd {

@@ -7,7 +7,7 @@ package main
 import (
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
-	tint "github.com/lrstanley/bubbletint/v2"
+	"github.com/lrstanley/bubbletint/roles/v2"
 	zone "github.com/lrstanley/bubblezone/v2"
 )
 
@@ -41,31 +41,28 @@ func newList(title string, items ...listItem) *list {
 }
 
 func (m *list) setStyles() {
-	m.listStyle = lipgloss.NewStyle().
+	m.listStyle = f.Text(roles.Fg).
 		Border(lipgloss.NormalBorder(), false, true, false, false).
-		BorderForeground(tint.Current().Fg).
-		Foreground(tint.Current().Fg).
+		BorderForeground(f.Color(roles.Border)).
 		MarginRight(2)
 
-	m.listHeaderStyle = lipgloss.NewStyle().
+	m.listHeaderStyle = f.Text(roles.Fg).
+		Bold(true).
 		BorderStyle(lipgloss.NormalBorder()).
 		BorderBottom(true).
-		BorderForeground(tint.Current().Fg).
-		Foreground(tint.Current().Fg).
+		BorderForeground(f.Color(roles.Border)).
 		MarginRight(2)
 
-	m.listItemStyle = lipgloss.NewStyle().
-		Foreground(tint.Current().Fg).
+	m.listItemStyle = f.Text(roles.Fg).
 		PaddingLeft(2)
 
-	m.checkMarkStyle = lipgloss.NewStyle().
-		Foreground(tint.Current().BrightGreen).
+	m.checkMarkStyle = f.Text(roles.Success).
 		SetString("✓").
 		PaddingRight(1)
 
-	m.listDoneStyle = lipgloss.NewStyle().
-		Strikethrough(true).
-		Foreground(tint.Current().BrightGreen)
+	// Done items step back, as muted text.
+	m.listDoneStyle = f.Text(roles.Muted).
+		Strikethrough(true)
 }
 
 func (m *list) Init() tea.Cmd {

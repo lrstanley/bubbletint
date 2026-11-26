@@ -10,6 +10,8 @@ import (
 	"os"
 
 	"charm.land/lipgloss/v2"
+	"github.com/charmbracelet/colorprofile"
+	"github.com/lrstanley/bubbletint/roles/v2"
 	tint "github.com/lrstanley/bubbletint/v2"
 )
 
@@ -29,34 +31,29 @@ func loadTheme(filename string) (*tint.Tint, error) {
 	return theme, nil
 }
 
+// styles are the example's styles, from semantic roles derived from the
+// loaded tint and fitted to the terminal's color depth.
 type styles struct {
 	tint   *tint.Tint
+	f      *roles.Fitted
 	app    lipgloss.Style
 	header lipgloss.Style
 	info   lipgloss.Style
 	help   lipgloss.Style
 }
 
-func createStyles(theme *tint.Tint) styles {
+func createStyles(theme *tint.Tint, profile colorprofile.Profile) styles {
+	f := roles.Derive(theme).Fit(roles.Target{Profile: profile})
 	return styles{
 		tint: theme,
-		app: lipgloss.NewStyle().
-			Background(theme.Bg).
-			Foreground(theme.Fg).
+		f:    f,
+		app: f.Fill(roles.Bg).
 			Padding(1, 2).
 			Border(lipgloss.RoundedBorder()).
-			BorderForeground(theme.BrightGreen),
-		header: lipgloss.NewStyle().
-			Background(theme.Bg).
-			Foreground(theme.Blue).
-			Bold(true).
-			MarginBottom(1),
-		info: lipgloss.NewStyle().
-			Background(theme.Bg).
-			Foreground(theme.Green),
-		help: lipgloss.NewStyle().
-			Background(theme.Bg).
-			Foreground(theme.Yellow).
-			Italic(true),
+			BorderForeground(f.Color(roles.BorderStrong)).
+			BorderBackground(f.Color(roles.Bg)),
+		header: f.Text(roles.Accent).Bold(true).MarginBottom(1),
+		info:   f.Text(roles.Muted),
+		help:   f.Text(roles.Subtle).Italic(true),
 	}
 }

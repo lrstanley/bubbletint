@@ -16,17 +16,23 @@
 // from its family that reads on the terminal's palette, or the terminal's
 // default plus an [Attr]; with none, only attributes are left.
 //
-// Fitted colors are [image/color.Color]s, so they work with anything that
-// draws those. With Lip Gloss, for example:
+// [Fitted.Text] and [Fitted.Fill] return Lip Gloss styles for a role, with
+// the attributes that stand in for its color where the terminal can't draw
+// it. [Fitted.On] gives the roles for drawing on a surface, such as a dialog
+// or the selected row: their text stays readable there, and is drawn on the
+// surface's color.
 //
-//	pal := roles.Derive(tint.Current())
-//	f := pal.Fit(roles.Target{Depth: roles.Colors256})
+//	f := roles.Derive(tint.Current()).Fit(roles.Target{Profile: profile})
 //
-//	dialog := lipgloss.NewStyle().Background(f.Color(roles.Raised))
-//	hint := lipgloss.NewStyle().Foreground(f.Color(roles.Subtle))
-//	failed := lipgloss.NewStyle().
-//		Background(f.Color(roles.Danger)).
-//		Foreground(f.Color(roles.Danger.On()))
+//	hint := f.Text(roles.Subtle)
+//	failed := f.Fill(roles.Danger) // with its on-danger text
+//
+//	dialog := f.Fill(roles.Raised)
+//	note := f.On(roles.Raised).Text(roles.Muted) // muted text, on the dialog
+//
+// Fitted colors are [image/color.Color]s too, for anything else that draws
+// those: [Fitted.Color] returns a role's color, and [Fitted.Attr] what to add
+// to it.
 //
 // An app adds roles of its own with [Define]; they're derived, guarded and
 // fitted like the core roles.

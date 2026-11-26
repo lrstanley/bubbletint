@@ -7,7 +7,7 @@ package main
 import (
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
-	tint "github.com/lrstanley/bubbletint/v2"
+	"github.com/lrstanley/bubbletint/roles/v2"
 	zone "github.com/lrstanley/bubblezone/v2"
 )
 
@@ -34,22 +34,20 @@ func newDialog(question string) *dialog {
 }
 
 func (m *dialog) setStyles() {
-	m.dialogBoxStyle = lipgloss.NewStyle().
+	m.dialogBoxStyle = f.Text(roles.Fg).
 		Border(lipgloss.RoundedBorder(), true).
-		BorderForeground(tint.Current().BrightPurple).
-		Foreground(tint.Current().Fg).
+		BorderForeground(f.Color(roles.Accent)).
 		Padding(1, 0)
 
-	m.buttonStyle = lipgloss.NewStyle().
-		Foreground(tint.Current().Fg).
-		Background(adaptBright(tint.Current().Bg, 0.25)).
+	m.buttonStyle = f.Fill(roles.Overlay).
 		Padding(0, 3).
 		MarginTop(1).
 		MarginRight(2)
 
-	m.activeButtonStyle = m.buttonStyle.
-		Foreground(lipgloss.Darken(tint.Current().Black, 0.25)).
-		Background(tint.Current().BrightPurple).
+	// The accent as a solid fill, with the text that reads on it.
+	m.activeButtonStyle = f.Fill(roles.Accent).
+		Padding(0, 3).
+		MarginTop(1).
 		MarginRight(2).
 		Underline(true)
 }

@@ -8,6 +8,7 @@ import (
 	"image/color"
 	"testing"
 
+	"github.com/charmbracelet/colorprofile"
 	"github.com/charmbracelet/x/ansi"
 	tint "github.com/lrstanley/bubbletint/v2"
 )
@@ -134,18 +135,18 @@ func TestDeriveOptions(t *testing.T) {
 	t.Run("accent-slot", func(t *testing.T) {
 		t.Parallel()
 		p := Derive(tn, WithAccentSlot(tint.SlotBrightGreen))
-		if p.AccentSlot() != tint.SlotGreen {
-			t.Errorf("AccentSlot() = %v", p.AccentSlot())
+		if p.accentSlot != tint.SlotGreen {
+			t.Errorf("accent slot = %v", p.accentSlot)
 		}
-		if p.Accent2Slot() == tint.SlotGreen {
+		if p.accent2Slot == tint.SlotGreen {
 			t.Error("accent2 shares the accent's slot")
 		}
 	})
 	t.Run("accent-color", func(t *testing.T) {
 		t.Parallel()
 		p := Derive(tn, WithAccentColor(tint.FromHex("#ff8800")))
-		if p.AccentSlot() != tint.SlotYellow && p.AccentSlot() != tint.SlotRed {
-			t.Errorf("AccentSlot() = %v, want the slot nearest orange", p.AccentSlot())
+		if p.accentSlot != tint.SlotYellow && p.accentSlot != tint.SlotRed {
+			t.Errorf("accent slot = %v, want the slot nearest orange", p.accentSlot)
 		}
 	})
 	t.Run("terminal", func(t *testing.T) {
@@ -161,8 +162,8 @@ func TestDeriveOptions(t *testing.T) {
 	t.Run("without-guards", func(t *testing.T) {
 		t.Parallel()
 		p := Derive(tn, WithoutGuards())
-		if p.Guarded() {
-			t.Error("Guarded()")
+		if p.guards {
+			t.Error("guards on")
 		}
 		if p.Color(Fg) != *tn.Fg {
 			t.Errorf("Fg = %s, want the tint's", p.Color(Fg).Hex())
@@ -173,15 +174,6 @@ func TestDeriveOptions(t *testing.T) {
 		p := Derive(nil)
 		if !p.Dark() || tint.Contrast(p.Color(Fg), p.Color(Bg)) < minText {
 			t.Error("an empty tint should derive white on black")
-		}
-	})
-	t.Run("mono", func(t *testing.T) {
-		t.Parallel()
-		if Derive(tn).Mono() {
-			t.Error("tokyo night is not mono")
-		}
-		if !Derive(&tint.Tint{Bg: tint.FromHex("#000000"), Fg: tint.FromHex("#ffb000")}).Mono() {
-			t.Error("a tint with no hues should be mono")
 		}
 	})
 }
@@ -240,8 +232,18 @@ func TestDefineLate(t *testing.T) {
 	if p.Color(late) != p.Color(Accent) {
 		t.Error("a role defined after Derive isn't derived on demand")
 	}
-	if f := p.Fit(Target{Depth: Colors256}); f.Color(late) == nil {
+	if f := p.Fit(Target{Profile: colorprofile.ANSI256}); f.Color(late) == nil {
 		t.Error("a role defined after Fit isn't fitted on demand")
+	}
+
+	// A surface defined late can be drawn on, at every profile.
+	surface := Define(Spec{Name: "late-surface", Kind: KindSurface, Derive: func(p *Palette) tint.Color { return p.Color(Raised) }})
+	for _, pr := range []colorprofile.Profile{colorprofile.TrueColor, colorprofile.ANSI256, colorprofile.ANSI, colorprofile.ASCII} {
+		f := p.Fit(Target{Profile: pr})
+		fill, text := f.Fill(surface), f.On(surface).Text(Muted)
+		if pr >= colorprofile.ANSI256 && (fill.GetBackground() != f.Color(surface) || text.GetBackground() != f.Color(surface)) {
+			t.Errorf("%v: a surface defined late isn't fitted", pr)
+		}
 	}
 }
 
@@ -265,7 +267,7 @@ func TestFit256(t *testing.T) {
 	var collapses, floors int
 	for _, tn := range tint.DefaultTints() {
 		p := Derive(tn)
-		f := p.Fit(Target{Depth: Colors256})
+		f := p.Fit(Target{Profile: colorprofile.ANSI256})
 		n, which := pairCollapses(p, f)
 		collapses += n
 		if n > 0 {
@@ -295,7 +297,7 @@ func TestFit16(t *testing.T) {
 	var attrs int
 	for _, tn := range tint.DefaultTints() {
 		p := Derive(tn)
-		f := p.Fit(Target{Depth: Colors16})
+		f := p.Fit(Target{Profile: colorprofile.ANSI})
 		bg := p.Color(Bg)
 		ansi16 := tn.ANSI16()
 		for _, r := range append(textRoles, Selection) {
@@ -349,7 +351,7 @@ func TestFitOther(t *testing.T) {
 	t.Parallel()
 	p := Derive(tint.TintGruvboxDark)
 
-	tc := p.Fit(Target{Depth: TrueColor})
+	tc := p.Fit(Target{Profile: colorprofile.TrueColor})
 	if tc.Color(Accent) != p.Color(Accent) || tc.Attr(Accent) != 0 {
 		t.Error("true color should be the derived color")
 	}
@@ -357,29 +359,29 @@ func TestFitOther(t *testing.T) {
 		t.Error("Fit() at true color")
 	}
 
-	unpainted := p.Fit(Target{Depth: TrueColor, Unpainted: true})
+	unpainted := p.Fit(Target{Profile: colorprofile.TrueColor, Unpainted: true})
 	if unpainted.Color(Bg) != nil || unpainted.Color(Fg) != nil || unpainted.Color(Surface) == nil {
 		t.Error("Unpainted should leave only bg and fg to the terminal")
 	}
 
-	none := p.Fit(Target{Depth: NoColor})
+	none := p.Fit(Target{Profile: colorprofile.ASCII})
 	for i := range numBuiltin {
 		if none.Color(i) != nil {
-			t.Fatalf("%s has a color with NoColor", i)
+			t.Fatalf("%s has a color with no color", i)
 		}
 	}
 	for r, want := range map[Role]Attr{Muted: Faint, Selection: Reverse, Danger: Bold, Danger.On(): Reverse | Bold, testHint: Italic, Bg: 0} { //nolint:exhaustive // a sample
 		if got := none.Attr(r); got != want {
-			t.Errorf("NoColor %s: Attr() = %v, want %v", r, got, want)
+			t.Errorf("no color %s: Attr() = %v, want %v", r, got, want)
 		}
 	}
 
-	f256 := p.Fit(Target{Depth: Colors256})
+	f256 := p.Fit(Target{Profile: colorprofile.ANSI256})
 	if got := f256.Fit(p.Color(Accent).Mix(p.Color(Raised), 0.3), Accent); got == nil {
 		t.Error("Fit() at 256")
 	}
-	if f256.Depth() != Colors256 || f256.Palette() != p {
-		t.Error("Depth() or Palette()")
+	if f256.Palette() != p {
+		t.Error("Palette()")
 	}
 
 	// A terminal palette that isn't the tint's: everything comes from it.
@@ -387,21 +389,12 @@ func TestFitOther(t *testing.T) {
 	for i := range term {
 		term[i] = ansi.BasicColor(i) //nolint:gosec // 0-15
 	}
-	f16 := p.Fit(Target{Depth: Colors16, ANSI: &term})
+	f16 := p.Fit(Target{Profile: colorprofile.ANSI, ANSI: &term})
 	if s, ok := f16.Color(Danger).(ansi.BasicColor); !ok || tint.Slot(s).Normal() != tint.SlotRed {
 		t.Errorf("Danger = %#v", f16.Color(Danger))
 	}
 	if got := f16.Fit(color.White, Danger); got != f16.Color(Danger) {
 		t.Error("Fit() at 16 should be like's color")
-	}
-}
-
-func TestDepthString(t *testing.T) {
-	t.Parallel()
-	for d, want := range map[Depth]string{TrueColor: "truecolor", Colors256: "256", Colors16: "16", NoColor: "none", 9: "unknown"} {
-		if got := d.String(); got != want {
-			t.Errorf("String() = %q, want %q", got, want)
-		}
 	}
 }
 
@@ -414,7 +407,7 @@ func BenchmarkDerive(b *testing.B) {
 func BenchmarkFit256(b *testing.B) {
 	p := Derive(tint.TintTokyoNight)
 	for b.Loop() {
-		p.Fit(Target{Depth: Colors256})
+		p.Fit(Target{Profile: colorprofile.ANSI256})
 	}
 }
 
@@ -427,7 +420,7 @@ func TestFitEdgeCases(t *testing.T) {
 	if got := p.On(Danger).Color(Danger); got != p.Color(Danger) {
 		t.Errorf("On(Danger) changed danger to %s", got.Hex())
 	}
-	on, base := p.On(Danger).Fit(Target{Depth: Colors16}), p.Fit(Target{Depth: Colors16})
+	on, base := p.On(Danger).Fit(Target{Profile: colorprofile.ANSI}), p.Fit(Target{Profile: colorprofile.ANSI})
 	if on.Color(Fg) == nil {
 		t.Error("fg on a danger fill is the terminal's default")
 	}
@@ -439,15 +432,15 @@ func TestFitEdgeCases(t *testing.T) {
 	var none *tint.Color
 	var term [16]color.Color
 	term[3] = none
-	if f := p.Fit(Target{Depth: Colors16, ANSI: &term}); f.Color(Warning) == nil {
+	if f := p.Fit(Target{Profile: colorprofile.ANSI, ANSI: &term}); f.Color(Warning) == nil {
 		t.Error("Warning fell back to the default with a typed nil slot")
 	}
-	if got := p.Fit(Target{Depth: TrueColor}).Fit(none, Fg); got != nil {
+	if got := p.Fit(Target{Profile: colorprofile.TrueColor}).Fit(none, Fg); got != nil {
 		t.Errorf("Fit(typed nil) = %v, want nil", got)
 	}
 
 	// Text on a tone keeps its contrast with 256 colors, and across a fade.
-	f := p.Fit(Target{Depth: Colors256})
+	f := p.Fit(Target{Profile: colorprofile.ANSI256})
 	mid := Lerp(p, Derive(tint.TintDracula), 0.5)
 	for _, r := range []Role{Accent, Success, Warning, Danger, Info} {
 		if got := tint.Contrast(f.Color(r.On()), f.Color(r)); got < minColor {

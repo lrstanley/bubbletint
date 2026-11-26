@@ -6,31 +6,32 @@ package main
 
 import (
 	"fmt"
-	"image/color"
 	"os"
 
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
+	"github.com/charmbracelet/colorprofile"
+	"github.com/lrstanley/bubbletint/roles/v2"
 	tint "github.com/lrstanley/bubbletint/v2"
 	zone "github.com/lrstanley/bubblezone/v2"
 )
 
 // This is a modified version of this example, supporting full screen, dynamic
-// resizing, and clickable models (tabs, lists, dialogs, etc).
+// resizing, and clickable models (tabs, lists, dialogs, etc). Every color comes
+// from semantic roles derived from the current tint, so dialogs, buttons and
+// text stay readable on any tint, dark or light, and at any color depth.
 // 	https://github.com/charmbracelet/lipgloss/blob/master/example
 
-func adapt(light, dark color.Color) color.Color {
-	if tint.Current().Dark {
-		return dark
-	}
-	return light
-}
+var (
+	// profile is the terminal's colors, as Bubble Tea detects them.
+	profile = colorprofile.TrueColor
+	// f is the current tint's roles, fitted to profile. Components style from
+	// it when they get a ThemeChangedMsg.
+	f *roles.Fitted
+)
 
-func adaptBright(c color.Color, amount float64) color.Color {
-	if tint.Current().Dark {
-		return lipgloss.Lighten(c, amount)
-	}
-	return lipgloss.Darken(c, amount)
+func fit() *roles.Fitted {
+	return roles.Derive(tint.Current()).Fit(roles.Target{Profile: profile})
 }
 
 type ThemeChangedMsg struct{}
@@ -41,6 +42,7 @@ type model struct {
 
 	// Styles.
 	themeTitleStyle lipgloss.Style
+	themeHintStyle  lipgloss.Style
 
 	// Child components.
 	tabs    *tabs
@@ -59,9 +61,15 @@ func (m model) isInitialized() bool {
 }
 
 func (m *model) setStyles() {
-	m.themeTitleStyle = lipgloss.NewStyle().
-		Foreground(tint.Current().Fg).
-		Padding(0, 1)
+	m.themeTitleStyle = f.Text(roles.Accent).Bold(true).Padding(0, 1)
+	m.themeHintStyle = f.Text(roles.Subtle).Padding(0, 1)
+}
+
+// restyle fits the current tint's roles, and tells every component.
+func (m *model) restyle() tea.Cmd {
+	f = fit()
+	m.setStyles()
+	return func() tea.Msg { return ThemeChangedMsg{} }
 }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -74,21 +82,23 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		if msg.String() == "left" {
 			tint.PreviousTint()
-			m.setStyles()
-
-			return m, func() tea.Msg { return ThemeChangedMsg{} }
+			cmd := m.restyle()
+			return m, cmd
 		}
 
 		if msg.String() == "right" {
 			tint.NextTint()
-			m.setStyles()
-
-			return m, func() tea.Msg { return ThemeChangedMsg{} }
+			cmd := m.restyle()
+			return m, cmd
 		}
 
 		if msg.String() == "ctrl+c" {
 			return m, tea.Quit
 		}
+	case tea.ColorProfileMsg:
+		profile = msg.Profile
+		cmd := m.restyle()
+		return m, cmd
 	case tea.WindowSizeMsg:
 		m.height = msg.Height
 		m.width = msg.Width
@@ -121,8 +131,8 @@ func (m model) View() tea.View {
 	var view tea.View
 	view.AltScreen = true
 	view.MouseMode = tea.MouseModeCellMotion
-	view.BackgroundColor = tint.Current().Bg
-	view.ForegroundColor = tint.Current().Fg
+	view.BackgroundColor = f.Color(roles.Bg)
+	view.ForegroundColor = f.Color(roles.Fg)
 
 	if !m.isInitialized() {
 		return view
@@ -139,7 +149,7 @@ func (m model) View() tea.View {
 				lipgloss.PlaceHorizontal(
 					m.width-len(tint.Current().ID)-5-5, // 5 = theme, 5 = padding
 					lipgloss.Right,
-					m.themeTitleStyle.Render("[←left / right→] to change theme"),
+					m.themeHintStyle.Render("[←left / right→] to change theme"),
 					lipgloss.WithWhitespaceChars(" "),
 				),
 			),
@@ -167,6 +177,7 @@ func main() {
 	// Initialize the default tint we want.
 	tint.NewDefaultRegistry()
 	tint.SetTint(tint.TintDraculaPlus)
+	f = fit()
 
 	m := &model{
 		tabs:   newTabs("Lip Gloss", "Blush", "Eye Shadow", "Mascara", "Foundation"),

@@ -12,6 +12,8 @@ import (
 	"charm.land/bubbles/v2/textarea"
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
+	"github.com/charmbracelet/colorprofile"
+	"github.com/lrstanley/bubbletint/roles/v2"
 	tint "github.com/lrstanley/bubbletint/v2"
 )
 
@@ -29,11 +31,32 @@ func initialModel(theme *tint.Tint) model {
 	ta.Placeholder = "Type something here..."
 	ta.Focus()
 
-	return model{
-		styles:    createStyles(theme),
+	m := model{
+		styles:    createStyles(theme, colorprofile.TrueColor),
 		textarea:  ta,
 		startTime: time.Now(),
 	}
+	styleTextarea(&m.textarea, m.styles.f)
+	return m
+}
+
+// styleTextarea styles a textarea from the same roles as the rest.
+func styleTextarea(ta *textarea.Model, f *roles.Fitted) {
+	state := textarea.StyleState{
+		Base:             f.Fill(roles.Bg),
+		Text:             f.Text(roles.Fg),
+		LineNumber:       f.Text(roles.Subtle),
+		CursorLineNumber: f.On(roles.Hover).Text(roles.Muted),
+		CursorLine:       f.Fill(roles.Hover),
+		EndOfBuffer:      f.Text(roles.Subtle),
+		Placeholder:      f.Text(roles.Subtle),
+		Prompt:           f.Text(roles.Accent),
+		Selection:        f.Fill(roles.Selection),
+	}
+	s := ta.Styles()
+	s.Focused, s.Blurred = state, state
+	s.Cursor.Color = f.Color(roles.Accent)
+	ta.SetStyles(s)
 }
 
 func (m model) Init() tea.Cmd {
@@ -42,6 +65,9 @@ func (m model) Init() tea.Cmd {
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
+	case tea.ColorProfileMsg:
+		m.styles = createStyles(m.styles.tint, msg.Profile)
+		styleTextarea(&m.textarea, m.styles.f)
 	case tea.WindowSizeMsg:
 		m.height = msg.Height
 		m.width = msg.Width
@@ -75,14 +101,11 @@ func (m model) View() tea.View {
 	palette := m.renderColorPalette(ew)
 
 	m.textarea.SetWidth(ew - 2) // -2=border
-	textareaStyles := textarea.DefaultStyles(true)
-	textareaStyles.Focused.Base.Background(m.styles.tint.Bg)
-	m.textarea.SetStyles(textareaStyles)
-	ta := m.textarea.View()
-	ta = lipgloss.NewStyle().
+	ta := m.styles.f.Fill(roles.Bg).
 		Border(lipgloss.RoundedBorder()).
-		BorderForeground(m.styles.tint.Blue).
-		Render(ta)
+		BorderForeground(m.styles.f.Color(roles.Accent)).
+		BorderBackground(m.styles.f.Color(roles.Bg)).
+		Render(m.textarea.View())
 
 	elapsed := time.Since(m.startTime).Round(time.Second)
 	info := m.styles.info.Width(ew).Render(
@@ -104,41 +127,27 @@ func (m model) View() tea.View {
 
 	var view tea.View
 	view.AltScreen = true
+	view.BackgroundColor = m.styles.f.Color(roles.Bg)
 	view.SetContent(m.styles.app.Render(content))
 	return view
 }
 
+// renderColorPalette shows the tint's hues as solid fills, each with the text
+// that reads on it.
 func (m model) renderColorPalette(w int) string {
-	colors := []struct {
-		name  string
-		color *tint.Color
-	}{
-		{"Red", m.styles.tint.Red},
-		{"Green", m.styles.tint.Green},
-		{"Blue", m.styles.tint.Blue},
-		{"Yellow", m.styles.tint.Yellow},
-		{"Purple", m.styles.tint.Purple},
-		{"Cyan", m.styles.tint.Cyan},
+	f := m.styles.f
+	gap := f.Fill(roles.Bg)
+
+	var blocks []string
+	for _, tone := range []roles.Role{roles.Red, roles.Green, roles.Blue, roles.Yellow, roles.Magenta, roles.Cyan} {
+		blocks = append(blocks, f.Fill(tone).
+			Padding(0, 2).
+			Margin(0, 1).
+			MarginBackground(f.Color(roles.Bg)).
+			Render(tone.String()))
 	}
 
-	var colorBlocks []string
-	for _, c := range colors {
-		if c.color != nil {
-			block := lipgloss.NewStyle().
-				Background(c.color).
-				Foreground(m.styles.tint.Bg).
-				Padding(0, 2).
-				Margin(0, 1).
-				MarginBackground(m.styles.tint.Bg).
-				Render(c.name)
-			colorBlocks = append(colorBlocks, block)
-		}
-	}
-
-	return lipgloss.NewStyle().
-		Background(m.styles.tint.Bg).
-		Width(w).
-		Render(lipgloss.JoinHorizontal(lipgloss.Top, colorBlocks...))
+	return gap.Width(w).Render(lipgloss.JoinHorizontal(lipgloss.Top, blocks...))
 }
 
 func main() {

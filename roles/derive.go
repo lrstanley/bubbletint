@@ -97,9 +97,9 @@ type Palette struct {
 	t      *tint.Tint
 	colors []tint.Color // by role: the builtins, then the roles defined when it was derived
 	ground Role         // what text is guarded against: Bg, or the surface given to On
+	termFg tint.Color   // the terminal's default text color, as best known
 	guards bool
 	dark   bool
-	mono   bool
 
 	accentSlot, accent2Slot tint.Slot
 }
@@ -124,6 +124,7 @@ func Derive(t *tint.Tint, opts ...Option) *Palette {
 	}
 	white := tint.Color{R: 0xff, G: 0xff, B: 0xff, A: 0xff}
 	fg := orColor(o.fg, t.Fg, pickBool(p.dark, white, tint.Color{A: 0xff}))
+	p.termFg = fg
 	d := deriver{p: p, t: t, o: &o, bg: bg}
 	d.derive(fg)
 	for _, s := range defined() {
@@ -236,12 +237,9 @@ func (d *deriver) accents(fg tint.Color) (accent, accent2 tint.Color) {
 	return accent, accent.Mix(fg, 0.4)
 }
 
-// status sets the status and hue colors, and marks a single-hue tint, where
-// hue can't tell them apart.
+// status sets the status and hue colors.
 func (d *deriver) status() {
 	success, danger, warning := d.pick(tint.SlotGreen), d.pick(tint.SlotRed), d.pick(tint.SlotYellow)
-	d.p.mono = chroma(success) < 0.04 || chroma(danger) < 0.04 || hueDist(hue(success), hue(danger)) < 45 ||
-		(hueDist(hue(warning), hue(danger)) < 12 && hueDist(hue(success), hue(warning)) < 30)
 	d.set(Success, d.lift(success, minColor))
 	d.set(Warning, d.lift(warning, minColor))
 	d.set(Danger, d.lift(danger, minColor))
@@ -348,47 +346,11 @@ func (p *Palette) Color(r Role) tint.Color {
 	return p.colors[Fg]
 }
 
-// Tone returns a tone's three colors. For any other role, all three are its
-// color.
-func (p *Palette) Tone(r Role) Tone {
-	if !r.IsTone() {
-		c := p.Color(r)
-		return Tone{Base: c, Soft: c, On: c}
-	}
-	return Tone{Base: p.Color(r), Soft: p.Color(r.Soft()), On: p.Color(r.On())}
-}
-
-// Tone is a hue's three uses.
-type Tone struct {
-	// Base is the hue as text and marks, readable on the background.
-	Base tint.Color
-	// Soft is a fill: the hue faded into the background. Base reads on it.
-	Soft tint.Color
-	// On is text on Base used as a solid fill.
-	On tint.Color
-}
-
 // Tint returns the tint the palette was derived from.
 func (p *Palette) Tint() *tint.Tint { return p.t }
 
 // Dark reports whether the background is dark.
 func (p *Palette) Dark() bool { return p.dark }
-
-// Guarded reports whether the contrast guards are on.
-func (p *Palette) Guarded() bool { return p.guards }
-
-// Mono reports whether the tint's status hues are too alike to tell apart,
-// as in a single-hue tint such as amber or green CRT. Show status with
-// weight or an icon too.
-func (p *Palette) Mono() bool { return p.mono }
-
-// AccentSlot returns the slot the accent came from, or for a custom accent
-// color, the slot nearest it in hue.
-func (p *Palette) AccentSlot() tint.Slot { return p.accentSlot }
-
-// Accent2Slot returns the slot the second accent came from. It's the
-// accent's when no other slot was far enough from it in hue.
-func (p *Palette) Accent2Slot() tint.Slot { return p.accent2Slot }
 
 // ByDark returns ifDark on a dark background and ifLight on a light one. It's
 // for a [Spec]'s Derive, where steps usually want to be a little larger on
@@ -407,10 +369,19 @@ func (p *Palette) ByDark(ifDark, ifLight float64) float64 { return pickBool(p.da
 // only changes what [Palette.Fit] treats as the surface.
 func (p *Palette) On(surface Role) *Palette {
 	out := *p
-	out.ground = surface
 	out.colors = slices.Clone(p.colors)
+	// A surface defined after the palette was derived joins it, with the
+	// roles defined before it, so it's fitted like the rest.
+	for r := Role(len(out.colors)); r <= surface; r++ { //nolint:gosec // bounded by the number of roles
+		s, ok := specOf(r)
+		if !ok {
+			break
+		}
+		out.colors = append(out.colors, out.custom(s))
+	}
+	out.ground = surface
 	if p.guards {
-		out.guard(p.Color(surface))
+		out.guard(out.Color(surface))
 	}
 	return &out
 }
