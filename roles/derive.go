@@ -402,12 +402,16 @@ func (p *Palette) guard(under tint.Color) {
 }
 
 // Lerp returns a palette partway from a to b, for crossfading between tints:
-// t runs from 0 (a) to 1 (b). Fit it like any palette. Between a dark and a
-// light tint there's no readable middle, so it returns b. Otherwise the mixed
-// colors are guarded again, and text on each tone is chosen again for the
-// mixed tone.
+// t runs from 0 (a) to 1 (b). Fit it like any palette. The mixed colors are
+// guarded again, and text on each tone is chosen again for the mixed tone.
+//
+// Between a dark and a light tint, the background passes through gray. Text
+// stays on the side of it that reads, so it flips from light to dark once,
+// where the background turns light, rather than fading out and back in. Right
+// at gray, body text can't quite keep its contrast: no color has more than
+// about 4.6:1 against it.
 func Lerp(a, b *Palette, t float64) *Palette {
-	if a == nil || t >= 1 || a.dark != b.dark {
+	if a == nil || t >= 1 {
 		return b
 	}
 	if t <= 0 {
@@ -418,10 +422,13 @@ func Lerp(a, b *Palette, t float64) *Palette {
 	for i := range min(len(a.colors), len(b.colors)) {
 		out.colors[i] = a.colors[i].Mix(b.colors[i], t)
 	}
+	bg, fg := out.colors[Bg], out.colors[Fg]
+	out.dark = tint.IsDark(bg)
+	out.termFg = a.termFg.Mix(b.termFg, t)
 	if out.guards {
 		out.guard(out.Color(out.ground))
+		fg = out.colors[Fg]
 	}
-	bg, fg := out.colors[Bg], out.colors[Fg]
 	for r := firstTone; r < numCore; r++ {
 		out.colors[r.On()] = onColor(bg, fg, out.colors[r])
 	}

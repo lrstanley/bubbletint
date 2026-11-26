@@ -207,10 +207,6 @@ func TestPaletteOn(t *testing.T) {
 func TestLerp(t *testing.T) {
 	t.Parallel()
 	a, b := Derive(tint.TintTokyoNight), Derive(tint.TintDracula)
-	light := Derive(tint.TintCatppuccinLatte)
-	if Lerp(a, light, 0.5) != light {
-		t.Error("Lerp across dark and light should return b")
-	}
 	if Lerp(a, b, 0) != a || Lerp(a, b, 1) != b || Lerp(nil, b, 0.5) != b {
 		t.Error("Lerp endpoints")
 	}
@@ -221,6 +217,42 @@ func TestLerp(t *testing.T) {
 	for _, r := range textRoles {
 		if got := tint.Contrast(mid.Color(r), mid.Color(Bg)); got < minFor(r)-0.01 {
 			t.Errorf("%s: contrast %.2f mid-crossfade", r, got)
+		}
+	}
+
+	// Dark to light and back: text keeps reading on every frame, but for body
+	// text right at gray, where nothing reaches its floor.
+	for _, pr := range [][2]*tint.Tint{
+		{tint.TintTokyoNight, tint.TintTokyoNightDay},
+		{tint.TintCatppuccinLatte, tint.TintDracula},
+		{tint.TintTokyoNight, tint.TintCatppuccinLatte},
+	} {
+		from, to := Derive(pr[0]), Derive(pr[1])
+		flips := 0
+		prev := from.Dark()
+		for i := 1; i < 40; i++ {
+			frame := Lerp(from, to, float64(i)/40)
+			if frame.Dark() != prev {
+				flips++
+				prev = frame.Dark()
+			}
+			for _, r := range textRoles {
+				floor := minFor(r) - 0.01
+				if r == Fg {
+					floor = 4.5
+				}
+				if got := tint.Contrast(frame.Color(r), frame.Color(Bg)); got < floor {
+					t.Errorf("%s to %s at %d/40: %s contrast %.2f", pr[0].ID, pr[1].ID, i, r, got)
+				}
+			}
+			for r := firstTone; r < numCore; r++ {
+				if got := tint.Contrast(frame.Color(r.On()), frame.Color(r)); got < minColor {
+					t.Errorf("%s to %s at %d/40: %s contrast %.2f on %s", pr[0].ID, pr[1].ID, i, r.On(), got, r)
+				}
+			}
+		}
+		if flips != 1 {
+			t.Errorf("%s to %s: Dark() flipped %d times, want once", pr[0].ID, pr[1].ID, flips)
 		}
 	}
 }
