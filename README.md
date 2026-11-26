@@ -371,7 +371,7 @@ selectedHint := f.On(roles.Selection).Text(roles.Subtle)
 - Uses a static theme with a specific palette for the entire application.
 - [Example source](./_examples/package-manager/main.go)
 
-![package-manager example](./_examples/package-manager/demo.gif)
+![package-manager example](./_examples/package-manager/demo.webp)
 
 ### Complex example
 
@@ -380,7 +380,7 @@ selectedHint := f.On(roles.Selection).Text(roles.Subtle)
   may make sense for some of the provided tints).
 - [Example source](./_examples/complex).
 
-![complex example](./_examples/complex/demo.gif)
+![complex example](./_examples/complex/demo.webp)
 
 ### Loading tints from a file
 
@@ -393,7 +393,7 @@ selectedHint := f.On(roles.Selection).Text(roles.Subtle)
   of the default tints, but if you use custom tints, this will help keep that info.
 - [Example source](./_examples/load-from-file).
 
-![load-from-file example](./_examples/load-from-file/demo.gif)
+![load-from-file example](./_examples/load-from-file/demo.webp)
 
 ### Chroma Support
 
@@ -401,13 +401,15 @@ selectedHint := f.On(roles.Selection).Text(roles.Subtle)
   using the specified tint.
 - [Example source](./_examples/chromatint).
 
-![chromatint example](./_examples/chromatint/demo.gif)
+![chromatint example](./_examples/chromatint/demo.webp)
 
 ### Glamour Support
 
 - Uses the `glamourtint` sub-package to build a Glamour stylesheet from the current tint.
 - Fenced code blocks use the same palette roles as `chromatint`.
 - [Example source](./_examples/glamourtint).
+
+![glamourtint example](./_examples/glamourtint/demo.webp)
 
 ```go
 import (
