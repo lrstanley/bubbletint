@@ -290,6 +290,15 @@ func TestFit256(t *testing.T) {
 	if collapses > 3 || floors > 3 {
 		t.Errorf("collapses %d, broken floors %d", collapses, floors)
 	}
+
+	// A side panel's selected and hovered rows, and a dialog over the page,
+	// once snapped to the surface under them on this light tint.
+	f := Derive(tint.TintTokyoNightDay).Fit(Target{Profile: colorprofile.ANSI256})
+	for _, pr := range [][2]Role{{Surface, Selection}, {Surface, Hover}, {Bg, Raised}, {Bg, Overlay}} {
+		if f.Color(pr[0]) == f.Color(pr[1]) {
+			t.Errorf("tokyo_night_day: %s and %s share %v", pr[0], pr[1], f.Color(pr[0]))
+		}
+	}
 }
 
 func TestFit16(t *testing.T) {

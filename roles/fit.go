@@ -253,13 +253,24 @@ func (f *Fitted) Palette() *Palette { return f.p }
 // ---- 256 colors ----
 
 // pairs are roles that sit beside each other, so must never share an index.
+// A dialog or menu floats over the page as well as over a panel; a panel's
+// rows are hovered and selected on the panel, not only on the page; and an
+// input's well sits on any of them, or on a row under the pointer.
 var pairs = [...][2]Role{
 	{Bg, Surface},
 	{Surface, Raised},
 	{Raised, Overlay},
+	{Bg, Raised},
+	{Bg, Overlay},
+	{Surface, Overlay},
 	{Bg, Hover},
 	{Bg, Sunken},
+	{Surface, Sunken},
+	{Raised, Sunken},
+	{Hover, Sunken},
 	{Bg, Selection},
+	{Surface, Hover},
+	{Surface, Selection},
 	{Hover, Selection},
 	{Fg, Muted},
 	{Muted, Subtle},
