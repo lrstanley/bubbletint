@@ -180,6 +180,37 @@ func FromHex(s string) *Color {
 	return c
 }
 
+// FromColor converts any [color.Color] to a [Color], ignoring alpha, which
+// terminals don't report consistently. It returns nil for a nil color.
+func FromColor(c color.Color) *Color {
+	if c == nil {
+		return nil
+	}
+	if p, ok := c.(*Color); ok && p == nil {
+		return nil
+	}
+	v := colorOf(c)
+	v.A = 0xff
+	return &v
+}
+
+// colorOf converts any [color.Color], ignoring alpha. nil is black.
+func colorOf(c color.Color) Color {
+	switch v := c.(type) {
+	case Color:
+		return v
+	case *Color:
+		if v == nil {
+			return Color{A: 0xff}
+		}
+		return *v
+	case nil:
+		return Color{A: 0xff}
+	}
+	r, g, b, _ := c.RGBA()
+	return Color{R: uint8(r >> 8), G: uint8(g >> 8), B: uint8(b >> 8), A: 0xff} //nolint:gosec // 16-bit channels, shifted to 8
+}
+
 // Darken takes a color and makes it darker by a specific percentage (0-1, clamped).
 func Darken(c color.Color, percent float64) color.Color {
 	if c == nil {

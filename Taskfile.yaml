@@ -2,7 +2,7 @@
 version: "3"
 
 vars:
-  MODULES: [".", chromatint, glamourtint, sources, cmd/tintgen, _examples]
+  MODULES: [".", chromatint, glamourtint, roles, sources, cmd/tintgen, _examples]
   MODRELEASE: github.com/lrstanley/x/cmd/modrelease@latest
 
 env:
@@ -28,7 +28,7 @@ tasks:
     run: once
     # go work init writes the local toolchain's go version, and go work use raises it to the modules' highest go
     # directive, if that's newer. go.work is gitignored, so CI tests each module against the published versions.
-    sources: [Taskfile.yaml, "{.,chromatint,glamourtint,sources,cmd/tintgen,_examples}/go.mod"]
+    sources: [Taskfile.yaml, "{.,chromatint,glamourtint,roles,sources,cmd/tintgen,_examples}/go.mod"]
     generates: [go.work]
     cmds:
       - test -f go.work || go work init

@@ -110,6 +110,11 @@
 - :heavy_check_mark: Follow the theme of the terminal your app runs in (kitty, Ghostty,
   Alacritty, foot, Windows Terminal, X resources, and iTerm2 color presets), on Linux,
   macOS and Windows, through the opt-in `sources` sub-package.
+- :heavy_check_mark: Derive semantic colors (surfaces, muted text, borders, accents,
+  status) from any tint, with contrast guards, and fit them to 256, 16 or no colors,
+  through the `roles` sub-package.
+- :heavy_check_mark: Perceptual color helpers with no dependencies: OKLab mixing, WCAG
+  contrast, and contrast guards that keep a color's hue.
 
 ---
 
@@ -304,6 +309,57 @@ if it can tell when it changes).
 
 ... and that's it!
 
+### Mix colors and check contrast
+
+Beside `Darken` and `Lighten`, colors can be mixed in OKLab, where halfway looks
+halfway and hue is kept, and checked or guarded for contrast:
+
+```go
+t := tint.Current()
+
+hover := t.Bg.Mix(*t.Fg, 0.12)                // the background, 12% toward the text
+ratio := t.BrightBlack.Contrast(*t.Bg)        // WCAG contrast ratio, 1 to 21
+hint := t.BrightBlack.EnsureContrast(*t.Bg, 3) // lighter or darker, same hue, until it reads
+```
+
+The 16 ANSI colors can also be indexed by `tint.Slot`, with `t.ANSI(tint.SlotBrightRed)`
+or `t.ANSI16()`.
+
+### Semantic roles
+
+Most of a TUI isn't drawn in a tint's 16 colors directly, but in colors derived from
+them: a dialog a step off the background, secondary text, a soft red behind an error.
+The `roles` sub-package works those out, from any tint:
+
+```console
+go get -u github.com/lrstanley/bubbletint/roles/v2@latest
+```
+
+```go
+pal := roles.Derive(tint.Current())
+f := pal.Fit(roles.Target{Depth: roles.Colors256}) // from tea.ColorProfileMsg
+
+dialog := lipgloss.NewStyle().Background(f.Color(roles.Raised))
+hint := lipgloss.NewStyle().Foreground(f.Color(roles.Subtle))
+pill := lipgloss.NewStyle().
+	Background(f.Color(roles.Danger)).
+	Foreground(f.Color(roles.Danger.On()))
+
+// Text on the selected row, kept readable on the highlight.
+row := f.On(roles.Selection)
+selectedHint := lipgloss.NewStyle().Foreground(row.Color(roles.Subtle))
+```
+
+- Contrast guards keep text, marks and lines readable, moving a color's lightness but
+  keeping its hue. They can be turned off with `roles.WithoutGuards()`.
+- With 256 colors, no two neighboring roles share an index, and the guards still hold.
+- With 16 colors, each role takes a slot from its family that reads on the terminal's
+  palette, or the terminal's default plus an attribute (`f.Attr(role)`), such as faint
+  for muted text. With no colors, only attributes are left.
+- Apps add their own roles with `roles.Define`, derived and fitted like the rest.
+- Role names and the API follow semver; the exact colors derived may be tuned in minor
+  releases.
+
 ## :clap: Examples
 
 ### Package manager example
@@ -363,6 +419,13 @@ renderer, err := glamour.NewTermRenderer(
 ```
 
 ---
+
+### Semantic roles example
+
+- Uses the `roles` sub-package to style a small dashboard (surfaces, a selected row, a
+  dialog with an input, status pills) from the current tint, and a role of its own.
+  Press `d` to see it fitted to 256, 16 and no colors.
+- [Example source](./_examples/roles).
 
 ### Follow the terminal
 
