@@ -355,42 +355,55 @@ func (f *Fitted) floor256(r Role) (floor, under float64) {
 
 // nearest is the 256-color index nearest c that keeps r's contrast against
 // the ground, if it has a floor, and isn't taken. If none of the nearest
-// few qualify, it's the nearest.
+// few qualify, it's the nearest that reads, as a role that can't be read is
+// worse than one that looks like its neighbor, and failing that, the nearest.
+//
+// It runs for every role on every fit, and so on every frame of a crossfade,
+// so it scans the palette rather than sorting it.
 func (f *Fitted) nearest(c tint.Color, r Role, taken []uint8) uint8 {
-	lab := c.OKLab()
-	var cand [240]struct {
-		i uint8
-		d float64
-	}
-	for i := range cand {
-		q := &lab256[i]
-		cand[i].i = uint8(i + 16) //nolint:gosec // 16-255
-		cand[i].d = (q.L-lab.L)*(q.L-lab.L) + (q.A-lab.A)*(q.A-lab.A) + (q.B-lab.B)*(q.B-lab.B)
-	}
-	slices.SortFunc(cand[:], func(a, b struct {
-		i uint8
-		d float64
-	},
-	) int {
-		return cmp.Compare(a.d, b.d)
-	})
+	// How far down the list, by distance, a role may go to stay distinct.
+	const few = 40
 
+	lab := c.OKLab()
 	floor, under := f.floor256(r)
-	reads := func(i uint8) bool { return floor == 0 || ratio(lum256[i-16], under) >= floor }
-	// The nearest few that read and aren't taken, or failing that, the
-	// nearest that reads, as a role that can't be read is worse than one that
-	// looks like its neighbor.
-	for _, k := range cand[:40] {
-		if reads(k.i) && !slices.Contains(taken, k.i) {
-			return k.i
+	var dist [240]float64
+	// The nearest index, the nearest that reads, and the nearest that reads
+	// and isn't taken, with their distances. 0 is none yet.
+	var best, reads, free uint8
+	bestD, readsD, freeD := math.Inf(1), math.Inf(1), math.Inf(1)
+	for i := range lab256 {
+		q, idx := &lab256[i], uint8(i+16) //nolint:gosec // 16-255
+		d := (q.L-lab.L)*(q.L-lab.L) + (q.A-lab.A)*(q.A-lab.A) + (q.B-lab.B)*(q.B-lab.B)
+		dist[i] = d
+		if d < bestD {
+			best, bestD = idx, d
+		}
+		if floor > 0 && ratio(lum256[i], under) < floor {
+			continue
+		}
+		if d < readsD {
+			reads, readsD = idx, d
+		}
+		if d < freeD && !slices.Contains(taken, idx) {
+			free, freeD = idx, d
 		}
 	}
-	for i := range cand {
-		if k := &cand[i]; reads(k.i) {
-			return k.i
+	if free != 0 {
+		// Only if it's among the nearest few: count those nearer.
+		nearer := 0
+		for i := range dist {
+			if dist[i] < freeD {
+				nearer++
+			}
+		}
+		if nearer < few {
+			return free
 		}
 	}
-	return cand[0].i
+	if reads != 0 {
+		return reads
+	}
+	return best
 }
 
 func ratio(x, y float64) float64 {
