@@ -17,11 +17,11 @@ require (
 	charm.land/lipgloss/v2 v2.1.1
 	github.com/alecthomas/chroma/v2 v2.27.0
 	github.com/charmbracelet/colorprofile v0.4.3
-	github.com/lrstanley/bubbletint/chromatint/v2 v2.2.0-alpha.0
-	github.com/lrstanley/bubbletint/glamourtint/v2 v2.2.0-alpha.0
-	github.com/lrstanley/bubbletint/roles/v2 v2.2.0-alpha.0
-	github.com/lrstanley/bubbletint/sources/v2 v2.2.0-alpha.0
-	github.com/lrstanley/bubbletint/v2 v2.2.0-alpha.0
+	github.com/lrstanley/bubbletint/chromatint/v2 v2.2.0-alpha.1
+	github.com/lrstanley/bubbletint/glamourtint/v2 v2.2.0-alpha.1
+	github.com/lrstanley/bubbletint/roles/v2 v2.2.0-alpha.1
+	github.com/lrstanley/bubbletint/sources/v2 v2.2.0-alpha.1
+	github.com/lrstanley/bubbletint/v2 v2.2.0-alpha.1
 	github.com/lrstanley/bubblezone/v2 v2.0.1
 )
 

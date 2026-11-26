@@ -8,5 +8,5 @@ github.com/dlclark/regexp2/v2 v2.13.2 h1:8vXJIqwqJRYqTHVl/DNQW8FPGNpkTn1aPrx2HZo
 github.com/dlclark/regexp2/v2 v2.13.2/go.mod h1:avUrQvPaLz2DrFNHJF0taWAFFX2C1GMSSoeiqFjcBmU=
 github.com/hexops/gotextdiff v1.0.3 h1:gitA9+qJrrTCsiCl7+kh75nPqQt1cx4ZkudSTLoUqJM=
 github.com/hexops/gotextdiff v1.0.3/go.mod h1:pSWU5MAI3yDq+fZBTazCSJysOMbxWL1BSow5/V2vxeg=
-github.com/lrstanley/bubbletint/v2 v2.2.0-alpha.0 h1:owf5hCGKJWMUosE1jjI0A43oRXuNcLfYlTTyWeoWK8Y=
-github.com/lrstanley/bubbletint/v2 v2.2.0-alpha.0/go.mod h1:HaBq3Yc6pcCrQDuW8huE+Bs1adVFUmg/O1B9Zu/kab4=
+github.com/lrstanley/bubbletint/v2 v2.2.0-alpha.1 h1:LDsHV4TisbZyfvaAy1sItcTnDVXHycAENQHYTB4s1dc=
+github.com/lrstanley/bubbletint/v2 v2.2.0-alpha.1/go.mod h1:HaBq3Yc6pcCrQDuW8huE+Bs1adVFUmg/O1B9Zu/kab4=
