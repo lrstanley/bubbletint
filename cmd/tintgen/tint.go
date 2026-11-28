@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/lucasb-eyer/go-colorful"
+	tint "github.com/lrstanley/bubbletint/v2"
 )
 
 type TintTemplate struct {
@@ -52,6 +52,9 @@ type Tint struct {
 	Yellow string `json:"yellow" validate:"required,hexcolor"`
 }
 
+// IsDark reports whether the tint is dark: as its author says, or else by
+// its background, as bubbletint's [tint.Color.IsDark] has it, so generated
+// tints and tints from anywhere else agree.
 func (t *Tint) IsDark() bool {
 	switch t.Variant {
 	case variantDark:
@@ -60,10 +63,9 @@ func (t *Tint) IsDark() bool {
 		return false
 	}
 
-	bg, err := colorful.Hex(t.Bg)
-	if err != nil {
+	bg := tint.FromHex(t.Bg)
+	if bg == nil {
 		return false
 	}
-	_, _, l := bg.Hsl()
-	return l < 0.5
+	return bg.IsDark()
 }
