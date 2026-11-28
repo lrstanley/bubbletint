@@ -10,8 +10,12 @@
 // $WT_PROFILE_ID, which Windows Terminal sets for the shells it starts, or else
 // the default profile. If its scheme is not defined in settings.json it is one
 // of the schemes built into Windows Terminal, which are taken from bubbletint's
-// built-in tints, with Windows Terminal's default "Campbell" included. When a
-// profile sets a scheme for both light and dark mode, the dark one is used.
+// built-in tints, with Windows Terminal's default "Campbell" included.
+//
+// When the profile sets a scheme for each of light and dark mode, "current" is
+// the one for dark mode, unless the source is told the terminal is in light
+// mode, with [sources.WithDark] or [sources.FileSource.SetDark], and both
+// follow it, with the IDs [sources.DarkID] and [sources.LightID].
 //
 // Locations searched, first match wins (each under %LOCALAPPDATA%):
 //
@@ -48,8 +52,8 @@ func New(opts ...sources.Option) *sources.FileSource {
 	return sources.New(sources.Spec{
 		Name:       Name,
 		Candidates: Candidates,
-		Load: func(path string) ([]*tint.Tint, []string, error) {
-			tints, err := Load(path)
+		Load: func(path string, dark bool) ([]*tint.Tint, []string, error) {
+			tints, err := Load(path, dark)
 			return tints, nil, err
 		},
 	}, opts...)
@@ -138,13 +142,24 @@ var campbell = scheme{
 }
 
 // colorScheme is a profile's "colorScheme", which is either a scheme name, or
-// an object naming a scheme for each of light and dark mode.
-type colorScheme string
+// an object naming a scheme for each of light and dark mode. A pair that names
+// only one mode uses it for both.
+type colorScheme struct{ dark, light string }
+
+func (c colorScheme) set() bool  { return c.dark != "" }
+func (c colorScheme) pair() bool { return c.dark != c.light }
+
+func (c colorScheme) forMode(dark bool) string {
+	if dark {
+		return c.dark
+	}
+	return c.light
+}
 
 func (c *colorScheme) UnmarshalJSON(data []byte) error {
 	var name string
 	if err := json.Unmarshal(data, &name); err == nil {
-		*c = colorScheme(name)
+		*c = colorScheme{dark: name, light: name}
 		return nil
 	}
 
@@ -155,9 +170,12 @@ func (c *colorScheme) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &pair); err != nil {
 		return err
 	}
-	*c = colorScheme(pair.Dark)
-	if pair.Dark == "" {
-		*c = colorScheme(pair.Light)
+	*c = colorScheme{dark: pair.Dark, light: pair.Light}
+	switch {
+	case c.dark == "":
+		c.dark = c.light
+	case c.light == "":
+		c.light = c.dark
 	}
 	return nil
 }
@@ -177,19 +195,22 @@ type settings struct {
 }
 
 // Load reads the Windows Terminal settings at path, and returns the tints
-// described in the package documentation.
-func Load(path string) ([]*tint.Tint, error) {
+// described in the package documentation. dark is whether the terminal is in
+// dark mode.
+func Load(path string, dark bool) ([]*tint.Tint, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}
-	return Parse(data, os.Getenv("WT_PROFILE_ID"))
+	return Parse(data, os.Getenv("WT_PROFILE_ID"), dark)
 }
 
 // Parse returns the tints for settings.json contents (which may contain comments
 // and trailing commas). profileID is the GUID of the profile whose scheme should
-// be the "current" tint; when empty, the default profile is used.
-func Parse(data []byte, profileID string) ([]*tint.Tint, error) {
+// be the "current" tint; when empty, the default profile is used. dark is
+// whether the terminal is in dark mode, for a profile that sets a scheme for
+// each of light and dark mode.
+func Parse(data []byte, profileID string, dark bool) ([]*tint.Tint, error) {
 	var s settings
 	if err := json.Unmarshal(StripJSONC(data), &s); err != nil {
 		return nil, fmt.Errorf("parsing settings.json: %w", err)
@@ -200,54 +221,57 @@ func Parse(data []byte, profileID string) ([]*tint.Tint, error) {
 	}
 	profileID = normalizeGUID(profileID)
 
-	active := string(s.Profiles.Defaults.ColorScheme)
+	active := s.Profiles.Defaults.ColorScheme
 	for _, p := range s.Profiles.List {
-		if profileID != "" && normalizeGUID(p.GUID) == profileID && p.ColorScheme != "" {
-			active = string(p.ColorScheme)
+		if profileID != "" && normalizeGUID(p.GUID) == profileID && p.ColorScheme.set() {
+			active = p.ColorScheme
 			break
 		}
 	}
-	if active == "" {
-		active = defaultScheme
+	if !active.set() {
+		active = colorScheme{dark: defaultScheme, light: defaultScheme}
 	}
 
 	var tints []*tint.Tint
-	var current *tint.Tint
 	for i := range s.Schemes {
-		sc := &s.Schemes[i]
-		if sc.Name == "" {
-			continue
-		}
-		t := sc.tint(sources.ID(sc.Name))
-		tints = append(tints, t)
-		if current == nil && strings.EqualFold(sc.Name, active) {
-			current = copyAs(t, "current")
+		if sc := &s.Schemes[i]; sc.Name != "" {
+			tints = append(tints, sc.tint(sources.ID(sc.Name)))
 		}
 	}
 
-	if current == nil {
-		if strings.EqualFold(active, campbell.Name) {
-			current = campbell.tint("current")
-		} else {
-			for _, t := range tint.DefaultTints() {
-				if strings.EqualFold(t.DisplayName, active) {
-					current = copyAs(t, "current")
-					break
-				}
+	// resolve is the tint for a scheme by name: one settings.json defines,
+	// or one built into Windows Terminal, or nil.
+	resolve := func(name string) *tint.Tint {
+		for _, t := range tints {
+			if strings.EqualFold(t.DisplayName, name) {
+				return t
 			}
 		}
+		if strings.EqualFold(name, campbell.Name) {
+			return campbell.tint(sources.ID(campbell.Name))
+		}
+		for _, t := range tint.DefaultTints() {
+			if strings.EqualFold(t.DisplayName, name) {
+				return t
+			}
+		}
+		return nil
 	}
+
+	name := active.forMode(dark)
+	current := resolve(name)
 	if current == nil {
-		return nil, fmt.Errorf("%w: color scheme %q is not defined in settings.json, and is not a built-in scheme", tint.ErrNotFound, active)
+		return nil, fmt.Errorf("%w: color scheme %q is not defined in settings.json, and is not a built-in scheme", tint.ErrNotFound, name)
 	}
-
-	return append([]*tint.Tint{current}, tints...), nil
-}
-
-func copyAs(t *tint.Tint, id string) *tint.Tint {
-	cp := *t
-	cp.ID = id
-	return &cp
+	var darkT, lightT *tint.Tint
+	switch {
+	case !active.pair():
+	case dark:
+		darkT, lightT = current, resolve(active.light)
+	default:
+		darkT, lightT = resolve(active.dark), current
+	}
+	return append(sources.Variants(current, darkT, lightT), tints...), nil
 }
 
 func normalizeGUID(s string) string {

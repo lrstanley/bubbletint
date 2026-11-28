@@ -5,10 +5,13 @@
 package ghostty
 
 import (
+	"context"
 	"errors"
 	"path/filepath"
 	"testing"
+	"time"
 
+	"github.com/lrstanley/bubbletint/sources/v2"
 	"github.com/lrstanley/bubbletint/sources/v2/internal/testutil"
 
 	tint "github.com/lrstanley/bubbletint/v2"
@@ -37,7 +40,7 @@ config-file = ?missing.conf
 `)
 	testutil.Write(t, filepath.Join(cfg, "ghostty", "extra.conf"), "cursor-color = #abcdef\n")
 
-	got, err := Load(filepath.Join(cfg, "ghostty", "config"))
+	got, err := first(Load(filepath.Join(cfg, "ghostty", "config"), true))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -70,7 +73,7 @@ func TestLoad_BuiltinThemeFallback(t *testing.T) {
 	// No theme file anywhere, so it falls back to bubbletint's tint of that name.
 	testutil.Write(t, filepath.Join(cfg, "ghostty", "config"), "theme = light:Dracula+,dark:Dracula+\nbackground = #000001\n")
 
-	got, err := Load(filepath.Join(cfg, "ghostty", "config"))
+	got, err := first(Load(filepath.Join(cfg, "ghostty", "config"), true))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -87,7 +90,7 @@ func TestLoad_BuiltinThemeFallback(t *testing.T) {
 
 	// And with nothing to override it, the built-in tint is used as-is (copied).
 	testutil.Write(t, filepath.Join(cfg, "ghostty", "config"), "theme = Dracula+\n")
-	got, err = Load(filepath.Join(cfg, "ghostty", "config"))
+	got, err = first(Load(filepath.Join(cfg, "ghostty", "config"), true))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -101,7 +104,7 @@ func TestLoad_NoColors(t *testing.T) {
 	t.Setenv("XDG_CONFIG_HOME", cfg)
 
 	testutil.Write(t, filepath.Join(cfg, "ghostty", "config"), "font-size = 12\ntheme = does-not-exist\n")
-	if _, err := Load(filepath.Join(cfg, "ghostty", "config")); !errors.Is(err, tint.ErrNotFound) {
+	if _, err := Load(filepath.Join(cfg, "ghostty", "config"), true); !errors.Is(err, tint.ErrNotFound) {
 		t.Fatalf("expected ErrNotFound, got %v", err)
 	}
 }
@@ -109,21 +112,102 @@ func TestLoad_NoColors(t *testing.T) {
 func TestLoad_RequiredIncludeMissing(t *testing.T) {
 	cfg := t.TempDir()
 	testutil.Write(t, filepath.Join(cfg, "config"), "config-file = nope.conf\nbackground = #000000\n")
-	if _, err := Load(filepath.Join(cfg, "config")); err == nil {
+	if _, err := Load(filepath.Join(cfg, "config"), true); err == nil {
 		t.Fatal("expected an error for a missing, non-optional include")
 	}
+}
+
+// first is the active tint Load returned.
+func first(tints []*tint.Tint, err error) (*tint.Tint, error) {
+	if err != nil {
+		return nil, err
+	}
+	return tints[0], nil
 }
 
 func TestPickTheme(t *testing.T) {
 	t.Parallel()
 
-	for in, want := range map[string]string{
-		"nord":                           "nord",
-		"light:Rose Pine Dawn,dark:Nord": "Nord",
-		"light:Solo":                     "Solo",
+	for in, want := range map[string]themes{
+		"nord":                           {dark: "nord", light: "nord"},
+		"light:Rose Pine Dawn,dark:Nord": {dark: "Nord", light: "Rose Pine Dawn"},
+		"dark:Nord, light:Rose Pine":     {dark: "Nord", light: "Rose Pine"},
+		"light:Solo":                     {dark: "Solo", light: "Solo"},
 	} {
 		if got := pickTheme(in); got != want {
-			t.Errorf("pickTheme(%q) = %q, want %q", in, got, want)
+			t.Errorf("pickTheme(%q) = %+v, want %+v", in, got, want)
 		}
+	}
+}
+
+// A theme for each of light and dark mode: the active tint is the mode's,
+// and both are returned, each with the config's own colors over it.
+func TestLoad_Pair(t *testing.T) {
+	cfg := t.TempDir()
+	t.Setenv("XDG_CONFIG_HOME", cfg)
+	t.Setenv("GHOSTTY_RESOURCES_DIR", "")
+	orig := installThemeDirs
+	installThemeDirs = func() []string { return nil }
+	t.Cleanup(func() { installThemeDirs = orig })
+
+	path := filepath.Join(cfg, "ghostty", "config")
+	testutil.Write(t, path, "theme = light:Tokyo Night Day,dark:Tokyo Night\ncursor-color = #abcdef\n")
+
+	for _, dark := range []bool{true, false} {
+		tints, err := Load(path, dark)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(tints) != 3 || tints[0].ID != "current" || tints[1].ID != sources.DarkID || tints[2].ID != sources.LightID {
+			t.Fatalf("dark %v: got %d tints", dark, len(tints))
+		}
+		want, name := tint.TintTokyoNightDay, "Tokyo Night Day"
+		if dark {
+			want, name = tint.TintTokyoNight, "Tokyo Night"
+		}
+		if got := tints[0]; got.Bg.Hex() != want.Bg.Hex() || got.DisplayName != name {
+			t.Errorf("dark %v: current is %s %s, want %s", dark, got.DisplayName, got.Bg.Hex(), name)
+		}
+		if tints[1].Bg.Hex() != tint.TintTokyoNight.Bg.Hex() || tints[2].Bg.Hex() != tint.TintTokyoNightDay.Bg.Hex() {
+			t.Errorf("dark %v: pair is %s and %s", dark, tints[1].Bg.Hex(), tints[2].Bg.Hex())
+		}
+		for _, tn := range tints {
+			if tn.Cursor == nil || tn.Cursor.Hex() != "#abcdef" {
+				t.Errorf("dark %v: %s lost the config's cursor color", dark, tn.ID)
+			}
+		}
+	}
+
+	// SetDark switches the active tint, and wakes a watcher to reload.
+	src := New(sources.WithPath(path), sources.WithPollInterval(time.Hour))
+	ctx, cancel := context.WithCancel(t.Context())
+	defer cancel()
+	changes, err := src.Watch(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	select { // A watch starts with a reload.
+	case <-changes:
+	case <-time.After(5 * time.Second):
+		t.Fatal("the watch didn't start with a reload")
+	}
+	src.SetDark(true) // unchanged: no reload
+	src.SetDark(false)
+	select {
+	case <-changes:
+	case <-time.After(5 * time.Second):
+		t.Fatal("SetDark didn't wake the watcher")
+	}
+	tints, err := src.Load(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if tints[0].Bg.Hex() != tint.TintTokyoNightDay.Bg.Hex() || src.Dark() {
+		t.Errorf("after SetDark(false), current is %s", tints[0].DisplayName)
+	}
+	select {
+	case <-changes:
+		t.Error("an unchanged SetDark woke the watcher")
+	default:
 	}
 }

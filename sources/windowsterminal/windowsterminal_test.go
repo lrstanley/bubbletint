@@ -9,6 +9,8 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/lrstanley/bubbletint/sources/v2"
+
 	tint "github.com/lrstanley/bubbletint/v2"
 )
 
@@ -53,7 +55,7 @@ func TestParse(t *testing.T) {
 	t.Parallel()
 
 	// The default profile has no scheme of its own, so it gets the default one.
-	tints, err := Parse([]byte(testSettings), "")
+	tints, err := Parse([]byte(testSettings), "", true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -68,7 +70,7 @@ func TestParse(t *testing.T) {
 	}
 
 	// A profile that names a built-in scheme gets bubbletint's version of it.
-	tints, err = Parse([]byte(testSettings), "{574E775E-4F2A-5B96-AC1E-A2962A402336}")
+	tints, err = Parse([]byte(testSettings), "{574E775E-4F2A-5B96-AC1E-A2962A402336}", true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -76,17 +78,35 @@ func TestParse(t *testing.T) {
 		t.Errorf("unexpected built-in scheme: %s %s", tints[0].DisplayName, tints[0].Bg.Hex())
 	}
 
-	// Light/dark pairs use the dark scheme, which here is the default scheme.
-	tints, err = Parse([]byte(testSettings), "b453ae62-4e3d-5e58-b989-0a998ec441b8")
+	// Light/dark pairs use the mode's scheme, here the default scheme in dark
+	// mode, and return both.
+	tints, err = Parse([]byte(testSettings), "b453ae62-4e3d-5e58-b989-0a998ec441b8", true)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if tints[0].DisplayName != "Campbell" || tints[0].Bg.Hex() != "#0c0c0c" {
 		t.Errorf("unexpected scheme %s %s", tints[0].DisplayName, tints[0].Bg.Hex())
 	}
+	if got := ids(tints); len(got) != 4 || got[1] != sources.DarkID || got[2] != sources.LightID || got[3] != "gruvbox" {
+		t.Fatalf("unexpected tints for a pair: %v", got)
+	}
+	if tints[1].Bg.Hex() != "#0c0c0c" || tints[2].Bg.Hex() != "#282828" {
+		t.Errorf("pair is %s and %s", tints[1].Bg.Hex(), tints[2].Bg.Hex())
+	}
+	tints, err = Parse([]byte(testSettings), "b453ae62-4e3d-5e58-b989-0a998ec441b8", false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if tints[0].ID != "current" || tints[0].DisplayName != "Gruvbox" || tints[0].Bg.Hex() != "#282828" {
+		t.Errorf("light mode: unexpected scheme %s %s", tints[0].DisplayName, tints[0].Bg.Hex())
+	}
+	// A profile with one scheme returns no pair.
+	if tints, err = Parse([]byte(testSettings), "", false); err != nil || len(tints) != 2 {
+		t.Errorf("one scheme: %v, %v", ids(tints), err)
+	}
 
 	// A scheme that doesn't exist anywhere is an error, not a guess.
-	if _, err = Parse([]byte(testSettings), "{11111111-1111-1111-1111-111111111111}"); !errors.Is(err, tint.ErrNotFound) {
+	if _, err = Parse([]byte(testSettings), "{11111111-1111-1111-1111-111111111111}", true); !errors.Is(err, tint.ErrNotFound) {
 		t.Fatalf("expected ErrNotFound, got %v", err)
 	}
 }
@@ -95,7 +115,7 @@ func TestParse_Defaults(t *testing.T) {
 	t.Parallel()
 
 	// Nothing configured at all means Windows Terminal's default scheme.
-	tints, err := Parse([]byte(`{}`), "")
+	tints, err := Parse([]byte(`{}`), "", true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -103,7 +123,7 @@ func TestParse_Defaults(t *testing.T) {
 		t.Fatalf("unexpected tints: %v", ids(tints))
 	}
 
-	if _, err = Parse([]byte(`{`), ""); err == nil {
+	if _, err = Parse([]byte(`{`), "", true); err == nil {
 		t.Fatal("expected an error for invalid JSON")
 	}
 }

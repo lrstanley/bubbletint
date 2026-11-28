@@ -186,7 +186,7 @@ func (p *Palette) Tint(id, displayName string) *tint.Tint {
 	return &tint.Tint{
 		ID:            id,
 		DisplayName:   displayName,
-		Dark:          luma(bg) < 0.5,
+		Dark:          bg.IsDark(),
 		Fg:            fg,
 		Bg:            bg,
 		SelectionBg:   p.SelectionBackground,
@@ -213,14 +213,9 @@ func (p *Palette) Tint(id, displayName string) *tint.Tint {
 	}
 }
 
-// luma returns the perceived brightness of c, from 0 (black) to 1 (white).
-func luma(c *tint.Color) float64 {
-	return (0.299*float64(c.R) + 0.587*float64(c.G) + 0.114*float64(c.B)) / 255
-}
-
 // contrast returns black or white, whichever is easier to read on c.
 func contrast(c *tint.Color) *tint.Color {
-	if luma(c) < 0.5 {
+	if c.IsDark() {
 		return &tint.Color{R: 0xe5, G: 0xe5, B: 0xe5, A: 0xff}
 	}
 	return &tint.Color{A: 0xff}

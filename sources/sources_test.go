@@ -96,7 +96,7 @@ func TestPalette_Tint(t *testing.T) {
 func testSpec(name string) sources.Spec {
 	return sources.Spec{
 		Name: name,
-		Load: func(path string) ([]*tint.Tint, []string, error) {
+		Load: func(path string, _ bool) ([]*tint.Tint, []string, error) {
 			data, err := os.ReadFile(path)
 			if err != nil {
 				return nil, nil, err
@@ -228,5 +228,65 @@ func waitFor(t *testing.T, cond func() bool) {
 			t.Fatal("timed out waiting for condition")
 		}
 		time.Sleep(5 * time.Millisecond)
+	}
+}
+
+// A change of mode wakes every watcher of a source, as when it's attached to
+// more than one registry, and none after its watch ends.
+func TestSetDarkWakesEveryWatcher(t *testing.T) {
+	t.Parallel()
+	src := sources.New(testSpec("test"), sources.WithPollInterval(time.Hour))
+	ctx, cancel := context.WithCancel(t.Context())
+	defer cancel()
+	a, err := src.Watch(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	bctx, bcancel := context.WithCancel(ctx)
+	b, err := src.Watch(bctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	src.SetDark(false)
+	for name, ch := range map[string]<-chan struct{}{"a": a, "b": b} {
+		select {
+		case <-ch:
+		case <-time.After(5 * time.Second):
+			t.Fatalf("watcher %s wasn't woken", name)
+		}
+	}
+	bcancel()
+	for range b { // Closed once its watch ends.
+	}
+	src.SetDark(true)
+	select {
+	case <-a:
+	case <-time.After(5 * time.Second):
+		t.Fatal("the remaining watcher wasn't woken")
+	}
+}
+
+// A change of mode made before anything was watching, as from a subscriber to
+// the first load's events, still reaches the watcher that starts after it.
+func TestSetDarkBeforeWatch(t *testing.T) {
+	t.Parallel()
+	dir := t.TempDir()
+	path := filepath.Join(dir, "conf")
+	if err := os.WriteFile(path, []byte("#000000"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	src := sources.New(testSpec("test"), sources.WithPath(path), sources.WithPollInterval(time.Hour))
+	if _, err := src.Load(t.Context()); err != nil {
+		t.Fatal(err)
+	}
+	src.SetDark(false)
+	changes, err := src.Watch(t.Context())
+	if err != nil {
+		t.Fatal(err)
+	}
+	select {
+	case <-changes:
+	case <-time.After(5 * time.Second):
+		t.Fatal("a change of mode before Watch was lost")
 	}
 }

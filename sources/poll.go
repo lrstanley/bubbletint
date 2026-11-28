@@ -39,11 +39,11 @@ func takeSnapshot(paths []string) snapshot {
 func (s snapshot) equal(other snapshot) bool { return maps.Equal(s, other) }
 
 // poll sends on the returned channel when any of the files returned by paths
-// change. paths is re-evaluated each tick, as the set of files can change as a
-// config is edited. A change is only reported once the files stop changing, so a
-// config that is mid-write isn't read half-way. The channel is closed when ctx
-// is done.
-func poll(ctx context.Context, interval time.Duration, paths func() []string) <-chan struct{} {
+// change, and at once whenever nudge receives. paths is re-evaluated each tick,
+// as the set of files can change as a config is edited. A change is only
+// reported once the files stop changing, so a config that is mid-write isn't
+// read half-way. The channel is closed when ctx is done.
+func poll(ctx context.Context, interval time.Duration, paths func() []string, nudge <-chan struct{}) <-chan struct{} {
 	out := make(chan struct{}, 1)
 
 	// Take the baseline before returning, so changes made right after the caller
@@ -62,6 +62,12 @@ func poll(ctx context.Context, interval time.Duration, paths func() []string) <-
 			select {
 			case <-ctx.Done():
 				return
+			case <-nudge:
+				select {
+				case out <- struct{}{}:
+				default: // Already has a pending notification.
+				}
+				continue
 			case <-ticker.C:
 			}
 

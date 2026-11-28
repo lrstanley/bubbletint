@@ -12,6 +12,14 @@
 //	}
 //	detach, err := tint.Attach(ctx, src)
 //
+// A terminal can name a theme for each of light and dark mode, and follow the
+// system's appearance. The source can't see which the terminal is in, but the
+// app can, from the terminal's background, and tells the source with
+// [sources.FileSource.SetDark]:
+//
+//	case tea.BackgroundColorMsg:
+//		src.SetDark(msg.IsDark()) // follows the terminal's other theme
+//
 // Terminals are recognized by the environment variables they set for the
 // programs they run (and $TERM), which works the same way on Linux, macOS,
 // Windows and BSDs. On Windows, Windows Terminal is also recognized by being the
@@ -41,7 +49,7 @@ import (
 var ErrUnknown = fmt.Errorf("%w: unrecognized terminal", tint.ErrNotFound)
 
 // Detect returns the source for the terminal the process is running in.
-func Detect(opts ...sources.Option) (tint.Source, error) {
+func Detect(opts ...sources.Option) (*sources.FileSource, error) {
 	host, hostErr := hostProcess()
 
 	src, err := detect(os.Getenv, host, opts)
@@ -58,8 +66,8 @@ func Detect(opts ...sources.Option) (tint.Source, error) {
 // All returns a source for each of the supported terminals, whether or not it's
 // installed. Attaching one of them for a terminal that has no config fails with
 // an error wrapping [tint.ErrNotFound].
-func All(opts ...sources.Option) []tint.Source {
-	return []tint.Source{
+func All(opts ...sources.Option) []*sources.FileSource {
+	return []*sources.FileSource{
 		kitty.New(opts...),
 		ghostty.New(opts...),
 		alacritty.New(opts...),
@@ -71,7 +79,7 @@ func All(opts ...sources.Option) []tint.Source {
 
 // detect picks a source from the environment, and failing that, from the name of
 // the process hosting the console, if known (see hostProcess).
-func detect(env func(string) string, host string, opts []sources.Option) (tint.Source, error) {
+func detect(env func(string) string, host string, opts []sources.Option) (*sources.FileSource, error) {
 	term := env("TERM")
 	program := strings.ToLower(env("TERM_PROGRAM"))
 

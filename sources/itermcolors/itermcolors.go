@@ -45,7 +45,7 @@ func New(path string, opts ...sources.Option) *sources.FileSource {
 
 	return sources.New(sources.Spec{
 		Name: Name,
-		Load: func(path string) (tints []*tint.Tint, files []string, err error) {
+		Load: func(path string, _ bool) (tints []*tint.Tint, files []string, err error) {
 			if !sources.IsDir(path) {
 				t, loadErr := LoadFile(path, "current")
 				if loadErr != nil {

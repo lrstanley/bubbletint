@@ -27,6 +27,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -39,7 +40,7 @@ const Name = "ghostty"
 
 // New returns a source that reads Ghostty's config.
 func New(opts ...sources.Option) *sources.FileSource {
-	return sources.New(sources.Spec{Name: Name, Candidates: Candidates, Load: sources.Single(load)}, opts...)
+	return sources.New(sources.Spec{Name: Name, Candidates: Candidates, Load: load}, opts...)
 }
 
 func configDirs() []string {
@@ -89,42 +90,64 @@ var installThemeDirs = func() []string {
 }
 
 // Load reads the Ghostty config at path, and returns its colors as a tint with
-// the ID "current".
-func Load(path string) (*tint.Tint, error) {
-	t, _, err := load(path)
-	return t, err
+// the ID "current". Where its theme names one for each of light and dark mode
+// ("theme = light:X,dark:Y"), it's the one for dark mode, or light mode if
+// dark is false, and the tints for both follow it, with the IDs
+// [sources.DarkID] and [sources.LightID].
+func Load(path string, dark bool) ([]*tint.Tint, error) {
+	tints, _, err := load(path, dark)
+	return tints, err
 }
 
 type entry struct{ key, value string }
 
 type loader struct{ walker sources.Walker }
 
-func load(path string) (*tint.Tint, []string, error) {
+func load(path string, dark bool) ([]*tint.Tint, []string, error) {
 	l := &loader{}
 	entries, err := l.read(path, true)
 	if err != nil {
 		return nil, l.walker.Files, err
 	}
 
-	var palette sources.Palette
-	name := "Ghostty"
-
 	// The theme is the base, and anything the config sets itself replaces it.
-	if theme := pickTheme(lastValue(entries, "theme")); theme != "" {
-		name = theme
-
-		var themeFile string
-		palette, themeFile = loadTheme(theme)
-		if themeFile != "" {
-			l.walker.Files = append(l.walker.Files, themeFile)
+	themes := pickTheme(lastValue(entries, "theme"))
+	variant := func(theme string) *tint.Tint {
+		var palette sources.Palette
+		name := "Ghostty"
+		if theme != "" {
+			name = theme
+			var themeFile string
+			palette, themeFile = loadTheme(theme)
+			if themeFile != "" && !slices.Contains(l.walker.Files, themeFile) {
+				l.walker.Files = append(l.walker.Files, themeFile)
+			}
 		}
+		apply(&palette, entries)
+		if palette.Empty() {
+			return nil
+		}
+		return palette.Tint("current", name)
 	}
-	apply(&palette, entries)
 
-	if palette.Empty() {
+	if !themes.pair() {
+		t := variant(themes.dark)
+		if t == nil {
+			return nil, l.walker.Files, sources.ErrNoColors(Name, path)
+		}
+		return []*tint.Tint{t}, l.walker.Files, nil
+	}
+
+	// The mode's theme, or the other where it has no colors.
+	darkT, lightT := variant(themes.dark), variant(themes.light)
+	current := darkT
+	if !dark && lightT != nil || darkT == nil {
+		current = lightT
+	}
+	if current == nil {
 		return nil, l.walker.Files, sources.ErrNoColors(Name, path)
 	}
-	return palette.Tint("current", name), l.walker.Files, nil
+	return sources.Variants(current, darkT, lightT), l.walker.Files, nil
 }
 
 // read returns the settings in the file, followed by those of its "config-file"
@@ -181,27 +204,37 @@ func lastValue(entries []entry, key string) (value string) {
 	return value
 }
 
-// pickTheme returns the theme to use from the "theme" setting, which is either a
-// name or path, or a "light:X,dark:Y" pair.
-func pickTheme(value string) string {
+// themes are the themes the "theme" setting names: one for both modes, or
+// one for each of light and dark mode.
+type themes struct{ dark, light string }
+
+func (t themes) pair() bool { return t.dark != t.light }
+
+// pickTheme returns the themes named by the "theme" setting, which is either
+// a name or path, for both modes, or a "light:X,dark:Y" pair. A pair that
+// names only one mode uses it for both.
+func pickTheme(value string) themes {
 	if !strings.Contains(value, "light:") && !strings.Contains(value, "dark:") {
-		return value
+		return themes{dark: value, light: value}
 	}
 
-	var light, dark string
-	for _, part := range strings.Split(value, ",") {
+	var t themes
+	for part := range strings.SplitSeq(value, ",") {
 		k, v, _ := strings.Cut(strings.TrimSpace(part), ":")
 		switch k {
 		case "light":
-			light = v
+			t.light = v
 		case "dark":
-			dark = v
+			t.dark = v
 		}
 	}
-	if dark != "" {
-		return dark
+	switch {
+	case t.dark == "":
+		t.dark = t.light
+	case t.light == "":
+		t.light = t.dark
 	}
-	return light
+	return t
 }
 
 // loadTheme returns the colors of the theme, found by path, in the theme
