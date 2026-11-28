@@ -133,11 +133,18 @@ func TestChoices(t *testing.T) {
 	if len(accents) != 13 || !accents[0].Auto() {
 		t.Errorf("Accents() = %v", accents)
 	}
-	for _, a := range accents {
+	for i, a := range accents {
+		if s, ok := a.Slot(); ok != (i > 0) || ok && s.IsBright() != (i > 6) {
+			t.Errorf("accent %q: Slot() = %v, %v", a, s, ok)
+		}
 		back, err := ParseAccent(a.String())
 		if err != nil || back != a || !slices.Contains(accent.AnyOf[0].Enum, a.String()) {
 			t.Errorf("accent %q reads back as %q, %v, or isn't in the schema", a, back, err)
 		}
+	}
+	hex, _ := ParseAccent("#f80")
+	if _, ok := hex.Slot(); ok {
+		t.Error("a fixed color has a slot")
 	}
 	var limit struct {
 		Enum []string `json:"enum"`

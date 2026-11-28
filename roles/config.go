@@ -60,6 +60,10 @@ func ParseAccent(s string) (AccentChoice, error) {
 // Auto reports whether the accent follows the tint's own hue.
 func (a AccentChoice) Auto() bool { return a.color == nil && !a.isSet }
 
+// Slot returns the tint's color the accent is, and whether it's one: false
+// for auto, or a fixed color.
+func (a AccentChoice) Slot() (tint.Slot, bool) { return a.slot, a.isSet }
+
 // Option returns the option that derives with the accent: [WithAccentSlot]
 // or [WithAccentColor], or one that changes nothing, for auto.
 func (a AccentChoice) Option() Option {
