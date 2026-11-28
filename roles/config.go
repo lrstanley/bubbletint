@@ -73,15 +73,29 @@ func (a AccentChoice) Option() Option {
 }
 
 // String returns the accent as [ParseAccent] reads it: "auto", a slot's name,
-// or "#rrggbb".
+// or "#rrggbb". A slot is named as a [tint.Tint]'s JSON names it, by
+// [tint.Slot.JSONName].
 func (a AccentChoice) String() string {
 	switch {
 	case a.color != nil:
 		return a.color.Hex()
 	case a.isSet:
-		return a.slot.String()
+		return a.slot.JSONName()
 	}
 	return autoName
+}
+
+// Accents returns the accents to offer as choices: auto, then each of the
+// tint's colors that has a hue, normal then bright. A fixed color is also an
+// accent, but isn't listed.
+func Accents() []AccentChoice {
+	out := []AccentChoice{{}}
+	for s := tint.SlotBlack; s <= tint.SlotBrightWhite; s++ {
+		if Hue(s) != Neutral {
+			out = append(out, AccentChoice{slot: s, isSet: true})
+		}
+	}
+	return out
 }
 
 // MarshalText implements [encoding.TextMarshaler].
@@ -99,7 +113,8 @@ func (a *AccentChoice) UnmarshalText(b []byte) error {
 
 // ColorLimit is the most colors a user wants drawn, whatever the terminal
 // can do: "auto" for all it can, "256", "16", or "none" for attributes only.
-// The zero value is auto.
+// The zero value is auto, so a field tagged omitzero leaves auto out when
+// it's marshaled, a config's defaults included.
 type ColorLimit uint8
 
 // Color limits.
@@ -109,6 +124,16 @@ const (
 	Colors16
 	ColorsNone
 )
+
+// ColorLimits returns every [ColorLimit], from auto to none, to offer as
+// choices.
+func ColorLimits() []ColorLimit {
+	out := make([]ColorLimit, len(colorLimitNames))
+	for i := range out {
+		out[i] = ColorLimit(i) //nolint:gosec // bounded by the names
+	}
+	return out
+}
 
 // ColorLimitSchema is the JSON schema for a [ColorLimit].
 const ColorLimitSchema = `{

@@ -210,10 +210,11 @@ func (m *model) click(id string) tea.Cmd {
 func (m *model) apply(i int) tea.Cmd {
 	switch settingRows[i] {
 	case settingAccent:
-		next := accents[(slices.Index(accents, accentName(m.settings.Accent))+1)%len(accents)]
+		next := accents[(slices.Index(accents, m.settings.Accent.String())+1)%len(accents)]
 		m.settings.Accent, _ = roles.ParseAccent(next)
 	case settingColors:
-		m.settings.Colors = (m.settings.Colors + 1) % (roles.ColorsNone + 1)
+		limits := roles.ColorLimits()
+		m.settings.Colors = limits[(slices.Index(limits, m.settings.Colors)+1)%len(limits)]
 	case settingFlat:
 		m.settings.Flat = !m.settings.Flat
 	case settingTint:
@@ -221,14 +222,6 @@ func (m *model) apply(i int) tea.Cmd {
 		return m.retheme(true)
 	}
 	return m.retheme(false)
-}
-
-// accentName is the accent as the accents list names it.
-func accentName(a roles.AccentChoice) string {
-	if s := a.String(); s != "magenta" {
-		return s
-	}
-	return "purple"
 }
 
 func scan(s, format string, v *int) bool {

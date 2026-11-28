@@ -127,7 +127,7 @@ func ExampleParseAccent() {
 	}
 	// Output:
 	// auto    accent #79a2f7
-	// magenta accent #bb9af7
+	// purple  accent #bb9af7
 	// #ff8800 accent #ff8800
 	// accent "teal": want auto, one of the tint's colors (red, green, yellow, blue, purple, cyan, or a bright_ one), or #rrggbb
 }

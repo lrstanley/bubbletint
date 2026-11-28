@@ -104,7 +104,7 @@ func (s setting) label(m *model) string {
 		}
 		return "tint     " + m.picked + " (reset)"
 	case settingAccent:
-		return "accent   " + accentName(m.settings.Accent)
+		return "accent   " + m.settings.Accent.String()
 	case settingColors:
 		return "colors   " + m.settings.Colors.String()
 	case settingFlat:

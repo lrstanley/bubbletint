@@ -7,6 +7,7 @@ package roles
 import (
 	"encoding/json"
 	"errors"
+	"slices"
 	"testing"
 
 	"github.com/charmbracelet/colorprofile"
@@ -24,7 +25,9 @@ func TestParseAccent(t *testing.T) {
 		{in: "auto", want: "auto"},
 		{in: "AUTO", want: "auto"},
 		{in: "blue", want: "blue", slot: tint.SlotBlue},
-		{in: "purple", want: "magenta", slot: tint.SlotMagenta},
+		{in: "purple", want: "purple", slot: tint.SlotMagenta},
+		{in: "magenta", want: "purple", slot: tint.SlotMagenta},
+		{in: "bright_magenta", want: "bright_purple", slot: tint.SlotMagenta},
 		{in: "Bright_Cyan", want: "bright_cyan", slot: tint.SlotCyan},
 		{in: "#f80", want: "#ff8800"},
 		{in: "#FF8800", want: "#ff8800"},
@@ -71,11 +74,11 @@ func TestConfigJSON(t *testing.T) {
 	if err := json.Unmarshal([]byte(`{"accent": "purple", "colors": "256"}`), &cfg); err != nil {
 		t.Fatal(err)
 	}
-	if cfg.Accent.String() != "magenta" || cfg.Colors != Colors256 {
+	if cfg.Accent.String() != "purple" || cfg.Colors != Colors256 {
 		t.Errorf("decoded %v, %v", cfg.Accent, cfg.Colors)
 	}
 	b, err := json.Marshal(cfg)
-	if err != nil || string(b) != `{"accent":"magenta","colors":"256"}` {
+	if err != nil || string(b) != `{"accent":"purple","colors":"256"}` {
 		t.Errorf("encoded %s, %v", b, err)
 	}
 	if bad := json.Unmarshal([]byte(`{"colors": "lots"}`), &cfg); !errors.Is(bad, ErrInvalidColorLimit) {
@@ -112,5 +115,44 @@ func TestColorLimitCap(t *testing.T) {
 		if _, err := ParseColorLimit(s); err != nil {
 			t.Errorf("ParseColorLimit(%q): %v", s, err)
 		}
+	}
+}
+
+// The choices to offer each read back as themselves, and are in the schemas.
+func TestChoices(t *testing.T) {
+	t.Parallel()
+	var accent struct {
+		AnyOf []struct {
+			Enum []string `json:"enum"`
+		} `json:"anyOf"`
+	}
+	if err := json.Unmarshal([]byte(AccentSchema), &accent); err != nil {
+		t.Fatal(err)
+	}
+	accents := Accents()
+	if len(accents) != 13 || !accents[0].Auto() {
+		t.Errorf("Accents() = %v", accents)
+	}
+	for _, a := range accents {
+		back, err := ParseAccent(a.String())
+		if err != nil || back != a || !slices.Contains(accent.AnyOf[0].Enum, a.String()) {
+			t.Errorf("accent %q reads back as %q, %v, or isn't in the schema", a, back, err)
+		}
+	}
+	var limit struct {
+		Enum []string `json:"enum"`
+	}
+	if err := json.Unmarshal([]byte(ColorLimitSchema), &limit); err != nil {
+		t.Fatal(err)
+	}
+	var names []string
+	for _, l := range ColorLimits() {
+		if back, err := ParseColorLimit(l.String()); err != nil || back != l {
+			t.Errorf("limit %q reads back as %q, %v", l, back, err)
+		}
+		names = append(names, l.String())
+	}
+	if !slices.Equal(names, limit.Enum) {
+		t.Errorf("ColorLimits() = %v, want the schema's %v", names, limit.Enum)
 	}
 }
