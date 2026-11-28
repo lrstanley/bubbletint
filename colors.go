@@ -148,6 +148,7 @@ func (c *Color) UnmarshalJSON(data []byte) error {
 // own config schema. [Color.UnmarshalJSON] is more lenient than it, and
 // reads anything it allows.
 const ColorSchema = `{
+  "type": ["string", "object"],
   "description": "a color, as \"#rrggbb\" or \"#rgb\", or an {\"r\", \"g\", \"b\", \"a\"} object of 0-255 values, opaque without \"a\"",
   "anyOf": [
     {"type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"},

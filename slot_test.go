@@ -9,9 +9,10 @@ import "testing"
 func TestSlotNames(t *testing.T) {
 	t.Parallel()
 	for s := SlotBlack; s <= SlotBrightWhite; s++ {
-		got, ok := ParseSlot(s.String())
-		if !ok || got != s {
-			t.Errorf("ParseSlot(%q) = %v, %v", s.String(), got, ok)
+		for _, name := range []string{s.String(), s.JSONName()} {
+			if got, ok := ParseSlot(name); !ok || got != s {
+				t.Errorf("ParseSlot(%q) = %v, %v", name, got, ok)
+			}
 		}
 	}
 	tests := []struct {
@@ -29,6 +30,9 @@ func TestSlotNames(t *testing.T) {
 		if got, ok := ParseSlot(tt.in); got != tt.want || ok != tt.ok {
 			t.Errorf("ParseSlot(%q) = %v, %v, want %v, %v", tt.in, got, ok, tt.want, tt.ok)
 		}
+	}
+	if SlotBrightMagenta.JSONName() != "bright_purple" || SlotRed.JSONName() != "red" || Slot(21).JSONName() != "unknown" {
+		t.Errorf("JSONName() = %q, %q", SlotBrightMagenta.JSONName(), SlotRed.JSONName())
 	}
 	if Slot(16).String() != "unknown" {
 		t.Errorf("Slot(16).String() = %q", Slot(16).String())

@@ -21,6 +21,7 @@ type Pair struct {
 
 // PairSchema is the JSON schema for a [Pair], for an app's own config schema.
 const PairSchema = `{
+  "type": ["string", "object"],
   "description": "a tint ID, or {\"dark\": ID, \"light\": ID} to follow the terminal's background",
   "anyOf": [
     {"type": "string", "minLength": 1},

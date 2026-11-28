@@ -12,6 +12,10 @@ import (
 // Complete fills in what a hand-made tint, such as one from a config file,
 // leaves out: each bright color from its normal one, and the display name
 // from the ID. What's set is kept.
+//
+// Complete leaves Dark alone, as it can't tell an unset Dark from false.
+// Where a config leaves "dark" out, set it from the background first, where
+// there is one, with Bg.IsDark(), as [ParseJSON] does.
 func (t *Tint) Complete() {
 	for s := SlotBlack; s <= SlotWhite; s++ {
 		if bright := t.slotField(s.Bright()); *bright == nil {
@@ -36,14 +40,11 @@ func (t *Tint) Missing() []string {
 	}
 	for s := SlotBlack; s <= SlotWhite; s++ {
 		if *t.slotField(s) == nil {
-			out = append(out, slotJSONNames[s])
+			out = append(out, s.JSONName())
 		}
 	}
 	return out
 }
-
-// slotJSONNames are the normal slots' JSON names, purple for magenta.
-var slotJSONNames = [8]string{"black", "red", "green", "yellow", "blue", "purple", "cyan", "white"}
 
 // ParseJSON reads a hand-made tint, such as one from a config file, in the
 // JSON a [Tint] marshals to, and completes it with [Tint.Complete]. Where

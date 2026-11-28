@@ -44,8 +44,20 @@ func (s Slot) String() string {
 	return slotNames[s]
 }
 
-// ParseSlot parses a slot name as returned by [Slot.String]. "purple" is
-// accepted for magenta, to match the Tint field names.
+// JSONName returns the name a [Tint]'s JSON gives the slot's color: its
+// [Slot.String], but purple for magenta, such as "bright_purple".
+func (s Slot) JSONName() string {
+	if s > SlotBrightWhite || s.Normal() != SlotMagenta {
+		return s.String()
+	}
+	if s.IsBright() {
+		return "bright_purple"
+	}
+	return "purple"
+}
+
+// ParseSlot parses a slot name as returned by [Slot.String] or
+// [Slot.JSONName].
 func ParseSlot(name string) (Slot, bool) {
 	switch name {
 	case "purple":

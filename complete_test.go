@@ -148,9 +148,15 @@ func TestPair(t *testing.T) {
 
 func TestSchemas(t *testing.T) {
 	t.Parallel()
+	// Each has a type of its own, beside its alternatives, so a generator that
+	// makes a pointer field's schema nullable, by adding "null" to the types,
+	// keeps the others.
 	for _, s := range []string{ColorSchema, PairSchema} {
-		if !json.Valid([]byte(s)) {
-			t.Errorf("schema isn't valid JSON: %s", s)
+		var schema struct {
+			Type []string `json:"type"`
+		}
+		if err := json.Unmarshal([]byte(s), &schema); err != nil || !slices.Equal(schema.Type, []string{"string", "object"}) {
+			t.Errorf("schema has types %v, %v: %s", schema.Type, err, s)
 		}
 	}
 }
