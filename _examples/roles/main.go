@@ -24,20 +24,6 @@ import (
 	tint "github.com/lrstanley/bubbletint/v2"
 )
 
-// control is a role the app adds for itself: a dialog's neutral button. It's
-// derived alongside the core roles, keeps text readable, never shares a color
-// with the dialog with 256 colors, and is reversed with 16 or none.
-var control = roles.Define(roles.Spec{
-	Name: "control",
-	Kind: roles.KindSurface,
-	Derive: func(p *roles.Palette) tint.Color {
-		fg := p.Color(roles.Fg)
-		return p.Color(roles.Raised).MixReadable(fg, fg, p.ByDark(0.22, 0.17), 4.5)
-	},
-	Distinct: []roles.Role{roles.Raised},
-	Fallback: roles.Fallback{Attr: roles.Reverse},
-})
-
 type service struct {
 	name, version, age string
 	status             roles.Role // a tone: Success, Warning, Danger or Info
@@ -117,23 +103,25 @@ func (m *model) View() tea.View {
 	page := f.Text(roles.Fg)
 
 	// Top bar, on a surface. Text on it comes from f.On(roles.Surface), which
-	// keeps it readable there, and draws it on the surface's color.
+	// keeps it readable there. Each piece is rendered on its own and joined
+	// onto the bar, so it's a Span, which draws on the surface's color too;
+	// Text would leave a hole in the bar after each piece.
 	t := tint.Current()
 	surface := f.On(roles.Surface)
-	left := surface.Text(roles.Accent).Bold(true).Render("deploys") + surface.Text(roles.Muted).Render(" / production")
-	right := surface.Text(roles.Muted).Render(fmt.Sprintf("%s · %s", t.DisplayName, profileLabel(m.profile)))
+	left := surface.Span(roles.Accent).Bold(true).Render("deploys") + surface.Span(roles.Muted).Render(" / production")
+	right := surface.Span(roles.Muted).Render(fmt.Sprintf("%s · %s", t.DisplayName, profileLabel(m.profile)))
 	gap := max(1, m.width-lipgloss.Width(left)-lipgloss.Width(right)-2)
 	bar := f.Fill(roles.Surface).Width(m.width).Padding(0, 1).
 		Render(left + strings.Repeat(" ", gap) + right)
 
 	// Sidebar, on the same surface, with a border between it and the page.
-	side := []string{surface.Text(roles.Subtle).Render("ENVIRONMENTS"), ""}
+	side := []string{surface.Span(roles.Subtle).Render("ENVIRONMENTS"), ""}
 	for i, env := range []string{"production", "staging", "preview"} {
 		if i == 0 {
-			side = append(side, surface.Text(roles.Accent).Bold(true).Render("● "+env))
+			side = append(side, surface.Span(roles.Accent).Bold(true).Render("● "+env))
 			continue
 		}
-		side = append(side, surface.Text(roles.Muted).Render("  "+env))
+		side = append(side, surface.Span(roles.Muted).Render("  "+env))
 	}
 	// Everything below the bar. Height includes the padding.
 	body := max(len(services)+12, m.height-1)
@@ -142,17 +130,19 @@ func (m *model) View() tea.View {
 		BorderForeground(f.Color(roles.Border)).BorderBackground(f.Color(roles.Surface)).
 		Render(strings.Join(side, "\n"))
 
-	// The list. The selected row's text comes from f.On(roles.Selection), so
-	// hints and status stay readable on the highlight.
+	// The list. The selected row is the page's background, selected, and its
+	// text comes from f.On of it, so hints and status stay readable on the
+	// highlight.
 	width := max(40, m.width-sidebarWidth-4)
 	rows := []string{f.Text(roles.Subtle).Render(fmt.Sprintf("  %-11s %-9s %-10s %s", "SERVICE", "VERSION", "STATUS", "AGE"))}
+	selected := roles.Bg.Selected()
 	for i, s := range services {
 		rf, row := f, lipgloss.NewStyle()
 		if i == m.selected {
-			rf, row = f.On(roles.Selection), f.Fill(roles.Selection)
+			rf, row = f.On(selected), f.Fill(selected)
 		}
 		cell := func(r roles.Role, text string) string {
-			style := rf.Text(r)
+			style := rf.Span(r)
 			if i == m.selected {
 				style = style.Bold(true)
 			}
@@ -165,16 +155,17 @@ func (m *model) View() tea.View {
 		rows = append(rows, row.Width(width).Render(cells))
 	}
 
-	// A dialog on a raised surface, with an input sunk into it.
+	// A dialog on a raised surface, with an input sunk into it, a neutral
+	// button that steps off the dialog, and the focused one, pressed.
 	sel := services[m.selected]
 	raised, onRaised := f.Fill(roles.Raised), f.On(roles.Raised)
-	input := f.Fill(roles.Sunken).Width(34).Padding(0, 1).Render(
-		f.On(roles.Sunken).Text(roles.Subtle).Render("type " + sel.name + " to confirm"))
-	buttons := f.Fill(control).Padding(0, 2).Render("Cancel") + raised.Render("  ") +
-		f.Fill(roles.Danger).Padding(0, 2).Render("Roll back")
+	input := onRaised.Fill(roles.Sunken).Width(34).Padding(0, 1).Render(
+		onRaised.On(roles.Sunken).Span(roles.Subtle).Render("type " + sel.name + " to confirm"))
+	buttons := onRaised.Fill(roles.Control).Padding(0, 2).Render("Cancel") + raised.Render("  ") +
+		onRaised.Fill(roles.Danger.Pressed()).Padding(0, 2).Render("Roll back")
 	dialog := raised.Padding(1, 2).Width(40).Render(strings.Join([]string{
-		onRaised.Text(roles.Fg).Bold(true).Render("Roll back " + sel.name + "?"),
-		onRaised.Text(roles.Muted).Render("Redeploys v2.13.2 to production."),
+		onRaised.Span(roles.Fg).Bold(true).Render("Roll back " + sel.name + "?"),
+		onRaised.Span(roles.Muted).Render("Redeploys v2.13.2 to production."),
 		"",
 		input,
 		"",
@@ -183,7 +174,7 @@ func (m *model) View() tea.View {
 
 	// Status pills: solid fills, and soft ones.
 	var pills []string
-	for _, tone := range []roles.Role{roles.Success, roles.Warning, roles.Danger, roles.Info, roles.Accent} {
+	for _, tone := range []roles.Role{roles.Success, roles.Warning, roles.Danger, roles.Info, roles.Accent, roles.Neutral} {
 		pills = append(pills, f.Fill(tone).Padding(0, 1).Render(tone.String()))
 	}
 	pills = append(pills, " ")

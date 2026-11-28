@@ -78,6 +78,7 @@
     - [Chroma Support](#chroma-support)
     - [Glamour Support](#glamour-support)
     - [Semantic roles example](#semantic-roles-example)
+    - [Themed app example](#themed-app-example)
     - [Follow the terminal](#follow-the-terminal)
   - [Changes in v2](#rocket-changes-in-v2)
     - [No More Bloated Interfaces](#no-more-bloated-interfaces)
@@ -113,9 +114,9 @@
 - :heavy_check_mark: Follow the theme of the terminal your app runs in (kitty, Ghostty,
   Alacritty, foot, Windows Terminal, X resources, and iTerm2 color presets), on Linux,
   macOS and Windows, through the opt-in `sources` sub-package.
-- :heavy_check_mark: Derive semantic colors (surfaces, muted text, borders, accents,
-  status) from any tint, with contrast guards, and fit them to 256, 16 or no colors,
-  through the `roles` sub-package.
+- :heavy_check_mark: Turn any tint into ready-to-use UI colors (panels, dialogs,
+  buttons, selected rows, muted text, status pills) through the `roles` sub-package, so
+  your components look right on every tint, without picking colors yourself.
 - :heavy_check_mark: Perceptual color helpers with no dependencies: OKLab mixing, WCAG
   contrast, and contrast guards that keep a color's hue.
 
@@ -291,6 +292,12 @@ if err == nil {
   about it). Use `tint.WithFollow(false)` to only register the tints.
 - Check for `tint.ErrNotFound` (with `errors.Is`) to handle terminals that aren't
   supported, or have no config.
+- Ghostty (`theme = light:X,dark:Y`) and Windows Terminal can name a theme for each of
+  light and dark mode, and switch with the system's appearance. The source can't see which
+  the terminal is in, but your app can, from the terminal's background: tell it with
+  `src.SetDark(msg.IsDark())` on Bubble Tea's `tea.BackgroundColorMsg`, and the registry
+  follows the other theme. Both are registered too, as `<source>:current_dark` and
+  `<source>:current_light`.
 
 | Package                                   | Reads                                                                 | Platforms                       |
 | ----------------------------------------- | --------------------------------------------------------------------- | ------------------------------- |
@@ -330,39 +337,100 @@ or `t.ANSI16()`.
 
 ### Semantic roles
 
-Most of a TUI isn't drawn in a tint's 16 colors directly, but in colors derived from
-them: a dialog a step off the background, secondary text, a soft red behind an error.
-The `roles` sub-package works those out, from any tint:
+A tint is a palette: a background, a text color, and 16 ANSI colors. A UI needs more than
+that. It needs to know what to draw a dialog in, what a selected row looks like, how a
+button changes under the pointer, and which gray is quiet enough for a hint but still
+readable. Picking those from a tint by hand only works for the tint you picked them on.
+
+The `roles` sub-package does it for you. You ask for a color by **what it's for** (its
+role), such as `Raised` for a dialog, `Muted` for secondary text or `Danger` for an error,
+and get a color that works on whatever tint is in use: dark, light, low contrast, or a
+single hue.
+
+**Use it when** you're building components or an app that should look right on any tint,
+including ones your users pick or bring from their terminal. If you only want a tint's
+own colors, use the tint directly.
 
 ```console
 go get -u github.com/lrstanley/bubbletint/roles/v2@latest
 ```
 
+**1. Derive once**, when the tint or the terminal changes, not on every render:
+
 ```go
-// For a detected color profile, such as Bubble Tea's tea.ColorProfileMsg.
+// profile is the terminal's color support, such as Bubble Tea's tea.ColorProfileMsg.
 f := roles.Derive(tint.Current()).Fit(roles.Target{Profile: profile})
-
-hint := f.Text(roles.Subtle)        // a Lip Gloss style, for text in a role's color
-pill := f.Fill(roles.Danger)        // a solid tone, with its on-danger text
-soft := f.Fill(roles.Danger.Soft()) // a faded tone, with the tone as text
-
-// On a surface, text is kept readable there and drawn on the surface's color.
-dialog := f.Fill(roles.Raised)
-note := f.On(roles.Raised).Text(roles.Muted)
-selectedHint := f.On(roles.Selection).Text(roles.Subtle)
 ```
 
-- Contrast guards keep text, marks and lines readable, moving a color's lightness but
-  keeping its hue. They can be turned off with `roles.WithoutGuards()`.
-- With 256 colors, no two neighboring roles share an index, and the guards still hold.
-- With 16 colors, each role takes a slot from its family that reads on the terminal's
-  palette, or the terminal's default plus an attribute, such as faint for muted text.
-  With no colors, only attributes are left. `f.Text` and `f.Fill` add them; for anything
-  that isn't Lip Gloss, `f.Color(role)` and `f.Attr(role)` are the color and what to add
-  to it.
-- Apps add their own roles with `roles.Define`, derived and fitted like the rest.
+**2. Ask for styles by role.** They're Lip Gloss styles, so they drop into what you have:
+
+```go
+title := f.Text(roles.Accent).Bold(true)
+hint := f.Text(roles.Subtle)
+errPill := f.Fill(roles.Danger)        // filled with danger, with text that reads on it
+errTag := f.Fill(roles.Danger.Soft())  // a quieter, faded version
+panel := f.Fill(roles.Surface)
+```
+
+**3. Draw on things.** `f.On(role)` gives you the roles for drawing *on* a surface, so text
+and controls stay readable there:
+
+```go
+dialog := f.Fill(roles.Raised)
+inDialog := f.On(roles.Raised)
+note := inDialog.Text(roles.Muted)
+cancel := inDialog.Fill(roles.Control) // a neutral button, a step off the dialog
+input := inDialog.Fill(roles.Sunken)   // an input, sunk into the dialog
+```
+
+**4. Add states.** Any role can be hovered, pressed or selected:
+
+```go
+row := f.Fill(roles.Bg.Selected())
+menuItem := f.Fill(roles.Overlay.Hover())
+pressed := inDialog.Fill(roles.Control.Pressed())
+```
+
+What it takes care of, so you don't have to:
+
+- **Readability.** Text, lines and status colors are kept readable on whatever they're
+  drawn on, without losing the tint's hues.
+- **Every tint.** The same code gives sensible surfaces and distinct status colors on dark,
+  light and single-hue tints. Where hue can't tell success from danger, weight does.
+- **Every terminal.** Colors are fitted to true color, 256, 16 or no colors. Neighboring
+  surfaces and states stay apart, and where a color can't be drawn, an attribute
+  (faint, underline, reverse) stands in for it.
+- **Your own roles.** Add app-specific roles with `roles.Define`, and they're handled like
+  the built-in ones.
+
+For a larger app, keep all of this in one place: a theme package that's the only code
+importing `roles`, and that gives components what they draw by intent (a panel, a selected
+row, a danger button). The app holds one current theme and builds a new one when the
+tint, a setting or the terminal changes. The [themed app example](#themed-app-example)
+is laid out that way.
+
+<details>
+<summary>More detail</summary>
+
+- The layers (`Bg`, `Surface`, `Raised`, `Overlay`) are the same everywhere. Text, lines,
+  `Control`, `Sunken` and soft fills are worked out from what they're drawn on, so text on
+  a light accent pill turns dark.
+- Contrast guards move a color's lightness but keep its hue. Turn them off with
+  `roles.WithoutGuards()` for a hand-made tint whose author wants exactly their colors.
+- `f.Text` sets no background, for renderers that keep the background under text;
+  `f.Span` adds it, for Lip Gloss strings rendered on their own and joined onto a fill.
+  Outside Lip Gloss, `f.Color(role)` and `f.Attr(role)` are the color and what to add to
+  it, and `f.Fit` fits a color of your own, such as a gradient's step.
+- `f.Distinct(roles.Raised, roles.Bg)` reports whether two roles look different on the
+  terminal, to choose a design by, such as outlining dialogs where their surface won't
+  show.
+- `roles.Lerp` crossfades between two fitted palettes, dark to light included.
+- `roles.AccentChoice` and `roles.ColorLimit` parse the accent and color settings an app
+  reads from its config file, with JSON schemas to match.
 - Role names and the API follow semver; the exact colors derived may be tuned in minor
   releases.
+
+</details>
 
 ## :clap: Examples
 
@@ -428,15 +496,29 @@ renderer, err := glamour.NewTermRenderer(
 
 ### Semantic roles example
 
-- Uses the `roles` sub-package to style a small dashboard (surfaces, a selected row, a
-  dialog with an input, status pills) from the current tint, and a role of its own.
-  Press `d` to see it fitted to 256, 16 and no colors.
+- Uses the `roles` sub-package to style a small dashboard (panels, a selected row, a
+  dialog with an input and buttons, status pills) by role, with no colors picked by hand.
+  Press `←`/`→` to see it hold up on every tint, and `d` to see it on 256, 16 and no
+  colors.
 - [Example source](./_examples/roles).
+
+### Themed app example
+
+- Shows how to structure an app around `roles`: a `theme` package is the only place colors
+  come from, components ask it for what they draw, and the app holds one current theme,
+  rebuilding it when anything changes.
+- The tint follows the terminal's background through a dark/light `tint.Pair`, and ←/→
+  crossfades to another. Settings (accent, color limit, flat surfaces) load from an
+  optional JSON config and change live from a menu (`s`). Rows and buttons respond to
+  the mouse.
+- [Example source](./_examples/roles-app).
 
 ### Follow the terminal
 
 - Uses the `sources/terminal` sub-package to follow the theme of the terminal it runs in,
   and `Subscribe` to be told when it changes. Change your terminal's theme while it runs.
+  It asks the terminal for its background, so a light/dark theme pair follows the mode
+  the terminal is in.
 - [Example source](./_examples/follow-terminal).
 
 ## :rocket: Changes in v2

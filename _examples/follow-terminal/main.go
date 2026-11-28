@@ -13,6 +13,7 @@ import (
 
 	tea "charm.land/bubbletea/v2"
 	"charm.land/lipgloss/v2"
+	"github.com/lrstanley/bubbletint/sources/v2"
 	"github.com/lrstanley/bubbletint/sources/v2/terminal"
 	tint "github.com/lrstanley/bubbletint/v2"
 )
@@ -20,13 +21,22 @@ import (
 // tintEventMsg is sent to the program for every change to the registry.
 type tintEventMsg tint.Event
 
+// sourceMsg is the terminal's source, once it's attached.
+type sourceMsg struct{ src *sources.FileSource }
+
 type model struct {
 	registry *tint.Registry
-	status   string // Result of attaching the terminal's config.
-	last     string // Last registry event.
+	src      *sources.FileSource // The terminal's source, once attached.
+	dark     *bool               // Whether the terminal is in dark mode, once it says.
+	status   string              // Result of attaching the terminal's config.
+	last     string              // Last registry event.
 }
 
-func (m model) Init() tea.Cmd { return nil }
+// Init asks the terminal for its background, to tell whether it's in light or
+// dark mode, for a config that names a theme for each. It's asked once, at
+// the start: the app paints its own background, which the terminal would
+// report after that.
+func (m model) Init() tea.Cmd { return tea.RequestBackgroundColor }
 
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
@@ -38,6 +48,18 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.registry.PreviousTint()
 		case "right":
 			m.registry.NextTint()
+		}
+	case tea.BackgroundColorMsg:
+		dark := msg.IsDark()
+		m.dark = &dark
+		if m.src != nil {
+			m.src.SetDark(dark)
+		}
+	case sourceMsg:
+		m.src = msg.src
+		if m.dark != nil {
+			// A terminal with a theme for each mode follows the one it's in.
+			m.src.SetDark(*m.dark)
 		}
 	case statusMsg:
 		m.status = string(msg)
@@ -125,6 +147,7 @@ func main() {
 			p.Send(statusMsg(status))
 			return
 		}
+		p.Send(sourceMsg{src: src})
 		p.Send(statusMsg("Following the theme of " + src.Name() + "."))
 	}()
 

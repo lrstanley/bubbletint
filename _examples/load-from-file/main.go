@@ -46,12 +46,12 @@ func styleTextarea(ta *textarea.Model, f *roles.Fitted) {
 		Base:             f.Fill(roles.Bg),
 		Text:             f.Text(roles.Fg),
 		LineNumber:       f.Text(roles.Subtle),
-		CursorLineNumber: f.On(roles.Hover).Text(roles.Muted),
-		CursorLine:       f.Fill(roles.Hover),
+		CursorLineNumber: f.On(roles.Bg.Hover()).Span(roles.Muted),
+		CursorLine:       f.Fill(roles.Bg.Hover()),
 		EndOfBuffer:      f.Text(roles.Subtle),
 		Placeholder:      f.Text(roles.Subtle),
 		Prompt:           f.Text(roles.Accent),
-		Selection:        f.Fill(roles.Selection),
+		Selection:        f.Fill(roles.Bg.Selected()),
 	}
 	s := ta.Styles()
 	s.Focused, s.Blurred = state, state

@@ -39,7 +39,8 @@ func (m *dialog) setStyles() {
 		BorderForeground(f.Color(roles.Accent)).
 		Padding(1, 0)
 
-	m.buttonStyle = f.Fill(roles.Overlay).
+	// A neutral button, a step off the page.
+	m.buttonStyle = f.Fill(roles.Control).
 		Padding(0, 3).
 		MarginTop(1).
 		MarginRight(2)

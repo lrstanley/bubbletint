@@ -34,13 +34,14 @@ func newHistory(items ...string) *history {
 }
 
 func (m *history) setStyles() {
-	// Cards raised off the background, and the selected one highlighted.
+	// Cards raised off the background, and the selected one, a raised card
+	// in its selected state.
 	m.historyStyle = f.Fill(roles.Raised).
 		Align(lipgloss.Left).
 		Margin(0, 1).
 		Padding(1, 2)
 
-	m.activeHistoryStyle = f.Fill(roles.Selection).
+	m.activeHistoryStyle = f.Fill(roles.Raised.Selected()).
 		Align(lipgloss.Left).
 		Margin(0, 1).
 		Padding(1, 2)
