@@ -53,3 +53,12 @@ func hueDist(a, b float64) float64 {
 func without(list []tint.Slot, s tint.Slot) []tint.Slot {
 	return slices.DeleteFunc(slices.Clone(list), func(x tint.Slot) bool { return x == s })
 }
+
+// mono reports whether status can't be told apart by hue: a grey success or
+// danger, or hues that sit close together. Red and green need to be well
+// apart, as they're the pair most often confused.
+func mono(success, warning, danger tint.Color) bool {
+	s, w, d := success.OKLCh(), warning.OKLCh(), danger.OKLCh()
+	return s.C < 0.04 || d.C < 0.04 || hueDist(s.H, d.H) < 45 ||
+		(hueDist(w.H, d.H) < 12 && hueDist(s.H, w.H) < 30)
+}

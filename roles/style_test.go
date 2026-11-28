@@ -34,8 +34,10 @@ func TestAttrApply(t *testing.T) {
 func TestStyles(t *testing.T) {
 	t.Parallel()
 	pal := Derive(tint.TintTokyoNight)
+	sel := Bg.Selected()
 	for _, d := range []colorprofile.Profile{colorprofile.TrueColor, colorprofile.ANSI256, colorprofile.ANSI, colorprofile.ASCII} {
 		f := pal.Fit(Target{Profile: d})
+		row := f.On(sel)
 		tests := []struct {
 			name   string
 			style  lipgloss.Style
@@ -43,11 +45,14 @@ func TestStyles(t *testing.T) {
 			attr   Attr
 		}{
 			{name: "text", style: f.Text(Muted), fg: f.Color(Muted), attr: f.Attr(Muted)},
-			{name: "tone", style: f.Fill(Danger), fg: f.Color(Danger.On()), bg: f.Color(Danger), attr: f.Attr(Danger.On())},
-			{name: "on", style: f.On(Selection).Text(Muted), fg: f.On(Selection).Color(Muted), bg: f.Color(Selection), attr: f.On(Selection).Attr(Muted) | f.Attr(Selection)},
-			{name: "soft", style: f.Fill(Danger.Soft()), fg: f.Color(Danger), bg: f.Color(Danger.Soft()), attr: f.Attr(Danger)},
-			{name: "surface", style: f.Fill(Selection), fg: f.On(Selection).Color(Fg), bg: f.Color(Selection), attr: f.Attr(Selection) | f.On(Selection).Attr(Fg)},
-			{name: "defined", style: f.Fill(testControl), fg: f.On(testControl).Color(Fg), bg: f.Color(testControl), attr: f.Attr(testControl) | f.On(testControl).Attr(Fg)},
+			{name: "tone", style: f.Fill(Danger), fg: f.On(Danger).Color(Fg), bg: f.Color(Danger), attr: f.On(Danger).Attr(Fg) | f.fillOf(Danger).a},
+			{name: "on", style: row.Text(Muted), fg: row.Color(Muted), attr: row.Attr(Muted) | f.Attr(sel)},
+			{name: "span", style: row.Span(Muted), fg: row.Color(Muted), bg: f.Color(sel), attr: row.Attr(Muted) | f.Attr(sel)},
+			{name: "soft", style: f.Fill(Danger.Soft()), fg: f.On(Danger.Soft()).Color(Danger), bg: f.Color(Danger.Soft()), attr: f.On(Danger.Soft()).Attr(Danger)},
+			{name: "selected", style: f.Fill(sel), fg: row.Color(Fg), bg: f.Color(sel), attr: f.Attr(sel) | row.Attr(Fg)},
+			{name: "hover", style: f.Fill(Overlay.Hover()), fg: f.On(Overlay.Hover()).Color(Fg), bg: f.Color(Overlay.Hover()), attr: f.Attr(Overlay.Hover())},
+			{name: "control", style: f.On(Raised).Fill(Control), fg: f.On(Raised).On(Control).Color(Fg), bg: f.On(Raised).Color(Control), attr: f.On(Raised).Attr(Control)},
+			{name: "defined", style: f.Fill(testShadow), fg: f.On(testShadow).Color(Fg), bg: f.Color(testShadow), attr: f.Attr(testShadow) | f.On(testShadow).Attr(Fg)},
 		}
 		for _, tt := range tests {
 			if tt.fg != nil && tt.style.GetForeground() != tt.fg {
@@ -60,12 +65,21 @@ func TestStyles(t *testing.T) {
 				t.Errorf("%v %s: attributes %v, want %v", d, tt.name, got, tt.attr)
 			}
 		}
+		// Text sets no background, on the page or on a fill.
+		for _, st := range []lipgloss.Style{f.Text(Muted), row.Text(Muted), f.On(Danger).Text(Fg)} {
+			if _, ok := st.GetBackground().(lipgloss.NoColor); !ok {
+				t.Errorf("%v: Text has background %v", d, st.GetBackground())
+			}
+		}
 	}
 
 	// With no color, the attributes carry each role.
 	f := pal.Fit(Target{Profile: colorprofile.ASCII})
-	if !f.Text(Muted).GetFaint() || !f.Fill(Selection).GetReverse() || !f.Fill(Danger).GetReverse() {
-		t.Error("with no color, muted text isn't faint, or a fill isn't reversed")
+	if !f.Text(Muted).GetFaint() || !f.Fill(sel).GetReverse() || !f.Fill(Danger).GetReverse() || !f.On(sel).Text(Fg).GetReverse() {
+		t.Error("with no color, muted text isn't faint, or a fill or the text on it isn't reversed")
+	}
+	if !f.Fill(Bg.Hover()).GetUnderline() || !f.Fill(Control).GetReverse() {
+		t.Error("with no color, a hovered row isn't underlined, or a control isn't reversed")
 	}
 }
 
@@ -74,14 +88,19 @@ func TestFillTextRoles(t *testing.T) {
 	t.Parallel()
 	f := Derive(tint.TintTokyoNight).Fit(Target{Profile: colorprofile.TrueColor})
 	for _, tt := range []struct {
-		name string
-		st   lipgloss.Style
+		name  string
+		st    lipgloss.Style
+		floor float64
 	}{
-		{name: "muted", st: f.Fill(Muted)},
-		{name: "muted on fg", st: f.On(Fg).Fill(Muted)},
+		{name: "muted", st: f.Fill(Muted), floor: minText},
+		{name: "muted on fg", st: f.On(Fg).Fill(Muted), floor: minText},
+		{name: "control on raised", st: f.On(Raised).Fill(Control), floor: minText},
+		// A pill's text reads as well as the tone does on the page.
+		{name: "accent", st: f.Fill(Accent), floor: minColor},
+		{name: "neutral", st: f.Fill(Neutral), floor: minColor},
 	} {
-		if got := tint.Contrast(tt.st.GetForeground(), tt.st.GetBackground()); got < minText {
-			t.Errorf("%s: text contrast %.2f < %.1f", tt.name, got, minText)
+		if got := tint.Contrast(tt.st.GetForeground(), tt.st.GetBackground()); got < tt.floor {
+			t.Errorf("%s: text contrast %.2f < %.1f", tt.name, got, tt.floor)
 		}
 	}
 }
@@ -127,20 +146,29 @@ func TestOnCached(t *testing.T) {
 	if f.On(Bg) != f {
 		t.Error("On(Bg) isn't the palette itself")
 	}
-	row := f.On(Selection)
-	if f.On(Selection) != row {
-		t.Error("On(Selection) isn't cached")
+	row := f.On(Bg.Selected())
+	if f.On(Bg.Selected()) != row || row.On(Bg.Selected()) != row {
+		t.Error("On(selected) isn't cached, or On of its own ground isn't itself")
 	}
-	if row.On(Selection) != row {
-		t.Error("On of its own surface isn't the palette itself")
-	}
-	// On of an On palette is the root's, so chains don't grow new caches.
+	// On of a layer is shared, however it's reached.
 	if row.On(Raised) != f.On(Raised) || row.On(Bg) != f {
-		t.Error("On of an On palette isn't the root's")
+		t.Error("On of a layer isn't shared")
 	}
-	// Text on the page leaves the background alone.
+	// A control on a dialog is the dialog's, not the page's.
+	dialog := f.On(Raised)
+	button := dialog.On(Control)
+	if button == f.On(Control) || dialog.On(Control) != button {
+		t.Error("On(control) on a dialog is the page's, or isn't cached")
+	}
+	// Span on the page draws the page's background; Text doesn't.
 	if _, ok := f.Text(Muted).GetBackground().(lipgloss.NoColor); !ok {
 		t.Errorf("Text on Bg has background %v", f.Text(Muted).GetBackground())
+	}
+	if f.Span(Muted).GetBackground() != f.Color(Bg) {
+		t.Error("Span on Bg isn't on the background")
+	}
+	if unpainted := f.Palette().Fit(Target{Profile: colorprofile.TrueColor, Unpainted: true}); unpainted.Span(Muted).GetBackground() != (lipgloss.NoColor{}) {
+		t.Error("Span on an unpainted background paints it")
 	}
 }
 
@@ -150,7 +178,7 @@ func TestMutedOnSurface16(t *testing.T) {
 	t.Parallel()
 	for _, tn := range tint.DefaultTints() {
 		base := Derive(tn).Fit(Target{Profile: colorprofile.ANSI})
-		for _, surface := range []Role{Bg, Raised, Selection} {
+		for _, surface := range []Role{Bg, Raised, Bg.Selected()} {
 			f := base.On(surface)
 			body := f.p.termFg
 			if s, ok := f.Color(Fg).(ansi.BasicColor); ok {
@@ -172,13 +200,13 @@ func TestMutedOnSurface16(t *testing.T) {
 func TestFillSurfaceText16(t *testing.T) {
 	t.Parallel()
 	f := Derive(tint.TintTokyoNight).Fit(Target{Profile: colorprofile.ANSI})
-	st := f.Fill(Selection)
+	st := f.Fill(Bg.Selected())
 	bg, ok1 := st.GetBackground().(ansi.BasicColor)
 	fg, ok2 := st.GetForeground().(ansi.BasicColor)
 	if !ok1 || !ok2 {
-		t.Fatalf("Fill(Selection) = %v on %v, want two slots", st.GetForeground(), st.GetBackground())
+		t.Fatalf("Fill(selected) = %v on %v, want two slots", st.GetForeground(), st.GetBackground())
 	}
 	if got := tint.Contrast(f.ansi[fg], f.ansi[bg]); got < minText {
-		t.Errorf("Fill(Selection) text contrast %.2f < %.1f", got, minText)
+		t.Errorf("Fill(selected) text contrast %.2f < %.1f", got, minText)
 	}
 }

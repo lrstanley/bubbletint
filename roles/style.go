@@ -36,55 +36,56 @@ func (a Attr) Apply(s lipgloss.Style) lipgloss.Style {
 // Text returns a style for text in a role's color, such as [Muted] text or a
 // [Danger] mark, with the attributes that stand in for the color where the
 // terminal can't draw it. On a palette for drawing on a surface, from
-// [Fitted.On], the text is on the surface's color too, so it doesn't leave a
-// hole in the fill around it.
+// [Fitted.On], the attributes that mark the surface are added too, such as
+// the reverse video of a selected row with no color, so the text doesn't
+// break the fill.
+//
+// It sets no background: what's drawn on keeps its own, as it does in a
+// renderer that keeps the background under text, such as bloom's. Where text
+// is rendered on its own and then placed on a fill, as with nested
+// [lipgloss.Style.Render] calls, use [Fitted.Span], or the reset after the
+// text leaves a hole in the fill.
 func (f *Fitted) Text(r Role) lipgloss.Style {
 	s := lipgloss.NewStyle().Foreground(f.Color(r))
 	a := f.Attr(r)
-	if g := f.p.ground; g != Bg {
-		s = s.Background(f.Color(g))
-		a |= f.fillAttr(g)
+	if f.p.ground != Bg {
+		a |= f.ground.a
 	}
 	return a.Apply(s)
+}
+
+// Span returns [Fitted.Text] drawn on the ground's color too, for text
+// rendered on its own and placed on a fill. On the background it's the
+// background's color, unless that's the terminal's own.
+func (f *Fitted) Span(r Role) lipgloss.Style {
+	s := f.Text(r)
+	if f.ground.c != nil {
+		s = s.Background(f.ground.c)
+	}
+	return s
 }
 
 // Fill returns a style filled with a role's color, with the text that reads
 // on it:
 //
-//   - a tone, such as a [Danger] pill: the tone's [Role.On] text.
-//   - a soft fill, such as Danger.Soft(), or an on color: the tone itself,
-//     as text.
-//   - a surface: [Fg], fitted to the surface as [Fitted.On] fits it. For
-//     other roles' text on the surface, use On's [Fitted.Text].
+//   - a surface, a tone, or a role in a state, such as [Raised], a [Danger]
+//     pill or Bg.Selected(): [Fg], as [Fitted.On] works it out for the fill.
+//   - a soft fill, such as Danger.Soft(): the tone itself, as text.
 //
-// The attributes that stand in for either color are added. It's meant for
-// surfaces and tones; a text role's fill, such as [BorderStrong] for a
-// scrollbar thumb, is treated as a surface, and [Fg]'s is reverse video.
+// The attributes that stand in for either color are added. For other roles'
+// text on the fill, use On's [Fitted.Text]. A text role's fill, such as
+// [BorderStrong] for a scrollbar thumb, is treated as a surface, and [Fg]'s
+// is reverse video.
 func (f *Fitted) Fill(r Role) lipgloss.Style {
 	if r == Fg {
 		// Reverse video: it reads even where both are the terminal's defaults.
 		s := lipgloss.NewStyle().Foreground(f.Color(Fg)).Background(f.Color(Bg))
 		return (f.Attr(Fg) | Reverse).Apply(s)
 	}
-	on, text := f, Fg
-	switch r.Kind() {
-	case KindTone:
-		text = r.On()
-	case KindSoft, KindOn:
-		text = r.Base()
-	case KindSurface, KindText:
-		// The fill and its text both come from the palette for drawing on r.
-		on = f.On(r)
+	on, text := f.On(r), Fg
+	if r.Kind() == KindSoft {
+		text = r.Base().Rest()
 	}
-	s := lipgloss.NewStyle().Background(on.Color(r)).Foreground(on.Color(text))
-	return (on.Attr(text) | on.fillAttr(r)).Apply(s)
-}
-
-// fillAttr is what a fill of r adds where its color can't be drawn. A tone's
-// is its on color's, which [Fitted.Attr] gives for a fill of the tone.
-func (f *Fitted) fillAttr(r Role) Attr {
-	if r.Kind() == KindTone {
-		return f.Attr(r.On())
-	}
-	return f.Attr(r)
+	s := lipgloss.NewStyle().Background(on.ground.c).Foreground(on.Color(text))
+	return (on.Attr(text) | on.ground.a).Apply(s)
 }
