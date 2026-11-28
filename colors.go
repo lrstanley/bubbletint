@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"image/color"
+	"reflect"
 )
 
 var _ color.Color = &Color{} // Ensure that Color implements the [color.Color] interface.
@@ -92,12 +93,15 @@ func (c Color) MarshalJSON() ([]byte, error) {
 // UnmarshalJSON implements the [encoding/json.Unmarshaler] interface. It supports
 // both the RGBA values as defined by the [Color] struct, as well as a "hex" string
 // in place of the RGBA object, for those which do not want to write theme config
-// files by the RGBA values.
+// files by the RGBA values. An object without "a" is opaque. [ColorSchema] is
+// the JSON schema for the format a config should write.
 //
 // Examples:
 //
 //	{"r": 255, "g": 0, "b": 0, "a": 255}
+//	{"r": 255, "g": 0, "b": 0}
 //	"#ff0000"
+//	"#f00"
 func (c *Color) UnmarshalJSON(data []byte) error {
 	var m map[string]any
 	err := json.Unmarshal(data, &m)
@@ -110,8 +114,10 @@ func (c *Color) UnmarshalJSON(data []byte) error {
 		if ok {
 			c.B, ok = toUint8(m["b"])
 		}
-		if ok {
-			c.A, ok = toUint8(m["a"])
+		if a, has := m["a"]; ok && has {
+			c.A, ok = toUint8(a)
+		} else if ok {
+			c.A = 0xff
 		}
 		if !ok {
 			return fmt.Errorf("invalid color values: %v", m)
@@ -136,6 +142,63 @@ func (c *Color) UnmarshalJSON(data []byte) error {
 	c.B = hexColor.B
 	c.A = hexColor.A
 	return nil
+}
+
+// ColorSchema is the JSON schema for a [Color] in a config file, for an app's
+// own config schema. [Color.UnmarshalJSON] is more lenient than it, and
+// reads anything it allows.
+const ColorSchema = `{
+  "description": "a color, as \"#rrggbb\" or \"#rgb\", or an {\"r\", \"g\", \"b\", \"a\"} object of 0-255 values, opaque without \"a\"",
+  "anyOf": [
+    {"type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"},
+    {
+      "type": "object",
+      "properties": {
+        "r": {"type": "integer", "minimum": 0, "maximum": 255},
+        "g": {"type": "integer", "minimum": 0, "maximum": 255},
+        "b": {"type": "integer", "minimum": 0, "maximum": 255},
+        "a": {"type": "integer", "minimum": 0, "maximum": 255}
+      },
+      "required": ["r", "g", "b"],
+      "additionalProperties": false
+    }
+  ]
+}`
+
+// SameRGB reports whether a and b are the same color, ignoring alpha, as
+// terminals report colors without it. A nil color is only the same as nil.
+func SameRGB(a, b color.Color) bool {
+	if isNil(a) || isNil(b) {
+		return isNil(a) && isNil(b)
+	}
+	return straightRGB(a) == straightRGB(b)
+}
+
+// straightRGB is c's red, green and blue, without alpha multiplied in.
+func straightRGB(c color.Color) [3]uint8 {
+	switch v := c.(type) {
+	case Color:
+		return [3]uint8{v.R, v.G, v.B}
+	case *Color:
+		return [3]uint8{v.R, v.G, v.B}
+	case *color.NRGBA:
+		return [3]uint8{v.R, v.G, v.B}
+	case color.NRGBA64:
+		return [3]uint8{uint8(v.R >> 8), uint8(v.G >> 8), uint8(v.B >> 8)}
+	case *color.NRGBA64:
+		return [3]uint8{uint8(v.R >> 8), uint8(v.G >> 8), uint8(v.B >> 8)}
+	}
+	n, _ := color.NRGBAModel.Convert(c).(color.NRGBA)
+	return [3]uint8{n.R, n.G, n.B}
+}
+
+// isNil reports whether c is nil, or a nil pointer to a color of any type.
+func isNil(c color.Color) bool {
+	if c == nil {
+		return true
+	}
+	v := reflect.ValueOf(c)
+	return v.Kind() == reflect.Pointer && v.IsNil()
 }
 
 // FromHex converts a hex color string to a [Color]. If the hex value is invalid,

@@ -34,8 +34,9 @@ type Tint struct {
 
 	// Dark reports whether the tint is a dark theme. Built-in tints use the
 	// variant provided by the theme author when it is present. When the author
-	// did not provide one, Dark is calculated from the background color's
-	// luminosity (dark when it is below 0.5).
+	// did not provide one, and for a tint read with [ParseJSON] without
+	// "dark", Dark is worked out from the background: dark when white text on
+	// it contrasts more than black text does, as [Color.IsDark] has it.
 	Dark bool `json:"dark,omitempty"`
 
 	// Hue is the dominant chromatic family of this tint's ANSI palette.

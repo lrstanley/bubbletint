@@ -93,41 +93,19 @@ func SlotOf(h Hue) (Slot, bool) {
 // ANSI returns the tint's color for slot s, which may be nil for a
 // hand-built tint.
 func (t *Tint) ANSI(s Slot) *Color {
-	switch s {
-	case SlotBlack:
-		return t.Black
-	case SlotRed:
-		return t.Red
-	case SlotGreen:
-		return t.Green
-	case SlotYellow:
-		return t.Yellow
-	case SlotBlue:
-		return t.Blue
-	case SlotMagenta:
-		return t.Purple
-	case SlotCyan:
-		return t.Cyan
-	case SlotWhite:
-		return t.White
-	case SlotBrightBlack:
-		return t.BrightBlack
-	case SlotBrightRed:
-		return t.BrightRed
-	case SlotBrightGreen:
-		return t.BrightGreen
-	case SlotBrightYellow:
-		return t.BrightYellow
-	case SlotBrightBlue:
-		return t.BrightBlue
-	case SlotBrightMagenta:
-		return t.BrightPurple
-	case SlotBrightCyan:
-		return t.BrightCyan
-	case SlotBrightWhite:
-		return t.BrightWhite
+	if s > SlotBrightWhite {
+		return nil
 	}
-	return nil
+	return *t.slotField(s)
+}
+
+// slotField is the field holding slot s, which must be 0-15.
+func (t *Tint) slotField(s Slot) **Color {
+	return [16]**Color{
+		&t.Black, &t.Red, &t.Green, &t.Yellow, &t.Blue, &t.Purple, &t.Cyan, &t.White,
+		&t.BrightBlack, &t.BrightRed, &t.BrightGreen, &t.BrightYellow,
+		&t.BrightBlue, &t.BrightPurple, &t.BrightCyan, &t.BrightWhite,
+	}[s]
 }
 
 // ANSI16 returns all 16 slots in index order.
